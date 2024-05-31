@@ -2,6 +2,9 @@
 
 This repository contains my personal dotfiles for configuring a Linux environment. The dotfiles include configurations for Zsh, Neovim, Neofetch, Tmux, and the Starship prompt. I use GNU Stow to manage the symbolic links for these configuration files.
 
+![image](https://github.com/ashudevcodes/dotfiles/assets/105356967/fd8e7dff-6754-461a-b9d1-543b4e48afdf)
+![image](https://github.com/ashudevcodes/dotfiles/assets/105356967/dc4d0558-efc3-492e-81a9-c78af0e03146)
+
 ## Contents
 
 - `.zshrc`: Configuration file for Zsh.
