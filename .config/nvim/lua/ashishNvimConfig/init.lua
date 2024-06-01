@@ -7,6 +7,14 @@ vim.wo.number = true
 -- Sync clipboard between OS and Neovim.
 vim.o.clipboard = "unnamedplus"
 
+-- Enable syntax highlighting
+vim.cmd("syntax on")
+
+-- Set tab width
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
 -- Enable break indent
 vim.o.breakindent = true
 
