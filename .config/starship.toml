@@ -75,7 +75,7 @@ format = '[$path]($style)[$read_only]($read_only_style) '
 [git_branch]
 symbol = "  "
 format = '[$symbol$branch]($style)'
-# truncation_length = 4
+truncation_length = 4
 truncation_symbol = '…/'
 style = 'bold green'
 
@@ -90,7 +90,7 @@ ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
 stashed = ' '
-modified = ' '
+modified = '  '
 staged = '[++\($count\)](green)'
 renamed = '襁 '
 deleted = ' '
