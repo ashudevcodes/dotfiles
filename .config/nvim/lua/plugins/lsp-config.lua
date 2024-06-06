@@ -30,6 +30,19 @@ return {
 				},
 			})
 
+			lspconfig.clangd.setup({
+				filetypes = { "c", "cpp" },
+			})
+
+			lspconfig.tsserver.setup({
+				capabilities = capabilities,
+				init_options = {
+					preferences = {
+						disableSuggestions = true,
+					},
+				},
+			})
+
 			-- lspconfig.tailwindcss.setup({
 			-- 	settings = {
 			-- 		includeLanguages = {
