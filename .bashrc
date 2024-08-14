@@ -40,6 +40,9 @@ eval "$(starship completions bash)"
 # Add for asthetic (ashish)
 cowsay -f tux "Hello Nemo :)"
 
+# Add for no duplicate entries in history (ashish)
+export HISTCONTROL=ignoredups:erasedups 
+
 unset rc
 
 alias luamake="/home/ashish/Downloads/lua-language-server/3rd/luamake/luamake"
