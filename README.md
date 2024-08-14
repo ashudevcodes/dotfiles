@@ -5,4 +5,4 @@
 - Starship
 - Tmux
 
-<kbd><img src=".assets/screenShort.png"><kbd>
+<kbd><img src="assets/screenShort.png"><kbd>
