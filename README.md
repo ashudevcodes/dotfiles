@@ -2,7 +2,7 @@
 
 This repository contains my personal dotfiles for Fedora, including configurations for Neovim, Tmux, and various system utilities.
 
-<kbd><img src="assets/screenShort.png"><kbd>
+<kbd><img src="assets/screenShot.png"><kbd>
 
 ## Components
 
