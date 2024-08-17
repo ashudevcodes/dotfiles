@@ -24,12 +24,12 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 # Changing "ls" to "exa" (Add By ashish)
-alias ls='exa --icons --color=always --group-directories-first'
-alias ll='exa -alF --icons --color=always --group-directories-first'
-alias la='exa -a --icons --color=always --group-directories-first'
-alias l='exa -F --icons --color=always --group-directories-first'
-alias l.='exa -a | egrep "^\."'
-
+alias ls='exa --sort=size --icons --color=always --group-directories-first'
+alias ll='exa --sort=size -a lF --icons --color=always --group-directories-first'
+alias la='exa --sort=size -a --icons --color=always --group-directories-first'
+alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
+alias l.='exa --sort=size -a | egrep "^\."'
+                       
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=vim
 
