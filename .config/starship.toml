@@ -20,7 +20,6 @@ $conda\
 $pijul_channel\
 $lua\
 $rlang\
-$package\
 $buf\
 $memory_usage\
 $docker_context\
@@ -64,8 +63,9 @@ ssh_symbol = " "
 
 # Shows current directory
 [directory]
-truncation_length = 3
+truncation_length = 2
 fish_style_pwd_dir_length=2
+truncation_symbol = '…/'
 home_symbol = '󰋜 ~'
 read_only_style = '197'
 read_only = ' '
