@@ -30,5 +30,16 @@ return {
 				fallback_flags = { "-std=c++17" },
 			},
 		})
+		lspconfig.tsserver.setup({
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+			},
+			cmd = { "typescript-language-server", "--stdio" },
+		})
 	end,
 }
