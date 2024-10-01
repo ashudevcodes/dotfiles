@@ -29,7 +29,7 @@ alias ll='exa --sort=size -a lF --icons --color=always --group-directories-first
 alias la='exa --sort=size -a --icons --color=always --group-directories-first'
 alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
 alias l.='exa --sort=size -a | egrep "^\."'
-                       
+
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=vim
 
@@ -38,7 +38,7 @@ eval "$(starship init bash)"
 eval "$(starship completions bash)"
 
 # Add for asthetic (ashish)
-cowsay -f tux "Hello Nemo :)"
+cowsay -f tux "Hello Ashu :)"
 
 # Add for no duplicate entries in history (ashish)
 export HISTCONTROL=ignoredups:erasedups 
