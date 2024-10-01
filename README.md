@@ -22,6 +22,8 @@ My Neovim setup includes the following plugins:
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim): Color scheme
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Syntax highlighting
 - [which-key.nvim](https://github.com/folke/which-key.nvim): Keybinding helper
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo): Collapse block
+
 
 ### System Utilities
 
