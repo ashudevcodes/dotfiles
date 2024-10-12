@@ -30,7 +30,7 @@ return {
 				fallback_flags = { "-std=c++17" },
 			},
 		})
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			filetypes = {
 				"javascript",
 				"javascriptreact",
