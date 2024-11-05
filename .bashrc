@@ -23,6 +23,13 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
+# alias for exit (Add By ashish)
+alias q='exit'
+
+
+# Changing "lg" to "lazygit" (Add By ashish)
+alias lg='lazygit'
+
 # Changing "ls" to "exa" (Add By ashish)
 alias ls='exa --sort=size --icons --color=always --group-directories-first'
 alias ll='exa --sort=size -a lF --icons --color=always --group-directories-first'
