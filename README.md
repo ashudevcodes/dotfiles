@@ -37,6 +37,10 @@ My Tmux configuration uses:
 - [tpm](https://github.com/tmux-plugins/tpm): Tmux Plugin Manager
 - [tokyo-night-tmux](https://github.com/janoamaral/tokyo-night-tmux): Tokyo Night theme for Tmux
 
+### Software 
+
+- [lazygit](https://github.com/jesseduffield/lazygit): Git Plugin
+
 ## Installation
 
 - TODO Make installation script that automte download all plugins
