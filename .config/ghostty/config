@@ -1,0 +1,10 @@
+theme = "tokyonight"
+
+font-family = "JetBrainsMonoNL Nerd Font"
+
+window-decoration = false
+keybind = "ctrl+shift+d=toggle_window_decorations"
+
+window-padding-balance = true
+
+quick-terminal-position = center
