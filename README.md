@@ -29,8 +29,7 @@ My Neovim setup includes the following plugins:
 
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch): System information tool
 - [Starship](https://starship.rs/): Cross-shell prompt
-
-### Tmux
+- [ghostty](https://github.com/ghostty-org/ghostty): Terminal emulator
 
 My Tmux configuration uses:
 
