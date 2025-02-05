@@ -2,8 +2,11 @@ theme = "tokyonight"
 
 font-family = "JetBrainsMonoNL Nerd Font"
 
-window-decoration = false
-keybind = "ctrl+shift+d=toggle_window_decorations"
+gtk-titlebar=false
+
+window-decoration = none
+
+mouse-hide-while-typing = true
 
 window-padding-balance = true
 
