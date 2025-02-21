@@ -12,7 +12,7 @@ return {
 				},
 			},
 		})
-		-- lspconfig.jdtls.setup({})
+
 		lspconfig.gopls.setup({
 			settings = {
 				gopls = {
