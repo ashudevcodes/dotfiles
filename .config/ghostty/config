@@ -4,10 +4,10 @@ font-family = "JetBrainsMonoNL Nerd Font"
 
 gtk-titlebar=false
 
-keybind = ctrl+shift+k=goto_split:up
-keybind = ctrl+shift+j=goto_split:down
-keybind = ctrl+shift+l=goto_split:right
-keybind = ctrl+shift+h=goto_split:left
+keybind = shift+alt+k=goto_split:up
+keybind = shift+alt+j=goto_split:down
+keybind = shift+alt+l=goto_split:right
+keybind = shift+alt+h=goto_split:left
 
 mouse-hide-while-typing = true
 
