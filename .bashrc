@@ -41,7 +41,12 @@ alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
 alias l.='exa --sort=size -a | egrep "^\."'
 
 # Make Vim defaut Editor (Add By ashish)
-export EDITOR=vim
+export EDITOR=nvim
+
+set -o vi
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
 
 # For Installing Starship default (Add by ashish)
 eval "$(starship init bash)"
