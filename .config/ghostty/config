@@ -9,6 +9,8 @@ keybind = shift+alt+j=goto_split:down
 keybind = shift+alt+l=goto_split:right
 keybind = shift+alt+h=goto_split:left
 
+confirm-close-surface = false
+
 mouse-hide-while-typing = true
 
 window-padding-balance = true
