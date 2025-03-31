@@ -24,6 +24,19 @@ return {
 				},
 			},
 		})
+
+		lspconfig.pylsp.setup({
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore = { "W391" },
+							maxLineLength = 100,
+						},
+					},
+				},
+			},
+		})
 		lspconfig.clangd.setup({
 			name = "clangd",
 			cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
