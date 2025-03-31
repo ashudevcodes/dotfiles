@@ -61,3 +61,15 @@ export HISTCONTROL=ignoredups:erasedups
 unset rc
 
 alias luamake="/home/ashish/Downloads/lua-language-server/3rd/luamake/luamake"
+
+
+# Automatically start or attach to a tmux session
+
+if [[ -z "$TMUX" ]]; then  
+    if tmux ls &>/dev/null; then
+        tmux attach || tmux new-session
+    else
+        tmux new-session
+    fi
+fi
+
