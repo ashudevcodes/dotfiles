@@ -63,7 +63,7 @@ ssh_symbol = " "
 
 # Shows current directory
 [directory]
-truncation_length = 2
+truncation_length = 1
 fish_style_pwd_dir_length=2
 truncation_symbol = '…/'
 home_symbol = '󰋜 ~'
