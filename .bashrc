@@ -34,11 +34,13 @@ alias q='exit'
 alias lg='lazygit'
 
 # Changing "ls" to "exa" (Add By ashish)
-alias ls='exa --sort=size --icons --color=always --group-directories-first'
-alias ll='exa -lh --sort=size -a --icons --color=always --group-directories-first'
-alias la='exa --sort=size -a --icons --color=always --group-directories-first'
-alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
-alias l.='exa --sort=size -a | egrep "^\."'
+# alias ls='exa --sort=size --icons --color=always --group-directories-first'
+# alias ll='exa -lh --sort=size -a --icons --color=always --group-directories-first'
+ alias l='ll'
+ alias la='ls -a'
+# alias la='exa --sort=size -a --icons --color=always --group-directories-first'
+# alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
+# alias l.='exa --sort=size -a | egrep "^\."'
 
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=nvim
