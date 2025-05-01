@@ -1,8 +1,11 @@
 theme = "tokyonight"
 
 font-family = "JetBrainsMonoNL Nerd Font"
+font-size = 11
 
 gtk-titlebar=false
+background-opacity = 0.9
+background-blur = true
 
 keybind = shift+alt+k=goto_split:up
 keybind = shift+alt+j=goto_split:down
