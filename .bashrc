@@ -70,7 +70,7 @@ alias luamake="/home/ashish/Downloads/lua-language-server/3rd/luamake/luamake"
 
 # Toggle On/Off of laptop Touchpad
 
-alias touchpad="/home/ashish/.config/scripts/toggle-touchpad.sh"
+alias touchpad="~/.config/scripts/toggle-touchpad.sh"
 
 # Automatically start or attach to a tmux session
 
