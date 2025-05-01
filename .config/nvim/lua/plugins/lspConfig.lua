@@ -37,13 +37,15 @@ return {
 				},
 			},
 		})
+		
 		lspconfig.clangd.setup({
-			name = "clangd",
-			cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
-			initialization_options = {
-				fallback_flags = { "-std=c++17" },
-			},
-		})
+           		 cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+            			init_options = {
+                			fallbackFlags = { '-std=c++17' },
+            			},
+            			root_markers = { ".clangd-format" },
+        	})
+
 		lspconfig.ts_ls.setup({
 			filetypes = {
 				"javascript",
