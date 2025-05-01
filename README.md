@@ -30,6 +30,7 @@ My Neovim setup includes the following plugins:
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch): System information tool
 - [Starship](https://starship.rs/): Cross-shell prompt
 - [ghostty](https://github.com/ghostty-org/ghostty): Terminal emulator
+- [Hyprland](https://hyprland.org): Tiling window manager
 
 My Tmux configuration uses:
 
