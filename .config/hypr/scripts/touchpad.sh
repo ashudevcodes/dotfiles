@@ -1,14 +1,8 @@
  #!/bin/bash
 
-# Path to the Hyprland configuration directory
-
 CONFIG_DIR="$HOME/.config/hypr"
 
-# Name of the touchpad configuration file
-
 TOUCHPAD_CONFIG="touchpad.conf"
-
-# Full path to the touchpad configuration file
 
 CONFIG_FILE="$CONFIG_DIR/$TOUCHPAD_CONFIG"
 
@@ -22,32 +16,12 @@ if [ "$enabled" == "enabled = 0" ]; then
 
 sed -i "s/enabled\s*=\s*0/enabled = 1/" "$CONFIG_FILE"
 
-state="enabled"
+notify-send -i input-mouse -u low "Touchpad  " "Enabled" 
 
 else
 
 sed -i "s/enabled\s*=\s*1/enabled = 0/" "$CONFIG_FILE"
 
-state="disabled"
+notify-send -i input-mouse -u low "Touchpad 󰍾 " "Disabled"
 
 fi
-
-# Reload the settings in Hyprland
-
-# Replace the command below with the actual command to reload settings in Hyprland
-
-# hyprctl reload-settings
-
-# Display notification based on touchpad state
-
-if [ "$state" == "enabled" ]; then
-
-notify-send -u low "Touchpad Enabled" 
-
-else
-
-notify-send -u low "Touchpad Disabled" 
-
-fi
-
-echo "Touchpad state toggled." 
