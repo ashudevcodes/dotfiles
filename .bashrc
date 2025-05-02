@@ -42,9 +42,10 @@ alias lg='lazygit'
 # alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
 # alias l.='exa --sort=size -a | egrep "^\."'
 
-# Open NroVim Config 
+# alias for Configs
 
 alias nconf='nvim ~/.config/nvim'
+alias hyprconf='nvim ~/.config/hypr'
 
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=nvim
