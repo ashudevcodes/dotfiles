@@ -1,11 +1,21 @@
 # Fedora Dotfiles
 
-This repository contains my personal dotfiles for Fedora, including configurations for Neovim, Tmux, and various system utilities.
+Repository For my personal dotfiles from Fedora, its contain the configurations of Neovim, Tmux,  Hyperland and various system utilities.
 
-<kbd><img src="assets/screenShot.png"><kbd>
+<kbd>
+   <img src="assets/screenShot.png">
+   <kbd>Gnome</kbd>
+</kbd>
 
-<kbd><img src="assets/hyprlandsetup.png"><kdb>
+<kbd>
+   <img src="assets/hyprlandsetup.png">
+   <kbd>hyprland</kbd>
+</kbd>
 
+<hr>
+
+<kbd>
+  
 ## Components
 
 ### Neovim
@@ -39,9 +49,6 @@ My Tmux configuration uses:
 - [tpm](https://github.com/tmux-plugins/tpm): Tmux Plugin Manager
 - [tokyo-night-tmux](https://github.com/janoamaral/tokyo-night-tmux): Tokyo Night theme for Tmux
 
-### Software 
-
-- [lazygit](https://github.com/jesseduffield/lazygit): Git Plugin
 
 ## Installation
 
@@ -53,3 +60,5 @@ Feel free to open issues or submit pull requests if you have suggestions for imp
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+</kbd>
