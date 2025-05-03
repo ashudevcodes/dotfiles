@@ -6,7 +6,7 @@ Repository For my personal dotfiles from Fedora, its contain the configurations 
    <img src="assets/screenShot.png">
    <kbd>Gnome</kbd>
 </kbd>
-
+<hr>
 <kbd>
    <img src="assets/hyprlandsetup.png">
    <kbd>hyprland</kbd>
@@ -14,8 +14,6 @@ Repository For my personal dotfiles from Fedora, its contain the configurations 
 
 <hr>
 
-<kbd>
-  
 ## Components
 
 ### Neovim
@@ -60,5 +58,3 @@ Feel free to open issues or submit pull requests if you have suggestions for imp
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
-</kbd>
