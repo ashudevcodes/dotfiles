@@ -4,6 +4,8 @@ This repository contains my personal dotfiles for Fedora, including configuratio
 
 <kbd><img src="assets/screenShot.png"><kbd>
 
+<kbd><img src="assets/hyprlandsetup.png"><kdb>
+
 ## Components
 
 ### Neovim
