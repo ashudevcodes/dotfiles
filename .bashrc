@@ -33,12 +33,13 @@ alias q='exit'
 # Changing "lg" to "lazygit" (Add By ashish)
 alias lg='lazygit'
 
-# Changing "ls" to "exa" (Add By ashish)
-alias ls='exa --sort=size --icons --color=always --group-directories-first'
-alias ll='exa -lh --sort=size -a --icons --color=always --group-directories-first'
-alias la='exa --sort=size -a --icons --color=always --group-directories-first'
-alias l='exa  --sort=size -F --icons --color=always --group-directories-first'
-alias l.='exa --sort=size -a | egrep "^\."'
+# Changing "ls" to "lsd" (Add By ashish)
+alias ls='lsd'
+
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # alias for Configs
 
