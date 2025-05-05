@@ -71,12 +71,16 @@ alias luamake="/home/ashish/Downloads/lua-language-server/3rd/luamake/luamake"
 
 alias touchpad="~/.config/scripts/toggle-touchpad.sh"
 
-# Automatically start or attach to a tmux session
+# shortcut to open tumux through alt + t key
+bind -x '"\et":tmux_auto_attach'
 
-if [[ -z "$TMUX" ]]; then  
-    if tmux ls &>/dev/null; then
-        tmux attach || tmux new-session
-    else
-        tmux new-session
+# this function was call when key trigger alt+t
+tmux_auto_attach() {
+    if [[ -z "$TMUX" ]]; then
+        if tmux ls &>/dev/null; then
+            tmux attach || tmux new-session
+        else
+            tmux new-session
+        fi
     fi
-fi
+}
