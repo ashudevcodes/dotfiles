@@ -2,7 +2,8 @@ command_timeout = 1000
 add_newline = false
 
 format = """
-$os$hostname\
+$hostname\
+$os\
 $directory\
 $git_branch\
 $git_status \
@@ -52,14 +53,13 @@ format = '[$symbol](bold white) '
 disabled = false
 
 [os.symbols]
-Fedora = '' 
+Fedora = ' [Fedora](bold yellow)' 
 
 # Shows the hostname
 [hostname]
-ssh_only = false
-format = '[$hostname](bold yellow) '
+ssh_only = true
+format = "🌐 "
 disabled = false
-ssh_symbol = " "
 
 # Shows current directory
 [directory]

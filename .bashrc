@@ -48,7 +48,6 @@ alias hyprconf='nvim ~/.config/hypr'
 
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=nvim
-
 set -o vi
 
 # Set up fzf key bindings and fuzzy completion
@@ -81,4 +80,3 @@ if [[ -z "$TMUX" ]]; then
         tmux new-session
     fi
 fi
-
