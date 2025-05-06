@@ -53,7 +53,7 @@ format = '[$symbol](bold white) '
 disabled = false
 
 [os.symbols]
-Fedora = ' [Fedora](bold yellow)' 
+Fedora = ' [Fedora](bold blue)' 
 
 # Shows the hostname
 [hostname]
@@ -66,7 +66,7 @@ disabled = false
 truncation_length = 1
 fish_style_pwd_dir_length=2
 truncation_symbol = '…/'
-home_symbol = '󰋜 ~'
+home_symbol = '[󰋜:~'
 read_only_style = '197'
 read_only = ' '
 format = '[$path]($style)[$read_only]($read_only_style) '
