@@ -3,6 +3,7 @@ local act = wezterm.action
 
 return {
   keys = {
+    -- Switch to tabs
     { key = '1', mods = 'ALT', action = act.ActivatePaneByIndex(0) },
     { key = '2', mods = 'ALT', action = act.ActivatePaneByIndex(1) },
     { key = '3', mods = 'ALT', action = act.ActivatePaneByIndex(2) },
@@ -13,5 +14,7 @@ return {
     { key = '8', mods = 'ALT', action = act.ActivatePaneByIndex(7) },
     { key = '9', mods = 'ALT', action = act.ActivatePaneByIndex(8) },
     { key = '0', mods = 'ALT', action = act.ActivatePaneByIndex(9) },
+    -- For creating new tab
+    { key = 't', mods = 'ALT', action = act.SpawnTab 'DefaultDomain' },
   },
 }
