@@ -6,8 +6,6 @@ local config = {}
 color_scheme.apply_tokyonight_theme(config)
 font.apply_jetbrainMonoFont(config)
 
-config.font_size = 11.8
-
 --  Add Some transparent on terminal
 config.window_background_opacity = 0.9
 
@@ -20,6 +18,9 @@ config.window_padding = {
 	top = 10,
 	bottom = 0,
 }
+
+config.font_size = 11
+config.default_cwd = "/home/ashish/code/"
 
 print(config)
 return config
