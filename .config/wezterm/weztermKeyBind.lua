@@ -1,21 +1,26 @@
-local wezterm = require 'wezterm'
-local act = wezterm.action
+local wezterm = require("wezterm")
 
-local config = wezterm.config_builder()
-config.keys = {}
+local module = {}
 
-for i = 1, 8 do
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = 'ALT',
-    action = act.ActivateTab(i - 1),
-  })
+function module.spawn_new_tab(config)
+	config.keys = {
+		{
+			key = "t",
+			mods = "ALT",
+			action = wezterm.action.SpawnTab("DefaultDomain"),
+		},
+	}
 end
 
-table.insert(config.keys,{
-    key = 't',
-    mods = 'ALT',
-    action = act.SpawnTab 'DefaultDomain',
-})
+function module.switch_between_tabs(config)
+	config.keys = config.keys or {}
+	for i = 1, 8 do
+		table.insert(config.keys, {
+			key = tostring(i),
+			mods = "ALT",
+			action = wezterm.action.ActivateTab(i - 1),
+		})
+	end
+end
 
-return config
+return module
