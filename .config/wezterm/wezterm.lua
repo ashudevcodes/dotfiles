@@ -1,11 +1,16 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local color_scheme = require("colorScheme")
 local font = require("weztermFont")
+local keybind = require("weztermKeyBind")
 
 local config = wezterm.config_builder()
 
 color_scheme.apply_tokyonight_theme(config)
 font.apply_jetbrainMonoFont(config)
+
+-- Switch Tabs and Create new one
+keybind.spawn_new_tab(config)
+keybind.switch_between_tabs(config)
 
 --  Add Some transparent on terminal
 config.window_background_opacity = 0.9
