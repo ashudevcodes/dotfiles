@@ -1,7 +1,8 @@
+local wezterm = require 'wezterm'
 local color_scheme = require("colorScheme")
 local font = require("weztermFont")
 
-local config = {}
+local config = wezterm.config_builder()
 
 color_scheme.apply_tokyonight_theme(config)
 font.apply_jetbrainMonoFont(config)
