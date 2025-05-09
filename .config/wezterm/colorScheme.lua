@@ -11,7 +11,7 @@ function module.apply_batman_theme(config)
 end
 
 function module.apply_tokyonight_theme(config)
-	PrintAshuName()
+	-- PrintAshuName()
 	config.color_scheme = "Tokyo Night"
 end
 
