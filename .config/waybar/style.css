@@ -45,6 +45,10 @@ tooltip * {
 #workspaces button.active {
   color: #f5bde6;
 }
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
 
 
 
