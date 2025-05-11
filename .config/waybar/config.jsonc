@@ -15,6 +15,9 @@
           "active": "",
           "urgent": "",
           "default": ""
+        },
+        "persistent-workspaces": {
+                     "*": 4
         }
     },
 
@@ -55,8 +58,9 @@
 
     "cpu": {
         "interval": 10,
-        "format": "{}% ",
-        "max-length": 10
+        "format": "{load}% {icon}",
+        "max-length": 10,
+        "format-icons":""
     },
 
      "temperature": {
@@ -112,7 +116,7 @@
                 "critical": 20
             },
             "format": "{capacity}% {icon}",
-            "format-charging": "{capacity}% 󰂄",
+            "format-charging": "{capacity}% 󰂄 ",
             "format-plugged": "{capacity}% 󰂄 ",
             "format-alt": "{time} {icon}",
             "format-icons": [
@@ -123,6 +127,6 @@
             "󰂂",
             "󰁹"
             ]
-        },
+        }
 
 }

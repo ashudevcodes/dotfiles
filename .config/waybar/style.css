@@ -1,6 +1,6 @@
 * {
   border: none;
-  font-family: "JetBrain Mono";
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 14px;
   font-weight: 600;
   background: none;
@@ -15,6 +15,9 @@ window#waybar {
     border-radius: 10px;
     background: #181926;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 10px;  
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 
@@ -106,7 +109,10 @@ tooltip * {
 /* CSS FOR TEMPERATURE */
 /* ============================ */
 #temperature.critical{
-    color: red;
+    color: #FFA500;
+}
+#temperature{
+    color:#FFFF00;
 }
 
 /* ============================ */
@@ -140,12 +146,6 @@ tooltip * {
 /* ======================= */
 #battery.good{
     color:white;
-}
-#battery.warning{
-    color:yellow;
-}
-#battery.critical{
-    color:red;
 }
 
 #battery.charging {
