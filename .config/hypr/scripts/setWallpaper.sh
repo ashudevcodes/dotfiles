@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WALLPAPER_PATH="/home/ashish/Pictures/wallpaper.jpg"
+WALLPAPER_PATH="~/Fedora-dotfiles/assets/roboboy.jpg"
 hyprctl dispatch preload "$WALLPAPER_PATH"
 
 hyprctl dispatch wallpaper "$WALLPAPER_PATH
