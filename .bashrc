@@ -75,6 +75,23 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=separator:#ff9e64 \
   --color=spinner:#ff007c \
 "
+# Function to open a file with fzf and a text editor
+fzf_open() {
+    local file
+    file=$(find ~/code ~/Fedora-dotfiles \( -name .git -o -name node_modules \) -prune -o  -type f | fzf --query="${1:-}" --select-1 --exit-0)
+    local dir=${file%/*}
+    [ -n "$file" ] && cd "$dir" && ${EDITOR:-nvim} "$file"
+}
+# Find Dir and open it in to nvim
+find_dir() {
+  local dir
+  dir=$(find ~/code ~/Fedora-dotfiles/ -type d \( -name .git -o -name node_modules \) -prune -o -type d |  fzf --query="${1:-}" --select-1 --exit-0 )
+    [ -n "$dir" ] && cd "$dir" && ${EDITOR:-nvim} "$dir"
+}
+
+bind -x '"\ed":find_dir'
+bind -x '"\ef":fzf_open'
+
 # For Installing Starship default (Add by ashish)
 eval "$(starship init bash)"
 eval "$(starship completions bash)"
@@ -94,18 +111,18 @@ alias luamake="/home/ashish/Downloads/lua-language-server/3rd/luamake/luamake"
 alias touchpad="~/.config/scripts/toggle-touchpad.sh"
 
 # shortcut to open tumux through alt + t key
-bind -x '"\et":tmux_auto_attach'
+# bind -x '"\et":tmux_auto_attach'
 
 # this function was call when key trigger alt+t
-tmux_auto_attach() {
-    if [[ -z "$TMUX" ]]; then
-        if tmux ls &>/dev/null; then
-            tmux attach || tmux new-session
-        else
-            tmux new-session
-        fi
-    fi
-}
+# tmux_auto_attach() {
+#     if [[ -z "$TMUX" ]]; then
+#         if tmux ls &>/dev/null; then
+#             tmux attach || tmux new-session
+#         else
+#             tmux new-session
+#         fi
+#     fi
+# }
 
 # export Flutter PATH
 
