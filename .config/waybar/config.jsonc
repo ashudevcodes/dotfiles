@@ -41,7 +41,7 @@
 
      "network": {
         "format":"",
-        "format-wifi": "󱚻   {frequency}GHz {bandwidthUpBits}",
+        "format-wifi": "󱚻  {frequency}GHz {bandwidthUpBits}",
         "format-ethernet":"",
         "format-disconnected": "",
         "tooltip-format-disconnected": "Error",
@@ -67,7 +67,7 @@
         "thermal-zone": 2,
         "hwmon-path": "/sys/class/thermal/thermal_zone0/temp",
         "critical-threshold": 80,
-        "format-critical": "{temperatureC}°C ",
+        "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
         "format-icons": [
           "",
@@ -117,7 +117,7 @@
             },
             "format": "{capacity}% {icon}",
             "format-charging": "{capacity}% 󰂄 ",
-            "format-plugged": "{capacity}% 󰂄 ",
+            "format-full": "{capacity}% 󰂄 ",
             "format-alt": "{time} {icon}",
             "format-icons": [
                 "󰁻",
