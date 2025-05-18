@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["bluetooth","clock","network"],
-    "modules-right": ["cpu","temperature","pulseaudio","backlight","power-profiles-daemon","battery"],
+    "modules-right": ["cpu","temperature","pulseaudio","pulseaudio#microphone","backlight","power-profiles-daemon","battery"],
 
 // RIGHT MODULE
 // =====================================================
@@ -90,10 +90,25 @@
         "ignored-sinks": ["Easy Effects Sink"]
     },
 
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "rotate": 0,
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol -t 4",
+        "on-click-middle": "volumecontrol.sh -i m",
+        "on-scroll-up": "volumecontrol.sh -i i",
+        "on-scroll-down": "volumecontrol.sh -i d",
+        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+        "scroll-step": 5
+    },
+
+
+
     "backlight": {
         "device": "intel_backlight",
         "format": "{percent}% {icon}",
-        "format-icons": ["󰃜","󰃛",""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
     "power-profiles-daemon": {
