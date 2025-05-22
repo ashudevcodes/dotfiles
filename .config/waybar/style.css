@@ -1,3 +1,7 @@
+/*base background color*/
+@define-color bg_main rgba(25, 25, 25, 0.65);
+@define-color bg_main_tooltip rgba(0, 0, 0, 0.7);
+
 * {
   border: none;
   font-family: "JetBrainsMono Nerd Font";
@@ -13,9 +17,9 @@ window#waybar {
 .modules-right,
 .modules-center {
     border-radius: 10px;
-    background: #181926;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
-    background: rgba(255, 255, 255, 0.15);  
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    background:  @bg_main; 
+    color: @content_main;
     border-radius: 10px;  
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -25,9 +29,10 @@ window#waybar {
 /* TOOL TIP CSS */
 /* ================================================ */
 tooltip {
-  color: #a5adcb;
-  background-color: #181926;
-  text-shadow: none;
+    background:  @bg_main_tooltip; 
+    color: @content_main;
+    text-shadow: none;
+    border-radius: 10px;
 }
 
 tooltip * {

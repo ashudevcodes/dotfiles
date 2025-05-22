@@ -17,3 +17,8 @@ vim.keymap.set({ "n", "t" }, "<C-h>", "<C-w>h")
 vim.keymap.set({ "n", "t" }, "<C-j>", "<C-w>j")
 vim.keymap.set({ "n", "t" }, "<C-k>", "<C-w>k")
 vim.keymap.set({ "n", "t" }, "<C-l>", "<C-w>l")
+
+vim.keymap.set("n", "<leader>d", function()
+	local current = vim.diagnostic.config().virtual_text
+	vim.diagnostic.config({ virtual_text = not current })
+end, { desc = "Toggle diagnostic virtual_text" })

@@ -29,6 +29,12 @@ fi
 # alias for exit (Add By ashish)
 alias q='exit'
 
+# Uncomment this To run application in gpu mode (Add by ashish)
+
+# export __NV_PRIME_RENDER_OFFLOAD=1
+# export __GLX_VENDOR_LIBRARY_NAME=nvidia
+# export __VK_LAYER_NV_optimus=NVIDIA_only
+
 
 # Changing "lg" to "lazygit" (Add By ashish)
 alias lg='lazygit'
