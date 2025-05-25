@@ -12,6 +12,11 @@ Repository For my personal dotfiles from Fedora, its contain the configurations 
    <kbd>hyprland</kbd>
 </kbd>
 
+<kbd>
+   <img src="assets/awesomewm.png">
+   <kbd>awesomewm</kbd>
+</kbd>
+
 <hr>
 
 ## Components
