@@ -3,7 +3,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = "~/assets/pokemon.png"
+-- theme.wallpaper = "~/assets/pokemon.png"
 -- }}}
 
 -- {{{ Styles
