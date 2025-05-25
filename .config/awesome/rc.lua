@@ -18,6 +18,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Extras widgets add by ashsih
+local brightness_widget = require("./brightness-widget/brightness")
+local battery_widgets = require("./battery-widget/battery")
+local cpu_widget = require("./cpu-widget/cpu-widget")
+local volume_widget = require("./volume-widget/volume")
+local ram_widget = require("./ram-widget/ram-widget")
+local net_speed_widget = require("./net-speed-widget/net-speed")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -51,10 +59,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("~/Fedora-dotfiles/.config/awesome/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "wezterm"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -67,24 +75,36 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-	awful.layout.suit.floating,
-	awful.layout.suit.tile,
-	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
-	awful.layout.suit.spiral,
+	-- awful.layout.suit.floating,
+	-- awful.layout.suit.tile,
+	-- awful.layout.suit.tile.left,
+	-- awful.layout.suit.tile.bottom,
+	-- awful.layout.suit.tile.top,
+	-- awful.layout.suit.fair,
+	-- awful.layout.suit.fair.horizontal,
+	-- awful.layout.suit.spiral,
 	awful.layout.suit.spiral.dwindle,
-	awful.layout.suit.max,
-	awful.layout.suit.max.fullscreen,
-	awful.layout.suit.magnifier,
-	awful.layout.suit.corner.nw,
+	-- awful.layout.suit.max,
+	-- awful.layout.suit.max.fullscreen,
+	-- awful.layout.suit.magnifier,
+	-- awful.layout.suit.corner.nw,
 	-- awful.layout.suit.corner.ne,
 	-- awful.layout.suit.corner.sw,
 	-- awful.layout.suit.corner.se,
 }
 -- }}}
+
+-- Autorun programs
+autorun = true
+autorunApps = {
+	"wezterm",
+	"picom -b",
+}
+if autorun then
+	for app = 1, #autorunApps do
+		awful.util.spawn(autorunApps[app])
+	end
+end
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -189,7 +209,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+	awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -232,17 +252,25 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			mylauncher,
+			-- mylauncher,
 			s.mytaglist,
 			s.mypromptbox,
 		},
-		s.mytasklist, -- Middle widget
+		{ -- Middle widgets
+			layout = wibox.layout.fixed.horizontal,
+			mytextclock,
+			cpu_widget(),
+			ram_widget(),
+			net_speed_widget(),
+		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
 			wibox.widget.systray(),
-			mytextclock,
-			s.mylayoutbox,
+			battery_widgets({
+				display_notification = true,
+				warning_msg_title = "Ashish, we have a problem",
+				warning_msg_icon = "./battery-widget/spaceman.jpg",
+			}),
 		},
 	})
 end)
@@ -264,6 +292,11 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
+
+	awful.key({ modkey }, "b", function()
+		myscreen = awful.screen.focused()
+		myscreen.mywibox.visible = not myscreen.mywibox.visible
+	end, { description = "toggle statusbar" }),
 
 	awful.key({ modkey }, "j", function()
 		awful.client.focus.byidx(1)
@@ -512,7 +545,7 @@ awful.rules.rules = {
 	},
 
 	-- Add titlebars to normal clients and dialogs
-	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
+	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
