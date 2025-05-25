@@ -17,10 +17,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- Extras widgets add by ashsih
-local brightness_widget = require("./brightness-widget/brightness")
 local battery_widgets = require("./battery-widget/battery")
 local cpu_widget = require("./cpu-widget/cpu-widget")
-local volume_widget = require("./volume-widget/volume")
 local ram_widget = require("./ram-widget/ram-widget")
 local net_speed_widget = require("./net-speed-widget/net-speed")
 
@@ -64,45 +62,12 @@ terminal = "wezterm"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
-
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-	-- awful.layout.suit.floating,
-	-- awful.layout.suit.tile,
-	-- awful.layout.suit.tile.left,
-	-- awful.layout.suit.tile.bottom,
-	-- awful.layout.suit.tile.top,
-	-- awful.layout.suit.fair,
-	-- awful.layout.suit.fair.horizontal,
-	-- awful.layout.suit.spiral,
 	awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max,
-	-- awful.layout.suit.max.fullscreen,
-	-- awful.layout.suit.magnifier,
-	-- awful.layout.suit.corner.nw,
-	-- awful.layout.suit.corner.ne,
-	-- awful.layout.suit.corner.sw,
-	-- awful.layout.suit.corner.se,
 }
 -- }}}
-
--- Autorun programs
-autorun = true
-autorunApps = {
-	"wezterm",
-	"picom -b",
-}
-if autorun then
-	for app = 1, #autorunApps do
-		awful.util.spawn(autorunApps[app])
-	end
-end
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -137,12 +102,10 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = myma
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+mytextclock_centered = wibox.container.place(mytextclock, { halign = "center", valign = "center" })
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -250,19 +213,15 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			-- mylauncher,
 			s.mytaglist,
 			s.mypromptbox,
-		},
-		{ -- Middle widgets
-			layout = wibox.layout.fixed.horizontal,
-			mytextclock,
-			cpu_widget(),
 			ram_widget(),
-			net_speed_widget(),
+			cpu_widget(),
 		},
+		mytextclock_centered,
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			net_speed_widget(),
 			wibox.widget.systray(),
 			battery_widgets({
 				display_notification = true,
@@ -630,3 +589,15 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+
+-- Autorun programs
+autorun = true
+autorunApps = {
+	"wezterm",
+	"picom -b",
+}
+if autorun then
+	for app = 1, #autorunApps do
+		awful.util.spawn(autorunApps[app])
+	end
+end
