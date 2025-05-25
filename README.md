@@ -11,7 +11,7 @@ Repository For my personal dotfiles from Fedora, its contain the configurations 
    <img src="assets/hyprlandsetup.png">
    <kbd>hyprland</kbd>
 </kbd>
-
+<hr>
 <kbd>
    <img src="assets/awesomewm.png">
    <kbd>awesomewm</kbd>
