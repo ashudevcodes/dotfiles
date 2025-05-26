@@ -261,6 +261,11 @@ globalkeys = gears.table.join(
 	awful.key({}, "XF86MonBrightnessDown", function()
 		awful.spawn("brightnessctl set 1%-")
 	end),
+
+	awful.key({ modkey, "Control" }, "p", function()
+		awful.spawn("systemctl poweroff")
+	end, { description = "shutdown the computer", group = "system" }),
+
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
