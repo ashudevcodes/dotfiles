@@ -599,7 +599,7 @@ end)
 autorun = true
 autorunApps = {
 	"wezterm",
-	"picom -b",
+	"picom -b &",
 }
 if autorun then
 	for app = 1, #autorunApps do
@@ -607,31 +607,31 @@ if autorun then
 	end
 end
 
-do
-    -- For set_source_pixbuf on a cairo context
-    local _ = require("lgi").Gdk
-end
-
 -- GIF animation wallpaper SET
-do
-    local pixbuf = require("lgi").GdkPixbuf
-    local img, err = pixbuf.PixbufAnimation.new_from_file("/home/ashish/assets/rodo_env.mp4")
-    if not img then
-        print(err)
-    else
-        local iter = img:get_iter(nil)
+-- do
+-- 	-- For set_source_pixbuf on a cairo context
+-- 	local _ = require("lgi").Gdk
+-- end
 
-        local function set_wp()
-            local geom, cr = gears.wallpaper.prepare_context(screen[1])
-            iter:advance(nil)
-            cr:set_source_pixbuf(iter:get_pixbuf(), 0, 0)
-            cr.operator = "SOURCE"
-            cr:paint()
-            local delay = iter:get_delay_time()
-            if delay ~= -1 then
-                gears.timer.start_new(delay / 1000, set_wp)
-            end
-        end
-        set_wp()
-    end
-end
+-- do
+-- 	local pixbuf = require("lgi").GdkPixbuf
+-- 	local img, err = pixbuf.PixbufAnimation.new_from_file("/home/ashish/assets/rodo_env.mp4")
+-- 	if not img then
+-- 		print(err)
+-- 	else
+-- 		local iter = img:get_iter(nil)
+--
+-- 		local function set_wp()
+-- 			local geom, cr = gears.wallpaper.prepare_context(screen[1])
+-- 			iter:advance(nil)
+-- 			cr:set_source_pixbuf(iter:get_pixbuf(), 0, 0)
+-- 			cr.operator = "SOURCE"
+-- 			cr:paint()
+-- 			local delay = iter:get_delay_time()
+-- 			if delay ~= -1 then
+-- 				gears.timer.start_new(delay / 1000, set_wp)
+-- 			end
+-- 		end
+-- 		set_wp()
+-- 	end
+-- end
