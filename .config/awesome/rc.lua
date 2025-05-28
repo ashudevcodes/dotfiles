@@ -598,8 +598,8 @@ end)
 -- Autorun programs
 autorun = true
 autorunApps = {
+	"picom -b",
 	"wezterm",
-	"picom -b &",
 }
 if autorun then
 	for app = 1, #autorunApps do

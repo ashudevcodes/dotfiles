@@ -55,6 +55,7 @@ alias hyprconf='nvim ~/.config/hypr'
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=nvim
 set -o vi
+alias nv='nvim'
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
