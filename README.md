@@ -1,4 +1,4 @@
-# Fedora Dotfiles
+# Arch Dotfiles
 
 Repository For my personal dotfiles from Fedora, its contain the configurations of Neovim, Tmux,  Hyperland and various system utilities.
 
