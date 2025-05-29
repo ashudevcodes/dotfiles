@@ -1,19 +1,43 @@
-# sudo dnf install 
-# wayland-protocols-devel (Not Install)
-# hyprlang-devel (Not install)
-# file-devel (Not Install)
-# hyprutils-devel (Not Installed)
-# libjxl-devel (Not install)
-# hyprwayland-scanner (Not Installed)
-#
-# wayland-devel ( Already Installed)
-# pango-devel (Already Installed)
-# cairo-devel (Already Installed)
-# libglvnd-devel (Already Installed)
-# libglvnd-core-devel (Already Installed)
-# libjpeg-turbo-devel (Already Installed)
-# libwebp-devel (Already Installed)
-# gcc-c++ (Already Installed)
+sudo pacman -S fzf
+sudo pacman -S starship
+sudo pacman -S cowsay 
 
-# Not working because hyprlang version not satisfide
-# sudo dnf remove file-devel hyprlang-devel hyprutils-devel hyprwayland-scanner-devel libjxl-devel wayland-protocols-devel
+# New utils for ls 
+sudo pacman -S eza 
+
+# Node JS and NPM
+sudo pacman -S nodejs
+sudo pacman -S npm
+# GoLang
+sudo pacman -S go
+
+# For installing yay in arch 
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+
+# Firefox successor Zen browser
+yay -S zen-browser-bin
+
+# For Git thing
+sudo pacman -S lazygit
+
+# use acpi to see battery health and status
+sudo pacman -S acpi
+
+# bluetooth Manager
+sudo pacman -S bluez
+sudo pacman -S bluez-utils
+# After installing start the bluetooth deamon
+sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
+
+# Wifi Manager
+sudo pacman -S  networkmanager
+# After installing start the network deamon
+sudo systemctl start NetworkManager.service
+sudo systemctl enable NetworkManager.service
+
+# Nerd font
+sudo pacman -S ttf-input-nerd
+sudo pacman -S ttf-jetbrains-mono-nerd

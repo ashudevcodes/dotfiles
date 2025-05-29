@@ -1,18 +1,15 @@
 # .bashrc
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
-export PATH="$PATH:/home/ashish/.config/src/jdt-language-server/bin"
-
+# From ARCH If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -29,12 +26,6 @@ fi
 # alias for exit (Add By ashish)
 alias q='exit'
 
-# Uncomment this To run application in gpu mode (Add by ashish)
-
-# export __NV_PRIME_RENDER_OFFLOAD=1
-# export __GLX_VENDOR_LIBRARY_NAME=nvidia
-# export __VK_LAYER_NV_optimus=NVIDIA_only
-
 
 # Changing "lg" to "lazygit" (Add By ashish)
 alias lg='lazygit'
@@ -50,7 +41,6 @@ alias l.='eza --sort=size -a | egrep "^\."'
 # alias for Configs
 
 alias nconf='nvim ~/.config/nvim'
-alias hyprconf='nvim ~/.config/hypr'
 
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=nvim
@@ -110,27 +100,3 @@ cowsay -f tux "Hello Ashu :)"
 export HISTCONTROL=ignoredups:erasedups 
 
 unset rc
-
-alias luamake="/home/ashish/Downloads/lua-language-server/3rd/luamake/luamake"
-
-# Toggle On/Off of laptop Touchpad
-
-alias touchpad="~/.config/scripts/toggle-touchpad.sh"
-
-# shortcut to open tumux through alt + t key
-# bind -x '"\et":tmux_auto_attach'
-
-# this function was call when key trigger alt+t
-# tmux_auto_attach() {
-#     if [[ -z "$TMUX" ]]; then
-#         if tmux ls &>/dev/null; then
-#             tmux attach || tmux new-session
-#         else
-#             tmux new-session
-#         fi
-#     fi
-# }
-
-# export Flutter PATH
-
-export PATH="$HOME/.local/bin/flutter_linux_3.29.3-stable/flutter/bin:$PATH"
