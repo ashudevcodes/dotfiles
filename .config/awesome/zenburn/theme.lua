@@ -7,7 +7,7 @@ theme.wallpaper = "~/assets/portal_rodot.png"
 -- }}}
 
 -- {{{ Styles
-theme.font = "JetBrainsMono 10"
+theme.font = "JetBrainsMonoNerdFontMono 10"
 
 -- {{{ Colors
 -- theme.fg_normal = "#DCDCCC"
