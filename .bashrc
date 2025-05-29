@@ -75,14 +75,14 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 # Function to open a file with fzf and a text editor
 fzf_open() {
     local file
-    file=$(find ~/code ~/Fedora-dotfiles \( -name .git -o -name node_modules \) -prune -o  -type f | fzf --query="${1:-}" --select-1 --exit-0)
+    file=$(find ~/code ~/dotfiles \( -name .git -o -name node_modules \) -prune -o  -type f | fzf --query="${1:-}" --select-1 --exit-0)
     local dir=${file%/*}
     [ -n "$file" ] && cd "$dir" && ${EDITOR:-nvim} "$file"
 }
 # Find Dir and open it in to nvim
 find_dir() {
   local dir
-  dir=$(find ~/code ~/Fedora-dotfiles/ -type d \( -name .git -o -name node_modules \) -prune -o -type d |  fzf --query="${1:-}" --select-1 --exit-0 )
+  dir=$(find ~/code ~/dotfiles/ -type d \( -name .git -o -name node_modules \) -prune -o -type d |  fzf --query="${1:-}" --select-1 --exit-0 )
     [ -n "$dir" ] && cd "$dir" && ${EDITOR:-nvim} "$dir"
 }
 
