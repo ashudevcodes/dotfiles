@@ -8,11 +8,6 @@ Repository For my personal dotfiles from Fedora, its contain the configurations 
 </kbd>
 <hr>
 <kbd>
-   <img src="assets/hyprlandsetup.png">
-   <kbd>hyprland</kbd>
-</kbd>
-<hr>
-<kbd>
    <img src="assets/awesomewm.png">
    <kbd>awesomewm</kbd>
 </kbd>
@@ -44,13 +39,8 @@ My Neovim setup includes the following plugins:
 
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch): System information tool
 - [Starship](https://starship.rs/): Cross-shell prompt
-- [ghostty](https://github.com/ghostty-org/ghostty): Terminal emulator
-- [Hyprland](https://hyprland.org): Tiling window manager
-
-My Tmux configuration uses:
-
-- [tpm](https://github.com/tmux-plugins/tpm): Tmux Plugin Manager
-- [tokyo-night-tmux](https://github.com/janoamaral/tokyo-night-tmux): Tokyo Night theme for Tmux
+- [Wezterm](https://wezterm.org/): Terminal emulator
+- [AwesomeWM](https://awesomewm.org/): Tiling window manager
 
 
 ## Installation
