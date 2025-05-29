@@ -1,6 +1,6 @@
 # Arch Dotfiles
 
-Repository For my personal dotfiles from Fedora, its contain the configurations of Neovim, Tmux,  Hyperland and various system utilities.
+Repository For my personal dotfiles from Arch, its contain the configurations of Neovim, awesomewm and various system utilities.
 
 <kbd>
    <img src="assets/screenShot.png">
