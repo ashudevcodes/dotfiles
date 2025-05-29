@@ -53,7 +53,7 @@ format = '[$symbol](bold white) '
 disabled = false
 
 [os.symbols]
-Arch = ' [Arch](bold blue)' 
+Arch = '' 
 
 # Shows the hostname
 [hostname]
