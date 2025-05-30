@@ -249,10 +249,10 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
     awful.key({}, "XF86AudioRaiseVolume", function()
-        awful.spawn("amixer set Master 4%+")
+        awful.spawn("amixer set Master 1%+")
     end),
     awful.key({}, "XF86AudioLowerVolume", function()
-        awful.spawn("amixer set Master 4%-")
+        awful.spawn("amixer set Master 1%-")
     end),
     awful.key({}, "XF86AudioMute", function()
         awful.spawn("amixer set Master toggle")
