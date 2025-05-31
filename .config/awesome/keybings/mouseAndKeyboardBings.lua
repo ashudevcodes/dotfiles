@@ -4,8 +4,9 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local launch_browser = function() awful.spawn("zen-browser") end
+local launch_gnome_file = function() awful.spawn("nautilus") end
 
--- {{{ Mouse bindings
+-- Mouse bindings
 root.buttons(gears.table.join(
     awful.button({}, 3, function()
         mymainmenu:toggle()
@@ -13,15 +14,14 @@ root.buttons(gears.table.join(
     awful.button({}, 4, awful.tag.viewnext),
     awful.button({}, 5, awful.tag.viewprev)
 ))
--- }}}
 
--- {{{ Key bindings
+
+-- Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
     awful.key({}, "XF86AudioRaiseVolume", function()
         awful.spawn("amixer set Master 4%+")
     end),
-    -- awful.key({},"XF86RefreshRateToggle", )
     awful.key({}, "XF86AudioLowerVolume", function()
         awful.spawn("amixer set Master 4%-")
     end),
@@ -80,6 +80,7 @@ globalkeys = gears.table.join(
     end, { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, }, "b", launch_browser, { description = "open a browser", group = "client" }),
     awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+    awful.key({ modkey, }, "e", launch_gnome_file, { description = "open a GNOME Files", group = "client" }),
     awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
     awful.key({ modkey }, "l", function()
         awful.tag.incmwfact(0.05)
@@ -231,4 +232,3 @@ clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
