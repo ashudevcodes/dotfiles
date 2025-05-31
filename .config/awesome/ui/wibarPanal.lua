@@ -1,15 +1,13 @@
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-require("awful.hotkeys_popup.keys")
 
 -- Extras widgets add by ashsih
-local battery_widgets = require("./battery-widget/battery")
-local cpu_widget = require("./cpu-widget/cpu-widget")
-local ram_widget = require("./ram-widget/ram-widget")
-local net_speed_widget = require("./net-speed-widget/net-speed")
+local battery_widgets = require("../widgets/battery-widget/battery")
+local cpu_widget = require("../widgets/cpu-widget/cpu-widget")
+local ram_widget = require("../widgets/ram-widget/ram-widget")
+local net_speed_widget = require("../widgets/net-speed-widget/net-speed")
 
 local mytextclock = wibox.widget.textclock()
 local mytextclock_centered = wibox.container.place(mytextclock, { halign = "center", valign = "center" })
