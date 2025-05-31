@@ -58,7 +58,7 @@ Arch = ''
 # Shows the hostname
 [hostname]
 ssh_only = true
-format = "🌐 "
+format = " "
 disabled = false
 
 # Shows current directory
@@ -83,16 +83,16 @@ style = 'bold green'
 [git_status]
 format = '[$all_status$ahead_behind]($style) '
 style = 'bold green'
-conflicted = '🏳'
+conflicted = ''
 up_to_date = ''
-untracked = '  '
+untracked = ''
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
-stashed = ' '
+stashed = ' 󰏖'
 modified = '  '
 staged = '[++\($count\)](green)'
-renamed = '襁 '
+renamed = '󰑕 '
 deleted = ' '
 
 
