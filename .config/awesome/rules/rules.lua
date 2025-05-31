@@ -1,7 +1,5 @@
 local awful = require("awful")
-require("awful.autofocus")
 local beautiful = require("beautiful")
-require("awful.hotkeys_popup.keys")
 
 
 -- {{{ Rules

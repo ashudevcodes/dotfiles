@@ -1,13 +1,11 @@
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
-require("awful.hotkeys_popup.keys")
 
+local launch_browser = function() awful.spawn("zen-browser") end
 
 -- {{{ Mouse bindings
-local launch_browser = function() awful.spawn("zen-browser") end
 root.buttons(gears.table.join(
     awful.button({}, 3, function()
         mymainmenu:toggle()
@@ -23,6 +21,7 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioRaiseVolume", function()
         awful.spawn("amixer set Master 4%+")
     end),
+    -- awful.key({},"XF86RefreshRateToggle", )
     awful.key({}, "XF86AudioLowerVolume", function()
         awful.spawn("amixer set Master 4%-")
     end),
