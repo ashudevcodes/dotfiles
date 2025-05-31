@@ -8,6 +8,6 @@ autorunApps = {
 }
 if autorun then
     for app = 1, #autorunApps do
-        awful.util.spawn(autorunApps[app])
+        awful.spawn(autorunApps[app])
     end
 end
