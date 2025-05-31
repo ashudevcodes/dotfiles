@@ -41,3 +41,6 @@ sudo systemctl enable NetworkManager.service
 # Nerd font
 sudo pacman -S ttf-input-nerd
 sudo pacman -S ttf-jetbrains-mono-nerd
+
+# For debugginng awesomewm
+sudo pacman -S xorg-server-xephyr
