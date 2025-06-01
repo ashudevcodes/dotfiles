@@ -6,6 +6,38 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local launch_browser = function() awful.spawn("zen-browser") end
 local launch_gnome_file = function() awful.spawn("nautilus") end
 
+-- Create a launcher widget and a main menu
+myawesomemenu = {
+    {
+        "hotkeys",
+        function()
+            hotkeys_popup.show_help(nil, awful.screen.focused())
+        end,
+    },
+    { "manual",      terminal .. " -e man awesome" },
+    { "edit config", editor_cmd .. " " .. awesome.conffile },
+    { "restart",     awesome.restart },
+    {
+        "quit",
+        function()
+            awesome.quit()
+        end,
+    },
+}
+
+mymainmenu = awful.menu({
+    items = {
+        { "awesome",       myawesomemenu, beautiful.awesome_icon },
+        { "open terminal", terminal },
+    },
+})
+
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
+
+-- Menubar configuration
+menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+
+
 -- Mouse bindings
 root.buttons(gears.table.join(
     awful.button({}, 3, function()
@@ -79,6 +111,11 @@ globalkeys = gears.table.join(
         awful.spawn(terminal)
     end, { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, }, "b", launch_browser, { description = "open a browser", group = "client" }),
+    -- Take ScreenShort
+    awful.key({}, "Print",
+        function()
+            awful.spawn("flameshot gui")
+        end, { description = "flameshot gui", group = "awesome" }),
     awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
     awful.key({ modkey, }, "e", launch_gnome_file, { description = "open a GNOME Files", group = "client" }),
     awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
