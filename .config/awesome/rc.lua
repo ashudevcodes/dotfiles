@@ -4,6 +4,9 @@ require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("awful.remote")
 
+-- Create Custom theme
+require("./theme/custom_theme")
+
 -- Glodal Veriable default terminal set and kind of stuff
 require("./veriable/globalVeriable")
 

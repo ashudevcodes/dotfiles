@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local beautiful = require("beautiful")
 
 local launch_browser = function() awful.spawn("zen-browser") end
 local launch_gnome_file = function() awful.spawn("nautilus") end
