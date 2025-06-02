@@ -1,7 +1,4 @@
 local awful = require("awful")
-local beautiful = require("beautiful")
-
-beautiful.init("~/dotfiles/.config/awesome/zenburn/theme.lua")
 
 terminal = "wezterm"
 editor = os.getenv("EDITOR") or "vi"
