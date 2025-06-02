@@ -19,14 +19,13 @@ config.window_background_opacity = 0.9
 config.enable_tab_bar = false
 
 config.window_padding = {
-	left = 10,
-	right = 0,
-	top = 10,
-	bottom = 0,
+    left = 10,
+    right = 0,
+    top = 10,
+    bottom = 0,
 }
 
 config.font_size = 11
-config.default_cwd = "/home/ashish/code/"
 
 print(config)
 return config
