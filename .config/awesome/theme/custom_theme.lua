@@ -21,6 +21,7 @@ beautiful.get().fg_minimize              = "#ffffff"
 
 -- hotkey popus
 beautiful.get().hotkeys_font             = "JetBrainsMonoNerdFontMono 10"
+beautiful.get().hotkeys_bg               = "#1a1b26"
 beautiful.get().hotkeys_fg               = "#c0caf5"
 beautiful.get().hotkeys_modifiers_fg     = beautiful.get().fg_urgent
 beautiful.get().hotkeys_label_fg         = "black"
