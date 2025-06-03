@@ -27,7 +27,6 @@ config.window_padding            = {
 
 config.font_size                 = 11
 
-config.default_cursor_style      = "BlinkingBlock"
 config.set_environment_variables = { WEZTERM_SHELL_SKIP_ALL = "1", }
 
 return config
