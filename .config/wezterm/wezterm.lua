@@ -16,16 +16,18 @@ keybind.switch_between_tabs(config)
 config.window_background_opacity = 0.9
 
 -- remove Top Title Bar
-config.enable_tab_bar = false
+config.enable_tab_bar            = false
 
-config.window_padding = {
+config.window_padding            = {
     left = 10,
     right = 0,
     top = 10,
     bottom = 0,
 }
 
-config.font_size = 11
+config.font_size                 = 11
 
-print(config)
+config.default_cursor_style      = "BlinkingBlock"
+config.set_environment_variables = { WEZTERM_SHELL_SKIP_ALL = "1", }
+
 return config
