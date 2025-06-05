@@ -44,3 +44,6 @@ sudo pacman -S ttf-jetbrains-mono-nerd
 
 # For debugginng awesomewm
 sudo pacman -S xorg-server-xephyr
+
+# For Net-widgets awesomewm
+sudo pacman -S iw
