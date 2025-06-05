@@ -27,6 +27,10 @@ config.window_padding            = {
 
 config.font_size                 = 11
 
-config.set_environment_variables = { WEZTERM_SHELL_SKIP_ALL = "1", }
+config.set_environment_variables = {
+    WEZTERM_SHELL_SKIP_ALL = "1",
+}
+
+config.audible_bell              = "Disabled"
 
 return config
