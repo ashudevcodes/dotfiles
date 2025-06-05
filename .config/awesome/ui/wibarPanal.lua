@@ -8,6 +8,17 @@ local battery_widgets = require("../widgets/battery-widget/battery")
 local cpu_widget = require("../widgets/cpu-widget/cpu-widget")
 local ram_widget = require("../widgets/ram-widget/ram-widget")
 local net_speed_widget = require("../widgets/net-speed-widget/net-speed")
+local net_widgets = require("../widgets/net_widgets")
+
+local HOME_DIR = os.getenv("HOME")
+local SCRIPT = HOME_DIR .. "/.config/awesome/scripts/toggle-wifi.sh"
+
+net_wireless = net_widgets.wireless({
+    onclick      = terminal .. " -e " .. SCRIPT,
+    widget       = wibox.layout.fixed.vertical(),
+    popup_signal = true,
+})
+
 
 local mytextclock = wibox.widget.textclock()
 local mytextclock_centered = wibox.container.place(mytextclock, { halign = "center", valign = "center" })
@@ -126,6 +137,7 @@ awful.screen.connect_for_each_screen(function(s)
         mytextclock_centered,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            net_wireless,
             net_speed_widget(),
             wibox.widget.systray(),
             battery_widgets({
