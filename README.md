@@ -3,6 +3,11 @@
 Repository For my personal dotfiles from Arch, its contain the configurations of Neovim, awesomewm and various system utilities.
 
 <kbd>
+   <img src="assets/awesomewm1.png">
+   <kbd>awesomewm</kbd>
+</kbd>
+<hr>
+<kbd>
    <img src="assets/awesomewm.png">
    <kbd>awesomewm</kbd>
 </kbd>
