@@ -37,7 +37,7 @@ local function convert_to_h(bytes)
         speed = tonumber(bits)
         dim = 'b/s'
     end
-    return math.floor(speed + 0.5) .. ' ' .. dim
+    return math.floor(speed + 0.5) .. dim
 end
 
 local function split(string_to_split, separator)
