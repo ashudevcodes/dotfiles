@@ -14,11 +14,10 @@ local HOME_DIR = os.getenv("HOME")
 local SCRIPT = HOME_DIR .. "/.config/awesome/scripts/toggle-wifi.sh"
 
 net_wireless = net_widgets.wireless({
-    onclick      = terminal .. " -e " .. SCRIPT,
+    onclick      = "bash " .. SCRIPT,
     widget       = wibox.layout.fixed.vertical(),
     popup_signal = true,
 })
-
 
 local mytextclock = wibox.widget.textclock()
 local mytextclock_centered = wibox.container.place(mytextclock, { halign = "center", valign = "center" })
