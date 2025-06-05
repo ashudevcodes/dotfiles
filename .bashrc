@@ -93,8 +93,20 @@ bind -x '"\ef":fzf_open'
 eval "$(starship init bash)"
 eval "$(starship completions bash)"
 
-# Add for asthetic (ashish)
-cowsay -f tux "Hello Ashu :)"
+# Time-based greeting with cowsay (Tux)
+HOUR=$(date +%H)
+
+if [ "$HOUR" -ge 5 ] && [ "$HOUR" -lt 12 ]; then
+    MESSAGE="Good morning  shu :) Welcome"
+elif [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 18 ]; then
+    MESSAGE="Good evening  shu :) Welcome"
+elif [ "$HOUR" -ge 18 ] && [ "$HOUR" -lt 23 ]; then
+    MESSAGE="It's late, go to bed! Good night  shu :)"
+else
+    MESSAGE="It's very late, go to bed! Good night  shu :)"
+fi
+
+cowsay -f tux "$MESSAGE"
 
 # Add for no duplicate entries in history (ashish)
 export HISTCONTROL=ignoredups:erasedups 
