@@ -3,7 +3,7 @@ local gears = require("gears")
 
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
-beautiful.get().wallpaper                = "/home/ashish/assets/portal_rodot.png"
+beautiful.get().wallpaper                = "/home/ashish/assets/portal_robot.png"
 beautiful.get().font                     = "JetBrainsMonoNerdFontMono 10"
 
 -- background
