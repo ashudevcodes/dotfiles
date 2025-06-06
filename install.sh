@@ -32,12 +32,6 @@ sudo pacman -S bluez-utils
 sudo systemctl start bluetooth.service
 sudo systemctl enable bluetooth.service
 
-# Wifi Manager
-sudo pacman -S  networkmanager
-# After installing start the network deamon
-sudo systemctl start NetworkManager.service
-sudo systemctl enable NetworkManager.service
-
 # Nerd font
 sudo pacman -S ttf-input-nerd
 sudo pacman -S ttf-jetbrains-mono-nerd
@@ -45,5 +39,6 @@ sudo pacman -S ttf-jetbrains-mono-nerd
 # For debugginng awesomewm
 sudo pacman -S xorg-server-xephyr
 
+# Wifi Manager
 # For Net-widgets awesomewm
 sudo pacman -S iw

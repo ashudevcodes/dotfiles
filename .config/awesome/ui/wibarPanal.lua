@@ -14,7 +14,7 @@ local HOME_DIR = os.getenv("HOME")
 local SCRIPT = HOME_DIR .. "/.config/awesome/scripts/toggle-wifi.sh"
 
 net_wireless = net_widgets.wireless({
-    onclick      = "bash " .. SCRIPT,
+    onclick      = terminal .. " -e " .. SCRIPT,
     widget       = wibox.layout.fixed.vertical(),
     popup_signal = true,
 })
