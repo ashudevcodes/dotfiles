@@ -3,5 +3,5 @@ if pgrep -x "picom" > /dev/null
 then
 	killall picom
 else
-	picom -b &
+	picom -b 
 fi
