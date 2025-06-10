@@ -42,3 +42,10 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*.tex",
+	callback = function()
+		vim.cmd("VimtexCompileSS")
+	end,
+})
