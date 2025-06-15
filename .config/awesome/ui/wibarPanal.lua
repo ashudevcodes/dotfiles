@@ -1,27 +1,27 @@
 local gears = require("gears")
 local awful = require("awful")
-local wibox = require("wibox")
+-- local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 -- Extras widgets add by ashsih
-local battery_widgets = require("../widgets/battery-widget/battery")
-local cpu_widget = require("../widgets/cpu-widget/cpu-widget")
-local ram_widget = require("../widgets/ram-widget/ram-widget")
-local net_speed_widget = require("../widgets/net-speed-widget/net-speed")
-local net_widgets = require("../widgets/net_widgets")
-
-local HOME_DIR = os.getenv("HOME")
-local SCRIPT = HOME_DIR .. "/.config/awesome/scripts/toggle-wifi.sh"
-
-net_wireless = net_widgets.wireless({
-	onclick = terminal .. " -e " .. SCRIPT,
-	widget = wibox.layout.fixed.vertical(),
-	popup_signal = true,
-})
-
-local mytextclock = wibox.widget.textclock()
-local mytextclock_centered = wibox.container.place(mytextclock, { halign = "center", valign = "center" })
-
+-- local battery_widgets = require("../widgets/battery-widget/battery")
+-- local cpu_widget = require("../widgets/cpu-widget/cpu-widget")
+-- local ram_widget = require("../widgets/ram-widget/ram-widget")
+-- local net_speed_widget = require("../widgets/net-speed-widget/net-speed")
+-- local net_widgets = require("../widgets/net_widgets")
+--
+-- local HOME_DIR = os.getenv("HOME")
+-- local SCRIPT = HOME_DIR .. "/.config/awesome/scripts/toggle-wifi.sh"
+--
+-- net_wireless = net_widgets.wireless({
+-- 	onclick = terminal .. " -e " .. SCRIPT,
+-- 	widget = wibox.layout.fixed.vertical(),
+-- 	popup_signal = true,
+-- })
+--
+-- local mytextclock = wibox.widget.textclock()
+-- local mytextclock_centered = wibox.container.place(mytextclock, { halign = "center", valign = "center" })
+--
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
 	awful.button({}, 1, function(t)
@@ -121,30 +121,29 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
-
-	-- Add widgets to the wibox
-	s.mywibox:setup({
-		layout = wibox.layout.align.horizontal,
-		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
-			s.mytaglist,
-			s.mypromptbox,
-			ram_widget(),
-			cpu_widget(),
-		},
-		mytextclock_centered,
-		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
-			net_wireless,
-			net_speed_widget(),
-			wibox.widget.systray(),
-			battery_widgets({
-				display_notification = true,
-				warning_msg_title = "Ashish, we have a problem",
-				warning_msg_icon = "./battery-widget/spaceman.jpg",
-			}),
-		},
-	})
+	-- s.mywibox = awful.wibar({ position = "top", screen = s })
+	--
+	-- -- Add widgets to the wibox
+	-- s.mywibox:setup({
+	-- 	layout = wibox.layout.align.horizontal,
+	-- 	{ -- Left widgets
+	-- 		layout = wibox.layout.fixed.horizontal,
+	-- 		s.mytaglist,
+	-- 		s.mypromptbox,
+	-- 		ram_widget(),
+	-- 		cpu_widget(),
+	-- 	},
+	-- 	mytextclock_centered,
+	-- 	{ -- Right widgets
+	-- 		layout = wibox.layout.fixed.horizontal,
+	-- 		net_wireless,
+	-- 		net_speed_widget(),
+	-- 		wibox.widget.systray(),
+	-- 		battery_widgets({
+	-- 			display_notification = true,
+	-- 			warning_msg_title = "Ashish, we have a problem",
+	-- 			warning_msg_icon = "./battery-widget/spaceman.jpg",
+	-- 		}),
+	-- 	},
+	-- })
 end)
--- }}}
