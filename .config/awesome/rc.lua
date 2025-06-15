@@ -3,6 +3,7 @@ pcall(require, "luarocks.loader")
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("awful.remote")
+require("naughty")
 
 -- Create Custom theme
 require("./theme/custom_theme")
@@ -28,10 +29,10 @@ local gears = require("gears")
 collectgarbage("setpause", 110)
 collectgarbage("setstepmul", 1000)
 gears.timer({
-    timeout = 5,
-    autostart = true,
-    call_now = true,
-    callback = function()
-        collectgarbage("collect")
-    end,
+	timeout = 5,
+	autostart = true,
+	call_now = true,
+	callback = function()
+		collectgarbage("collect")
+	end,
 })
