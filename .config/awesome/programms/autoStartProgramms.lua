@@ -9,7 +9,6 @@ local function run_once_ps(cmd)
 		handle:close()
 		if result == nil or result == "" then
 			awful.spawn.with_shell(cmd)
-
 		end
 	end
 end
@@ -17,7 +16,7 @@ end
 local autorunApps = {
 	"picom -b",
 	"wezterm",
-	"~/.config/polybar/launch.sh",
+	"polybar",
 }
 
 for _, app in ipairs(autorunApps) do
