@@ -10,6 +10,9 @@ end
 local launch_gnome_file = function()
 	awful.spawn("nautilus")
 end
+local launch_rofi = function()
+	awful.spawn("rofi -show drun -font 'jetbrainsmono 11'")
+end
 
 -- Create a launcher widget and a main menu
 myawesomemenu = {
@@ -170,8 +173,8 @@ globalkeys = gears.table.join(
 
 	-- Menubar
 	awful.key({ modkey }, "r", function()
-		menubar.show()
-	end, { description = "show the menubar", group = "launcher" })
+		launch_rofi()
+	end, { description = "show the Rofi", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
