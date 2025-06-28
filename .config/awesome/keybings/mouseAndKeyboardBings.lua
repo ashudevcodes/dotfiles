@@ -79,10 +79,6 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
-	-- awful.key({ modkey }, "w", function()
-	--     myscreen = awful.screen.focused()
-	--     myscreen.mywibox.visible = not myscreen.mywibox.visible
-	-- end, { description = "toggle statusbar" }),
 
 	awful.key({ modkey }, "w", function()
 		awful.spawn.with_shell("~/.config/polybar/launch.sh")
