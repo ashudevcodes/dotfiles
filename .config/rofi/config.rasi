@@ -1,0 +1,23 @@
+configuration {
+	modi: "drun";
+	case-sensitive: false;
+	cycle: true;
+	filter: "";
+	scroll-method: 0;
+	show-icons: true;
+
+    
+    display-drun: " Apps";
+	drun-match-fields: "name,generic,exec,categories,keywords";
+	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	drun-show-actions: false;
+	drun-url-launcher: "xdg-open";
+	drun-use-desktop-cache: false;
+	drun-reload-desktop-cache: false;
+	drun {
+		parse-user:   true;
+		parse-system: true;
+    }
+}
+
+@import "~/.config/rofi/theme.rasi"
