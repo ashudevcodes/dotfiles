@@ -7,7 +7,7 @@ function module.spawn_new_tab(config)
 		{
 			key = "t",
 			mods = "ALT",
-			action = wezterm.action.SpawnTab("DefaultDomain"),
+			action = wezterm.action.SpawnWindow,
 		},
 	}
 end
