@@ -84,12 +84,19 @@ globalkeys = gears.table.join(
 		awful.spawn.with_shell("~/.config/polybar/launch.sh")
 	end, { description = "toggle Polybar" }),
 
+	-- Change focus by direction
+	awful.key({ modkey }, "h", function()
+		awful.client.focus.bydirection("left")
+	end),
 	awful.key({ modkey }, "j", function()
-		awful.client.focus.byidx(1)
-	end, { description = "focus next by index", group = "client" }),
+		awful.client.focus.bydirection("down")
+	end),
 	awful.key({ modkey }, "k", function()
-		awful.client.focus.byidx(-1)
-	end, { description = "focus previous by index", group = "client" }),
+		awful.client.focus.bydirection("up")
+	end),
+	awful.key({ modkey }, "l", function()
+		awful.client.focus.bydirection("right")
+	end),
 
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
