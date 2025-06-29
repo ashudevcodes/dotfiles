@@ -7,7 +7,7 @@ configuration {
 	show-icons: true;
 
     
-    display-drun: " Apps";
+    display-drun: " ";
 	drun-match-fields: "name,generic,exec,categories,keywords";
 	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 	drun-show-actions: false;
@@ -20,4 +20,4 @@ configuration {
     }
 }
 
-@import "~/.config/rofi/theme.rasi"
+@theme "~/.config/rofi/theme.rasi"
