@@ -99,15 +99,18 @@ globalkeys = gears.table.join(
 	end),
 
 	-- Layout manipulation
+	awful.key({ modkey, "Shift" }, "h", function()
+		awful.client.swap.bydirection("left")
+	end, { description = "swap with left client", group = "client" }),
 	awful.key({ modkey, "Shift" }, "j", function()
-		awful.client.swap.byidx(1)
-	end, { description = "swap with next client by index", group = "client" }),
+		awful.client.swap.bydirection("down")
+	end, { description = "swap with down client", group = "client" }),
 	awful.key({ modkey, "Shift" }, "k", function()
-		awful.client.swap.byidx(-1)
-	end, { description = "swap with previous client by index", group = "client" }),
-	awful.key({ modkey, "Control" }, "j", function()
-		awful.screen.focus_relative(1)
-	end, { description = "focus the next screen", group = "screen" }),
+		awful.client.swap.bydirection("up")
+	end, { description = "swap with up client", group = "client" }),
+	awful.key({ modkey, "Shift" }, "l", function()
+		awful.client.swap.bydirection("right")
+	end, { description = "swap with right client", group = "client" }),
 	awful.key({ modkey, "Control" }, "k", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
