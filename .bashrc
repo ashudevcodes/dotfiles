@@ -49,6 +49,7 @@ alias nv='nvim'
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
+
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --highlight-line \
   --info=inline-right \
@@ -70,19 +71,27 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=query:#c0caf5:regular \
   --color=scrollbar:#27a1b9 \
   --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
-"
-# Function to open a file with fzf and a text editor
+  --color=spinner:#ff007c"
+
+# Enhanced File and directory browser with tree view and syntax highlighting
 fzf_open() {
     local file
-    file=$(find ~/code ~/Documents ~/dotfiles \( -name .git -o -name node_modules \) -prune -o  -type f | fzf --query="${1:-}" --select-1 --exit-0)
+    file=$(find ~/code ~/Documents ~/dotfiles \( -name .git -o -name node_modules \) -prune -o -type f -print | \
+           fzf --query="${1:-}" \
+               --select-1 \
+               --exit-0 \
+               --preview='bat --color=always --style=numbers,changes --line-range :50 {} 2>/dev/null || head -100 {}')
     local dir=${file%/*}
     [ -n "$file" ] && cd "$dir" && ${EDITOR:-nvim} "$file"
 }
-# Find Dir and open it in to nvim
+
 find_dir() {
-  local dir
-  dir=$(find ~/code ~/Documents ~/dotfiles/ -type d \( -name .git -o -name node_modules \) -prune -o -type d |  fzf --query="${1:-}" --select-1 --exit-0 )
+    local dir
+    dir=$(find ~/code ~/Documents ~/dotfiles/ -type d \( -name .git -o -name node_modules \) -prune -o -type d -print | \
+          fzf --query="${1:-}" \
+              --select-1 \
+              --exit-0 \
+              --preview='if command -v tree >/dev/null; then tree -C -L 2 -a {} | head -30; else ls -lA --color=always {} | head -20; fi')
     [ -n "$dir" ] && cd "$dir" && ${EDITOR:-nvim} "$dir"
 }
 
