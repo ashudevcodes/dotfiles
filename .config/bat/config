@@ -1,0 +1,12 @@
+# Set theme to match your terminal colors
+--theme="TwoDark"
+
+# Always show line numbers
+--style="numbers,changes"
+
+# Use italic text for comments
+--italic-text=always
+
+# Wrap long lines
+--wrap=auto
+
