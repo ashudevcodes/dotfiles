@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 
