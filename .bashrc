@@ -46,6 +46,7 @@ alias nconf='nvim ~/.config/nvim'
 export EDITOR=nvim
 set -o vi
 alias nv='nvim'
+export MANPAGER='nvim +Man!'
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
