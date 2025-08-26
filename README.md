@@ -23,7 +23,6 @@ My Neovim setup includes the following plugins:
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion plugin
 - [conform.nvim](https://github.com/stevearc/conform.nvim): Code formatting
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim): Code commenting
-- [flash.nvim](https://github.com/folke/flash.nvim): Fast navigation
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Language Server Protocol configuration
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim): Status line
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): LSP server management
