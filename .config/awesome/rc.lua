@@ -4,7 +4,7 @@ require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("awful.remote")
 require("naughty")
-
+local gears = require("gears")
 -- Create Custom theme
 require("./theme/custom_theme")
 
@@ -24,15 +24,11 @@ require("./signals/signals")
 -- Startup Programs
 require("./programms/autoStartProgramms")
 
--- Enable for lower memory consumption
-local gears = require("gears")
-collectgarbage("setpause", 110)
-collectgarbage("setstepmul", 1000)
+-- Run garbage collector regularly to prevent memory leaks
 gears.timer({
-	timeout = 5,
+	timeout = 30,
 	autostart = true,
-	call_now = true,
 	callback = function()
-		collectgarbage("collect")
+		collectgarbage()
 	end,
 })
