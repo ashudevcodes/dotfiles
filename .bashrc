@@ -45,7 +45,7 @@ alias nconf='nvim ~/.config/nvim'
 # Make Vim defaut Editor (Add By ashish)
 export EDITOR=nvim
 set -o vi
-alias nv='nvim'
+alias n='nvim'
 export MANPAGER='nvim +Man!'
 
 # Set up fzf key bindings and fuzzy completion
