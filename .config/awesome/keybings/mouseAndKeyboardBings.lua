@@ -14,6 +14,10 @@ local launch_rofi = function()
 	awful.spawn("rofi -show drun -font 'jetbrainsmono 11'")
 end
 
+local touch_pad = function()
+	awful.spawn.with_shell("~/.config/awesome/scripts/disable-touchpad.sh")
+end
+
 -- Create a launcher widget and a main menu
 myawesomemenu = {
 	{
@@ -127,6 +131,9 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey }, "b", launch_browser, { description = "open a browser", group = "client" }),
+
+	awful.key({ modkey, "Shift" }, "t", touch_pad, { description = "toggle TouchPad" }),
+
 	-- Take ScreenShort
 	awful.key({}, "Print", function()
 		awful.spawn("flameshot gui")
