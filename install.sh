@@ -42,3 +42,5 @@ sudo pacman -S xorg-server-xephyr
 # Wifi Manager
 # For Net-widgets awesomewm
 sudo pacman -S iw
+
+sudo pacman -S xorg-xinput
