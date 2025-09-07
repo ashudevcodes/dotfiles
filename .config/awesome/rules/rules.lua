@@ -19,15 +19,13 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	{
-		rule = { instance = "zen" },
-		properties = {
-			floating = false,
-		},
+		rule = { class = "zen" },
+		properties = { floating = false, maximized = false },
 	},
 
 	{
 		rule = { class = "Polybar" },
-		properties = { border_width = 0 },
+		properties = { border_width = 0, type = "dock" },
 	},
 
 	{
