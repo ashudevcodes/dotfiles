@@ -1,5 +1,6 @@
 local beautiful = require("beautiful")
 local gears = require("gears")
+local naughty = require("naughty")
 
 beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
 
@@ -31,3 +32,16 @@ beautiful.hotkeys_description_font = "JetBrainsMonoNerdFontMono 10"
 beautiful.border_normal = "#565f89cc"
 beautiful.border_focus = "#bb9af7ff"
 beautiful.border_marked = "#CC9393"
+
+-- notification
+naughty.config.defaults.border_width = 0
+naughty.config.defaults.margin = 16
+naughty.config.defaults.position = "top_right"
+naughty.config.defaults.timeout = 5
+naughty.config.defaults.hover_timeout = 0.5
+naughty.config.defaults.font = "JetBrainsMono Nerd Font 11"
+naughty.config.defaults.bg = "#1e1e2eEE"
+naughty.config.defaults.fg = "#ffffff"
+naughty.config.defaults.shape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 12)
+end
