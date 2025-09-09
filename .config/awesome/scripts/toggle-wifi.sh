@@ -3,7 +3,7 @@
 status=$(iw wlan0 link)
 
 if echo "$status" | grep -q "Not connected."; then
-    rfkill toggle 1
+	rfkill toggle $(rfkill list | grep LAN | awk -F':'  '{print $1}')
     sleep 2
     new_status=$(iw wlan0 link)
 
@@ -15,7 +15,7 @@ if echo "$status" | grep -q "Not connected."; then
     fi
 
 elif echo "$status" | grep -q "Connected to"; then
-    rfkill toggle 1
+	rfkill toggle $(rfkill list | grep LAN | awk -F':'  '{print $1}')
     notify-send "WiFi Down"
 
 else
