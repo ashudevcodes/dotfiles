@@ -35,11 +35,12 @@ beautiful.border_marked = "#CC9393"
 
 -- notification
 naughty.config.defaults.border_width = 0
-naughty.config.defaults.margin = 16
+naughty.config.defaults.margin = 10
+naughty.config.defaults.icon_size = 64
 naughty.config.defaults.position = "top_right"
 naughty.config.defaults.timeout = 5
 naughty.config.defaults.hover_timeout = 0.5
-naughty.config.defaults.font = "JetBrainsMono Nerd Font 11"
+naughty.config.defaults.font = "JetBrainsMonoNerdFontMono 10"
 naughty.config.defaults.bg = "#1e1e2eEE"
 naughty.config.defaults.fg = "#ffffff"
 naughty.config.defaults.shape = function(cr, width, height)
