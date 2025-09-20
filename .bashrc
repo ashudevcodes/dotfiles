@@ -33,7 +33,7 @@ alias lg='lazygit'
 # Changing "ls" to "eza" (Add By ashish)
 
 alias ls='eza --sort=size --icons --color=always --group-directories-first'
-alias ll='eza -lh --sort=size -a --icons --color=always --group-directories-first'
+alias ll='eza -lh --sort=size --total-size -a --icons --color=always --group-directories-first'
 alias la='eza --sort=size -a --icons --color=always --group-directories-first'
 alias l='eza  --sort=size -F --icons --color=always --group-directories-first'
 alias l.='eza --sort=size -a | egrep "^\."'
