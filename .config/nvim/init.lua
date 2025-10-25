@@ -131,3 +131,16 @@ local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
 	vim.fn.mkdir(undodir, "p")
 end
+
+local function is_tty()
+	local term = vim.env.TERM or ""
+
+	if term == "tmux-256color" then
+		return true
+	end
+	return false
+end
+
+if is_tty() then
+	return
+end

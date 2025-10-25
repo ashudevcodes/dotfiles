@@ -6,9 +6,9 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-export PATH="$PATH:/home/ashish/.config/src/lua-language-server/bin"
-export PATH="$PATH:/home/ashish/.config/src/stylua-linux-x86_64/bin"
-export PATH="$PATH:/home/ashish/go/bin"
-alias lsend="~/Downloads/localsend/AppRun"
 alias docker=podman
 alias docker-compose=podman-compose
+alias ddg="lynx -vikeys https://lite.duckduckgo.com/lite"
+alias pdftotext="pdftotext -layout"
+alias v="vim"
+alias wifi="rfkill toggle wifi"

@@ -1,0 +1,11 @@
+.config/yay
+.config/cmus
+.config/htop
+.config/nemo
+.config/dconf
+.config/pulse
+.config/procps
+.config/gtk-3.0
+.config/lazygit
+.config/systemd
+.config/inkscape

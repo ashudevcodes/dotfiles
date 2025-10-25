@@ -16,7 +16,6 @@ end
 local autorunApps = {
 	"picom -b",
 	"wezterm",
-	"polybar",
 }
 
 for _, app in ipairs(autorunApps) do

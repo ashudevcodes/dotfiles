@@ -1,0 +1,52 @@
+set pages-per-row 1
+
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 0.01
+
+map r reload
+map p print
+map i recolor
+map J zoom out
+map K zoom in
+map R rotate
+
+set scroll-step 5
+
+set zoom-min 10
+set guioptions ""
+
+set default-bg "rgba(31, 29, 46, 0.7)"
+set default-fg "#c0caf5"
+set notification-error-bg "#f7768e"
+set notification-error-fg "#c0caf5"
+set notification-warning-bg "#e0af68"
+set notification-warning-fg "#414868"
+set notification-bg "#24283b"
+set notification-fg "#c0caf5"
+set completion-bg "#24283b"
+set completion-fg "#a9b1d6"
+set completion-group-bg "#24283b"
+set completion-group-fg "#a9b1d6"
+set completion-highlight-bg "#414868"
+set completion-highlight-fg "#c0caf5"
+set index-bg "#24283b"
+set index-fg "#c0caf5"
+set index-active-bg "#414868"
+set index-active-fg "#c0caf5"
+set inputbar-bg "#24283b"
+set inputbar-fg "#c0caf5"
+set statusbar-bg "#24283b"
+set statusbar-fg "#c0caf5"
+set highlight-color "#e0af68"
+set highlight-active-color "#9ece6a"
+
+set recolor "true"
+set recolor-lightcolor "rgba(43, 51, 57, 0)"     
+set recolor-darkcolor "rgba(211, 198, 170, 1)"  
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+set selection-clipboard clipboard
+set render-loading "false"
+set scroll-step 50

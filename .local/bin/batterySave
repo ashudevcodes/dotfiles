@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if ! command -v acpi >/dev/null 2>&1; then
+  echo "acpi not found" >&2
+  exit 1
+fi
+
+if acpi | grep "Discharging"; then
+  echo "Running on DC power, adjusting settings..."
+  ~/.local/bin/lappyFan auto
+  brightnessctl set 0
+  xrandr -r 60
+
+  if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+	~/.config/picom/picom-toggle.sh
+  fi
+
+  sudo powertop --auto-tune
+  ~/.local/bin/clsCaches
+else
+  echo "Running on AC power."
+  xrandr -r 144
+fi
+
+
