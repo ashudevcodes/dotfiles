@@ -99,6 +99,11 @@ find_dir() {
 bind -x '"\ed":find_dir'
 bind -x '"\ef":fzf_open'
 
+# auto start tmux if i was in TMX Display
+if [ -z "$(pgrep tmux)" ] && [ "$XDG_SESSION_TYPE" = "tty" ]; then
+  /bin/tmux
+fi
+
 # For Installing Starship default (Add by ashish)
 eval "$(starship init bash)"
 eval "$(starship completions bash)"

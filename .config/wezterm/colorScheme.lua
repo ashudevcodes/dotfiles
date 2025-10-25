@@ -1,23 +1,16 @@
-local wezterm = require("wezterm")
+-- table which contain all theme of terminal
+local color_scheme = {}
 
-local module = {}
-
-local function PrintAshuName()
-    wezterm.log_error("Hello Ashu!", wezterm)
+function color_scheme.apply_batman_theme(config)
+	config.color_scheme = "Batman"
 end
 
-function module.apply_batman_theme(config)
-    config.color_scheme = "Batman"
+function color_scheme.apply_githubDark_theme(config)
+	config.color_scheme = 'GitHub Dark'
 end
 
-function module.apply_githubDark_theme(config)
-    -- PrintAshuName()
-    config.color_scheme = 'GitHub Dark'
+function color_scheme.apply_tokyonight_theme(config)
+	config.color_scheme = "Tokyo Night"
 end
 
-function module.apply_tokyonight_theme(config)
-    -- PrintAshuName()
-    config.color_scheme = "Tokyo Night"
-end
-
-return module
+return color_scheme

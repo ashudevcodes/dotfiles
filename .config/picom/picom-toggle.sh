@@ -5,8 +5,8 @@ AC_CONFIG="${HOME}/.config/picom/picom.conf"
 DC_CONFIG="${HOME}/.config/picom/picom-battery.conf"
 PICOM_BIN="picom" 
 
-if ! command -v upower >/dev/null 2>&1; then
-  echo "upower not found" >&2
+if ! command -v acpi >/dev/null 2>&1; then
+  echo "acpi not found" >&2
   exit 1
 fi
 
@@ -17,29 +17,11 @@ fi
 
 is_on_ac=false
 
-while IFS= read -r dev; do
-  [ -z "$dev" ] && continue
-  if upower -i "$dev" 2>/dev/null | grep -qi "line-power"; then
-    if upower -i "$dev" 2>/dev/null | grep -qi "online:\s*yes"; then
-      is_on_ac=true
-      break
-    fi
-  fi
-done < <(upower -e 2>/dev/null)
-
-if [ "$is_on_ac" = false ]; then
-  while IFS= read -r dev; do
-    [ -z "$dev" ] && continue
-    if upower -i "$dev" 2>/dev/null | grep -qi "battery"; then
-      if upower -i "$dev" 2>/dev/null | grep -qi "state:\s*charging"; then
-        is_on_ac=true
-        break
-      fi
-    fi
-  done < <(upower -e 2>/dev/null)
+if acpi -V | grep -qi "on-line"; then
+  is_on_ac=true
 fi
 
-if [ "$is_on_ac" = true ]; then
+if [ "$is_on_ac" == "true" ]; then
   cfg="$AC_CONFIG"
 else
   cfg="$DC_CONFIG"

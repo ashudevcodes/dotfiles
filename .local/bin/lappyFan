@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [[ $# -ne 1 || ! ($1 == "on" || $1 == "auto" || $1 == "state") ]]; then
+  echo "Usage: lappyFan {on|auto}"
+  echo "Status: lappyFan {state}"
+
+  exit 1
+fi
+
+if [[ $1 == "state" ]]; then
+  current=$(cat /sys/class/hwmon/hwmon6/pwm1_enable)
+
+  if [[ $current == 0 ]]; then
+	echo "Fan is on continuously running state"
+  else
+	echo "Fan is on AUTOMATIC state"
+  fi
+
+fi
+
+	
+if [[ $1 == "on" ]]; then
+  echo "0" | sudo tee /sys/class/hwmon/hwmon6/pwm1_enable > /dev/null
+  echo "Fan is now set to continuously ON."
+
+elif [[ $1 == "auto" ]]; then
+  echo "2" | sudo tee /sys/class/hwmon/hwmon6/pwm1_enable > /dev/null
+  echo "Fan is now set to AUTOMATIC control."
+
+fi
+

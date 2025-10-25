@@ -8,7 +8,7 @@ local launch_browser = function()
 	awful.spawn("zen-browser")
 end
 local launch_gnome_file = function()
-	awful.spawn("nautilus")
+	awful.spawn("nemo")
 end
 local launch_rofi = function()
 	awful.spawn("rofi -show drun -font 'jetbrainsmono 11'")
@@ -18,7 +18,15 @@ local touch_pad = function()
 	awful.spawn.with_shell("~/.config/awesome/scripts/disable-touchpad.sh")
 end
 
--- Create a launcher widget and a main menu
+local toggleTopBar = function()
+	local myscreen = awful.screen.focused()
+	myscreen.topbar.visible = not myscreen.topbar.visible
+end
+
+local lappyPowerOff = function()
+	awful.spawn.with_shell("systemctl poweroff")
+end
+
 myawesomemenu = {
 	{
 		"hotkeys",
@@ -26,9 +34,9 @@ myawesomemenu = {
 			hotkeys_popup.show_help(nil, awful.screen.focused())
 		end,
 	},
-	{ "manual", terminal .. " -e man awesome" },
+	{ "manual",      terminal .. " -e man awesome" },
 	{ "edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "restart", awesome.restart },
+	{ "restart",     awesome.restart },
 	{
 		"quit",
 		function()
@@ -39,17 +47,15 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({
 	items = {
-		{ "awesome", myawesomemenu, beautiful.awesome_icon },
+		{ "awesome",       myawesomemenu, beautiful.awesome_icon },
 		{ "open terminal", terminal },
 	},
 })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+menubar.utils.terminal = terminal
 
--- Mouse bindings
 root.buttons(gears.table.join(
 	awful.button({}, 3, function()
 		mymainmenu:toggle()
@@ -58,7 +64,6 @@ root.buttons(gears.table.join(
 	awful.button({}, 5, awful.tag.viewprev)
 ))
 
--- Key bindings
 globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -71,22 +76,14 @@ globalkeys = gears.table.join(
 		awful.spawn.with_shell("~/.config/awesome/scripts/volume.sh toggle_mute")
 	end),
 	awful.key({}, "XF86MonBrightnessUp", function()
-		awful.spawn("brightnessctl set +1%")
+		awful.spawn.with_shell("brightnessctl set +1%")
 	end),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		awful.spawn("brightnessctl set 1%-")
+		awful.spawn.with_shell("brightnessctl set 1%-")
 	end),
 
-	awful.key({ modkey, "Control" }, "p", function()
-		awful.spawn("systemctl poweroff")
-	end, { description = "shutdown the computer", group = "system" }),
-	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
-	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
-
-	awful.key({ modkey }, "w", function()
-		awful.spawn.with_shell("~/.config/polybar/launch.sh")
-	end, { description = "toggle Polybar" }),
+	awful.key({ modkey, "Control" }, "p", lappyPowerOff, { description = "shutdown the computer", group = "system" }),
+	awful.key({ modkey }, "w", toggleTopBar, { description = "toggle statusbar" }),
 
 	-- Change focus by direction
 	awful.key({ modkey }, "h", function()
@@ -126,68 +123,15 @@ globalkeys = gears.table.join(
 		end
 	end, { description = "go back", group = "client" }),
 
-	-- Standard program
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey }, "b", launch_browser, { description = "open a browser", group = "client" }),
-
 	awful.key({ modkey, "Shift" }, "t", touch_pad, { description = "toggle TouchPad" }),
-
-	-- Take ScreenShort
-	awful.key({}, "Print", function()
-		awful.spawn("flameshot gui")
-	end, { description = "flameshot gui", group = "awesome" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey }, "e", launch_gnome_file, { description = "open a GNOME Files", group = "client" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
-	awful.key({ modkey }, "l", function()
-		awful.tag.incmwfact(0.05)
-	end, { description = "increase master width factor", group = "layout" }),
-	awful.key({ modkey }, "h", function()
-		awful.tag.incmwfact(-0.05)
-	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "h", function()
-		awful.tag.incnmaster(1, nil, true)
-	end, { description = "increase the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "l", function()
-		awful.tag.incnmaster(-1, nil, true)
-	end, { description = "decrease the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Control" }, "h", function()
-		awful.tag.incncol(1, nil, true)
-	end, { description = "increase the number of columns", group = "layout" }),
-	awful.key({ modkey, "Control" }, "l", function()
-		awful.tag.incncol(-1, nil, true)
-	end, { description = "decrease the number of columns", group = "layout" }),
-	awful.key({ modkey }, "space", function()
-		awful.layout.inc(1)
-	end, { description = "select next", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "space", function()
-		awful.layout.inc(-1)
-	end, { description = "select previous", group = "layout" }),
-
-	awful.key({ modkey, "Control" }, "n", function()
-		local c = awful.client.restore()
-		-- Focus restored client
-		if c then
-			c:emit_signal("request::activate", "key.unminimize", { raise = true })
-		end
-	end, { description = "restore minimized", group = "client" }),
-
-	-- Prompt
-	awful.key({ modkey }, "x", function()
-		awful.prompt.run({
-			prompt = "Run Lua code: ",
-			textbox = awful.screen.focused().mypromptbox.widget,
-			exe_callback = awful.util.eval,
-			history_path = awful.util.get_cache_dir() .. "/history_eval",
-		})
-	end, { description = "lua execute prompt", group = "awesome" }),
-
-	-- Menubar
-	awful.key({ modkey }, "r", function()
-		launch_rofi()
-	end, { description = "show the Rofi", group = "launcher" })
+	awful.key({ modkey }, "r", launch_rofi, { description = "run app launcher", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
@@ -213,11 +157,6 @@ clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	awful.key({ modkey }, "n", function(c)
-		-- The client currently has the input focus, so it cannot be
-		-- minimized, since minimized clients can't have the focus.
-		c.minimized = true
-	end, { description = "minimize", group = "client" }),
 	awful.key({ modkey }, "m", function(c)
 		c.maximized = not c.maximized
 		c:raise()
