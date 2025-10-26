@@ -54,7 +54,7 @@ naughty.config.defaults.icon_size            = 64
 naughty.config.defaults.position             = "top_right"
 naughty.config.defaults.timeout              = 5
 naughty.config.defaults.hover_timeout        = 0.5
-naughty.config.defaults.font                 = "JetBrainsMonoNerdFontMono 10"
+naughty.config.defaults.font                 = "JetBrainsMono 10"
 naughty.config.defaults.notification_opacity = 90
 naughty.config.defaults.shape                = function(cr, width, height)
 	gears.shape.rounded_rect(cr, width, height, 12)
