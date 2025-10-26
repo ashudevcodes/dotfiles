@@ -46,7 +46,7 @@ local function show_fan_status()
 		naughty.destroy(notification)
 		notification = naughty.notify {
 			text = stdout:gsub("\n+$", ""),
-			title = "Fan Status",
+			title = "󰈐 Fan Status",
 			position = "top_right",
 			timeout = 3,
 			width = 250,

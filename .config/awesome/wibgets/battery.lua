@@ -68,13 +68,12 @@ local function worker(user_args)
 	}
 
 	local notification
-	local function show_battery_status(icon_name)
+	local function show_battery_status()
 		awful.spawn.easy_async("acpi", function(stdout)
 			naughty.destroy(notification)
 			notification = naughty.notify {
 				text = stdout,
-				title = "Battery status",
-				icon = path_to_icons .. icon_name .. ".svg",
+				title = "󱊣 Battery status",
 				icon_size = dpi(16),
 				position = position,
 				timeout = 5,
