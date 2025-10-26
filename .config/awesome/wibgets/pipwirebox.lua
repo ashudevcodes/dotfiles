@@ -53,7 +53,7 @@ local function worker(args)
 				icon:set_image(nil)
 				return
 			end
-			text:set_text(muted and "" or string.format("% d%%", vol))
+			text:set_text(muted and "" or string.format("% d%% |", vol))
 			icon:set_image(draw_icon(vol, muted))
 		end)
 	end
