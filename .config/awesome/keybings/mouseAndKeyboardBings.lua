@@ -127,7 +127,7 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey }, "b", launch_browser, { description = "open a browser", group = "client" }),
-	awful.key({ modkey, "Shift" }, "t", touch_pad, { description = "toggle TouchPad" }),
+	awful.key({ modkey }, "m", touch_pad, { description = "toggle TouchPad" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey }, "e", launch_gnome_file, { description = "open a GNOME Files", group = "client" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
@@ -157,10 +157,6 @@ clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	awful.key({ modkey }, "m", function(c)
-		c.maximized = not c.maximized
-		c:raise()
-	end, { description = "(un)maximize", group = "client" }),
 	awful.key({ modkey, "Control" }, "m", function(c)
 		c.maximized_vertical = not c.maximized_vertical
 		c:raise()
