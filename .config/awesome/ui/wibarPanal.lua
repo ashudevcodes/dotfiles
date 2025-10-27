@@ -6,6 +6,7 @@ local batteryWibox     = require("../wibgets/battery")
 local volume           = require("../wibgets/pipwirebox")
 local fanwibox         = require("../wibgets/fan")
 local ram              = require("../wibgets/ram")
+local touchpad         = require("../wibgets/touchpad")
 local wibox            = require("wibox")
 
 local mytextclock      = wibox.widget.textclock()
@@ -13,6 +14,7 @@ local mytextclock      = wibox.widget.textclock()
 local ramLogo          = wibox.container.margin(ram({ timeout = 5 }), 10)
 local volumeContainer  = wibox.container.margin(volume(), 0, 8, 8, 6)
 local fanConainer      = wibox.container.margin(fanwibox, 0, 0, 5, 5)
+local touchpadWibox    = wibox.container.margin(touchpad, 0, 0, 6, 6)
 
 local wire_net         = net_widgets.wireless({
 	widget       = wibox.layout.fixed.vertical(),
@@ -25,7 +27,7 @@ local combined_widget  = wibox.widget {
 	{
 		fanConainer,
 		mytextclock,
-		fanConainer,
+		touchpadWibox,
 		spacing = 10,
 		layout = wibox.layout.fixed.horizontal,
 	},
