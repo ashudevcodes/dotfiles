@@ -22,6 +22,10 @@ awful.rules.rules = {
 		rule = { class = "zen" },
 		properties = { floating = false, maximized = false },
 	},
+	{
+		rule = { class = "Inkscape" },
+		properties = { floating = false, maximized = false },
+	},
 
 	{
 		rule = { class = "Polybar" },
