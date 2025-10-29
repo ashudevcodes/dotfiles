@@ -7,7 +7,6 @@ fi
 
 if acpi | grep "Discharging"; then
   echo "Running on DC power, adjusting settings..."
-  ~/.local/bin/lappyFan auto
   brightnessctl set 0
   xrandr -r 60
 
