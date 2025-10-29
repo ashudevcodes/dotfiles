@@ -43,7 +43,6 @@ set highlight-active-color "#9ece6a"
 
 set recolor "true"
 set recolor-lightcolor "rgba(43, 51, 57, 0)"     
-set recolor-darkcolor "rgba(211, 198, 170, 1)"  
 set recolor-reverse-video "true"
 set recolor-keephue "true"
 
