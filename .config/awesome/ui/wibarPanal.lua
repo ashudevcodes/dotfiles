@@ -10,6 +10,13 @@ local touchpad         = require("../wibgets/touchpad")
 local wibox            = require("wibox")
 
 local mytextclock      = wibox.widget.textclock()
+local seperator        = wibox.widget {
+	markup  = '󰇙',
+	opacity = 0.4,
+	align   = 'center',
+	valign  = 'center',
+	widget  = wibox.widget.textbox
+}
 
 local ramLogo          = wibox.container.margin(ram({ timeout = 5 }), 10)
 local volumeContainer  = wibox.container.margin(volume(), 0, 8, 8, 6)
@@ -26,7 +33,9 @@ local wire_netContiner = wibox.container.margin(wire_net, 0, 8, 4, 0)
 local combined_widget  = wibox.widget {
 	{
 		fanConainer,
+		seperator,
 		mytextclock,
+		seperator,
 		touchpadWibox,
 		spacing = 10,
 		layout = wibox.layout.fixed.horizontal,
