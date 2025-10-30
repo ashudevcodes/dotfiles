@@ -24,10 +24,8 @@ local function updateFanIcon()
 		local icon_path
 		if out:match("running") then
 			icon_path = path_to_icons .. "fan-on.svg"
-			print(icon_path)
 		else
 			icon_path = path_to_icons .. "fan-off.svg"
-			print(icon_path)
 		end
 		fanWibox.icon.image = gears.surface.load_uncached(icon_path)
 	end)
