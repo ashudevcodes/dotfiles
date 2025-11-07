@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -xe 
+
+android_adb=$HOME/Android/Sdk/platform-tools/adb
+if [[ $1 ]]; then
+  $android_adb connect "$1:5555"
+else
+  	echo "Tell You Mobile IP"
+	echo "Like adbConnect 192.168.xx.x"
+fi
+
