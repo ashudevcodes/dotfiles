@@ -9,3 +9,6 @@
 .config/lazygit
 .config/systemd
 .config/inkscape
+.config/Google
+.config/FreeTube
+.local/bin/freetube
