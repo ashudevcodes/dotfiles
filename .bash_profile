@@ -13,3 +13,4 @@ alias pdftotext="pdftotext -layout"
 alias v="vim"
 alias wifi="rfkill toggle wifi"
 alias bt="rfkill toggle bluetooth"
+alias androidStudio=~/.share/android-studio/bin/studio
