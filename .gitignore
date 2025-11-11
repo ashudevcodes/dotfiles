@@ -11,4 +11,6 @@
 .config/inkscape
 .config/Google
 .config/FreeTube
+.config/flameshot
+.config/QtProject.conf
 .local/bin/freetube
