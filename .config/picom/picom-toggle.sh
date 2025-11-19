@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -u
+set -ex
 
 AC_CONFIG="${HOME}/.config/picom/picom.conf"
 DC_CONFIG="${HOME}/.config/picom/picom-battery.conf"
@@ -28,7 +28,7 @@ else
 fi
 
 if [ -f "$cfg" ]; then
-  exec "$PICOM_BIN" --config "$cfg" >/dev/null 2>&1 &
+  exec "$PICOM_BIN" --unredir-if-possible --shadow-ignore-shape --fading --daemon --config "$cfg" >/dev/null 2>&1 &
 else
   echo "Config not found: $cfg" >&2
   exit 2
