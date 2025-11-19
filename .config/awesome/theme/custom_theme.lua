@@ -7,7 +7,8 @@ local dpi = xresources.apply_dpi
 beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
 
 beautiful.wallpaper                          = "/home/nemo/assets/portal_robot.png"
-beautiful.font                               = "JetBrainsMonoNerdFontMono 10"
+beautiful.font                               = "JetBrainsMono Nerd Font Bold 10"
+beautiful.taglist_font                       = "JetBrainsMono Nerd Font Bold 11"
 
 -- background
 beautiful.bg_normal                          = "#1a1b26"
@@ -15,6 +16,7 @@ beautiful.bg_dark                            = "#090b0c"
 beautiful.bg_focus                           = "#151821"
 beautiful.bg_urgent                          = "#ed8274"
 beautiful.bg_minimize                        = "#444444"
+beautiful.bg_systray                         = beautiful.bg_normal
 
 -- foreground
 beautiful.fg_normal                          = "#c0caf5"
@@ -51,14 +53,13 @@ beautiful.border_marked                      = "#CC9393"
 -- notification
 naughty.config.defaults.margin               = 10
 naughty.config.defaults.icon_size            = 64
+naughty.config.defaults.border_color         = "#565f89"
+naughty.config.defaults.border_radius        = dpi(12)
 naughty.config.defaults.position             = "top_right"
 naughty.config.defaults.timeout              = 5
 naughty.config.defaults.hover_timeout        = 0.5
 naughty.config.defaults.font                 = "JetBrainsMono 10"
 naughty.config.defaults.notification_opacity = 90
-naughty.config.defaults.shape                = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 12)
-end
 
 beautiful.taglist_bg_focus                   = beautiful.border_normal
 beautiful.taglist_bg_occupied                = beautiful.fg_normal

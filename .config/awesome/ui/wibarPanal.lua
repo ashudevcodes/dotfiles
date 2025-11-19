@@ -30,13 +30,32 @@ local wire_net         = net_widgets.wireless({
 
 local wire_netContiner = wibox.container.margin(wire_net, 0, 8, 4, 0)
 
+local function wrap_widget(w)
+	return wibox.widget {
+		{
+			{
+				w,
+				layout = wibox.layout.align.horizontal
+			},
+			left   = 10,
+			right  = 10,
+			widget = wibox.container.margin
+		},
+		bg     = beautiful.bg_focus,
+		shape  = function(cr, width, height)
+			gears.shape.rounded_rect(cr, width, height, 6)
+		end,
+		widget = wibox.container.background
+	}
+end
+
 local combined_widget  = wibox.widget {
 	{
-		fanConainer,
+		wrap_widget(fanConainer),
 		seperator,
 		mytextclock,
 		seperator,
-		touchpadWibox,
+		wrap_widget(touchpadWibox),
 		spacing = 10,
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -56,6 +75,7 @@ local function set_wallpaper(s)
 		gears.wallpaper.maximized(wallpaper, s, true)
 	end
 end
+
 
 screen.connect_signal("property::geometry", set_wallpaper)
 
@@ -98,6 +118,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 	s.topbar:setup({
 		layout = wibox.layout.align.horizontal,
+		expand = "none",
 
 		{
 			layout = wibox.layout.fixed.horizontal,
