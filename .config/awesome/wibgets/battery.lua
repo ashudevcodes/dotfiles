@@ -4,7 +4,6 @@ local watch = require("awful.widget.watch")
 local wibox = require("wibox")
 local gfs = require("gears.filesystem")
 local beautiful = require("beautiful")
-local dpi = require("beautiful.xresources").apply_dpi
 
 -- ACPI sample output:
 -- Battery 0: Discharging, 75%, 01:51:38 remaining
@@ -14,6 +13,10 @@ local HOME = os.getenv("HOME")
 local WIDGET_DIR = HOME .. "/.config/awesome/widgets/"
 
 local battery_widget = {}
+
+local function trim(s)
+	return s:match('^%s*(.-)%s*$')
+end
 
 local function worker(user_args)
 	local args = user_args or {}
@@ -67,18 +70,18 @@ local function worker(user_args)
 		layout = wibox.layout.fixed.horizontal
 	}
 
+
 	local notification
 	local function show_battery_status()
 		awful.spawn.easy_async("acpi", function(stdout)
 			naughty.destroy(notification)
 			notification = naughty.notify {
-				text = stdout,
-				title = "󱊣 Battery status",
-				icon_size = dpi(16),
+				text = trim(stdout),
+				icon = path_to_icons .. "battery-noti-icon.svg",
+				title = "Battery status",
 				position = position,
 				timeout = 5,
 				hover_timeout = 0.5,
-				width = 200,
 				screen = mouse.screen
 			}
 		end)
@@ -87,7 +90,6 @@ local function worker(user_args)
 	local function show_battery_warning()
 		naughty.notify {
 			icon = warning_msg_icon,
-			icon_size = 100,
 			text = warning_msg_text,
 			title = warning_msg_title,
 			timeout = 25,
@@ -95,7 +97,6 @@ local function worker(user_args)
 			position = warning_msg_position,
 			bg = "#F06060",
 			fg = "#EEE9EF",
-			width = 300,
 			screen = mouse.screen
 		}
 	end

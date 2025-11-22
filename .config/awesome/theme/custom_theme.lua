@@ -51,8 +51,8 @@ beautiful.border_focus                       = "#bb9af7"
 beautiful.border_marked                      = "#CC9393"
 
 -- notification
-naughty.config.defaults.margin               = 10
-naughty.config.defaults.icon_size            = 64
+naughty.config.defaults.margin               = 6
+naughty.config.defaults.icon_size            = dpi(38)
 naughty.config.defaults.border_color         = "#565f89"
 naughty.config.defaults.border_radius        = dpi(12)
 naughty.config.defaults.position             = "top_right"
