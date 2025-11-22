@@ -44,10 +44,10 @@ local function show_fan_status()
 		naughty.destroy(notification)
 		notification = naughty.notify {
 			text = stdout:gsub("\n+$", ""),
-			title = "󰈐 Fan Status",
+			icon = path_to_icons .. "fan-on.svg",
+			title = "Fan Status",
 			position = "top_right",
 			timeout = 3,
-			width = 250,
 			screen = awful.screen.focused()
 		}
 	end)
