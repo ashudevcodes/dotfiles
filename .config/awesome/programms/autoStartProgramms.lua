@@ -14,7 +14,7 @@ local function run_once_ps(cmd)
 end
 
 local autorunApps = {
-	"picom -b",
+	"picom  --daemon",
 	"wezterm",
 }
 

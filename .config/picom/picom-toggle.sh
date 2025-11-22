@@ -11,7 +11,7 @@ if ! command -v acpi >/dev/null 2>&1; then
 fi
 
 if pgrep -x picom >/dev/null 2>&1; then
-  pkill -x picom
+  killall picom
   sleep 0.2
 fi
 
@@ -28,7 +28,7 @@ else
 fi
 
 if [ -f "$cfg" ]; then
-  exec "$PICOM_BIN" --unredir-if-possible --shadow-ignore-shape --fading --daemon --config "$cfg" >/dev/null 2>&1 &
+  exec "$PICOM_BIN"  --daemon --config "$cfg" >/dev/null 2>&1 &
 else
   echo "Config not found: $cfg" >&2
   exit 2
