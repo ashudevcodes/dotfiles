@@ -7,20 +7,31 @@ if ! command -v acpi >/dev/null 2>&1; then
   exit 1
 fi
 
-if acpi | grep "Discharging"; then
-  echo "Running on DC power, adjusting settings..."
-  brightnessctl set 0
-  xrandr -r 60
+if [[ $1 == "op" ]]; then
 
-  if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-	~/.config/picom/picom-toggle.sh
+  if [[ ! $(killall picom) ]]; then
+	picom --daemon --config $HOME/.config/picom/picom-battery.conf
+  fi
+  ~/.local/bin/clsCaches
+
+else 
+
+  if acpi | grep "Discharging"; then
+	echo "Running on DC power, adjusting settings..."
+	brightnessctl set 0
+	xrandr -r 60
+
+	if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+	  ~/.config/picom/picom-toggle.sh
+	fi
+
+	sudo powertop --auto-tune
+	~/.local/bin/clsCaches
+  else
+	echo "Running on AC power."
+	xrandr -r 144
   fi
 
-  sudo powertop --auto-tune
-  ~/.local/bin/clsCaches
-else
-  echo "Running on AC power."
-  xrandr -r 144
 fi
 
 
