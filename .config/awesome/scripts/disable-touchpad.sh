@@ -9,10 +9,10 @@ then
     xinput disable "$ID"
     echo "Touchpad disabled."
 	echo "disabled" > /tmp/touchpadState
-    notify-send -a 'Touchpad' 'Touchpad Disabled' -i input-touchpad
+    notify-send  'Touchpad' 'Touchpad Disabled' 
 else
     xinput enable "$ID"
     echo "Touchpad enabled."
-    notify-send -a 'Touchpad' 'Touchpad Enabled' -i input-touchpad
+    notify-send 'Touchpad' 'Touchpad Enabled' 
 	echo "enabled" > /tmp/touchpadState
 fi
