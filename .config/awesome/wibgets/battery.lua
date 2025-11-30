@@ -89,7 +89,7 @@ local function worker(user_args)
 
 	local function show_battery_warning()
 		naughty.notify {
-			icon = warning_msg_icon,
+			icon = path_to_icons .. "battery-noti-icon.svg",
 			text = warning_msg_text,
 			title = warning_msg_title,
 			timeout = 25,
