@@ -30,11 +30,11 @@ opacity = 0.85
 decorations_theme_variant = "Dark"
 
 [window.padding]
-x = 12
-y = 12
+x = 6
+y = 6
 
 [font]
-size = 7.6
+size = 8
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
