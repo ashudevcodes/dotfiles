@@ -3,6 +3,7 @@ local awful = require("awful")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 
 local launch_browser = function()
 	awful.spawn("zen-browser")
@@ -26,6 +27,8 @@ end
 local lappyPowerOff = function()
 	awful.spawn.with_shell("systemctl poweroff")
 end
+
+local dpms_enabled = true
 
 myawesomemenu = {
 	{
@@ -115,6 +118,17 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Control" }, "k", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
+	awful.key({ modkey }, "F1", function()
+		if dpms_enabled then
+			awful.spawn("xset s off -dpms")
+			dpms_enabled = false
+			naughty.notify({ text = "Screen timeout disabled" })
+		else
+			awful.spawn("xset s on +dpms")
+			dpms_enabled = true
+			naughty.notify({ text = "Screen timeout enabled" })
+		end
+	end, { description = "toggle screen timeout", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
 	awful.key({ modkey }, "Tab", function()
 		awful.client.focus.history.previous()
