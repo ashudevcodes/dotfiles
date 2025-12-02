@@ -134,4 +134,12 @@ awful.screen.connect_for_each_screen(function(s)
 			batteryWibox({ margin_right = 10, display_notification = true }),
 		},
 	})
+
+	client.connect_signal("property::fullscreen", function(c)
+		if c.fullscreen then
+			s.topbar.visible = false
+		else
+			s.topbar.visible = true
+		end
+	end)
 end)
