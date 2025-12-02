@@ -15,7 +15,7 @@ end
 
 local autorunApps = {
 	"picom  --daemon",
-	"wezterm",
+	terminal,
 }
 
 for _, app in ipairs(autorunApps) do
