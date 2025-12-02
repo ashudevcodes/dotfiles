@@ -1,30 +1,3 @@
-# Default colors
-[colors.primary]
-background = '#1a1b26'
-foreground = '#c0caf5'
-
-# Normal colors
-[colors.normal]
-black = '#15161e'
-red = '#f7768e'
-green = '#9ece6a'
-yellow = '#e0af68'
-blue = '#7aa2f7'
-magenta = '#bb9af7'
-cyan = '#7dcfff'
-white = '#a9b1d6'
-
-# Bright colors
-[colors.bright]
-black = '#414868'
-red = '#ff899d'
-green = '#9fe044'
-yellow = '#faba4a'
-blue = '#8db0ff'
-magenta = '#c7a9ff'
-cyan = '#a4daff'
-white = '#c0caf5'
-
 [window]
 opacity = 0.85
 decorations_theme_variant = "Dark"
@@ -33,27 +6,48 @@ decorations_theme_variant = "Dark"
 x = 6
 y = 6
 
+
 [font]
-size = 8
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+size = 7.5
 
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-
-[font.bold]
-family = "JetBrainsMono Nerd Font"
-
-[font.italic]
-family = "JetBrainsMono Nerd Font"
-
-[font.bold_italic]
-family = "JetBrainsMono Nerd Font"
-
-[mouse]
-hide_when_typing = true 
+[colors.primary]
+background = "#1a1b26"
+foreground = "#c0caf5"
 
 [colors.cursor]
-text = "#000000"
-cursor = "#ffffff"
+text = "#1a1b26"
+cursor = "#7aa2f7"
+
+[colors.normal]
+black   = "#15161e"
+red     = "#f7768e"
+green   = "#9ece6a"
+yellow  = "#e0af68"
+blue    = "#7aa2f7"
+magenta = "#bb9af7"
+cyan    = "#7dcfff"
+white   = "#a9b1d6"
+
+[colors.bright]
+black   = "#414868"
+red     = "#f7768e"
+green   = "#9ece6a"
+yellow  = "#e0af68"
+blue    = "#7aa2f7"
+magenta = "#bb9af7"
+cyan    = "#7dcfff"
+white   = "#c0caf5"
+
+[cursor]
+blink_interval = 750
+unfocused_hollow = true
+
+[cursor.style]
+shape = "Block"
+blinking = "Always"
 
 [colors.selection]
 text = "CellForeground"
