@@ -51,15 +51,16 @@ beautiful.border_focus                       = "#bb9af7"
 beautiful.border_marked                      = "#CC9393"
 
 -- notification
-naughty.config.defaults.margin               = 6
-naughty.config.defaults.icon_size            = dpi(38)
 naughty.config.defaults.border_color         = "#565f89"
-naughty.config.defaults.border_radius        = dpi(12)
+naughty.config.defaults.margin               = 8
+naughty.config.defaults.icon_size            = dpi(42)
 naughty.config.defaults.position             = "top_right"
-naughty.config.defaults.timeout              = 5
-naughty.config.defaults.hover_timeout        = 0.5
+naughty.config.defaults.timeout              = 6
+naughty.config.defaults.hover_timeout        = 0.3
 naughty.config.defaults.font                 = "JetBrainsMono 10"
-naughty.config.defaults.notification_opacity = 90
+naughty.config.defaults.notification_opacity = 95
+naughty.config.defaults.bg                   = "#1a1b26"
+naughty.config.defaults.fg                   = "#c0caf5"
 
 beautiful.taglist_bg_focus                   = beautiful.border_normal
 beautiful.taglist_bg_occupied                = beautiful.fg_normal
