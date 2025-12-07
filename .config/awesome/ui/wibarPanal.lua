@@ -128,10 +128,10 @@ awful.screen.connect_for_each_screen(function(s)
 		centered_widgets,
 		{
 			layout = wibox.layout.fixed.horizontal,
-			wibox.widget.systray(),
 			wire_netContiner,
 			volumeContainer,
 			batteryWibox({ margin_right = 10, display_notification = true }),
+			wibox.widget.systray(),
 		},
 	})
 
