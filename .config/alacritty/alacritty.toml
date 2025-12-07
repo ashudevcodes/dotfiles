@@ -8,10 +8,6 @@ startup_mode = "Windowed"
 x = 8
 y = 8
 
-[window.dimensions]
-columns = 120
-lines = 40
-
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
