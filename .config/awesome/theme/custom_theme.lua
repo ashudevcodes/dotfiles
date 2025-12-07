@@ -65,4 +65,7 @@ naughty.config.defaults.fg                   = "#c0caf5"
 beautiful.taglist_bg_focus                   = beautiful.border_normal
 beautiful.taglist_bg_occupied                = beautiful.fg_normal
 beautiful.taglist_bg_empty                   = beautiful.bg_normal
+beautiful.taglist_fg_occupied                = beautiful.taglist_bg_empty
 beautiful.taglist_fg_empty                   = beautiful.wibar_fg
+beautiful.taglist_squares_sel                = nil
+beautiful.taglist_squares_unsel              = nil
