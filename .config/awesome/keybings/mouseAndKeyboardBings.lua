@@ -140,6 +140,9 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
+	awful.key({ modkey, "Shift" }, "Return", function()
+		awful.spawn("xterm")
+	end, { description = "open a terminal", group = "launcher" }),
 
 	awful.key({}, "Print", function()
 		awful.spawn("flameshot gui")
