@@ -6,5 +6,5 @@ editor_cmd = terminal .. " -e " .. editor
 
 modkey = "Mod4"
 awful.layout.layouts = {
-	awful.layout.suit.spiral.dwindle,
+	awful.layout.suit.spiral,
 }
