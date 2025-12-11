@@ -13,8 +13,9 @@ local function run_once_ps(cmd)
 	end
 end
 
+local HOME = os.getenv("HOME")
 local autorunApps = {
-	"picom  --daemon",
+	HOME .. "/.config/picom/picom-toggle.sh",
 	terminal,
 }
 

@@ -15,5 +15,6 @@
 .config/QtProject.conf
 .local/bin/freetube
 .local/icon/freetube.svg
+.config/mimeapps.list
 .config/btop/
 .config/pavucontrol.ini
