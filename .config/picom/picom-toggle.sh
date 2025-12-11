@@ -3,7 +3,7 @@ set -ex
 
 AC_CONFIG="${HOME}/.config/picom/picom.conf"
 DC_CONFIG="${HOME}/.config/picom/picom-battery.conf"
-PICOM_BIN="picom" 
+PICOM_BIN="${HOME}/.config/picom/picom/src/picom" 
 
 if ! command -v acpi >/dev/null 2>&1; then
   echo "acpi not found" >&2
