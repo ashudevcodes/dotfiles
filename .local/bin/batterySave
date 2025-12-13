@@ -7,10 +7,12 @@ if ! command -v acpi >/dev/null 2>&1; then
   exit 1
 fi
 
+PICOM_BIN="$HOME/.config/picom/picom/src/picom"
+
 if [[ $1 == "op" ]]; then
 
   if [[ ! $(killall picom) ]]; then
-	picom --daemon --config $HOME/.config/picom/picom-battery.conf
+	$PICOM_BIN --daemon --config $HOME/.config/picom/picom-battery.conf
   fi
   ~/.local/bin/clsCaches
 
