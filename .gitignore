@@ -14,7 +14,11 @@
 .config/flameshot
 .config/QtProject.conf
 .local/bin/freetube
+.local/bin/localSend
+.local/bin/budsConnect
 .local/icon/freetube.svg
+.local/icon/localsend.png
 .config/mimeapps.list
+.config/pipewire
 .config/btop/
 .config/pavucontrol.ini
