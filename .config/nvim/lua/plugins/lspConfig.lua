@@ -27,42 +27,6 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-
-				["clangd"] = function()
-					lspconfig.clangd.setup({
-						init_options = {
-							fallbackFlags = { "-std=c++17" },
-						},
-						root_markers = { ".clangd-format" },
-					})
-				end,
-
-				["gopls"] = function()
-					lspconfig.gopls.setup({
-						settings = {
-							gopls = {
-								analyses = {
-									unusedparams = true,
-								},
-								staticcheck = true,
-								gofumpt = true,
-							},
-						},
-					})
-				end,
-
-				["lua_ls"] = function()
-					lspconfig.lua_ls.setup({
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-									disable = { "different-requires" },
-								},
-							},
-						},
-					})
-				end,
 			})
 		end,
 	},
