@@ -134,12 +134,4 @@ awful.screen.connect_for_each_screen(function(s)
 			wibox.widget.systray(),
 		},
 	})
-
-	client.connect_signal("property::fullscreen", function(c)
-		if c.fullscreen then
-			s.topbar.visible = false
-		else
-			s.topbar.visible = true
-		end
-	end)
 end)
