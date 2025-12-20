@@ -11,6 +11,7 @@ export PATH
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 [ -n "$XTERM_VERSION" ] && transset-df 0.88 --id "$WINDOWID" >/dev/null
+set bell-style non
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
