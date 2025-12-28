@@ -13,7 +13,10 @@
 .config/FreeTube
 .config/flameshot
 .config/QtProject.conf
+.config/heroic
 .local/bin/freetube
+.local/bin/heroic
+.local/bin/gf2
 .local/bin/localSend
 .local/bin/budsConnect
 .local/icon/freetube.svg
