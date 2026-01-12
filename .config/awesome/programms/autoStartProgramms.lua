@@ -15,7 +15,7 @@ end
 
 local HOME = os.getenv("HOME")
 local autorunApps = {
-	HOME .. "/.config/picom/picom-toggle.sh",
+	HOME .. "/.config/picom/picom/src/picom -b",
 	"xterm",
 }
 
