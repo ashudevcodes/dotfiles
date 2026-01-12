@@ -4,6 +4,7 @@ alias docker-compose=podman-compose
 
 # Utility aliases
 alias ddg="lynx -vikeys https://lite.duckduckgo.com/lite"
+alias ly="lynx -vikeys"
 alias pdftotext="pdftotext -layout"
 alias v="vim"
 alias wifi="rfkill toggle wifi"
