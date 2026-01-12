@@ -138,10 +138,10 @@ globalkeys = gears.table.join(
 	end, { description = "go back", group = "client" }),
 
 	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
+	awful.spawn("xterm")
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Shift" }, "Return", function()
-		awful.spawn("xterm")
+	awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 
 	awful.key({}, "Print", function()
