@@ -10,7 +10,7 @@ export PATH
 [[ $- != *i* ]] && return
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
-[ -n "$XTERM_VERSION" ] && transset-df 0.88 --id "$WINDOWID" >/dev/null
+[ -n "$XTERM_VERSION" ] && transset-df 0.90 --id "$WINDOWID" >/dev/null
 set bell-style non
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -24,7 +24,6 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
-bind -x '"\ed":find_dir'
-bind -x '"\ef":fzf_open'
+bind -x '"\ef":find_dir'
 
 unset rc
