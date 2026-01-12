@@ -47,8 +47,6 @@ beautiful.hotkeys_description_font           = "JetBrainsMonoNerdFontMono 10"
 -- Borders
 beautiful.border_normal                      = "#565f89"
 beautiful.border_width                       = dpi(2)
-beautiful.border_focus                       = "#bb9af7"
-beautiful.border_marked                      = "#CC9393"
 
 -- notification
 naughty.config.defaults.border_color         = "#565f89"
