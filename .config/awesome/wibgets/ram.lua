@@ -45,7 +45,7 @@ local function worker(user_args)
 			},
 		},
 		shape = gears.shape.rounded_rect,
-		border_color = beautiful.border_color_active,
+		border_color = beautiful.border_normal,
 		border_width = 1,
 		offset = { y = 5 },
 	}
