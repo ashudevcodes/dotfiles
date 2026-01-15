@@ -41,7 +41,7 @@ local function wrap_widget(w)
 			right  = 10,
 			widget = wibox.container.margin
 		},
-		bg     = beautiful.bg_focus,
+		bg     = beautiful.wibar_bg,
 		shape  = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 6)
 		end,
