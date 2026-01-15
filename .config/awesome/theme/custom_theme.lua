@@ -31,7 +31,7 @@ beautiful.wibar_fg                           = "#c0caf5"
 beautiful.wibar_type                         = "desktop"
 beautiful.wibar_height                       = dpi(30)
 beautiful.wibar_ontop                        = false
-beautiful.wibar_opacity                      = 0.80
+beautiful.wibar_opacity                      = 0.9
 beautiful.wibar_shape                        = function(cr, width, height)
 	gears.shape.rounded_rect(cr, width, height, 12)
 end
