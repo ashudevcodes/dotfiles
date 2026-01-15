@@ -13,10 +13,9 @@ map R rotate
 
 set scroll-step 5
 
-set zoom-min 10
 set guioptions ""
 
-set default-bg "rgba(31, 29, 46, 0.7)"
+set default-bg "rgba(31, 29, 46, 0.9)"
 set default-fg "#c0caf5"
 set notification-error-bg "#f7768e"
 set notification-error-fg "#c0caf5"
