@@ -9,6 +9,8 @@ alias pdftotext="pdftotext -layout"
 alias v="vim"
 alias wifi="rfkill toggle wifi"
 alias bt="rfkill toggle bluetooth"
+alias night="redshift -O 3500k"
+alias day="redshift -x"
 alias q='exit'
 
 # Android Studio
