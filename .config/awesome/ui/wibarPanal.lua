@@ -113,6 +113,8 @@ awful.screen.connect_for_each_screen(function(s)
 		{
 			screen = s,
 			visible = true,
+			stretch = false,
+	  margins = 5,
 			width = 1885,
 		})
 
