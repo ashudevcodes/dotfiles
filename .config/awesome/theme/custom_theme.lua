@@ -26,14 +26,12 @@ beautiful.fg_minimize                        = "#ffffff"
 
 -- wibar
 beautiful.wibar_bg                           = "#1a1b26"
-beautiful.wibar_border_width                 = 4
 beautiful.wibar_fg                           = "#c0caf5"
-beautiful.wibar_type                         = "desktop"
-beautiful.wibar_height                       = dpi(30)
+beautiful.wibar_type                         = "dock"
 beautiful.wibar_ontop                        = false
 beautiful.wibar_opacity                      = 0.9
 beautiful.wibar_shape                        = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 12)
+	gears.shape.rounded_rect(cr, width, height, 8)
 end
 
 -- hotkey popus
@@ -59,6 +57,9 @@ naughty.config.defaults.font                 = "JetBrainsMono 10"
 naughty.config.defaults.notification_opacity = 95
 naughty.config.defaults.bg                   = "#1a1b26"
 naughty.config.defaults.fg                   = "#c0caf5"
+beautiful.notification_shape = function(cr, w, h)
+    gears.shape.rounded_rect(cr, w, h, 12)
+end
 
 beautiful.taglist_bg_focus                   = beautiful.border_normal
 beautiful.taglist_bg_occupied                = beautiful.fg_normal

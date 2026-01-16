@@ -102,7 +102,13 @@ globalkeys = gears.table.join(
 		awful.client.focus.bydirection("right")
 	end),
 
-	-- Layout manipulation
+  -- Resize windows 
+  awful.key({ modkey, "Ctrl" }, "l", function () awful.tag.incmwfact( 0.05)    end),
+  awful.key({ modkey, "Ctrl" }, "h",  function () awful.tag.incmwfact(-0.05)    end),
+  awful.key({ modkey, "Ctrl" }, "k",    function () awful.client.incwfact( 0.05)  end),
+  awful.key({ modkey, "Ctrl" }, "j",  function () awful.client.incwfact(-0.05)  end),
+
+  -- Layout manipulation
 	awful.key({ modkey, "Shift" }, "h", function()
 		awful.client.swap.bydirection("left")
 	end, { description = "swap with left client", group = "client" }),
