@@ -1,13 +1,21 @@
 configuration {
-	modi: "drun,window";
+	filebrowser {
+	  directory: "~/";
+	  sorting-method: "name";
+	  directories-first: true;
+	  show-hidden: false;
+	  cancel-returns-1: true;
+	  command: "xdg-open";
+	}
+
+	modi: "drun,window,filebrowser";
 	case-sensitive: false;
 	cycle: true;
 	filter: "";
 	scroll-method: 0;
 	show-icons: true;
 
-    
-    display-drun: " ";
+	display-drun: " ";
 	drun-match-fields: "name,generic,exec,categories,keywords";
 	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 	drun-show-actions: false;
@@ -15,9 +23,9 @@ configuration {
 	drun-use-desktop-cache: false;
 	drun-reload-desktop-cache: false;
 	drun {
-		parse-user:   true;
-		parse-system: true;
-    }
+	  parse-user:   true;
+	  parse-system: true;
+	}
 }
 
 @theme "~/.config/rofi/theme.rasi"
