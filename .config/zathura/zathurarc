@@ -3,6 +3,14 @@ set pages-per-row 1
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01
 set scroll-step 0.01
+set incremental-search false
+set adjust-open "width"
+set font "JetBrainsMonoNerdFontMono 10"
+set guioptions "s"
+set open-first-page true
+set page-thumbnail-size 2194304
+set page-cache-size 2
+set page-cache-num 2
 
 map r reload
 map p print
@@ -17,7 +25,6 @@ set guioptions ""
 
 set default-bg "rgba(31, 29, 46, 0.9)"
 set default-fg "#c0caf5"
-set notification-error-bg "#f7768e"
 set notification-error-fg "#c0caf5"
 set notification-warning-bg "#e0af68"
 set notification-warning-fg "#414868"
