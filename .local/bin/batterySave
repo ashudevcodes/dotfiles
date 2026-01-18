@@ -9,7 +9,7 @@ fi
 
 PICOM_BIN="$HOME/.config/picom/picom/src/picom"
 
-if [[ $1 == "op" ]]; then
+if [[ $1 == "o" ]]; then
 
   if [[ ! $(killall picom) ]]; then
 	$PICOM_BIN --daemon --config $HOME/.config/picom/picom-battery.conf
@@ -27,9 +27,9 @@ else
 	  ~/.config/picom/picom-toggle.sh
 	fi
 
-	feh --bg-max $HOME/assets/linuxroom.png
 	sudo powertop --auto-tune
 	~/.local/bin/clsCaches
+	acpi
 
   else
 	echo "Running on AC power."
