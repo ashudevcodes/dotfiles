@@ -7,6 +7,8 @@
 .config/procps
 .config/gtk-3.0
 .config/lazygit
+.local/bin/yt-dlp
+.config/hypr/hyprland.conf
 .config/systemd
 .config/inkscape
 .config/Google
