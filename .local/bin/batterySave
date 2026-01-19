@@ -29,6 +29,11 @@ else
 
 	sudo powertop --auto-tune
 	~/.local/bin/clsCaches
+
+	if [[ $(date +%H) -ge 21 ]]; then
+	  night
+	fi
+
 	acpi
 
   else
