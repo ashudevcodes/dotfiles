@@ -30,7 +30,7 @@ else
 	sudo powertop --auto-tune
 	~/.local/bin/clsCaches
 
-	if [[ $(date +%H) -ge 21 ]]; then
+	if [ "$HOUR" -ge 21 ] && [ "$HOUR" -lt 23 ]; then
 	  night
 	fi
 
