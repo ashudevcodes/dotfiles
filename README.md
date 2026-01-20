@@ -1,6 +1,6 @@
-# Arch Dotfiles
+# Arch Dotfiles: The "Library Mode" Setup
 
-Repository For my personal dotfiles from Arch, its contain the configurations of Neovim, awesomewm and various system utilities.
+This is my personal collection of dotfiles for **Arch Linux**, featuring **AwesomeWM**, **Neovim**, and a bunch of scripts I wrote to keep my machine running efficiently. 
 
 <kbd>
    <img src="assets/awesomewm1.png">
@@ -14,41 +14,44 @@ Repository For my personal dotfiles from Arch, its contain the configurations of
 
 <hr>
 
-## Components
+### The Backstory
+I use an **HP Pavilion Gaming Laptop**, which is ironic because I hate two things:
+1.  **Fan Noise:** If my laptop sounds like a jet engine, I can't think.
+2.  **Bloat:** I’m running on single-channel RAM, so I can't afford to waste memory on Electron apps or background services I don't need.
 
-### Neovim
+> My goal is simple: **Minimum RAM consumption, Zero Decibels.**
 
-My Neovim setup includes the following plugins:
+### 🛠️ What's Inside?
+* **AwesomeWM:** Tiling window manager because dragging windows around is a waste of time.
+* **Neovim:** configured to load instantly.
+* **Scripts:** Custom power-management scripts to keep the battery drain remarkably low.
 
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion plugin
-- [conform.nvim](https://github.com/stevearc/conform.nvim): Code formatting
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim): Code commenting
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Language Server Protocol configuration
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim): Status line
-- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): LSP server management
-- [tagbar](https://github.com/preservim/tagbar): Tag browsing
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): Fuzzy finder
-- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim): Color scheme
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Syntax highlighting
-- [which-key.nvim](https://github.com/folke/which-key.nvim): Keybinding helper
-- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo): Collapse block
+---
 
+### 💻 The Hardware Situation
+Here is what I’m working with (and how I’m forcing it to behave):
 
-### System Utilities
+| Component | The Reality | My Solution |
+| :--- | :--- | :--- |
+| **CPU** | **Ryzen 5 5600H** | Great chip, but runs hot. I’ve throttled and undervolted it so it stays cool enough that the fans literally never turn on. |
+| **GPU** | **NVIDIA RTX** | A power hog. I completely disabled it. It sits at **0W** power draw. It’s basically an expensive paperweight now. |
+| **RAM** | **8GB (Single Channel)** | Since I don't have dual-channel, I treat RAM like a limited resource. No `zswap`, no heavy desktops. Just pure efficiency. |
 
-- [Fastfetch](https://github.com/fastfetch-cli/fastfetch): System information tool
-- [Starship](https://starship.rs/): Cross-shell prompt
-- [Wezterm](https://wezterm.org/): Terminal emulator
-- [AwesomeWM](https://awesomewm.org/): Tiling window manager
+---
 
+### 🚫 The "No-Fly" List
+*Things that are banned on this machine to save RAM:*
+- [x] Electron Apps (The devil's RAM eaters)
+- [x] Desktop Environments (Too much bloat)
+- [x] "Helpful" HP Services (Deleted with extreme prejudice)
+- [x] Happiness (Optional)
 
-## Installation
+---
 
-- TODO Make installation script that automte download all plugins
+### 🧘‍♂️ Philosophy
+I don't care about high benchmarks. I care about a laptop that stays cool to the touch, lasts all day on battery, and doesn't make a sound—even at 2 AM in a dead-silent room.
 
-## Contributing
-
-Feel free to open issues or submit pull requests if you have suggestions for improvements.
+If you like minimal RAM usage and absolute silence.
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
