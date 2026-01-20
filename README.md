@@ -49,9 +49,7 @@ Here is what I’m working with (and how I’m forcing it to behave):
 ---
 
 ### 🧘‍♂️ Philosophy
-I don't care about high benchmarks. I care about a laptop that stays cool to the touch, lasts all day on battery, and doesn't make a sound—even at 2 AM in a dead-silent room.
-
-If you like minimal RAM usage and absolute silence.
+I don't care about high benchmarks. I care about a laptop that stays cool to the touch, lasts all day on battery, and doesn't make a sound even at 2 AM in a dead silent room.
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
