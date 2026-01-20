@@ -9,6 +9,7 @@
 .config/lazygit
 .local/bin/yt-dlp
 .config/hypr/hyprland.conf
+.local/bin/opencode
 .config/systemd
 .config/inkscape
 .config/Google
