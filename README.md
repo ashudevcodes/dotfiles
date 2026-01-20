@@ -43,7 +43,6 @@ Here is what I’m working with (and how I’m forcing it to behave):
 *Things that are banned on this machine to save RAM:*
 - [x] Electron Apps (The devil's RAM eaters)
 - [x] Desktop Environments (Too much bloat)
-- [x] "Helpful" HP Services (Deleted with extreme prejudice)
 - [x] Happiness (Optional)
 
 ---
