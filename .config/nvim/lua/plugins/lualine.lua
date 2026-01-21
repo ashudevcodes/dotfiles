@@ -29,7 +29,6 @@ return {
 						end,
 						icon = " LSP:",
 					},
-					"encoding",
 					"fileformat",
 					"filetype",
 				},
