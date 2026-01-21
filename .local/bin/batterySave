@@ -2,6 +2,8 @@
 
 set -xe 
 
+HOUR=$(date +%H)
+
 if ! command -v acpi >/dev/null 2>&1; then
   echo "acpi not found" >&2
   exit 1
@@ -30,7 +32,7 @@ else
 	sudo powertop --auto-tune
 	~/.local/bin/clsCaches
 
-	if [ "$HOUR" -ge 21 ] && [ "$HOUR" -lt 23 ]; then
+	if [ "$HOUR" -ge 20 ] && [ "$HOUR" -lt 23 ]; then
 	  night
 	fi
 
