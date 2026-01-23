@@ -27,3 +27,6 @@ fi
 bind -x '"\ef":find_dir'
 
 unset rc
+
+# opencode
+export PATH=/home/nemo/.opencode/bin:$PATH
