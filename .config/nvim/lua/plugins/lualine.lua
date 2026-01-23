@@ -30,7 +30,6 @@ return {
 						icon = " LSP:",
 					},
 					"fileformat",
-					"filetype",
 				},
 			},
 		},
