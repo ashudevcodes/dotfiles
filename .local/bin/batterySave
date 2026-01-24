@@ -33,7 +33,7 @@ else
 	~/.local/bin/clsCaches
 
 	if [ "$HOUR" -ge 20 ] && [ "$HOUR" -lt 23 ]; then
-	  night
+	  redshift -O 3500k
 	fi
 
 	acpi
