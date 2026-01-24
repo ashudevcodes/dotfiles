@@ -19,6 +19,7 @@
 .config/pipewire
 .config/btop/
 .config/dlv
+.config/audacity/
 .config/pavucontrol.ini
 .config/go
 
