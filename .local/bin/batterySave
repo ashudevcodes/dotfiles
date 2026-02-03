@@ -34,6 +34,7 @@ else
 
 	if [ "$HOUR" -ge 20 ] && [ "$HOUR" -lt 23 ]; then
 	  redshift -O 3500k
+	  rfkill block wifi bluetooth
 	fi
 
 	acpi
