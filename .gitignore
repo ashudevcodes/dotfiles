@@ -22,9 +22,11 @@
 .config/audacity/
 .config/pavucontrol.ini
 .config/go
+.config/obs-studio
 
 .local/bin/yt-dlp
 .local/bin/opencode
+.local/bin/leetcode
 .local/bin/freetube
 .local/bin/heroic
 .local/bin/dlv
