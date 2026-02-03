@@ -12,6 +12,7 @@ alias bt="rfkill toggle bluetooth"
 alias night="redshift -O 3500k"
 alias day="redshift -x"
 alias q='exit'
+alias lq='leetcodeSession'
 
 # Android Studio
 alias androidStudio="$HOME/.share/android-studio/bin/studio"
