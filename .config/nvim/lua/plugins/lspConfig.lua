@@ -21,40 +21,44 @@ return {
 		  function(server_name)
 			lspconfig[server_name].setup({
 			  capabilities = capabilities,
-  })
-  end,
+			})
+		  end,
 
-	["lua_ls"] = function()
-	  lspconfig.lua_ls.setup({
-		capabilities = capabilities,
-		settings = {
-		  Lua = {
-			workspace = {
-			  checkThirdParty = false, --
-			  maxPreload = 500,        --
-			  preloadFileSize = 500,   --
-			},
-			telemetry = { enable = false }, --
-		  },
-		},
-	  })
-	end,
+		  ["lua_ls"] = function()
+			lspconfig.lua_ls.setup({
+			  capabilities = capabilities,
+			  settings = {
+				Lua = {
+				  workspace = {
+					checkThirdParty = false,
+					maxPreload = 500,
+					preloadFileSize = 500,
+				  },
+				  telemetry = { enable = false },
+				},
+			  },
+			})
+		  end,
 
-	["clangd"] = function()
-	  lspconfig.clangd.setup({
-		capabilities = capabilities,
-		cmd = {
-		  "clangd",
-		  "--background-index=false",
-		  "--limit-results=50",
-		  "--j=1",
-		  "--header-insertion=never",
-		  "--index-file-size=2000000",
+		  ["clangd"] = function()
+			lspconfig.clangd.setup({
+			  capabilities = capabilities,
+			  cmd = {
+				"clangd",
+				"--background-index=false",
+				"--limit-references=10",
+				"--limit-results=10",
+				"--j=1",
+				"--limit-references=1",
+				"--ranking-model=decision_tree",
+				"--malloc-trim",
+				"--pch-storage=disk",
+				"--header-insertion=never",
+			  },
+			})
+		  end,
 		},
 	  })
 	end,
   },
-})
-end,
-},
 }
