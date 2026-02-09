@@ -33,14 +33,16 @@ local function build_dots()
     workspace_container:reset()
     for i = 1, 4 do
         local is_active = i == workspace_widget.current_tag
+        local dot_char = is_active and "◉" or "○"
+        local dot_color = is_active and "#ffffff" or "#6c7086"
+        local dot_size = is_active and "12" or "10"
         local dot = wibox.widget {
-            markup = is_active 
-                and "<span foreground='#c0caf5' font='JetBrainsMono Nerd Font 10'>●</span>" 
-                or "<span foreground='#565f89' font='JetBrainsMono Nerd Font 8'>○</span>",
+            markup = string.format("<span foreground='%s' font='JetBrainsMono Nerd Font %s'>%s</span>", 
+                                   dot_color, dot_size, dot_char),
             align = "center",
             valign = "center",
             widget = wibox.widget.textbox,
-            forced_width = 16,
+            forced_width = 20,
         }
         workspace_container:add(dot)
     end
