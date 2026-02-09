@@ -4,10 +4,25 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 
 -- Apple-style workspace widget
-local workspace_widget = wibox.widget {
+local workspace_container = wibox.widget {
     layout = wibox.layout.fixed.horizontal,
     spacing = 8,
     forced_width = 80,
+}
+
+-- Wrap in background for proper display
+local workspace_widget = wibox.widget {
+    {
+        workspace_container,
+        left = 8,
+        right = 8,
+        widget = wibox.container.margin,
+    },
+    bg = beautiful.bg_normal or "#1a1b26",
+    shape = function(cr, w, h)
+        gears.shape.rounded_rect(cr, w, h, h/2)
+    end,
+    widget = wibox.container.background,
 }
 
 -- Current tag tracker
@@ -15,7 +30,7 @@ workspace_widget.current_tag = 1
 
 -- Build dots
 local function build_dots()
-    workspace_widget:reset()
+    workspace_container:reset()
     for i = 1, 4 do
         local is_active = i == workspace_widget.current_tag
         local dot = wibox.widget {
@@ -27,7 +42,7 @@ local function build_dots()
             widget = wibox.widget.textbox,
             forced_width = 16,
         }
-        workspace_widget:add(dot)
+        workspace_container:add(dot)
     end
 end
 

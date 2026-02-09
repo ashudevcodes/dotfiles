@@ -5,12 +5,14 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "*.tex",
-	callback = function()
-		vim.cmd("VimtexCompileSS")
-	end,
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = {"*.c", "*.cpp", "*.h"},
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
 })
+
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "None" })
 
 -- Basic settings
 vim.opt.number = true
