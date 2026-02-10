@@ -2,60 +2,42 @@ local gears            = require("gears")
 local awful            = require("awful")
 local beautiful        = require("beautiful")
 local net_widgets      = require("../wibgets/netWidget")
-local batteryWibox     = require("../wibgets/battery")
+local battery          = require("../wibgets/round_battery")
 local volume           = require("../wibgets/pipwirebox")
 local fanwibox         = require("../wibgets/fan")
 local ram              = require("../wibgets/ram")
 local touchpad         = require("../wibgets/touchpad")
 local wibox            = require("wibox")
 
-local mytextclock      = wibox.widget.textclock()
-local seperator        = wibox.widget {
-	markup  = '󰇙',
-	opacity = 0.4,
-	align   = 'center',
-	valign  = 'center',
-	widget  = wibox.widget.textbox
-}
 
 local ramLogo          = wibox.container.margin(ram({ timeout = 5 }), 10)
-local volumeContainer  = wibox.container.margin(volume(), 0, 8, 8, 6)
-local fanConainer      = wibox.container.margin(fanwibox, 0, 0, 5, 5)
-local touchpadWibox    = wibox.container.margin(touchpad, 0, 0, 6, 6)
 
 local wire_net         = net_widgets.wireless({
 	widget       = wibox.layout.fixed.vertical(),
 	popup_signal = false,
 })
 
-local wire_netContiner = wibox.container.margin(wire_net, 0, 8, 4, 0)
-
-local function wrap_widget(w)
-	return wibox.widget {
-		{
-			{
-				w,
-				layout = wibox.layout.align.horizontal
-			},
-			left   = 10,
-			right  = 10,
-			widget = wibox.container.margin
-		},
-		bg     = beautiful.wibar_bg,
-		shape  = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, 6)
-		end,
-		widget = wibox.container.background
-	}
+local function pill_container(widget, left, right,usbg)
+    return wibox.widget {
+        {
+            widget,
+            left   = left or 8,
+            right  = right or 8,
+            top    = 4,
+            bottom = 4,
+            widget = wibox.container.margin
+        },
+        bg     = usbg or beautiful.bg_normal,
+        shape  = function(cr, w, h)
+            gears.shape.rounded_rect(cr, w, h, h/2)
+        end,
+        widget = wibox.container.background
+    }
 end
+
 
 local combined_widget  = wibox.widget {
 	{
-		wrap_widget(fanConainer),
-		seperator,
-		mytextclock,
-		seperator,
-		wrap_widget(touchpadWibox),
 		spacing = 10,
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -125,14 +107,16 @@ awful.screen.connect_for_each_screen(function(s)
 		{
 			layout = wibox.layout.fixed.horizontal,
 			s.mytaglist,
-			ramLogo,
+	  ramLogo,
 		},
 		centered_widgets,
 		{
 			layout = wibox.layout.fixed.horizontal,
-			wire_netContiner,
-			volumeContainer,
-			batteryWibox({ margin_right = 10, display_notification = true }),
+	  pill_container(battery, 8, 8,""),
+	  pill_container(wire_net, 8,8),
+	  pill_container(fanwibox,nil,nil,""),
+	  pill_container(touchpad,nil,nil,""),
+	  pill_container(wibox.widget.textclock),
 			wibox.widget.systray(),
 		},
 	})
