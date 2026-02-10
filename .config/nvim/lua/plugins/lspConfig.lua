@@ -29,10 +29,16 @@ return {
 			  capabilities = capabilities,
 			  settings = {
 				Lua = {
+				  hint = { enable = false },
+				  hover = { expandAlias = false },
 				  workspace = {
-					checkThirdParty = false,
-					maxPreload = 500,
-					preloadFileSize = 500,
+					checkThirdParty = false, 
+					maxPreload = 100,
+					preloadFileSize = 100,
+					ignoreDir = { ".git", "node_modules", "build" },
+				  },
+				  diagnostics = {
+					libraryFiles = "Opened",
 				  },
 				  telemetry = { enable = false },
 				},
