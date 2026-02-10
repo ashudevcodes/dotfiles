@@ -23,6 +23,7 @@
 .config/pavucontrol.ini
 .config/go
 .config/obs-studio
+.config/gf2_config.ini
 
 .local/bin/yt-dlp
 .local/bin/opencode
