@@ -12,11 +12,6 @@ local wibox            = require("wibox")
 
 local ramLogo          = wibox.container.margin(ram({ timeout = 5 }), 10)
 
-local wire_net         = net_widgets.wireless({
-	widget       = wibox.layout.fixed.vertical(),
-	popup_signal = false,
-})
-
 local function pill_container(widget, left, right,usbg)
     return wibox.widget {
         {
@@ -55,8 +50,19 @@ local function set_wallpaper(s)
 			wallpaper = wallpaper(s)
 		end
 		gears.wallpaper.maximized(wallpaper, s, true)
-	end
+    end
 end
+
+local wire_net         = net_widgets.wireless({
+	widget       = wibox.layout.fixed.vertical(),
+	popup_signal = false,
+})
+
+local wifi_pill        = pill_container(wire_net, 8,8)
+
+wire_net._pill_container = wifi_pill
+
+wifi_pill.visible = wire_net.visible
 
 
 screen.connect_signal("property::geometry", set_wallpaper)
@@ -65,6 +71,8 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
+	
+	s.wifi_pill = wifi_pill
 
 	s.mytaglist = awful.widget.taglist({
 		screen = s,
@@ -113,7 +121,7 @@ awful.screen.connect_for_each_screen(function(s)
 		{
 			layout = wibox.layout.fixed.horizontal,
 	  pill_container(battery, 8, 8,""),
-	  pill_container(wire_net, 8,8),
+	  wifi_pill,
 	  pill_container(fanwibox,nil,nil,""),
 	  pill_container(touchpad,nil,nil,""),
 	  pill_container(wibox.widget.textclock),
