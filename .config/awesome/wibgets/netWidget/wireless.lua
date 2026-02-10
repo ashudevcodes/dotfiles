@@ -59,9 +59,13 @@ local function worker(args)
 				if not signal_level or signal_level <= 0 then
 					net_text:set_text(" N/A ")
 					net_icon:set_image(draw_signal(0, false))
+					widget.visible = false
+					if widget._pill_container then widget._pill_container.visible = false end
 				else
 					net_text:set_text(string.format("%" .. indent .. "d%%", signal_level))
 					net_icon:set_image(draw_signal(signal_level, true))
+					widget.visible = true
+					if widget._pill_container then widget._pill_container.visible = true end
 				end
 			end
 		)
