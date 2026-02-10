@@ -25,7 +25,7 @@ beautiful.fg_urgent                          = "#ffffff"
 beautiful.fg_minimize                        = "#ffffff"
 
 -- wibar
-beautiful.wibar_bg                           = "#1a1b26"
+beautiful.wibar_bg                           = ""
 beautiful.wibar_fg                           = "#c0caf5"
 beautiful.wibar_type                         = "dock"
 beautiful.wibar_ontop                        = false
