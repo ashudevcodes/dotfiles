@@ -1,38 +1,41 @@
 local wibox = require("wibox")
-local awful = require("awful")
 local gears = require("gears")
+local icons = require("libs.icons")
 
-local HOME = os.getenv("HOME")
-local path_to_icons = HOME .. "/.local/icon/touchpad/"
-local command = "cat /tmp/touchpadState"
+local touchpad_widget, update_icon = icons.create_touchpad_widget()
 
 local touchPadWibox = wibox.widget {
-	{
-		id = "icon",
-		image = nil,
-		widget = wibox.widget.imagebox,
-	},
-	widget = wibox.container.margin,
+    touchpad_widget,
+    widget = wibox.container.margin,
 }
 
-local function check_touchpad_state_and_update_icon()
-	awful.spawn.easy_async_with_shell(command, function(out)
-		local icon_path
-		if out:match("disabled") then
-			icon_path = path_to_icons .. "touchpad-disable.svg"
-		else
-			icon_path = path_to_icons .. "touchpad-enable.svg"
-		end
-		touchPadWibox.icon.image = gears.surface.load_uncached(icon_path)
-	end)
+-------------------------------------------------
+-- Direct File Read (No Shell)
+-------------------------------------------------
+
+local function read_file(path)
+    local f = io.open(path, "r")
+    if not f then return nil end
+    local content = f:read("*all")
+    f:close()
+    return content
 end
 
+local function check_touchpad_state()
+    local out = read_file("/tmp/touchpadState")
+    if out and out:match("disabled") then
+        update_icon(true)
+    else
+        update_icon(false)
+    end
+end
 
-check_touchpad_state_and_update_icon()
+check_touchpad_state()
+
 gears.timer {
-	timeout = 5,
-	autostart = true,
-	callback = check_touchpad_state_and_update_icon,
+    timeout = 3,
+    autostart = true,
+    callback = check_touchpad_state,
 }
 
 return touchPadWibox
