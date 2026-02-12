@@ -24,6 +24,10 @@
 .config/go
 .config/obs-studio
 .config/gf2_config.ini
+.config/fontconfig
+.config/gtk-4.0
+.config/qt5ct
+.config/awesome/devTest
 
 .local/bin/yt-dlp
 .local/bin/opencode
