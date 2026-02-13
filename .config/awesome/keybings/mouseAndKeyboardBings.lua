@@ -4,6 +4,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
+local touchpad = require("../wibgets/touchpad")
 
 local launch_browser = function()
 	awful.spawn("zen-browser")
@@ -17,11 +18,13 @@ end
 
 local touch_pad = function()
 	awful.spawn.with_shell("~/.config/awesome/scripts/disable-touchpad.sh")
+  touchpad.update()
 end
 
 local toggleTopBar = function()
 	local myscreen = awful.screen.focused()
 	myscreen.topbar.visible = not myscreen.topbar.visible
+  
 end
 
 local lappyPowerOff = function()
