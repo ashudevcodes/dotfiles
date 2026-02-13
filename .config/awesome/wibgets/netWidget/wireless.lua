@@ -158,6 +158,8 @@ local function worker(args)
             target_level = level
             current_connected = connected
             start_animation()
+
+            awesome.emit_signal("net::wireless_status", connected, level)
         end
     end
 
