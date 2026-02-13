@@ -10,7 +10,7 @@ local touchPadWibox = wibox.widget {
 }
 
 -------------------------------------------------
--- Direct File Read (No Shell)
+-- Direct File Read
 -------------------------------------------------
 
 local function read_file(path)
@@ -21,21 +21,33 @@ local function read_file(path)
     return content
 end
 
+-------------------------------------------------
+-- State Tracking
+-------------------------------------------------
+
+local last_state = nil
+
 local function check_touchpad_state()
     local out = read_file("/tmp/touchpadState")
-    if out and out:match("disabled") then
-        update_icon(true)
-    else
-        update_icon(false)
+    local disabled = out and out:match("disabled")
+
+    if disabled ~= last_state then
+        last_state = disabled
+        update_icon(disabled)
     end
 end
 
+-- Initial check
 check_touchpad_state()
 
-gears.timer {
-    timeout = 3,
+-------------------------------------------------
+-- Polling (Lightweight)
+-------------------------------------------------
+
+local state_timer = gears.timer {
+    timeout   = 5,
     autostart = true,
-    callback = check_touchpad_state,
+    callback  = check_touchpad_state,
 }
 
 return touchPadWibox
