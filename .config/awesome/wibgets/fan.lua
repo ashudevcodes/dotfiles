@@ -6,16 +6,16 @@ local cairo    = require("lgi").cairo
 
 local home = os.getenv("HOME")
 local path_to_icons = home .. "/.local/icon/fan/"
-local command = home .. "/.local/bin/lappyfan state"
+local command = home .. "/.local/bin/lappyFan state"
 
 -------------------------------------------------
 -- Config
 -------------------------------------------------
-local size = 32
-local fps = 30
-local dt = 1 / fps
 
--- physics constants
+local size = 32
+local fps  = 30
+local dt   = 1 / fps
+
 local inertia     = 0.18
 local damping     = 0.05
 local torque_gain = 1.2
@@ -23,23 +23,21 @@ local torque_gain = 1.2
 -------------------------------------------------
 -- Temperature Reader
 -------------------------------------------------
+
 local function get_temp()
     local f = io.open("/sys/class/thermal/thermal_zone0/temp", "r")
     if not f then return 40 end
     local t = tonumber(f:read("*all"))
     f:close()
-    if not t then return 40 end
-    return t / 1000
+    return t and (t / 1000) or 40
 end
 
 -------------------------------------------------
 -- Load SVG once
 -------------------------------------------------
-local fan_surface = gears.surface.load_uncached(path_to_icons .. "fan-off.svg")
 
--------------------------------------------------
--- Create reusable drawing surface
--------------------------------------------------
+local fan_surface = gears.surface.load_uncached(path_to_icons .. "fan.svg")
+
 local rotating_surface = cairo.ImageSurface.create(cairo.Format.ARGB32, size, size)
 local cr = cairo.Context(rotating_surface)
 
@@ -50,11 +48,7 @@ local fan_image = wibox.widget {
 }
 
 local fanwibox = wibox.widget {
-    {
-        fan_image,
-        margins = 0,
-        widget  = wibox.container.margin
-    },
+    fan_image,
     buttons = gears.table.join(
         awful.button({}, 1, function() awful.spawn(command) end)
     ),
@@ -62,33 +56,42 @@ local fanwibox = wibox.widget {
 }
 
 -------------------------------------------------
--- Physics variables
+-- Physics Variables
 -------------------------------------------------
+
 local rotation      = 0
 local speed         = 0
 local target_speed  = 0
 local time          = 0
 
--- temperature animation
 local current_temp  = 40
 local display_temp  = 40
 
 -------------------------------------------------
--- Motor Physics Loop (30 FPS)
+-- Animation Timer (Controlled)
 -------------------------------------------------
-gears.timer {
+
+local animation_timer
+
+local function start_animation()
+    if not animation_timer.started then
+        animation_timer:start()
+    end
+end
+
+animation_timer = gears.timer {
     timeout   = dt,
-    autostart = true,
+    autostart = false,
     callback  = function()
 
         time = time + dt
 
-        -- Smooth temperature interpolation
         display_temp = display_temp + (current_temp - display_temp) * 0.08
 
         -------------------------------------------------
-        -- Motor physics
+        -- Motor Physics
         -------------------------------------------------
+
         local torque = (target_speed - speed) * torque_gain
         local acceleration = (torque - damping * speed) / inertia
         speed = speed + acceleration * dt
@@ -100,46 +103,48 @@ gears.timer {
         rotation = (rotation + speed) % (2 * math.pi)
 
         -------------------------------------------------
-        -- Clear surface
+        -- Stop animation if fully idle
         -------------------------------------------------
+
+        if speed == 0
+           and math.abs(display_temp - current_temp) < 0.2 then
+
+            animation_timer:stop()
+            return
+        end
+
+        -------------------------------------------------
+        -- Redraw
+        -------------------------------------------------
+
         cr:set_operator(cairo.Operator.CLEAR)
         cr:paint()
         cr:set_operator(cairo.Operator.OVER)
 
-        -------------------------------------------------
-        -- Draw rotated fan
-        -------------------------------------------------
         local w = fan_surface:get_width()
         local h = fan_surface:get_height()
         local scale = math.min(size / w, size / h)
 
-        local wobble = 0
-        if speed < 0.15 and speed > 0 then
-            wobble = 0.02 * math.sin(8 * time)
-        end
-
         cr:save()
         cr:translate(size/2, size/2)
-        cr:rotate(rotation + wobble)
+        cr:rotate(rotation)
         cr:scale(scale, scale)
         cr:translate(-w/2, -h/2)
 
         cr:set_source_surface(fan_surface, 0, 0)
         cr:paint()
 
-        -------------------------------------------------
-        -- Temperature Color Overlay
-        -------------------------------------------------
-        local r, g, b = 1, 1, 1
+        -- Temperature Overlay
+        local r,g,b = 1,1,1
 
         if display_temp < 45 then
-            r, g, b = 0.4, 0.7, 1        -- cool blue
+            r,g,b = 0.4,0.7,1
         elseif display_temp < 65 then
-            r, g, b = 1, 1, 1            -- neutral
+            r,g,b = 1,1,1
         elseif display_temp < 80 then
-            r, g, b = 1, 0.6, 0.2        -- orange
+            r,g,b = 1,0.6,0.2
         else
-            r, g, b = 1, 0.2, 0.2        -- red
+            r,g,b = 1,0.2,0.2
         end
 
         local intensity = math.min((display_temp - 40) / 40, 1)
@@ -156,18 +161,20 @@ gears.timer {
 }
 
 -------------------------------------------------
--- Update fan state + temperature
+-- Update Fan State
 -------------------------------------------------
 local function updatefanicon()
-    awful.spawn.easy_async_with_shell(command, function(out)
-        if out and out:match("running") then
-            target_speed = 0.5
-        else
-            target_speed = 0
-        end
-    end)
+  awful.spawn.easy_async_with_shell(command, function(out)
+	if out and out:match("running") then
+	  target_speed = 0.5
+	else
+	  target_speed = 0
+	end
+	start_animation()
+  end)
 
-    current_temp = get_temp()
+  current_temp = get_temp()
+  start_animation()
 end
 
 updatefanicon()
@@ -187,17 +194,17 @@ local fanState
 local function show_fan_status()
     awful.spawn.easy_async_with_shell(command, function(stdout)
 
-	if stdout:gsub("\n+$"," ") ~= 0 then
-	  fanState = "Fan is Chilling"
-	else
+	if stdout and stdout:match("running") then
 	  fanState = "Fan is Grinding"
+	else
+	  fanState = "Fan is Chilling"
 	end
 
         if notification then naughty.destroy(notification) end
 
         notification = naughty.notify {
             text     = fanState,
-            icon     = path_to_icons .. "fan-off.svg",
+            icon     = path_to_icons .. "fan.svg",
             title    = "Fan Status",
             position = "top_right",
             timeout  = 3,
