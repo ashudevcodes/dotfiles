@@ -28,6 +28,7 @@
 .config/gtk-4.0
 .config/qt5ct
 .config/awesome/devTest
+.config/BraveSoftware
 
 .local/bin/yt-dlp
 .local/bin/opencode
