@@ -12,8 +12,41 @@ local touchpad    = require("../wibgets/touchpad")
 local topbar = {}
 
 ------------------------------------------------------------
+-- POWER MODE DETECTION
+------------------------------------------------------------
+
+local power_save_mode = false
+
+local function read_file(path)
+    local f = io.open(path, "r")
+    if not f then return nil end
+    local c = f:read("*all")
+    f:close()
+    return c
+end
+
+local function detect_power_mode()
+    local ac = read_file("/sys/class/power_supply/AC/online")
+    if ac and tonumber(ac) == 1 then
+        power_save_mode = false
+    else
+        power_save_mode = true
+    end
+end
+
+detect_power_mode()
+
+-- Recheck power state every 15s
+gears.timer {
+    timeout   = 15,
+    autostart = true,
+    callback  = detect_power_mode
+}
+
+------------------------------------------------------------
 -- Simple Pill Container
 ------------------------------------------------------------
+
 local function pill(widget, bg)
     return wibox.widget {
         {
@@ -35,11 +68,13 @@ end
 ------------------------------------------------------------
 -- Create Topbar
 ------------------------------------------------------------
+
 function topbar.create(s)
 
     --------------------------------------------------------
     -- Wallpaper
     --------------------------------------------------------
+
     if beautiful.wallpaper then
         local wallpaper = beautiful.wallpaper
         if type(wallpaper) == "function" then
@@ -48,14 +83,12 @@ function topbar.create(s)
         gears.wallpaper.maximized(wallpaper, s, true)
     end
 
-    --------------------------------------------------------
-    -- Tags
-    --------------------------------------------------------
     awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
 
     --------------------------------------------------------
-    -- Taglist (DEFAULT, no animation)
+    -- Taglist
     --------------------------------------------------------
+
     local taglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
@@ -81,48 +114,24 @@ function topbar.create(s)
     }
 
     --------------------------------------------------------
-    -- Widgets (per screen)
+    -- Widgets
     --------------------------------------------------------
-    local ram_widget   = ram({ timeout = 5 })
+
+    local ram_widget   = ram({ timeout = power_save_mode and 15 or 5 })
     local battery_w    = battery
     local fan_widget   = fanwibox
     local touch_widget = touchpad
 
-  local wire_net = net_widgets.wireless({
-	widget       = wibox.layout.fixed.vertical(),
-	popup_signal = false,
-  })
+    local wire_net = net_widgets.wireless({
+        timeout = power_save_mode and 15 or 5
+    })
 
-  -- Wrap wifi inside pill
-  local wifi_pill = pill(wire_net)
-
-  -- Function to check WiFi connection
-local function update_wifi_visibility()
-    awful.spawn.easy_async_with_shell(
-        "cat /proc/net/wireless | grep -v Inter | grep -v face",
-        function(stdout)
-            if stdout and stdout:match("%S") then
-                wifi_pill.visible = true
-            else
-                wifi_pill.visible = false
-            end
-        end
-    )
-end
-
-  -- Initial check
-  update_wifi_visibility()
-
-  -- Recheck every 10 seconds
-  gears.timer {
-	timeout   = 10,
-	autostart = true,
-	callback  = update_wifi_visibility
-  }
+    local wifi_pill = pill(wire_net)
 
     --------------------------------------------------------
     -- Right Layout
     --------------------------------------------------------
+
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout.spacing = 8
 
@@ -130,12 +139,13 @@ end
     right_layout:add(pill(fan_widget))
     right_layout:add(pill(touch_widget))
     right_layout:add(wifi_pill)
-    right_layout:add(pill(wibox.widget.textclock()))
+    right_layout:add(pill(wibox.widget.textclock(nil, 60)))
     right_layout:add(wibox.widget.systray())
 
     --------------------------------------------------------
     -- Wibar
     --------------------------------------------------------
+
     s.topbar = awful.wibar({
         screen   = s,
         position = "top",
@@ -147,7 +157,6 @@ end
     s.topbar:setup({
         layout = wibox.layout.align.horizontal,
 
-        -- Left
         {
             layout = wibox.layout.fixed.horizontal,
             spacing = 8,
@@ -155,10 +164,8 @@ end
             ram_widget,
         },
 
-        -- Center
         nil,
 
-        -- Right
         right_layout,
     })
 

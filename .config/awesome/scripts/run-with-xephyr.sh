@@ -11,7 +11,7 @@ find_display() {
 }
 
 DISPLAY_NUM=$(find_display)
-CONFIG_FILE="${1:-$HOME/.config/awesome//rc.lua}"
+CONFIG_FILE="${1:-$HOME/.config/awesome/rc.lua}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if ! command -v Xephyr &> /dev/null; then
