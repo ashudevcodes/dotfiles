@@ -127,15 +127,9 @@ function topbar.create(s)
     local fan_widget   = fanwibox
     local touch_widget = touchpad.widget
 
-    local wire_net
-    local ok, net_widget = pcall(net_widgets.wireless, {
-        timeout = poll_timeout()
-    })
-    if ok and net_widget then
-        wire_net = net_widget
-    end
+    local wire_net = net_widgets.wireless()
 
-    local wifi_pill = wire_net and pill(wire_net) or nil
+    local wifi_pill = pill(wire_net)
 
     --------------------------------------------------------
     -- Right Layout
@@ -147,10 +141,7 @@ function topbar.create(s)
     right_layout:add(pill(battery_w," "))
     right_layout:add(pill(fan_widget, " "))
     right_layout:add(pill(touch_widget, " "))
-    if wifi_pill then
-        wifi_pill.visible = false
-        right_layout:add(wifi_pill)
-    end
+    right_layout:add(wifi_pill)
     right_layout:add(pill(wibox.widget.textclock(nil, 60)))
     right_layout:add(wibox.widget.systray())
 
