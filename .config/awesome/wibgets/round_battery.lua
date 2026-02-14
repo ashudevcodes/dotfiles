@@ -209,7 +209,7 @@ function battery:update()
 
   local capacity = read_file("/sys/class/power_supply/BAT0/capacity")
   local status   = read_file("/sys/class/power_supply/BAT0/status")
-  local ac_online = read_file("/sys/class/power_supply/AC/online")
+  local ac_online = read_file("/sys/class/power_supply/ACAD/online")
 
   if capacity then
     local pct = tonumber(capacity)
@@ -259,7 +259,7 @@ end
 -------------------------------------------------
 
 gears.timer {
-  timeout = 5, -- check every 5s
+  timeout = 4, -- check every 5s
   autostart = true,
   callback = function()
     battery:update()
