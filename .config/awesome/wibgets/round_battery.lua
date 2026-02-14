@@ -107,6 +107,8 @@ battery.draw = function(self, _, cr, width, height)
   -- Determine fill color
   if self.is_charging and self.percentage < 100 then
     cr:set_source_rgb(unpack(colors.charging))
+  elseif self.is_charging then
+  cr:set_source_rgb(unpack((colors.charging)))
   elseif self.percentage <= 10 then
     cr:set_source_rgb(unpack(colors.critical))
   elseif self.percentage <= 20 then

@@ -6,7 +6,7 @@ local animator = {}
 local subscribers = {}
 local running = false
 
-local timer = gears.timer {
+timer = gears.timer {
     timeout   = 1 / power.get_fps(),
     autostart = false,
     callback  = function()
