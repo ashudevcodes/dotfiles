@@ -7,7 +7,7 @@ local naughty = require("naughty")
 local touchpad = require("../wibgets/touchpad")
 
 local launch_browser = function()
-	awful.spawn("zen-browser")
+	awful.spawn("brave")
 end
 local launch_gnome_file = function()
 	awful.spawn("nemo")
