@@ -1,7 +1,6 @@
 local wibox    = require("wibox")
 local cairo    = require("lgi").cairo
 local animator = require("libs.animator")
-local gears    = require("gears")
 
 -------------------------------------------------
 -- CONFIG
@@ -153,13 +152,16 @@ end
 
 local function update_state()
     local data = read_file("/tmp/touchpadState")
-    local enabled = data and data:match("enabled")
+	local disabled = false
+	if data then
+		disabled = data:match("disabled") ~= nil
+	end
 
-    if enabled ~= last_state then
-        last_state = enabled
+    if disabled ~= last_state then
+        last_state = disabled
 
         -- set animation target (0 or 1)
-        target = enabled and 1 or 0
+        target = disabled and 1 or 0
 
         -- bigger pop
         tap_impulse = 0.12
@@ -170,6 +172,7 @@ local function update_state()
     end
 end
 
+update_state()
 
 -------------------------------------------------
 -- RETURN MODULE

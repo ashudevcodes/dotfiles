@@ -17,8 +17,12 @@ local launch_rofi = function()
 end
 
 local touch_pad = function()
-	awful.spawn.with_shell("~/.config/awesome/scripts/disable-touchpad.sh")
-  touchpad.update()
+  awful.spawn.easy_async_with_shell(
+	"~/.config/awesome/scripts/disable-touchpad.sh",
+	function()
+	  touchpad.update()
+	end
+  )
 end
 
 local toggleTopBar = function()
