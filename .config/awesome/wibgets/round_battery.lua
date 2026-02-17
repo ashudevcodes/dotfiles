@@ -100,7 +100,7 @@ battery.draw = function(self, _, cr, width, height)
   gears.shape.rounded_rect(cr,w,h,3)
   cr:clip()
 
-  if self.is_charging or self.percentage < 100 then
+  if self.is_charging and self.percentage <= 100 then
     cr:set_source_rgb(unpack(colors.charging))
   elseif self.percentage <= 10 then
     cr:set_source_rgb(unpack(colors.critical))
