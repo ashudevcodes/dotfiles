@@ -1,33 +1,64 @@
 #!/bin/bash
 
-set -xe
+set -e
+
+HWMON_PATH="/sys/class/hwmon/hwmon6/pwm1_enable"
+
+emit_state() {
+    local mode=$1
+
+    if [[ "$mode" == "on" ]]; then
+        awesome-client 'awesome.emit_signal("fan::state", true)'
+    else
+        awesome-client 'awesome.emit_signal("fan::state", false)'
+    fi
+}
+
+usage() {
+    echo "Usage: lappyFan {on|auto}"
+    echo "Status: lappyFan {state}"
+    exit 1
+}
 
 if [[ $# -ne 1 || ! ($1 == "on" || $1 == "auto" || $1 == "state") ]]; then
-  echo "Usage: lappyFan {on|auto}"
-  echo "Status: lappyFan {state}"
-
-  exit 1
+    usage
 fi
 
+# -------------------------
+# STATE QUERY
+# -------------------------
 if [[ $1 == "state" ]]; then
-  current=$(cat /sys/class/hwmon/hwmon6/pwm1_enable)
+    current=$(cat "$HWMON_PATH")
 
-  if [[ $current == 0 ]]; then
-	echo "Fan is on continuously running state"
-  else
-	echo "Fan is on AUTOMATIC state"
-  fi
+    if [[ $current == 0 ]]; then
+        echo "Fan is on continuously running state"
+        emit_state "on"
+    else
+        echo "Fan is on AUTOMATIC state"
+        emit_state "auto"
+    fi
 
+    exit 0
 fi
 
-	
+# -------------------------
+# FORCE ON
+# -------------------------
 if [[ $1 == "on" ]]; then
-  echo "0" | sudo tee /sys/class/hwmon/hwmon6/pwm1_enable > /dev/null
-  echo "Fan is now set to continuously ON."
+    echo "0" | sudo tee "$HWMON_PATH" > /dev/null
+    echo "Fan is now set to continuously ON."
 
-elif [[ $1 == "auto" ]]; then
-  echo "2" | sudo tee /sys/class/hwmon/hwmon6/pwm1_enable > /dev/null
-  echo "Fan is now set to AUTOMATIC control."
-
+    emit_state "on"
+    exit 0
 fi
 
+# -------------------------
+# AUTO MODE
+# -------------------------
+if [[ $1 == "auto" ]]; then
+    echo "2" | sudo tee "$HWMON_PATH" > /dev/null
+    echo "Fan is now set to AUTOMATIC control."
+
+    emit_state "auto"
+    exit 0
+fi
