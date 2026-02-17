@@ -70,6 +70,27 @@ local function pill(widget, bg)
     }
 end
 
+local taglist_buttons = gears.table.join(
+    awful.button({}, 1, function(t)
+        t:view_only()
+    end),
+
+    awful.button({ modkey }, 1, function(t)
+        if client.focus then
+            client.focus:move_to_tag(t)
+        end
+    end),
+
+    awful.button({}, 3, awful.tag.viewtoggle),
+
+    awful.button({}, 4, function(t)
+        awful.tag.viewnext(t.screen)
+    end),
+
+    awful.button({}, 5, function(t)
+        awful.tag.viewprev(t.screen)
+    end)
+)
 ------------------------------------------------------------
 -- Create Topbar
 ------------------------------------------------------------
@@ -97,6 +118,7 @@ function topbar.create(s)
     local taglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
+		buttons = taglist_buttons,
         layout  = {
             spacing = beautiful.tag_spacing or 6,
             layout  = wibox.layout.fixed.horizontal
@@ -115,7 +137,23 @@ function topbar.create(s)
             },
             id     = "background_role",
             widget = wibox.container.background,
-        }
+
+			 create_callback = function(self)
+			  self:connect_signal("mouse::enter", function()
+				  local w = mouse.current_wibox
+				  if w then
+					  w.cursor = "hand2"
+				  end
+			  end)
+
+			  self:connect_signal("mouse::leave", function()
+				  local w = mouse.current_wibox
+				  if w then
+					  w.cursor = "left_ptr"
+				  end
+			  end)
+		  end
+		  }
     }
 
     --------------------------------------------------------
