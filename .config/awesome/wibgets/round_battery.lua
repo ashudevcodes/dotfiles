@@ -188,11 +188,11 @@ end
 -- UPower DBus Integration
 -------------------------------------------------
 
-local function update_from_upower(proxy)
+local function update_from_upower(proxy, ac_proxy)
 
   local pct   = get_prop(proxy, "Percentage")
   local state = get_prop(proxy, "State")
-  local online = get_prop(proxy, "Online")
+  local online = ac_proxy and get_prop(ac_proxy, "Online")
 
   if pct and pct ~= battery.percentage then
     if pct < battery.percentage then
@@ -234,6 +234,7 @@ end
 local bus = Gio.bus_get_sync(Gio.BusType.SYSTEM)
 
 local battery_path = "/org/freedesktop/UPower/devices/battery_BAT0"
+local ac_path = "/org/freedesktop/UPower/devices/line_power_ACAD"
 
 local proxy = Gio.DBusProxy.new_sync(
   bus,
@@ -245,7 +246,18 @@ local proxy = Gio.DBusProxy.new_sync(
   nil
 )
 
+local ac_proxy = Gio.DBusProxy.new_sync(
+  bus,
+  Gio.DBusProxyFlags.NONE,
+  nil,
+  "org.freedesktop.UPower",
+  ac_path,
+  "org.freedesktop.UPower.Device",
+  nil
+)
+
 proxy:init(nil)
+ac_proxy:init(nil)
 
 update_from_upower(proxy)
 
@@ -257,7 +269,19 @@ bus:signal_subscribe(
   nil,
   Gio.DBusSignalFlags.NONE,
   function()
-    update_from_upower(proxy)
+    update_from_upower(proxy, ac_proxy)
+  end
+)
+
+bus:signal_subscribe(
+  "org.freedesktop.UPower",
+  "org.freedesktop.DBus.Properties",
+  "PropertiesChanged",
+  ac_path,
+  nil,
+  Gio.DBusSignalFlags.NONE,
+  function()
+    update_from_upower(proxy, ac_proxy)
   end
 )
 
