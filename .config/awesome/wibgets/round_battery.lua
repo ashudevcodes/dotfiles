@@ -3,7 +3,9 @@ local gears     = require("gears")
 local awful     = require("awful")
 local beautiful = require("beautiful")
 local naughty   = require("naughty")
-local cairo     = require("lgi").cairo
+local lgi       = require("lgi")
+local cairo     = lgi.cairo
+local Gio       = lgi.Gio
 local animator  = require("libs.animator")
 
 local unpack = table.unpack
@@ -11,14 +13,6 @@ local unpack = table.unpack
 -------------------------------------------------
 -- Helpers
 -------------------------------------------------
-
-local function read_file(path)
-  local f = io.open(path, "r")
-  if not f then return nil end
-  local content = f:read("*all")
-  f:close()
-  return content
-end
 
 local function hex_to_rgb(hex)
   hex = (hex or "#ffffff"):gsub("#", "")
@@ -29,6 +23,12 @@ local function hex_to_rgb(hex)
   }
 end
 
+local function get_prop(proxy, name)
+  local v = proxy:get_cached_property(name)
+  if not v then return nil end
+  return v.value
+end
+
 -------------------------------------------------
 -- Colors
 -------------------------------------------------
@@ -36,7 +36,7 @@ end
 local colors = {
   outline  = hex_to_rgb(beautiful.fg_normal),
   fill     = hex_to_rgb(beautiful.fg_normal),
-  charging = {0.3,0.85,0.4}, -- *same green as before*
+  charging = {0.3,0.85,0.4},
   low      = {1,0.6,0.2},
   critical = {1,0.3,0.3}
 }
@@ -54,9 +54,7 @@ battery.wave_phase        = 0
 battery.interaction_force = 0
 battery.ripple_strength   = 0
 battery.low_notified      = false
-
--- track AC/DC
-battery.on_ac = nil
+battery.on_ac             = nil
 
 -------------------------------------------------
 -- Drawing
@@ -75,7 +73,6 @@ battery.draw = function(self, _, cr, width, height)
   local x = (width - total_w)/2
   local y = (height - b_h)/2
 
-  -- Outline
   cr:set_source_rgb(unpack(colors.outline))
   cr:set_line_width(1)
   cr:save()
@@ -84,7 +81,6 @@ battery.draw = function(self, _, cr, width, height)
   cr:stroke()
   cr:restore()
 
-  -- Nub
   cr:set_source_rgb(unpack(colors.outline))
   cr:save()
   cr:translate(x+b_w+1, y+(b_h-nub_h)/2)
@@ -104,11 +100,8 @@ battery.draw = function(self, _, cr, width, height)
   gears.shape.rounded_rect(cr,w,h,3)
   cr:clip()
 
-  -- Determine fill color
-  if self.is_charging and self.percentage < 100 then
+  if self.is_charging or self.percentage < 100 then
     cr:set_source_rgb(unpack(colors.charging))
-  elseif self.is_charging then
-  cr:set_source_rgb(unpack((colors.charging)))
   elseif self.percentage <= 10 then
     cr:set_source_rgb(unpack(colors.critical))
   elseif self.percentage <= 20 then
@@ -117,11 +110,10 @@ battery.draw = function(self, _, cr, width, height)
     cr:set_source_rgb(unpack(colors.fill))
   end
 
-  -- Wave amplitude logic
   local wave_amp = 0
 
   if self.is_charging and self.percentage < 100 then
-    wave_amp = 1.5 -- wave while charging
+    wave_amp = 1.5
   end
 
   wave_amp = wave_amp
@@ -155,35 +147,26 @@ end
 -------------------------------------------------
 
 local function animation_step()
-  -- advance wave always
+
   battery.wave_phase = battery.wave_phase + 0.15
-
-  -- interaction residue
   battery.interaction_force = battery.interaction_force * 0.90
+  battery.ripple_strength   = battery.ripple_strength * 0.92
 
-  -- ripple fade
-  battery.ripple_strength = battery.ripple_strength * 0.92
-
-  -- smooth percentage
   battery.display_pct =
     battery.display_pct +
     (battery.percentage - battery.display_pct) * 0.08
 
-  -- Should we keep animating?
   local active = false
 
-  -- keep animating if charging & not full
   if battery.is_charging and battery.percentage < 100 then
     active = true
   end
 
-  -- interaction + ripple
   if battery.interaction_force > 0.01
      or battery.ripple_strength > 0.01 then
     active = true
   end
 
-  -- percent catching up
   if math.abs(battery.display_pct - battery.percentage) > 0.1 then
     active = true
   end
@@ -202,71 +185,81 @@ function anim_obj:update()
 end
 
 -------------------------------------------------
--- Update Logic
+-- UPower DBus Integration
 -------------------------------------------------
 
-function battery:update()
+local function update_from_upower(proxy)
 
-  local capacity = read_file("/sys/class/power_supply/BAT0/capacity")
-  local status   = read_file("/sys/class/power_supply/BAT0/status")
-  local ac_online = read_file("/sys/class/power_supply/ACAD/online")
+  local pct   = get_prop(proxy, "Percentage")
+  local state = get_prop(proxy, "State")
+  local online = get_prop(proxy, "Online")
 
-  if capacity then
-    local pct = tonumber(capacity)
-    if pct and pct ~= self.percentage then
-      local dropping = pct < self.percentage
-      if dropping then
-        self.ripple_strength = self.ripple_strength + 1.0
-      end
-      self.percentage = pct
-      animator.subscribe(anim_obj)
-      animator.activate()
+  if pct and pct ~= battery.percentage then
+    if pct < battery.percentage then
+      battery.ripple_strength = battery.ripple_strength + 1.0
     end
+    battery.percentage = pct
+    animator.subscribe(anim_obj)
+    animator.activate()
   end
 
-  if status then
-    local charging_now =
-      status:match("Charging") or status:match("Full")
+  -- UPower state enum:
+  -- 1 = charging
+  -- 2 = discharging
+  -- 4 = fully charged
 
-    -- AC/DC change detection
-    local on_ac = ac_online and tonumber(ac_online) == 1
+  local charging_now = (state == 1 or state == 4)
 
-    if on_ac ~= self.on_ac then
-      self.on_ac = on_ac
-      self.ripple_strength = self.ripple_strength + 1.2
-      animator.subscribe(anim_obj)
-      animator.activate()
-    end
-
-    if charging_now ~= self.is_charging then
-      self.is_charging = charging_now
-      animator.subscribe(anim_obj)
-      animator.activate()
-    end
+  if charging_now ~= battery.is_charging then
+    battery.is_charging = charging_now
+    animator.subscribe(anim_obj)
+    animator.activate()
   end
 
-  -- low battery notification
-  if self.percentage <= 20 and not self.low_notified then
-    naughty.notify{title="Battery Low",text=self.percentage.."%"}
-    self.low_notified = true
-  elseif self.percentage > 25 then
-    self.low_notified = false
+  if online ~= battery.on_ac then
+    battery.on_ac = online
+    battery.ripple_strength = battery.ripple_strength + 1.2
+    animator.subscribe(anim_obj)
+    animator.activate()
+  end
+
+  if battery.percentage <= 20 and not battery.low_notified then
+    naughty.notify{title="Battery Low", text=battery.percentage.."%"}
+    battery.low_notified = true
+  elseif battery.percentage > 25 then
+    battery.low_notified = false
   end
 end
 
--------------------------------------------------
--- Polling
--------------------------------------------------
+local bus = Gio.bus_get_sync(Gio.BusType.SYSTEM)
 
-gears.timer {
-  timeout = 4, -- check every 5s
-  autostart = true,
-  callback = function()
-    battery:update()
+local battery_path = "/org/freedesktop/UPower/devices/battery_BAT0"
+
+local proxy = Gio.DBusProxy.new_sync(
+  bus,
+  Gio.DBusProxyFlags.NONE,
+  nil,
+  "org.freedesktop.UPower",
+  battery_path,
+  "org.freedesktop.UPower.Device",
+  nil
+)
+
+proxy:init(nil)
+
+update_from_upower(proxy)
+
+bus:signal_subscribe(
+  "org.freedesktop.UPower",
+  "org.freedesktop.DBus.Properties",
+  "PropertiesChanged",
+  battery_path,
+  nil,
+  Gio.DBusSignalFlags.NONE,
+  function()
+    update_from_upower(proxy)
   end
-}
-
-battery:update()
+)
 
 -------------------------------------------------
 -- Interaction
@@ -275,12 +268,20 @@ battery:update()
 local notification
 
 battery:connect_signal("mouse::enter", function()
+  local w = mouse.current_wibox
+  if w then
+    w.cursor = "hand2"
+  end
   battery.interaction_force = battery.interaction_force + 0.6
   animator.subscribe(anim_obj)
   animator.activate()
 end)
 
 battery:connect_signal("mouse::leave", function()
+  local w = mouse.current_wibox
+  if w then
+    w.cursor = "left_ptr"
+  end
   if notification then naughty.destroy(notification) end
 end)
 
