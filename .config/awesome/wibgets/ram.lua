@@ -28,7 +28,7 @@ local function worker(user_args)
 		display_labels = true,
 		forced_height = widget_height,
 		forced_width = widget_width,
-		widget = wibox.widget.piechart
+		widget = wibox.widget.piechart,
 	}
 
 	local popup           = awful.popup {
@@ -97,7 +97,27 @@ local function worker(user_args)
 		)
 	)
 
-	return ramgraph_widget
+  local ram_container = wibox.widget {
+	ramgraph_widget,
+	widget = wibox.container.background
+  }
+
+  ram_container:connect_signal("mouse::enter", function()
+	local w = mouse.current_wibox
+	if w then
+	  w.cursor = "hand2"
+	end
+  end)
+
+  ram_container:connect_signal("mouse::leave", function()
+	local w = mouse.current_wibox
+	if w then
+	  w.cursor = "left_ptr"
+	end
+  end)
+
+  return ram_container
+
 end
 
 
