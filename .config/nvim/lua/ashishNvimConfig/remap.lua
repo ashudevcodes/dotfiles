@@ -3,6 +3,10 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
 vim.keymap.set("n", "<C-S>", ":update<CR>", { noremap = true, silent = true, desc = "Save file if modified" })
 
+vim.keymap.set('n', '<leader>d', function()
+  vim.diagnostic.open_float()
+end)
+
 vim.keymap.set("n", "<A-l>", ":bnext<CR>")
 vim.keymap.set("n", "<A-h>", ":bprev<CR>")
 
