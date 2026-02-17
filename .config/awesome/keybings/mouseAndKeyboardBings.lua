@@ -135,11 +135,11 @@ globalkeys = gears.table.join(
 		if dpms_enabled then
 			awful.spawn("xset s off -dpms")
 			dpms_enabled = false
-			naughty.notify({ text = "Screen timeout disabled" })
+			naughty.notify({title ="Display", text = "Screen timeout disabled" })
 		else
 			awful.spawn("xset s on +dpms")
 			dpms_enabled = true
-			naughty.notify({ text = "Screen timeout enabled" })
+			naughty.notify({title ="Display", text = "Screen timeout enabled" })
 		end
 	end, { description = "toggle screen timeout", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
