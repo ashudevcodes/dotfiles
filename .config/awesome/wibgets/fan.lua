@@ -15,7 +15,7 @@ local path_to_icons = home .. "/.local/icon/fan/"
 local size = 32
 
 local inertia     = 0.08
-local damping     = 0.35
+local damping     = 0.10
 local torque_gain = 1.0
 
 -------------------------------------------------
