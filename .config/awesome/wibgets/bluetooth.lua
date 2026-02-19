@@ -69,10 +69,6 @@ local function update_from_bluez()
   end
 end
 
--------------------------------------------------
--- Initial check
--------------------------------------------------
-update_from_bluez()
 
 -------------------------------------------------
 -- Listen for Property Changes

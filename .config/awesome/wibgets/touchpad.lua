@@ -186,7 +186,7 @@ local function update_state()
 end
 
 -- initial state check
-update_state()
+-- update_state()
 
 -------------------------------------------------
 -- RETURN MODULE
