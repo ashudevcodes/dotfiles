@@ -184,7 +184,7 @@ function topbar.create(s)
     right_layout:add(wibox.widget.systray())
 
     -- Toggle wifi pill visibility based on connection status
-  awesome.connect_signal("net::wireless_status", function(connected, level)
+  awesome.connect_signal("net::wireless_status", function(connected)
 	  wifi_pill.visible = connected
   end)
 
