@@ -1,1 +1,7 @@
-sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
+#!/bin/bash
+
+for ((i = 0; i < 5; i++)); do
+  sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
+  echo "Times $i"
+  sleep 1
+done
