@@ -39,7 +39,7 @@ end)
 require("./keybings/mouseAndKeyboardBings")
 require("./rules/rules")
 require("./signals/signals")
-require("./wibgets/bluetooth")
+-- require("./wibgets/bluetooth")
 
 ------------------------------------------------------------
 -- Periodic GC
