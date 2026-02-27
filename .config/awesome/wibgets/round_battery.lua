@@ -50,11 +50,11 @@ local battery = wibox.widget.base.make_widget()
 battery.percentage        = 0
 battery.display_pct       = 0
 battery.is_charging       = false
+battery.energyrate        = 0
 battery.wave_phase        = 0
 battery.interaction_force = 0
 battery.ripple_strength   = 0
 battery.low_notified      = false
-battery.on_ac             = nil
 
 -------------------------------------------------
 -- Drawing
@@ -113,7 +113,11 @@ battery.draw = function(self, _, cr, width, height)
   local wave_amp = 0
 
   if self.is_charging and self.percentage < 100 then
-    wave_amp = 1.5
+	-- convert percentage in to decimal
+	-- invert decimal value base 0 or 100
+	-- if battery percentage 0 -> 1.0 else if 100 -> 0.0
+	-- then scale it in to max value
+    wave_amp = 2 * (1 - self.percentage / 100)
   end
 
   wave_amp = wave_amp
@@ -188,11 +192,10 @@ end
 -- UPower DBus Integration
 -------------------------------------------------
 
-local function update_from_upower(proxy, ac_proxy)
+local function update_from_upower(proxy)
 
   local pct   = get_prop(proxy, "Percentage")
   local state = get_prop(proxy, "State")
-  local online = ac_proxy and get_prop(ac_proxy, "Online")
 
   if pct and pct ~= battery.percentage then
     if pct < battery.percentage then
@@ -212,16 +215,11 @@ local function update_from_upower(proxy, ac_proxy)
 
   if charging_now ~= battery.is_charging then
     battery.is_charging = charging_now
-    animator.subscribe(anim_obj)
-    animator.activate()
+	battery.ripple_strength = battery.ripple_strength + 1.2
+	animator.subscribe(anim_obj)
+	animator.activate()
   end
 
-  if online ~= battery.on_ac then
-    battery.on_ac = online
-    battery.ripple_strength = battery.ripple_strength + 1.2
-    animator.subscribe(anim_obj)
-    animator.activate()
-  end
 
   if battery.percentage <= 20 and not battery.low_notified then
     naughty.notify{title="Battery Low", text=battery.percentage.."%"}
@@ -234,7 +232,6 @@ end
 local bus = Gio.bus_get_sync(Gio.BusType.SYSTEM)
 
 local battery_path = "/org/freedesktop/UPower/devices/battery_BAT0"
-local ac_path = "/org/freedesktop/UPower/devices/line_power_ACAD"
 
 local proxy = Gio.DBusProxy.new_sync(
   bus,
@@ -246,18 +243,8 @@ local proxy = Gio.DBusProxy.new_sync(
   nil
 )
 
-local ac_proxy = Gio.DBusProxy.new_sync(
-  bus,
-  Gio.DBusProxyFlags.NONE,
-  nil,
-  "org.freedesktop.UPower",
-  ac_path,
-  "org.freedesktop.UPower.Device",
-  nil
-)
 
 proxy:init(nil)
-ac_proxy:init(nil)
 
 update_from_upower(proxy)
 
@@ -269,22 +256,17 @@ bus:signal_subscribe(
   nil,
   Gio.DBusSignalFlags.NONE,
   function()
-    update_from_upower(proxy, ac_proxy)
+    update_from_upower(proxy)
   end
 )
 
-bus:signal_subscribe(
-  "org.freedesktop.UPower",
-  "org.freedesktop.DBus.Properties",
-  "PropertiesChanged",
-  ac_path,
-  nil,
-  Gio.DBusSignalFlags.NONE,
-  function()
-    update_from_upower(proxy, ac_proxy)
-  end
-)
+function getEnergyRate(proxy)
+  local eng_rate = get_prop(proxy,"EnergyRate")
 
+  if eng_rate then
+	battery.energyrate = eng_rate
+  end
+end
 -------------------------------------------------
 -- Interaction
 -------------------------------------------------
@@ -310,14 +292,15 @@ battery:connect_signal("mouse::leave", function()
 end)
 
 battery:connect_signal("button::press", function()
+  getEnergyRate(proxy)
   battery.interaction_force = battery.interaction_force + 1.3
   animator.subscribe(anim_obj)
   animator.activate()
 
   if notification then naughty.destroy(notification) end
   notification = naughty.notify{
-    title = "Battery",
-    text  = battery.percentage.."%",
+    title = "Battery Info",
+    text  = "Percentage: ".. math.tointeger(battery.percentage).."%" .. "\n" .. "Energy Rate: ".. battery.energyrate .. " W",
     timeout = 4,
     screen = awful.screen.focused()
   }
