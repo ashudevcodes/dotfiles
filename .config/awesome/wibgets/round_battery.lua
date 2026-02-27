@@ -50,7 +50,6 @@ local battery = wibox.widget.base.make_widget()
 battery.percentage        = 0
 battery.display_pct       = 0
 battery.is_charging       = false
-battery.energyrate        = 0
 battery.wave_phase        = 0
 battery.interaction_force = 0
 battery.ripple_strength   = 0
@@ -260,12 +259,28 @@ bus:signal_subscribe(
   end
 )
 
+function getTimeToEmpty(proxy)
+  local time = get_prop(proxy, "TimeToEmpty")
+
+  if not time or time <= 0 then
+    return "N/A"
+  end
+
+  local hours = math.floor(time / 3600)
+  local mins = math.floor((time % 3600) / 60)
+
+  if hours > 0 then
+    return string.format("%dh%dm", hours, mins)
+  else
+    return string.format("%dm", mins)
+  end
+
+end
+
 function getEnergyRate(proxy)
   local eng_rate = get_prop(proxy,"EnergyRate")
 
-  if eng_rate then
-	battery.energyrate = eng_rate
-  end
+  return eng_rate
 end
 -------------------------------------------------
 -- Interaction
@@ -292,17 +307,18 @@ battery:connect_signal("mouse::leave", function()
 end)
 
 battery:connect_signal("button::press", function()
-  getEnergyRate(proxy)
+  local eng_rate = getEnergyRate(proxy)
+  local time_to_empty = getTimeToEmpty(proxy)
   battery.interaction_force = battery.interaction_force + 1.3
   animator.subscribe(anim_obj)
   animator.activate()
 
   if notification then naughty.destroy(notification) end
   notification = naughty.notify{
-    title = "Battery Info",
-    text  = "Percentage: ".. math.tointeger(battery.percentage).."%" .. "\n" .. "Energy Rate: ".. battery.energyrate .. " W",
-    timeout = 4,
-    screen = awful.screen.focused()
+	title = "Battery" .. ": " .. math.tointeger(battery.percentage).."%",
+	text  = "Energy Rate: ".. eng_rate .. " W\nTime Remaining: " .. time_to_empty,
+	timeout = 4,
+	screen = awful.screen.focused()
   }
 end)
 
