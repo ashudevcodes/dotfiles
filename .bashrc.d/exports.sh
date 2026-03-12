@@ -2,6 +2,8 @@
 export JAVA_HOME="$HOME/.share/android-studio/jbr"
 export PATH="$JAVA_HOME/bin:$PATH"
 
+export PATH="$HOME/code/github/goroot/bin:$PATH"
+
 # Android SDK platform tools
 if [ -d "$HOME/Android/Sdk/platform-tools" ]; then
     PATH="$HOME/Android/Sdk/platform-tools:$PATH"
