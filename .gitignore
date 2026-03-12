@@ -29,6 +29,7 @@
 .config/qt5ct
 .config/awesome/devTest
 .config/BraveSoftware
+.config/gh
 
 .local/bin/yt-dlp
 .local/bin/opencode
