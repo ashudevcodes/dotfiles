@@ -14,7 +14,6 @@ local function worker(args)
     args            = args or {}
     local interface = args.interface or "wlan0"
     local timeout   = args.timeout or 5
-    local onclick   = args.onclick
 
     local widget = wibox.layout.fixed.horizontal()
     local net_icon = wibox.widget.imagebox()
@@ -170,11 +169,6 @@ local function worker(args)
         autostart = true,
         callback  = net_update
     }
-
-    if onclick then
-        widget:buttons(awful.button({}, 1,
-            function() awful.spawn(onclick) end))
-    end
 
     return widget
 end

@@ -7,7 +7,7 @@ local dpi = xresources.apply_dpi
 beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
 
 beautiful.wallpaper                          = "/home/nemo/assets/portal_robot.png"
-beautiful.font                               = "JetBrains Mono Bold 11"
+beautiful.font                               = "JetBrainsMono Nerd Font SemiBold 11"
 
 -- background
 beautiful.bg_normal                          = "#1a1b26"
@@ -34,12 +34,12 @@ beautiful.wibar_shape                        = function(cr, width, height)
 end
 
 -- hotkey popus
-beautiful.hotkeys_font                       = "JetBrains Mono 10"
+beautiful.hotkeys_font                       = "JetBrainsMono Nerd Font SemiBold 11"
 beautiful.hotkeys_bg                         = "#1a1b26"
 beautiful.hotkeys_fg                         = "#c0caf5"
 beautiful.hotkeys_modifiers_fg               = beautiful.get().fg_urgent
 beautiful.hotkeys_label_fg                   = "black"
-beautiful.hotkeys_description_font           = "JetBrains Mono 10"
+beautiful.hotkeys_description_font           =  "JetBrainsMono Nerd Font SemiBold 10"
 
 -- Borders
 beautiful.border_normal                      = "#565f89"
@@ -52,7 +52,7 @@ naughty.config.defaults.icon_size            = dpi(42)
 naughty.config.defaults.position             = "top_right"
 naughty.config.defaults.timeout              = 6
 naughty.config.defaults.hover_timeout        = 0.3
-naughty.config.defaults.font                 = "JetBrains Mono 10"
+naughty.config.defaults.font                 = "JetBrainsMono Nerd Font 11"
 naughty.config.defaults.notification_opacity = 95
 naughty.config.defaults.bg                   = "#1a1b26"
 naughty.config.defaults.fg                   = "#c0caf5"
