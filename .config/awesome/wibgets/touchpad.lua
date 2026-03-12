@@ -59,7 +59,7 @@ local function draw_icon(custom_size, force_disabled,custom_corner)
     local m = s * 0.12
     local w = s - 2 * m
     local h = s * 0.72
-    local corner = custom_corner or 3
+    local corner = custom_corner or 2.6
     local y_offset = (s - h) / 2
     local scale = 1 - 0.04 * draw_progress + tap_impulse
 
@@ -152,7 +152,7 @@ end
 local function send_notification(disabled)
     local big_icon = draw_icon(60, disabled, 8)
     naughty.notify({
-        title = "Touchpad",
+        title = "TouchPad",
         text = disabled and "Disabled" or "Enabled",
         icon = big_icon,
         icon_size = 40,

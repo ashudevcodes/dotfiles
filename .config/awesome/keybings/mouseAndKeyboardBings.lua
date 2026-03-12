@@ -135,11 +135,13 @@ globalkeys = gears.table.join(
 		if dpms_enabled then
 			awful.spawn("xset s off -dpms")
 			dpms_enabled = false
-			naughty.notify({title ="Screen Timeout", text = "Disabled" })
+            awesome.emit_signal("wakeup::screen_state", dpms_enabled)
+			naughty.notify({title ="WakeUp Mode", text = "Disabled." })
 		else
 			awful.spawn("xset s on +dpms")
 			dpms_enabled = true
-			naughty.notify({title ="Screen Timeout", text = "Enabled" })
+            awesome.emit_signal("wakeup::screen_state", dpms_enabled)
+			naughty.notify({title ="WakeUp Mode", text = "Enabled." })
 		end
 	end, { description = "toggle screen timeout", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
@@ -151,7 +153,7 @@ globalkeys = gears.table.join(
 	end, { description = "go back", group = "client" }),
 
 	awful.key({ modkey }, "Return", function()
-	awful.spawn("xterm")
+	awful.spawn("uxterm")
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Shift" }, "Return", function()
 	awful.spawn(terminal)

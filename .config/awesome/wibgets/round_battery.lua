@@ -221,7 +221,7 @@ local function update_from_upower(proxy)
 
 
   if battery.percentage <= 20 and not battery.low_notified then
-    naughty.notify{title="Battery Low", text=battery.percentage.."%"}
+    naughty.notify{title="Battery " .. battery.percentage .."%".. " Low"}
     battery.low_notified = true
   elseif battery.percentage > 25 then
     battery.low_notified = false
@@ -270,7 +270,7 @@ function getTimeToEmpty(proxy)
   local mins = math.floor((time % 3600) / 60)
 
   if hours > 0 then
-    return string.format("%dh%dm", hours, mins)
+    return string.format("%dh:%dm", hours, mins)
   else
     return string.format("%dm", mins)
   end
@@ -317,7 +317,7 @@ battery:connect_signal("button::press", function()
   notification = naughty.notify{
 	title = "Battery" .. ": " .. math.tointeger(battery.percentage).."%",
 	text  = "Energy Rate: ".. eng_rate .. " W\nTime Remaining: " .. time_to_empty,
-	timeout = 4,
+	timeout = 0,
 	screen = awful.screen.focused()
   }
 end)

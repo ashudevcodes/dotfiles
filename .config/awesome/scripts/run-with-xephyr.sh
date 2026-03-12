@@ -25,7 +25,7 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
 fi
 
 echo "Starting Xephyr on DISPLAY=:$DISPLAY_NUM..."
-Xephyr :$DISPLAY_NUM -ac -br -noreset -screen 1920x1080 &
+Xephyr :$DISPLAY_NUM -ac -br -noreset -screen 1280x720  &
 XEPHYR_PID=$!
 
 # Wait for Xephyr to be ready

@@ -11,43 +11,13 @@ local touchpad    = require("../wibgets/touchpad")
 
 local topbar = {}
 
-------------------------------------------------------------
--- Power Mode Detection
-------------------------------------------------------------
-
-local power_save_mode = false
-
-local function read_file(path)
-    local f = io.open(path, "r")
-    if not f then return nil end
-    local c = f:read("*all")
-    f:close()
-    return c
-end
-
-local function detect_power_mode()
-    local ac = read_file("/sys/class/power_supply/AC/online")
-    power_save_mode = not (ac and tonumber(ac) == 1)
-    awesome.emit_signal("power::changed", power_save_mode)
-end
-
-detect_power_mode()
-
-gears.timer {
-    timeout   = beautiful.power_check_timeout or 15,
-    autostart = true,
-    callback  = detect_power_mode
+local cup = wibox.widget{
+    markup = "  ",
+	font = "JetBrainsMono 16",
+    halign = "top",
+    valign = "right",
+    widget = wibox.widget.textbox
 }
-
-------------------------------------------------------------
--- Poll Timeout Helper
-------------------------------------------------------------
-
-local function poll_timeout()
-    return power_save_mode and (beautiful.poll_timeout_high or 15)
-                              or (beautiful.poll_timeout_low  or 5)
-end
-
 ------------------------------------------------------------
 -- Simple Pill Container
 ------------------------------------------------------------
@@ -58,8 +28,8 @@ local function pill(widget, bg)
             widget,
             left   = beautiful.widget_pad_x or 8,
             right  = beautiful.widget_pad_x or 8,
-            top    = beautiful.widget_pad_y or 4,
-            bottom = beautiful.widget_pad_y or 4,
+            top    = beautiful.widget_pad_y or 7*1/2,
+            bottom = beautiful.widget_pad_y or 7*1/2,
             widget = wibox.container.margin
         },
         bg     = bg or beautiful.bg_normal,
@@ -160,14 +130,20 @@ function topbar.create(s)
     -- Widgets
     --------------------------------------------------------
 
-    local ram_widget   = ram({ timeout = poll_timeout() })
+    local ram_widget   = ram()
     local battery_w    = battery
     local fan_widget   = fanwibox
     local touch_widget = touchpad.widget
+	local wire_net = net_widgets.wireless()
 
-    local wire_net = net_widgets.wireless()
+  local widgets_table = {
+	{1,pill(battery_w),true},
+	{2,pill(fan_widget),true},
+	{3,pill(touch_widget),true},
+	{4,pill(wire_net),true},
+	{5,pill(cup),true},
+  }
 
-    local wifi_pill = pill(wire_net)
 
     --------------------------------------------------------
     -- Right Layout
@@ -176,17 +152,36 @@ function topbar.create(s)
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout.spacing = beautiful.widget_spacing or 8
 
-    right_layout:add(pill(battery_w," "))
-    right_layout:add(pill(fan_widget, " "))
-    right_layout:add(pill(touch_widget, " "))
-    right_layout:add(wifi_pill)
-    right_layout:add(pill(wibox.widget.textclock(nil, 60)))
-    right_layout:add(wibox.widget.systray())
 
-    -- Toggle wifi pill visibility based on connection status
-  awesome.connect_signal("net::wireless_status", function(connected)
-	  wifi_pill.visible = connected
+
+    right_layout:insert(widgets_table[1][1],widgets_table[1][2])
+    right_layout:insert(widgets_table[2][1],widgets_table[2][2])
+    right_layout:insert(widgets_table[3][1],widgets_table[3][2])
+
+  awesome.connect_signal("net::wireless_status", function(connected,level)
+	print(level,connected)
+	if level > 0 then
+	  if  widgets_table[4][3] == true then
+		right_layout:insert(widgets_table[4][1],widgets_table[4][2])
+		widgets_table[4][3] = false
+	  end
+	elseif level == 0 then
+	  widgets_table[4][3] = true
+	  right_layout:remove_widgets(widgets_table[4][2])
+	end
   end)
+
+  awesome.connect_signal("wakeup::screen_state",function (dpms_enabled)
+	if dpms_enabled then
+	  widgets_table[5][3] = false
+	  right_layout:insert(1,widgets_table[5][2])
+	elseif widgets_table[5][3] == false then
+	  right_layout:remove_widgets(widgets_table[5][2])
+	end
+  end )
+
+  right_layout:add(pill(wibox.widget.textclock(nil, 60)))
+    right_layout:add(wibox.widget.systray())
 
     --------------------------------------------------------
     -- Wibar
@@ -195,8 +190,7 @@ function topbar.create(s)
     s.topbar = awful.wibar {
         screen   = s,
         position = "top",
-		height   = beautiful.topbar_height or 26,
-		margins = 6,
+		margins = 8,
         stretch  = true
     }
 
