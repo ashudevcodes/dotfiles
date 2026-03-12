@@ -1,4 +1,4 @@
-command_timeout = 1000
+command_timeout = 100
 add_newline = false
 
 format = """
@@ -9,7 +9,6 @@ $git_branch\
 $git_status \
 $python\
 $aws\
-$golang\
 $java\
 $c\
 $nodejs\
@@ -26,27 +25,23 @@ $memory_usage\
 $docker_context\
 (#1C3A5E)$cmd_duration
 [|](bold green)
-[└─ $shell> ](bold green)
-
+[└─$shell](bold green)
 """
 
 continuation_prompt = '▶▶ '
 
 [shell]
 disabled = false
-bash_indicator = ""
-style = 'bold green'
+bash_indicator = ' '
 
 [cmd_duration]
 format = 'last command: [$duration](bold yellow)'
 
 [os]
-format = '[$symbol](bold white) '   
-style = "bold green"
 disabled = false
 
 [os.symbols]
-Arch = '[](bold green)' 
+Arch = ' ' 
 
 # Shows the hostname
 [hostname]
@@ -61,32 +56,31 @@ fish_style_pwd_dir_length=2
 truncation_symbol = '…/'
 home_symbol = '[󰋜:~'
 read_only_style = '197'
-read_only = ' '
+read_only = '  '
 format = '[$path]($style)[$read_only]($read_only_style) '
 
 # Shows current git branch
 [git_branch]
 symbol = "  "
-format = '[$symbol$branch ]($style)'
+format = '[$symbol$branch]($style)'
 truncation_length = 4
 truncation_symbol = '…/'
 style = 'bold green'
 
 # Shows current git status
 [git_status]
-format = '[$all_status$ahead_behind]($style) '
+format = '[$all_status $ahead_behind]($style)'
 style = 'bold green'
-conflicted = ''
-up_to_date = ''
+conflicted = '  '
 untracked = ' 󰶯 '
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
-stashed = ' 󰏖'
+stashed = ' 󰏖 '
 modified = '  ' 
 staged = '[++\($count\)](green)'
-renamed = '󰑕 '
-deleted = ' '
+renamed = ' 󰑕 '
+deleted = '  '
 
 
 # ---
