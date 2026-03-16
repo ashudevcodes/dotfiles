@@ -1,22 +1,26 @@
 #!/bin/bash
 
-declare -i ID
 ID=$(xinput list | grep -Eio '(touchpad|glidepoint)\s*id=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}')
 
 if [ -z "$ID" ]; then
-    echo "No touchpad device found"
-    exit 1
+  echo "No touchpad device found" >&2
+  exit 1
 fi
 
-declare -i STATE
 STATE=$(xinput list-props "$ID" | grep 'Device Enabled' | awk '{print $4}')
-if [ "$STATE" -eq 1 ]
-then
-    xinput disable "$ID"
-    echo "Touchpad disabled."
-	echo "disabled" > /tmp/touchpadState
+
+if [ -z "$STATE" ]; then
+  echo "Could not read touchpad state" >&2
+  exit 1
+fi
+
+if [ "$STATE" -eq 1 ]; then
+  xinput disable "$ID"
+  echo "disabled" > /tmp/touchpadState
+  nohup unclutter > /dev/null 2>&1 &
+  disown
 else
-    xinput enable "$ID"
-    echo "Touchpad enabled."
-	echo "enabled" > /tmp/touchpadState
+  xinput enable "$ID"
+  echo "enabled" > /tmp/touchpadState
+  killall unclutter 2>/dev/null || true
 fi
