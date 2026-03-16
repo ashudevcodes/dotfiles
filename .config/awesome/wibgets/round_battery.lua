@@ -53,7 +53,6 @@ battery.is_charging       = false
 battery.wave_phase        = 0
 battery.interaction_force = 0
 battery.ripple_strength   = 0
-battery.low_notified      = false
 
 -------------------------------------------------
 -- Drawing
@@ -220,12 +219,17 @@ local function update_from_upower(proxy)
   end
 
 
-  if battery.percentage <= 20 and not battery.low_notified then
-    naughty.notify{title="Battery " .. battery.percentage .."%".. " Low"}
-    battery.low_notified = true
-  elseif battery.percentage > 25 then
-    battery.low_notified = false
+  if battery.percentage < 15 and battery.percentage > 10 then
+	naughty.notify({
+	  title="Battery low " .. battery.percentage .."%"
+	})
+  elseif battery.percentage < 10 then
+	naughty.notify({
+	  preset = naughty.config.presets.critical,
+	  title="Battery critical " .. battery.percentage .."%"
+	})
   end
+
 end
 
 local bus = Gio.bus_get_sync(Gio.BusType.SYSTEM)
@@ -261,18 +265,25 @@ bus:signal_subscribe(
 
 function getTimeToEmpty(proxy)
   local time = get_prop(proxy, "TimeToEmpty")
+  local full_or_empty = "Time Remaining"
+
+  if not time then
+  	full_or_empty = "Time to full"
+  end
 
   if not time or time <= 0 then
-    return "N/A"
+    time = get_prop(proxy,"TimeToFull")
   end
 
   local hours = math.floor(time / 3600)
   local mins = math.floor((time % 3600) / 60)
 
   if hours > 0 then
-    return string.format("%dh:%dm", hours, mins)
+	return string.format("%s: %dh:%dm", full_or_empty, hours, mins)
+  elseif mins > 0 then
+	return string.format("%s: %dm", full_or_empty, mins)
   else
-    return string.format("%dm", mins)
+	return string.format("%s", "100% — Fully charged")
   end
 
 end
@@ -316,7 +327,7 @@ battery:connect_signal("button::press", function()
   if notification then naughty.destroy(notification) end
   notification = naughty.notify{
 	title = "Battery" .. ": " .. math.tointeger(battery.percentage).."%",
-	text  = "Energy Rate: ".. eng_rate .. " W\nTime Remaining: " .. time_to_empty,
+	text  = "Energy Rate: ".. eng_rate .. " W\n" .. time_to_empty,
 	timeout = 0,
 	screen = awful.screen.focused()
   }
