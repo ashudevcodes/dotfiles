@@ -158,7 +158,7 @@ local function worker(args)
             current_connected = connected
             start_animation()
 
-            awesome.emit_signal("net::wireless_status", connected, level)
+            awesome.emit_signal("net::wireless_status", level)
         end
     end
 
