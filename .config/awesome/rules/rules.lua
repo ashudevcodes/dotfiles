@@ -27,6 +27,10 @@ awful.rules.rules = {
 		properties = { size_hints_honor = false }
 	},
 	{
+		rule = { class = "xterm" },
+		properties = { size_hints_honor = false }
+	},
+	{
 		rule = { class = "Inkscape" },
 		properties = { floating = false, maximized = false },
 	},
