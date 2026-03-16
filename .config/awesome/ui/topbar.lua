@@ -13,7 +13,7 @@ local topbar = {}
 
 local cup = wibox.widget{
     markup = "  ",
-	font = "JetBrainsMono 16",
+	font = "JetBrainsMono 14",
     halign = "top",
     valign = "right",
     widget = wibox.widget.textbox
@@ -158,8 +158,7 @@ function topbar.create(s)
     right_layout:insert(widgets_table[2][1],widgets_table[2][2])
     right_layout:insert(widgets_table[3][1],widgets_table[3][2])
 
-  awesome.connect_signal("net::wireless_status", function(connected,level)
-	print(level,connected)
+  awesome.connect_signal("net::wireless_status", function(level)
 	if level > 0 then
 	  if  widgets_table[4][3] == true then
 		right_layout:insert(widgets_table[4][1],widgets_table[4][2])
