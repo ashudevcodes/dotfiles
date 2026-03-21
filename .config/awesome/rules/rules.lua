@@ -23,6 +23,10 @@ awful.rules.rules = {
 		properties = { floating = false, maximized = false },
 	},
 	{
+		rule = { class = "localsend" },
+		properties = { floating = true, maximized = false },
+	},
+	{
 		rule = { class = "UXTerm" },
 		properties = { size_hints_honor = false }
 	},
