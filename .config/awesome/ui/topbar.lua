@@ -28,13 +28,13 @@ local function pill(widget, bg)
             widget,
             left   = beautiful.widget_pad_x or 8,
             right  = beautiful.widget_pad_x or 8,
-            top    = beautiful.widget_pad_y or 7*1/2,
-            bottom = beautiful.widget_pad_y or 7*1/2,
+            top    = beautiful.widget_pad_y or 9*1/2,
+            bottom = beautiful.widget_pad_y or 9*1/2,
             widget = wibox.container.margin
         },
         bg     = bg or beautiful.bg_normal,
         shape  = beautiful.widget_shape or function(cr, w, h)
-            gears.shape.rounded_rect(cr, w, h, h / 2)
+            gears.shape.rounded_rect(cr, w, h, 8)
         end,
         widget = wibox.container.background
     }
@@ -101,12 +101,13 @@ function topbar.create(s)
                 },
                 left   = beautiful.tag_margin_x or 12,
                 right  = beautiful.tag_margin_x or 12,
-                top    = beautiful.tag_margin_y or 6,
-                bottom = beautiful.tag_margin_y or 6,
-                widget = wibox.container.margin
+                top    =  12*1/2,
+                bottom =  12*1/2,
+                widget = wibox.container.margin,
             },
             id     = "background_role",
             widget = wibox.container.background,
+
 
 			 create_callback = function(self)
 			  self:connect_signal("mouse::enter", function()
