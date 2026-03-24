@@ -1,49 +1,91 @@
 #!/bin/bash
+set -e
 
-set -xe 
+BOLD='\033[1m';
+RESET='\033[0m';
+BLUE='\033[0;34m';
+CYAN='\033[0;36m';
+GREEN='\033[0;32m';
+YELLOW='\033[1;33m';
 
 HOUR=$(date +%H)
+WIFI_IFACE="wlan0"
+mkdir -p "$(dirname "$LOG")"
+LOG="$HOME/.local/log/batterySave.log"
 
-if ! command -v acpi >/dev/null 2>&1; then
-  echo "acpi not found" >&2
-  exit 1
-fi
+log() { 
+  local c=$1;
+  shift; 
+  echo -e "${c}$(date '+%F %T'): $*${RESET}"; echo "$(date '+%F %T'): $*" >> "$LOG";
+}
 
-PICOM_BIN="$HOME/.config/picom/picom/src/picom"
-
-if [[ $1 == "o" ]]; then
-
-  if [[ ! $(killall picom) ]]; then
-	$PICOM_BIN --daemon --config $HOME/.config/picom/picom-battery.conf
-  fi
-  ~/.local/bin/clsCaches
-
-else 
-
-  if acpi | grep "Discharging"; then
-	echo "Running on DC power, adjusting settings..."
-	brightnessctl set 0
-	xrandr -r 60
-
-	if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-	  ~/.config/picom/picom-toggle.sh
-	fi
-
-	sudo powertop --auto-tune
-
-	if [ "$HOUR" -ge 20 ] && [ "$HOUR" -lt 23 ]; then
-	  redshift -O 3500k
-	  rfkill block wifi bluetooth
-	fi
-
-	~/.local/bin/clsCaches
-	acpi
-
+run() {
+  local msg=$1; shift
+  if "$@" 2>/dev/null; then
+    log "$CYAN" "  $msg"
   else
-	echo "Running on AC power."
-	xrandr -r 144
+    log "$RED" "󰀦  $msg (failed)"
+  fi
+}
+
+set_cpu() {
+  echo "$1" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
+  echo "$2" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference > /dev/null
+}
+
+show_status() {
+  local hrs 
+  local raw; raw=$(acpi -V)
+  local pct status time_left
+
+  time_left=$(echo "$raw" | grep "Battery 0:" | head -1 | grep -oP '\d+:\d+:\d+')
+  pct=$(echo "$raw" | grep "Battery 0:"| head -1 | grep -o '[0-9]*%' | head -1 | tr -d '%')
+  status=$(echo "$raw" | grep "Battery 0:" | head -1 | grep -oP '(Discharging|Charging|Full)')
+
+  hrs=$(awk "BEGIN { split(\"$time_left\",t,\":\"); printf \"%.1f\", t[1]+t[2]/60 }")
+
+  echo ""
+  echo -e "${BOLD}${BLUE} System Status${RESET}"
+  echo -e "─────────────────────────────────"
+  echo -e " ${BOLD}Power${RESET}"
+  echo -e "  ${GREEN}Battery : ${pct}% (${status})${RESET}"
+  echo -e "  ${CYAN}Time left: ${time_left} (~${hrs}h)${RESET}"
+  echo -e "─────────────────────────────────"
+  echo ""
+}
+
+
+on_battery() {
+  log "$YELLOW" " Battery mode activated..."
+
+  run "Refresh rate → 60hz"                  xrandr -r 60
+  run "󰃞 Brightness → 0%"                    brightnessctl set 0% -q
+  run "󰂲 Bluetooth → blocked"                rfkill block bluetooth
+  run "󰤪 WiFi → blocked"                     rfkill block wlan
+  run "Powertop → auto-tuned"                sudo powertop --auto-tune -q
+  run "CPU → powersave/EPP power"            set_cpu "powersave" "power"
+
+  if [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 24 ]; then
+    log "$BLUE" "󰖔 Night study mode..."
+    run " Redshift → 3200k" redshift -O 3200k
   fi
 
-fi
+  run "Caches cleared" ~/.local/bin/clsCaches
 
+  log "$GREEN" " Done!"; show_status
+}
 
+on_ac() {
+  log "$GREEN" "󰚥 AC power, restoring..."
+
+  run "Refresh rate → 144hz"              xrandr -r 144
+  run "󰃠 Brightness → 1%"                 brightnessctl set 1% -q
+  run "󰂯 Bluetooth → unblocked"           rfkill unblock bluetooth
+  run "󰤨 WiFi → unblock"                  rfkill unblock wlan
+  run "󰖙 Redshift → reset"                redshift -x
+  run "CPU → performance/EPP balance"     set_cpu "performance" "balance_power"
+
+  log "$GREEN" " Done!"; show_status
+}
+
+acpi | grep -q "Discharging" && on_battery || on_ac
