@@ -1,7 +1,22 @@
 #!/bin/bash
 
-for ((i = 0; i < 5; i++)); do
-  sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
-  echo "Times $i"
+RED='\033[0;31m'; GREEN='\033[0;32m'; CYAN='\033[0;36m'; RESET='\033[0m'
+
+free_mb() { awk '/^Cached/ {printf "%d", $2/1024}' /proc/meminfo; }
+
+before=$(free_mb)
+
+for ((i = 1; i <= 5; i++)); do
+  if sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches' 2>/dev/null; then
+    echo -e "${CYAN}Pass ${i}/5$(printf '%*s' $((10 - ${#i})) '') $(free_mb) MB cached${RESET}"
+  else
+    echo -e "${RED}󰀦 Pass ${i}/5 failed${RESET}"
+  fi
   sleep 1
 done
+
+after=$(free_mb)
+freed=$((before - after))
+
+echo ""
+echo -e "${GREEN}Freed ~${freed} MB  (${before} MB → ${after} MB)${RESET}"
