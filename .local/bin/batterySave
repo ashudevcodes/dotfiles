@@ -60,10 +60,10 @@ on_battery() {
 
   run "Refresh rate → 60hz"                  xrandr -r 60
   run "󰃞 Brightness → 0%"                    brightnessctl set 0% -q
-  run "󰂲 Bluetooth → blocked"                rfkill block bluetooth
   run "󰤪 WiFi → blocked"                     rfkill block wlan
   run "Powertop → auto-tuned"                sudo powertop --auto-tune -q
   run "CPU → powersave/EPP power"            set_cpu "powersave" "power"
+  run "TuneD AC power"					     tuned-adm profile "powersave"
 
   if [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 24 ]; then
     log "$BLUE" "󰖔 Night study mode..."
@@ -80,10 +80,9 @@ on_ac() {
 
   run "Refresh rate → 144hz"              xrandr -r 144
   run "󰃠 Brightness → 1%"                 brightnessctl set 1% -q
-  run "󰂯 Bluetooth → unblocked"           rfkill unblock bluetooth
   run "󰤨 WiFi → unblock"                  rfkill unblock wlan
+  run "TuneD AC power"                    tuned-adm profile "balanced-battery"
   run "󰖙 Redshift → reset"                redshift -x
-  run "CPU → performance/EPP balance"     set_cpu "performance" "balance_power"
 
   log "$GREEN" " Done!"; show_status
 }
