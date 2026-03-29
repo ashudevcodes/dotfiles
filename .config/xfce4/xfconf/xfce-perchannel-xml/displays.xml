@@ -10,7 +10,7 @@
       <property name="EDID" type="string" value="65229b5d994511c5a0748c968fcee88012724def"/>
       <property name="DuplicateEDID" type="bool" value="false"/>
       <property name="Resolution" type="string" value="1920x1080"/>
-      <property name="RefreshRate" type="double" value="59.999671279708096"/>
+      <property name="RefreshRate" type="double" value="144.00003287202918"/>
       <property name="ModeFlags" type="uint64" value="10"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
