@@ -43,7 +43,7 @@
     <property name="window-width" type="int" value="580"/>
     <property name="pane-position" type="int" value="180"/>
   </property>
-  <property name="enable-service" type="bool" value="true"/>
+  <property name="enable-service" type="bool" value="false"/>
   <property name="single-window" type="bool" value="true"/>
   <property name="hide-window-decorations" type="bool" value="true"/>
   <property name="single-click-execute" type="bool" value="true"/>

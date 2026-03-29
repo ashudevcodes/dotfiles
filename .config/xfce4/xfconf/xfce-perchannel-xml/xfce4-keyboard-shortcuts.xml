@@ -49,9 +49,6 @@
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="xflock4"/>
-      <property name="AudioMute" type="string" value="/home/nemo/.config/awesome/scripts/volume.sh toggle_mute"/>
-      <property name="AudioRaiseVolume" type="string" value="/home/nemo/.config/awesome/scripts/volume.sh raise"/>
-      <property name="AudioLowerVolume" type="string" value="/home/nemo/.config/awesome/scripts/volume.sh lower"/>
       <property name="&lt;Super&gt;b" type="string" value="brave --window-size=1200,800"/>
     </property>
   </property>
