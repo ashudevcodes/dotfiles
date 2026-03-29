@@ -4,7 +4,7 @@
 if command -v apt &> /dev/null; then
     echo "Using apt package manager..."
     sudo apt update
-    sudo apt install -y fzf cowsay starship tmux
+    sudo apt install -y fzf cowsay tmux
 elif command -v pacman &> /dev/null; then
     echo "Using pacman package manager..."
     sudo pacman -S --noconfirm fzf cowsay starship tmux
