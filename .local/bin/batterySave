@@ -81,7 +81,7 @@ on_ac() {
   run "Refresh rate → 144hz"              xrandr -r 144
   run "󰃠 Brightness → 1%"                 brightnessctl set 1% -q
   run "󰤨 WiFi → unblock"                  rfkill unblock wlan
-  run "TuneD AC power"                    tuned-adm profile "balanced-battery"
+  run "TuneD AC power"                    tuned-adm profile "laptop-ac-powersave"
   run "󰖙 Redshift → reset"                redshift -x
 
   log "$GREEN" " Done!"; show_status
