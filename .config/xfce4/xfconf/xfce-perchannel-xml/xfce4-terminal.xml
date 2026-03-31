@@ -2,18 +2,18 @@
 
 <channel name="xfce4-terminal" version="1.0">
   <property name="font-use-system" type="bool" value="false"/>
-  <property name="color-background" type="string" value="#1a1a1b1b2626"/>
-  <property name="color-cursor-use-default" type="bool" value="true"/>
-  <property name="color-foreground" type="string" value="#c0c0cacaf5f5"/>
+  <property name="color-background" type="string" value="#1a1b26"/>
+  <property name="color-cursor-use-default" type="bool" value="false"/>
+  <property name="color-foreground" type="string" value="#c0caf5"/>
   <property name="color-background-vary" type="bool" value="false"/>
-  <property name="color-cursor-foreground" type="string" value=""/>
-  <property name="color-cursor" type="string" value=""/>
-  <property name="color-selection" type="string" value=""/>
-  <property name="color-selection-background" type="string" value=""/>
-  <property name="color-selection-use-default" type="bool" value="true"/>
-  <property name="color-bold" type="string" value=""/>
-  <property name="color-bold-use-default" type="bool" value="true"/>
-  <property name="color-palette" type="string" value="#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec"/>
+  <property name="color-cursor-foreground" type="string" value="#1a1b26"/>
+  <property name="color-cursor" type="string" value="#c0caf5"/>
+  <property name="color-selection" type="string" value="#c0caf5"/>
+  <property name="color-selection-background" type="string" value="#283457"/>
+  <property name="color-selection-use-default" type="bool" value="false"/>
+  <property name="color-bold" type="string" value="#c0caf5"/>
+  <property name="color-bold-use-default" type="bool" value="false"/>
+  <property name="color-palette" type="string" value="#15161e;#f7768e;#9ece6a;#e0af68;#7aa2f7;#bb9af7;#7dcfff;#a9b1d6;#414868;#f7768e;#9ece6a;#e0af68;#7aa2f7;#bb9af7;#7dcfff;#c0caf5"/>
   <property name="color-bold-is-bright" type="bool" value="true"/>
   <property name="color-use-theme" type="bool" value="false"/>
   <property name="tab-activity-color" type="string" value="#aa0000"/>
