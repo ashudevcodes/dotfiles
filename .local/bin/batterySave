@@ -60,7 +60,7 @@ on_battery() {
 
   run "Refresh rate → 60hz"                  xrandr -r 60
   run "󰃞 Brightness → 0%"                    brightnessctl set 0% -q
-  run "󰤪 WiFi → blocked"                     rfkill block wlan
+  run "󰤪 WiFi → State"                       rfkill list
   run "Powertop → auto-tuned"                sudo powertop --auto-tune -q
   run "CPU → powersave/EPP power"            set_cpu "powersave" "power"
   run "TuneD AC power"					     tuned-adm profile "powersave"
@@ -80,7 +80,7 @@ on_ac() {
 
   run "Refresh rate → 144hz"              xrandr -r 144
   run "󰃠 Brightness → 1%"                 brightnessctl set 1% -q
-  run "󰤨 WiFi → unblock"                  rfkill unblock wlan
+  run "󰤨 WiFi → State"                    rfkill list
   run "TuneD AC power"                    tuned-adm profile "laptop-ac-powersave"
   run "󰖙 Redshift → reset"                redshift -x
 
