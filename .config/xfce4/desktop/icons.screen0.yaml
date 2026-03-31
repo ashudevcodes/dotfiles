@@ -12,13 +12,14 @@ configs:
       width: 1920
       height: 1080
   icons:
-    "/home/nemo":
+    "trash:///":
       row: 1
       col: 17
-    "/":
-      row: 0
+    "AE41-B3D4":
+      row: 4
       col: 17
-    "trash:///":
+      last_seen: 1774902070399980
+    "/home/nemo":
       row: 1
       col: 17
     "FC928C1B928BD912":
@@ -29,3 +30,30 @@ configs:
       row: 2
       col: 17
       last_seen: 1774562590910779
+    "6F7A-D97A":
+      row: 4
+      col: 17
+      last_seen: 1774892587079560
+    "dcd7a2d8-adb5-425d-b930-97462d6959b7":
+      row: 4
+      col: 17
+      last_seen: 1774897644215043
+    "06a7418b-57e4-4172-9603-390d94cf57a3":
+      row: 4
+      col: 17
+      last_seen: 1774900728560167
+    "e98f25e6-25cf-4304-89d3-ab2ae7c152b5":
+      row: 4
+      col: 17
+      last_seen: 1774903656031898
+    "50b3b390-efc6-4ab7-a4ee-0db4f7cd02b5":
+      row: 4
+      col: 17
+      last_seen: 1774901489909114
+    "/":
+      row: 0
+      col: 17
+    "1d148110-534b-4f46-96ad-0d164f2d0ef2":
+      row: 4
+      col: 17
+      last_seen: 1774896888631925
