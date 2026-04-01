@@ -11,12 +11,11 @@ YELLOW='\033[1;33m';
 HOUR=$(date +%H)
 WIFI_IFACE="wlan0"
 mkdir -p "$(dirname "$LOG")"
-LOG="$HOME/.local/log/batterySave.log"
 
 log() { 
   local c=$1;
   shift; 
-  echo -e "${c}$(date '+%F %T'): $*${RESET}"; echo "$(date '+%F %T'): $*" >> "$LOG";
+  echo -e "${c}$(date '+%F %T'): $*${RESET}"
 }
 
 run() {
