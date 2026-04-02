@@ -5,6 +5,7 @@
     <property name="FailsafeSessionName" type="string" value="Failsafe"/>
     <property name="LockCommand" type="string" value=""/>
     <property name="SessionName" type="string" value="Default"/>
+    <property name="SaveOnExit" type="bool" value="false"/>
   </property>
   <property name="sessions" type="empty">
     <property name="Failsafe" type="empty">
@@ -20,11 +21,9 @@
         <value type="string" value="xfsettingsd"/>
         <value type="string" value="-D"/>
       </property>
-
       <property name="Client1_Priority" type="empty"/>
       <property name="Client1_PerScreen" type="empty"/>
-	  <property name="Client2_Command" type="empty"/>
-
+      <property name="Client2_Command" type="empty"/>
       <property name="Client2_Priority" type="int" value="25"/>
       <property name="Client2_PerScreen" type="bool" value="false"/>
       <property name="Client3_Command" type="array">
@@ -35,7 +34,7 @@
       <property name="Client3_PerScreen" type="bool" value="false"/>
       <property name="Client4_Command" type="array">
         <value type="string" value="xfdesktop"/>
-		<value type="string" value="-D"/>
+        <value type="string" value="-D"/>
       </property>
       <property name="Client4_Priority" type="int" value="35"/>
       <property name="Client4_PerScreen" type="bool" value="false"/>
