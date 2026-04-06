@@ -7,7 +7,7 @@
     <property name="dark-mode" type="bool" value="true"/>
     <property name="panel-1" type="empty">
       <property name="position" type="string" value="p=6;x=0;y=0"/>
-      <property name="length" type="uint" value="100"/>
+      <property name="length" type="double" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="0"/>
       <property name="size" type="uint" value="26"/>
@@ -29,6 +29,9 @@
       </property>
       <property name="background-image" type="string" value="file:///home/nemo/assets/portal_robot.png"/>
       <property name="autohide-behavior" type="uint" value="0"/>
+      <property name="border-width" type="uint" value="4"/>
+      <property name="length-adjust" type="bool" value="true"/>
+      <property name="nrows" type="uint" value="1"/>
     </property>
   </property>
   <property name="plugins" type="empty">

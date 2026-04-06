@@ -21,7 +21,7 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/usr/share/backgrounds/portal_robot.png"/>
+          <property name="last-image" type="string" value="/home/nemo/assets/portal_robot.png"/>
           <property name="image-style" type="int" value="5"/>
           <property name="color-style" type="int" value="3"/>
         </property>
