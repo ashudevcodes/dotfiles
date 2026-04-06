@@ -16,9 +16,9 @@ configs:
       row: 1
       col: 17
     "AE41-B3D4":
-      row: 4
+      row: 5
       col: 17
-      last_seen: 1774902070399980
+      last_seen: 1774974808348328
     "/home/nemo":
       row: 1
       col: 17
@@ -50,6 +50,10 @@ configs:
       row: 4
       col: 17
       last_seen: 1774901489909114
+    "2025-04-07-06-46-59-00":
+      row: 5
+      col: 17
+      last_seen: 1774974917054223
     "/":
       row: 0
       col: 17
@@ -57,3 +61,7 @@ configs:
       row: 4
       col: 17
       last_seen: 1774896888631925
+    "7BCE-9569":
+      row: 5
+      col: 17
+      last_seen: 1774978410429425

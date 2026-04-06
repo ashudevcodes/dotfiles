@@ -30,6 +30,7 @@
 .config/awesome/devTest
 .config/BraveSoftware
 .config/gh
+.config/xfce4/desktop
 
 .local/bin/yt-dlp
 .local/bin/opencode
