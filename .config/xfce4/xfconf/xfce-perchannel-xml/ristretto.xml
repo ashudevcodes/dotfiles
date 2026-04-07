@@ -18,5 +18,6 @@
       <property name="show" type="bool" value="true"/>
     </property>
     <property name="bgcolor-override" type="bool" value="false"/>
+    <property name="maximize-on-startup" type="bool" value="false"/>
   </property>
 </channel>
