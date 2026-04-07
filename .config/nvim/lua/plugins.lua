@@ -10,6 +10,8 @@ vim.pack.add({
   { src = "https://github.com/windwp/nvim-autopairs"},
 })
 
+require("colorizer").setup()
+
 require('Comment').setup()
 
 require('nvim-autopairs').setup({
