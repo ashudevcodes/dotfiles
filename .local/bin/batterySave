@@ -55,15 +55,12 @@ on_battery() {
   run "Refresh rate → 60hz"                  xrandr -r 60
   run "󰃞 Brightness → 0%"                    brightnessctl set 0% -q
   run "󰤪 WiFi → State"                       rfkill list
-  run "TuneD AC power"					     tuned-adm profile "powersave"
-  run "Powertop → auto-tuned"                sudo powertop --auto-tune -q
+  run "TuneD AC power"					     tuned-adm profile "my-hp-battery-profile"
 
   if [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 24 ]; then
     log "$BLUE" "󰖔 Night study mode..."
     run " Redshift → 3200k" redshift -O 3200k
   fi
-
-  run "Caches cleared" ~/.local/bin/clsCaches
 
   log "$GREEN" " Done!"; show_status
 }
