@@ -1,0 +1,16 @@
+[user]
+showPreviews=false
+showWindowCount=false
+indicatorStyle=4
+indicatorColorFromTheme=false
+forceIconSize=true
+keyComboActive=false
+keyAloneActive=false
+noWindowsListIfSingle=false
+onlyDisplayVisible=false
+pinned=xfce4-terminal;xfce4-web-browser;xfce4-file-manager;xfce4-appfinder;
+inactiveIndicatorStyle=4
+indicatorOrientation=0
+iconSize=64
+inactiveColor=rgb(38,162,105)
+indicatorColor=rgb(28,113,216)
