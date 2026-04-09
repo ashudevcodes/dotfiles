@@ -72,7 +72,7 @@
     <property name="toggle_workspaces" type="bool" value="true"/>
     <property name="unredirect_overlays" type="bool" value="true"/>
     <property name="urgent_blink" type="bool" value="false"/>
-    <property name="use_compositing" type="bool" value="true"/>
+    <property name="use_compositing" type="bool" value="false"/>
     <property name="workspace_count" type="int" value="3"/>
     <property name="wrap_cycle" type="bool" value="true"/>
     <property name="wrap_layout" type="bool" value="true"/>
@@ -82,8 +82,8 @@
     <property name="zoom_desktop" type="bool" value="true"/>
     <property name="zoom_pointer" type="bool" value="true"/>
     <property name="workspace_names" type="array">
-      <value type="string" value="Workspace 1"/>
-      <value type="string" value="Workspace 2"/>
+      <value type="string" value="Day"/>
+      <value type="string" value="Night"/>
       <value type="string" value="Workspace 3"/>
       <value type="string" value="Workspace 4"/>
     </property>
