@@ -3,8 +3,7 @@
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
     <property name="ThemeName" type="string" value="Orchis-Dark-Compact"/>
-    <property name="IconThemeName" type="empty"/>
-    <property name="DoubleClickTime" type="empty"/>
+    <property name="IconThemeName" type="string" value="oxylite-icon-theme"/>
     <property name="DoubleClickDistance" type="empty"/>
     <property name="DndDragThreshold" type="empty"/>
     <property name="CursorBlink" type="empty"/>
