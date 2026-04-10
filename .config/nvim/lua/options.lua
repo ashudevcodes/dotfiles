@@ -18,6 +18,17 @@ VIM.o.tabstop = 4
 VIM.o.shiftwidth = 4
 VIM.o.expandtab = true
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    local curpos = vim.api.nvim_win_get_cursor(0)
+
+    vim.cmd([[keeppatterns %s/\s\+$//e]])
+
+    vim.api.nvim_win_set_cursor(0, curpos)
+  end
+})
+
 -- c project code formationg
 VIM.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.c", "*.cpp", "*.h" },
