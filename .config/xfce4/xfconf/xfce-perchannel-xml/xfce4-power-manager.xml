@@ -6,16 +6,15 @@
     <property name="brightness-switch" type="int" value="0"/>
     <property name="brightness-exponential" type="bool" value="false"/>
     <property name="brightness-step-count" type="uint" value="100"/>
-    <property name="inactivity-on-battery" type="uint" value="15"/>
     <property name="lid-action-on-battery" type="uint" value="3"/>
     <property name="profile-on-battery" type="string" value="power-saver"/>
     <property name="brightness-level-on-battery" type="uint" value="10"/>
     <property name="inactivity-on-ac" type="uint" value="20"/>
     <property name="critical-power-level" type="uint" value="15"/>
-    <property name="inactivity-sleep-mode-on-ac" type="uint" value="2"/>
-    <property name="inactivity-sleep-mode-on-battery" type="uint" value="5"/>
     <property name="power-button-action" type="uint" value="0"/>
     <property name="show-tray-icon" type="bool" value="false"/>
     <property name="profile-on-ac" type="string" value="balanced"/>
+    <property name="lid-action-on-ac" type="uint" value="3"/>
+    <property name="dpms-on-ac-sleep" type="uint" value="10"/>
   </property>
 </channel>
