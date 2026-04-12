@@ -23,7 +23,10 @@
       </property>
       <property name="Client1_Priority" type="empty"/>
       <property name="Client1_PerScreen" type="empty"/>
-      <property name="Client2_Command" type="empty"/>
+      <property name="Client2_Command" type="array">
+        <value type="string" value="xfce4-panel"/>
+        <value type="string" value="-d"/>
+      </property>
       <property name="Client2_Priority" type="int" value="25"/>
       <property name="Client2_PerScreen" type="bool" value="false"/>
       <property name="Client3_Command" type="array">
@@ -33,7 +36,7 @@
       <property name="Client3_Priority" type="int" value="30"/>
       <property name="Client3_PerScreen" type="bool" value="false"/>
       <property name="Client4_Command" type="array">
-        <value type="string" value="xfce4-terminal"/>
+        <value type="string" value="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"/>
       </property>
       <property name="Client4_Priority" type="int" value="35"/>
       <property name="Client4_PerScreen" type="bool" value="false"/>
