@@ -12,8 +12,8 @@
       <property name="IsFailsafe" type="bool" value="true"/>
       <property name="Count" type="int" value="5"/>
       <property name="Client0_Command" type="array">
-        <value type="string" value="xfwm4"/>
-        <value type="string" value="--compositor=off"/>
+        <value type="string" value="compiz"/>
+        <value type="string" value="--replace"/>
       </property>
       <property name="Client0_Priority" type="int" value="15"/>
       <property name="Client0_PerScreen" type="bool" value="false"/>
@@ -33,8 +33,7 @@
       <property name="Client3_Priority" type="int" value="30"/>
       <property name="Client3_PerScreen" type="bool" value="false"/>
       <property name="Client4_Command" type="array">
-        <value type="string" value="xfdesktop"/>
-        <value type="string" value="-D"/>
+        <value type="string" value="xfce4-terminal"/>
       </property>
       <property name="Client4_Priority" type="int" value="35"/>
       <property name="Client4_PerScreen" type="bool" value="false"/>
