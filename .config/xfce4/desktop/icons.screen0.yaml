@@ -15,37 +15,33 @@ configs:
     "trash:///":
       row: 1
       col: 17
-    "AE41-B3D4":
+    "/home/nemo":
       row: 5
       col: 17
-      last_seen: 1774974808348328
-    "/home/nemo":
-      row: 1
+    "e98f25e6-25cf-4304-89d3-ab2ae7c152b5":
+      row: 2
       col: 17
+      last_seen: 1775906794001994
     "FC928C1B928BD912":
       row: 3
       col: 17
-      last_seen: 1774562590920428
+      last_seen: 1775906794010183
     "A046C91246C8E9DC":
-      row: 2
-      col: 17
-      last_seen: 1774562590910779
-    "6F7A-D97A":
       row: 4
       col: 17
-      last_seen: 1774892587079560
+      last_seen: 1775906794018057
     "dcd7a2d8-adb5-425d-b930-97462d6959b7":
       row: 4
       col: 17
       last_seen: 1774897644215043
-    "06a7418b-57e4-4172-9603-390d94cf57a3":
+    "6F7A-D97A":
       row: 4
       col: 17
-      last_seen: 1774900728560167
-    "e98f25e6-25cf-4304-89d3-ab2ae7c152b5":
-      row: 4
+      last_seen: 1774892587079560
+    "AE41-B3D4":
+      row: 5
       col: 17
-      last_seen: 1774903656031898
+      last_seen: 1774974808348328
     "50b3b390-efc6-4ab7-a4ee-0db4f7cd02b5":
       row: 4
       col: 17
@@ -54,6 +50,10 @@ configs:
       row: 5
       col: 17
       last_seen: 1774974917054223
+    "06a7418b-57e4-4172-9603-390d94cf57a3":
+      row: 4
+      col: 17
+      last_seen: 1774900728560167
     "/":
       row: 0
       col: 17
@@ -65,3 +65,6 @@ configs:
       row: 5
       col: 17
       last_seen: 1774978410429425
+    "/home/nemo/Desktop/cutecom.svg":
+      row: 6
+      col: 16
