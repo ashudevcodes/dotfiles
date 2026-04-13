@@ -23,6 +23,7 @@
         <value type="int" value="12"/>
         <value type="int" value="2"/>
         <value type="int" value="8"/>
+        <value type="int" value="9"/>
       </property>
       <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
@@ -36,14 +37,15 @@
       <property name="border-width" type="uint" value="4"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="nrows" type="uint" value="1"/>
+      <property name="mode" type="uint" value="0"/>
     </property>
     <property name="panel-2" type="empty">
-      <property name="position" type="string" value="p=12;x=979;y=1055"/>
+      <property name="position" type="string" value="p=7;x=168;y=536"/>
       <property name="size" type="uint" value="86"/>
       <property name="length" type="double" value="1"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="autohide-behavior" type="uint" value="1"/>
-      <property name="border-width" type="uint" value="4"/>
+      <property name="border-width" type="uint" value="0"/>
       <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
         <value type="double" value="0"/>
@@ -57,6 +59,7 @@
       <property name="nrows" type="uint" value="1"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="0"/>
+      <property name="mode" type="uint" value="2"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -114,5 +117,6 @@
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-18" type="string" value="docklike"/>
+    <property name="plugin-9" type="string" value="netload"/>
   </property>
 </channel>
