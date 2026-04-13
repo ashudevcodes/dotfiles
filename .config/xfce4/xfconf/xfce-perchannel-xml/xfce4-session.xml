@@ -14,6 +14,7 @@
       <property name="Client0_Command" type="array">
         <value type="string" value="compiz"/>
         <value type="string" value="--replace"/>
+        <value type="string" value="ccp"/>
       </property>
       <property name="Client0_Priority" type="int" value="15"/>
       <property name="Client0_PerScreen" type="bool" value="false"/>
