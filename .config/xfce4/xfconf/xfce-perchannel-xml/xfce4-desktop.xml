@@ -46,7 +46,7 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/nemo/brain_wires/assets/portal_robot.png"/>
+          <property name="last-image" type="string" value="/home/nemo/brain_wires/assets/wallhaven-yqqwvd.jpg"/>
           <property name="image-style" type="int" value="3"/>
           <property name="color-style" type="int" value="3"/>
         </property>
@@ -58,6 +58,12 @@
           <property name="backdrop-cycle-timer" type="uint" value="5"/>
           <property name="color-style" type="int" value="3"/>
           <property name="image-style" type="int" value="5"/>
+        </property>
+      </property>
+      <property name="monitoreDP" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="last-image" type="string" value="/home/nemo/assets/wallhaven-yqqwvd.jpg"/>
+          <property name="image-style" type="int" value="3"/>
         </property>
       </property>
     </property>
