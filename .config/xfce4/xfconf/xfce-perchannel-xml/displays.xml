@@ -5,7 +5,7 @@
   <property name="Notify" type="int" value="1"/>
   <property name="AutoEnableProfiles" type="int" value="3"/>
   <property name="Default" type="empty">
-    <property name="eDP-1" type="string" value="Laptop">
+    <property name="eDP" type="string" value="Laptop">
       <property name="Active" type="bool" value="true"/>
       <property name="EDID" type="string" value="65229b5d994511c5a0748c968fcee88012724def"/>
       <property name="DuplicateEDID" type="bool" value="false"/>
