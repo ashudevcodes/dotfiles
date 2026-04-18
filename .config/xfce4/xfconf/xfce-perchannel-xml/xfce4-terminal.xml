@@ -2,7 +2,7 @@
 
 <channel name="xfce4-terminal" version="1.0">
   <property name="font-use-system" type="bool" value="false"/>
-  <property name="color-background" type="string" value="#1a1b26"/>
+  <property name="color-background" type="string" value="#1a1a1b1b2626"/>
   <property name="color-cursor-use-default" type="bool" value="false"/>
   <property name="color-foreground" type="string" value="#c0caf5"/>
   <property name="color-background-vary" type="bool" value="false"/>
@@ -18,7 +18,7 @@
   <property name="color-use-theme" type="bool" value="false"/>
   <property name="tab-activity-color" type="string" value="#aa0000"/>
   <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_TRANSPARENT"/>
-  <property name="background-darkness" type="double" value="0.90000000000000002"/>
+  <property name="background-darkness" type="double" value="0.94999999999999996"/>
   <property name="misc-menubar-default" type="bool" value="false"/>
   <property name="misc-borders-default" type="bool" value="true"/>
   <property name="misc-slim-tabs" type="bool" value="false"/>
@@ -35,4 +35,6 @@
   <property name="dropdown-show-borders" type="bool" value="false"/>
   <property name="cell-width-scale" type="double" value="1"/>
   <property name="cell-height-scale" type="double" value="1"/>
+  <property name="misc-maximize-default" type="bool" value="false"/>
+  <property name="text-blink-mode" type="string" value="TERMINAL_TEXT_BLINK_MODE_ALWAYS"/>
 </channel>
