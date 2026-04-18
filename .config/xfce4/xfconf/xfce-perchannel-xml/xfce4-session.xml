@@ -11,11 +11,12 @@
     <property name="Failsafe" type="empty">
       <property name="IsFailsafe" type="bool" value="true"/>
       <property name="Count" type="int" value="5"/>
-      <property name="Client0_Command" type="array">
-        <value type="string" value="compiz"/>
-        <value type="string" value="--replace"/>
-        <value type="string" value="ccp"/>
-      </property>
+	  <property name="Client0_Command" type="array">
+		<value type="string" value="compiz"/>
+		<value type="string" value="--send-startup-message"/>
+		<value type="string" value="--replace"/>
+		<value type="string" value="--keep-desktop-hints"/>
+	  </property>
       <property name="Client0_Priority" type="int" value="15"/>
       <property name="Client0_PerScreen" type="bool" value="false"/>
       <property name="Client1_Command" type="array">
