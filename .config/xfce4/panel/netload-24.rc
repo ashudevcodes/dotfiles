@@ -9,7 +9,7 @@ Network_Device=wlan0
 Max_In=4096
 Max_Out=4096
 Auto_Max=true
-Update_Interval=5000
+Update_Interval=4000
 Values_As_Bits=true
 Digits=2
 
