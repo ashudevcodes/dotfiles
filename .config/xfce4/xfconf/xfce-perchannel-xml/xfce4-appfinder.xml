@@ -45,7 +45,7 @@
   </property>
   <property name="enable-service" type="bool" value="false"/>
   <property name="single-window" type="bool" value="true"/>
-  <property name="hide-window-decorations" type="bool" value="true"/>
+  <property name="hide-window-decorations" type="bool" value="false"/>
   <property name="single-click-execute" type="bool" value="true"/>
   <property name="close-on-focus-lost" type="bool" value="true"/>
   <property name="remember-category" type="bool" value="true"/>
