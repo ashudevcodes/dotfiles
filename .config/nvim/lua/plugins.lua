@@ -8,7 +8,11 @@ vim.pack.add({
   { src = "https://github.com/numToStr/Comment.nvim"},
   { src = "https://github.com/catgoose/nvim-colorizer.lua"},
   { src = "https://github.com/windwp/nvim-autopairs"},
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
 })
+
+require("telescope").setup()
 
 require("colorizer").setup()
 
@@ -36,7 +40,7 @@ require("blink.cmp").setup({
 	default = { 'lsp', 'path', 'snippets', 'buffer' },
   },
   fuzzy = {
-	implementation = "prefer_rust_with_warning"
+	implementation = "lua"
   }
 })
 

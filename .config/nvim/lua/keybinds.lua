@@ -28,18 +28,12 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
-
--- Find files keymaps. using native neovim `find`
-vim.keymap.set("n", "<leader>ff", ":find ")
-
-vim.keymap.set("n", "<leader>fg", function()
-  vim.cmd("vimgrep /" .. vim.fn.input("Grep > ") .. "/gj **/*")
-  vim.cmd("copen")
-end)
-
 -- Codecomment out plugins custom keymaps
 vim.keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)')
 vim.keymap.set('x', '<leader>/', '<Plug>(comment_toggle_blockwise_visual)')
 
--- nvim builtin UndotreeToggle keymaps set 
+-- nvim builtin UndotreeToggle keymaps set
 vim.keymap.set("n", "<leader>u", '<cmd>Undotree<cr>')
+
+vim.keymap.set("n", "<leader>ff", '<cmd>Telescope find_files<cr>')
+vim.keymap.set("n", "<leader>fg", '<cmd>Telescope live_grep<cr>')

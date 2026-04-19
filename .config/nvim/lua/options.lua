@@ -1,5 +1,5 @@
 -- Nvim 0.12 new ui
--- require('vim._core.ui2').enable {}
+require('vim._core.ui2').enable {}
 
 local VIM = vim
 
