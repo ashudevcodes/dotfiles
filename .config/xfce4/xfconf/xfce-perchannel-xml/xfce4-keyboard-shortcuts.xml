@@ -44,12 +44,12 @@
       <property name="&lt;Super&gt;e" type="string" value="thunar"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
-      <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
       <property name="&lt;Primary&gt;&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;Return" type="string" value="xfce4-terminal"/>
       <property name="&lt;Super&gt;b" type="string" value="brave"/>
+      <property name="&lt;Super&gt;r" type="string" value="rofi -show drun -font &apos;jetbrainsmono 11&apos;">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
     </property>
   </property>
   <property name="xfwm4" type="empty">
