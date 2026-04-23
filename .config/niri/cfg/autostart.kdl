@@ -1,0 +1,2 @@
+spawn-sh-at-startup "cairo-dock --disable-dbus-activation --disable-systemd -L -k -c"
+spawn-sh-at-startup "xfce4-panel -d"

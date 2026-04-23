@@ -1,0 +1,39 @@
+    window-rule {
+        geometry-corner-radius 10 // Set every window radius to 20
+        clip-to-geometry true
+    }
+
+     // if you use steam you will probably like these
+    window-rule {
+        match app-id="steam"
+        exclude title=r#"^[Ss]team$"#
+        open-floating true
+    }
+
+    window-rule {
+       match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+       default-floating-position x=10 y=10 relative-to="bottom-right"
+       open-focused false
+    }
+//
+//	/* Apps: blur them all without xray for a better look */
+//	window-rule {
+//	  background-effect {
+//		blur true
+//		xray false
+//	  }
+//	}
+//	// Set the overview wallpaper on the backdrop.
+//	layer-rule {
+//	  match namespace="^noctalia-overview*"
+//	  place-within-backdrop true
+//	}
+//
+//	/* Noctalia: blur everywhere without xray for a better look */
+//	layer-rule {
+//	  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+//	  background-effect {
+//		xray false
+//	  }
+//	}
+//
