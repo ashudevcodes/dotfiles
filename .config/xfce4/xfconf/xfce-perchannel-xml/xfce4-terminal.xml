@@ -22,7 +22,7 @@
   <property name="misc-menubar-default" type="bool" value="false"/>
   <property name="misc-borders-default" type="bool" value="true"/>
   <property name="misc-slim-tabs" type="bool" value="false"/>
-  <property name="font-name" type="string" value="JetBrains Mono NL 13"/>
+  <property name="font-name" type="string" value="JetBrainsMono Nerd Font 13"/>
   <property name="misc-copy-on-select" type="bool" value="false"/>
   <property name="misc-show-unsafe-paste-dialog" type="bool" value="false"/>
   <property name="misc-default-geometry" type="string" value="128x32"/>

@@ -23,7 +23,7 @@
   <property name="Gtk" type="empty">
     <property name="CanChangeAccels" type="bool" value="true"/>
     <property name="ColorPalette" type="empty"/>
-    <property name="FontName" type="string" value="JetBrainsMonoNL Nerd Font Mono 11"/>
+    <property name="FontName" type="string" value="JetBrainsMonoNL Nerd Font 11"/>
     <property name="MonospaceFontName" type="string" value="Monospace 13"/>
     <property name="IconSizes" type="empty"/>
     <property name="KeyThemeName" type="empty"/>
