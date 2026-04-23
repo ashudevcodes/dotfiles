@@ -1,2 +1,9 @@
 spawn-sh-at-startup "cairo-dock --disable-dbus-activation --disable-systemd -L -k -c"
 spawn-sh-at-startup "xfce4-panel -d"
+spawn-sh-at-startup "rofi -show drun -font 'jetbrainsmono 11'"
+
+spawn-sh-at-startup "awww-daemon -n workspace"
+spawn-sh-at-startup "awww img -n workspace ~/assets/wallhaven-yqqwvd.jpg"
+spawn-sh-at-startup "foot --server"
+
+spawn-at-startup "wlsunset" "-S" "07:00" "-s" "20:00" "-t" "3500" "-T" "6500"
