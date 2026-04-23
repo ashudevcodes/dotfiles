@@ -11,8 +11,8 @@
   <property name="misc-symbolic-icons-in-toolbar" type="bool" value="true"/>
   <property name="last-toolbar-items" type="string" value="menu:1,back:1,forward:1,open-parent:0,open-home:1,new-tab:0,new-window:0,toggle-split-view:0,undo:0,redo:0,zoom-out:0,zoom-in:0,zoom-reset:0,view-as-icons:0,view-as-detailed-list:0,view-as-compact-list:0,view-switcher:0,location-bar:1,reload:0,search:1,uca-action-1774508228653842-1:1"/>
   <property name="last-separator-position" type="int" value="241"/>
-  <property name="last-window-width" type="int" value="954"/>
-  <property name="last-window-height" type="int" value="575"/>
+  <property name="last-window-width" type="int" value="1253"/>
+  <property name="last-window-height" type="int" value="1048"/>
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
   <property name="last-details-view-column-widths" type="string" value="50,50,135,50,50,392,50,50,362,50,50,80,50,448"/>
@@ -29,4 +29,7 @@
   <property name="misc-exec-shell-scripts-by-default" type="string" value="THUNAR_EXECUTE_SHELL_SCRIPT_NEVER"/>
   <property name="misc-thumbnail-draw-frames" type="bool" value="false"/>
   <property name="misc-volume-management" type="bool" value="true"/>
+  <property name="last-renamer-dialog-width" type="int" value="1253"/>
+  <property name="last-renamer-dialog-height" type="int" value="1048"/>
+  <property name="last-renamer-dialog-maximized" type="bool" value="false"/>
 </channel>

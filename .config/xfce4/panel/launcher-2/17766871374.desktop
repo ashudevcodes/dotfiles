@@ -1,14 +1,14 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Exec=xfce4-session-logout
+Exec=systemctl poweroff
 Icon=archlinux-logo
 StartupNotify=false
 Terminal=false
 Categories=System;X-XFCE;X-Xfce-Toplevel;
 Keywords=logout;exit;quit;shutdown;
 OnlyShowIn=XFCE;
-Name=Log Out
-Comment=Log out of the Xfce Desktop
+Name=Power off
+Comment=Power off Desktop
 X-XFCE-Source=file:///usr/share/applications/xfce4-session-logout.desktop
 Path=

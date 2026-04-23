@@ -4,6 +4,7 @@
   <property name="log-max-size-enabled" type="bool" value="true"/>
   <property name="applications" type="empty">
     <property name="known_applications" type="array">
+      <value type="string" value="notify-send"/>
       <value type="string" value="org.xfce.Thunar"/>
       <value type="string" value="org.xfce.xfdesktop"/>
       <value type="string" value="timeshift-gtk"/>
@@ -14,4 +15,5 @@
   </property>
   <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
   <property name="expire-timeout" type="int" value="5"/>
+  <property name="do-fadeout" type="bool" value="true"/>
 </channel>

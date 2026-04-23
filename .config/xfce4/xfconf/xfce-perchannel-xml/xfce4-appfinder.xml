@@ -39,8 +39,8 @@
     </property>
   </property>
   <property name="last" type="empty">
-    <property name="window-height" type="int" value="422"/>
-    <property name="window-width" type="int" value="561"/>
+    <property name="window-height" type="int" value="360"/>
+    <property name="window-width" type="int" value="634"/>
     <property name="pane-position" type="int" value="180"/>
   </property>
   <property name="enable-service" type="bool" value="false"/>
@@ -48,9 +48,12 @@
   <property name="hide-window-decorations" type="bool" value="false"/>
   <property name="single-click-execute" type="bool" value="true"/>
   <property name="close-on-focus-lost" type="bool" value="true"/>
-  <property name="remember-category" type="bool" value="true"/>
-  <property name="icon-view" type="bool" value="false"/>
+  <property name="remember-category" type="bool" value="false"/>
+  <property name="icon-view" type="bool" value="true"/>
   <property name="item-icon-size" type="uint" value="3"/>
   <property name="hide-category-pane" type="bool" value="true"/>
   <property name="generic-names" type="bool" value="false"/>
+  <property name="sort-by-frecency" type="bool" value="true"/>
+  <property name="text-beside-icons" type="bool" value="false"/>
+  <property name="always-center" type="bool" value="true"/>
 </channel>

@@ -3,7 +3,7 @@
 <channel name="xfce4-session" version="1.0">
   <property name="general" type="empty">
     <property name="FailsafeSessionName" type="string" value="Failsafe"/>
-    <property name="LockCommand" type="string" value=""/>
+    <property name="LockCommand" type="empty"/>
     <property name="SessionName" type="string" value="Default"/>
     <property name="SaveOnExit" type="bool" value="false"/>
   </property>
@@ -11,12 +11,12 @@
     <property name="Failsafe" type="empty">
       <property name="IsFailsafe" type="bool" value="true"/>
       <property name="Count" type="int" value="5"/>
-	  <property name="Client0_Command" type="array">
+      <property name="Client0_Command" type="array">
 		<value type="string" value="compiz"/>
-		<value type="string" value="--send-startup-message"/>
-		<value type="string" value="--replace"/>
-		<value type="string" value="--keep-desktop-hints"/>
-	  </property>
+        <value type="string" value="--send-startup-message"/>
+        <value type="string" value="--replace"/>
+        <value type="string" value="--keep-desktop-hints"/>
+      </property>
       <property name="Client0_Priority" type="int" value="15"/>
       <property name="Client0_PerScreen" type="bool" value="false"/>
       <property name="Client1_Command" type="array">
@@ -38,7 +38,12 @@
       <property name="Client3_Priority" type="int" value="30"/>
       <property name="Client3_PerScreen" type="bool" value="false"/>
       <property name="Client4_Command" type="array">
-        <value type="string" value="/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"/>
+        <value type="string" value="cairo-dock"/>
+        <value type="string" value="--disable-systemd"/>
+        <value type="string" value="--disable-dbus-activation"/>
+        <value type="string" value="-X"/>
+        <value type="string" value="-k"/>
+        <value type="string" value="-c"/>
       </property>
       <property name="Client4_Priority" type="int" value="35"/>
       <property name="Client4_PerScreen" type="bool" value="false"/>

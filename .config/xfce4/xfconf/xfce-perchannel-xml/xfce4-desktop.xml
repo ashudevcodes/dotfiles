@@ -40,7 +40,7 @@
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="790"/>
-    <property name="window-height" type="int" value="563"/>
+    <property name="window-height" type="int" value="567"/>
   </property>
   <property name="backdrop" type="empty">
     <property name="screen0" type="empty">
@@ -51,7 +51,7 @@
           <property name="color-style" type="int" value="3"/>
         </property>
         <property name="workspace1" type="empty">
-          <property name="last-image" type="string" value="/home/nemo/brain_wires/assets/portal_robot.png"/>
+          <property name="last-image" type="string" value="/home/nemo/brain_wires/assets/wallhaven-yqqwvd.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="false"/>
           <property name="backdrop-cycle-period" type="int" value="0"/>
           <property name="backdrop-cycle-random-order" type="bool" value="true"/>
@@ -62,7 +62,7 @@
       </property>
       <property name="monitoreDP" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/nemo/assets/wallhaven-yqqwvd.jpg"/>
+          <property name="last-image" type="string" value="/home/nemo/brain_wires/assets/wallhaven-yqqwvd.jpg"/>
           <property name="image-style" type="int" value="3"/>
         </property>
       </property>

@@ -22,10 +22,10 @@
   <property name="misc-menubar-default" type="bool" value="false"/>
   <property name="misc-borders-default" type="bool" value="true"/>
   <property name="misc-slim-tabs" type="bool" value="false"/>
-  <property name="font-name" type="string" value="JetBrainsMono Nerd Font 11"/>
+  <property name="font-name" type="string" value="JetBrains Mono NL 13"/>
   <property name="misc-copy-on-select" type="bool" value="false"/>
-  <property name="misc-show-unsafe-paste-dialog" type="bool" value="true"/>
-  <property name="misc-default-geometry" type="string" value="120x34"/>
+  <property name="misc-show-unsafe-paste-dialog" type="bool" value="false"/>
+  <property name="misc-default-geometry" type="string" value="128x32"/>
   <property name="misc-mouse-autohide" type="bool" value="true"/>
   <property name="misc-middle-click-opens-uri" type="bool" value="true"/>
   <property name="misc-tab-close-middle-click" type="bool" value="false"/>
@@ -37,4 +37,6 @@
   <property name="cell-height-scale" type="double" value="1"/>
   <property name="misc-maximize-default" type="bool" value="false"/>
   <property name="text-blink-mode" type="string" value="TERMINAL_TEXT_BLINK_MODE_ALWAYS"/>
+  <property name="font-allow-bold" type="bool" value="true"/>
+  <property name="misc-toolbar-default" type="bool" value="false"/>
 </channel>
