@@ -12,9 +12,9 @@ HOUR=$(date +%H)
 WIFI_IFACE="wlan0"
 mkdir -p "$(dirname "$LOG")"
 
-log() { 
+log() {
   local c=$1;
-  shift; 
+  shift;
   echo -e "${c}$(date '+%F %T'): $*${RESET}"
 }
 
@@ -28,7 +28,7 @@ run() {
 }
 
 show_status() {
-  local hrs 
+  local hrs
   local raw; raw=$(acpi -V)
   local pct status time_left
 
@@ -55,7 +55,7 @@ on_battery() {
   run "Refresh rate → 60hz"                  xrandr -r 60
   run "󰃞 Brightness → 0%"                    brightnessctl set 0% -q
   run "󰤪 WiFi → State"                       rfkill list
-  run "TuneD AC power"					     tuned-adm profile "my-hp-battery-profile"
+  run "TuneD AC power"					     tuned-adm profile "nemo_hp_powersave"
 
   if [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 24 ]; then
     log "$BLUE" "󰖔 Night study mode..."

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+DEVICE="0C:ED:C8:CB:BF:F3"
+MAX_RETRIES=5
+DELAY=2
+
+echo "[*] Connecting to $DEVICE..."
+
+for ((i=1; i<=MAX_RETRIES; i++)); do
+    echo "[*] Attempt $i..."
+
+    bluetoothctl connect "$DEVICE" >/dev/null 2>&1
+
+    # Check connection status
+    if bluetoothctl info "$DEVICE" | grep -q "Connected: yes"; then
+        echo "[✓] Connected successfully on attempt $i"
+        exit 0
+    fi
+
+    echo "[!] Failed attempt $i, retrying in $DELAY sec..."
+    sleep $DELAY
+done
+
+echo "[✗] Failed to connect after $MAX_RETRIES attempts"
+exit 1
