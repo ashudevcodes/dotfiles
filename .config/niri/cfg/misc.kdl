@@ -17,10 +17,30 @@ cursor {
   hide-after-inactive-ms 1000
 }
 
-debug {
-  honor-xdg-activation-with-invalid-serial
-}
-
 hotkey-overlay {
   skip-at-startup
+}
+
+overview {
+    zoom 1
+    //backdrop-color "#1a1b26"
+
+    workspace-shadow {
+        off
+        softness 24
+        spread 12
+        //offset x=0 y=0
+        //color "#00000090"
+    }
+}
+output "eDP-1" {
+    mode "1920x1080@144.000"
+    scale 1
+    position x=0 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+}
+
+switch-events {
+    lid-close { spawn "dm-tool" "lock"; }
 }

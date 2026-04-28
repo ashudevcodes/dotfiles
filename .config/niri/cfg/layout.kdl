@@ -1,15 +1,27 @@
 layout {
-  gaps 16
-  center-focused-column "never"
+  gaps 10
+  //center-focused-column "never"
 
+  //default-column-display "tabbed"
   background-color "transparent"
 
-  focus-ring {
-	width 3
-
-	active-color "#565f89"
-
-	inactive-color "#505050"
+  insert-hint {
+	color "#ffc87f80"
+	gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
   }
-  struts {}
+
+  focus-ring {
+	width 1
+	active-color "#505050"
+	//active-gradient from="#ffffff30" to="#00000090" angle=120 relative-to="workspace-view"
+  }
+  shadow {
+	on
+	softness 24
+	spread 4
+	offset x=0 y=8
+	color "#00000090"
+
+	inactive-color "transparent"
+  }
 }
