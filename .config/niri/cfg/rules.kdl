@@ -5,11 +5,18 @@ window-rule {
   draw-border-with-background false
 }
 
-window-rule {
-  match app-id=r#"xfce4-appfinder"#
-  opacity 0.7
-  open-floating true
+layer-rule {
+  match namespace="rofi"
   geometry-corner-radius 20
+  background-effect {
+	blur true
+	xray false
+	saturation 2
+  }
+}
+
+window-rule {
+  match app-id="footclient"
   background-effect {
 	blur true
 	xray true
@@ -18,8 +25,8 @@ window-rule {
 }
 
 layer-rule {
-    match layer="background"
-    place-within-backdrop true
+  match layer="background"
+  place-within-backdrop true
 }
 
 layer-rule {
