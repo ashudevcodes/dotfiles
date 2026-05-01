@@ -1,11 +1,12 @@
 binds {
 
   Mod+Shift+ESCAPE                    { show-hotkey-overlay; }
-
-  //Mod+R                             hotkey-overlay-title="Open App Launcher: Rofi launcher" { spawn-sh "rofi -show drun -font 'jetbrainsmono 11'"; }
+  Mod+v                               { switch-focus-between-floating-and-tiling; }
+  Mod+R                             hotkey-overlay-title="Open App Launcher: Rofi launcher" { spawn-sh "rofi -show drun -font 'jetbrainsmono 11'"; }
 
   Mod+Shift+R { switch-preset-column-width; }
-  Mod+R                               hotkey-overlay-title="Open App Launcher: App launcher" { spawn-sh "xfce4-appfinder"; }
+
+  //Mod+R                               hotkey-overlay-title="Open App Launcher: App launcher" { spawn-sh "xfce4-appfinder"; }
   Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
   Mod+E                               hotkey-overlay-title="File Manager: Thunar" { spawn "thunar"; }
   Mod+Return                          hotkey-overlay-title="Open Terminal: Foot" { spawn "footclient"; }
@@ -81,7 +82,7 @@ binds {
   Mod+Shift+8                          { move-column-to-workspace 8; }
   Mod+Shift+9                          { move-column-to-workspace 9; }
 
-  Mod+TAB                             { focus-workspace-previous; }
+  Mod+TAB                             { focus-window-previous; }
 
   Mod+Shift+F                         { expand-column-to-available-width; }
   Mod+C                               { center-column; }
