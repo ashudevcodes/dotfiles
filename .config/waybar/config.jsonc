@@ -10,7 +10,7 @@
 
   "modules-left":[
 	"custom/launcher",
-	"custom/separator",
+	"cffi/liquid_battery",
 	"niri/workspaces"
   ],
 
@@ -20,17 +20,18 @@
 
   "modules-right": [
 	"backlight",
-	"custom/separator",
+    "custom/separator",
 	"wireplumber",
-	//"cffi/battery"
 	"clock"
   ],
 
   "backlight":{
-	"format": "",
+	"format": "{icon}",
+	"format-icons":[""],
 	"tooltip": false,
 	"reverse-scrolling" : true
   },
+
   "custom/separator": {
 	"format": "󰇙",
 	"rotate" : 270,
@@ -55,12 +56,13 @@
 
   "clock": {
 	"format": "{:%H\n%M\n--\n%d\n%m}",
-	"tooltip": false
+	"tooltip": false,
+	"interval": 60
   },
 
   "wireplumber": {
 	"format": "{icon}",
-	"format-muted": "",
+	"format-muted": " ",
 	"reverse-scrolling" : true,
 	"format-icons": { "default": ["󰕿","󰖀","󰕾"] },
 	"on-click": "pavucontrol",
@@ -70,15 +72,17 @@
   },
 
   "bluetooth": {
-	"format": "󰂯",
+	"format": "",
 	"format-connected": "{device_alias}",
 	"rotate" : 90,
 	"format-disabled": "",
-	"on-click": "footclient -e bluetoothctl"
+	"on-click": "footclient -e bluetoothctl",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   },
 
-  "cffi/battery": {
-	"module_path": "/home/nemo/.config/waybar/foo/wb_battery.so"
+  "cffi/liquid_battery": {
+	"module_path": "/home/nemo/.local/lib/waybar/modules/libliquid-battery.so"
   }
 }
 
