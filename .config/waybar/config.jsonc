@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "left",
   "margin-left" : 10,
-  "height" : 1020,
+  "height" : 900,
   "width" : 75,
   "exclusive": true,
   "spacing": 0,
@@ -48,21 +48,21 @@
 	"format": "{icon}",
 	"format-icons": {
 	  "active" : "󰮯",
-	  "default" : "󰊠"
+	  "default" : "󱙝"
 	},
 	"on-scroll-up": "niri msg action focus-workspace-up",
 	"on-scroll-down": "niri msg action focus-workspace-down"
   },
 
   "clock": {
-	"format": "{:%H\n%M\n--\n%d\n%m}",
+	"format": "{:%H\n%M\n---\n%d\n%m}",
 	"tooltip": false,
 	"interval": 60
   },
 
   "wireplumber": {
 	"format": "{icon}",
-	"format-muted": " ",
+	"format-muted": "",
 	"reverse-scrolling" : true,
 	"format-icons": { "default": ["󰕿","󰖀","󰕾"] },
 	"on-click": "pavucontrol",

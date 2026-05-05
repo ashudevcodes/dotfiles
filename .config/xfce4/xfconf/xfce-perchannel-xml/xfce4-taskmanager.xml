@@ -2,6 +2,18 @@
 
 <channel name="xfce4-taskmanager" version="1.0">
   <property name="window-maximized" type="bool" value="false"/>
-  <property name="window-width" type="int" value="480"/>
-  <property name="window-height" type="int" value="600"/>
+  <property name="window-width" type="int" value="1639"/>
+  <property name="window-height" type="int" value="962"/>
+  <property name="columns" type="empty">
+    <property name="sort-type" type="uint" value="1"/>
+    <property name="sort-id" type="uint" value="1"/>
+    <property name="column-group-vsz" type="bool" value="false"/>
+  </property>
+  <property name="interface" type="empty">
+    <property name="show-all-processes" type="bool" value="true"/>
+    <property name="process-tree" type="bool" value="true"/>
+    <property name="show-legend" type="bool" value="false"/>
+    <property name="more-precision" type="bool" value="false"/>
+  </property>
+  <property name="prompt-terminate-task" type="bool" value="true"/>
 </channel>

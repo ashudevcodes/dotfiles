@@ -1,5 +1,3 @@
-//spawn-sh-at-startup "xfce4-panel"
-
 spawn-sh-at-startup "cairo-dock --disable-dbus-activation --disable-systemd -L -c"
 
 spawn-sh-at-startup "waybar"
@@ -10,6 +8,4 @@ spawn-sh-at-startup "mako"
 
 spawn-sh-at-startup "wlsunset -S 07:00 -s 18:00 -t 3500 -T 6500 -d 1800"
 
-spawn-sh-at-startup "awww-daemon"
-
-spawn-sh-at-startup "sh -c ~/.config/niri/scripts/wallpaper.sh"
+spawn-sh-at-startup "~/.config/niri/scripts/wallpaper.sh"

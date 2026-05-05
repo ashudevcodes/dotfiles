@@ -26,13 +26,14 @@ window-rule {
 
 layer-rule {
   match layer="background"
-  place-within-backdrop true
+ // place-within-backdrop true
 }
 
 layer-rule {
   match namespace="waybar"
 
   geometry-corner-radius 20
+  opacity 0.8
   background-effect {
 	blur true
 	xray false

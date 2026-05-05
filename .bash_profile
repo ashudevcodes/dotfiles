@@ -1,9 +1,14 @@
 # .bash_profile
 
+if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec niri
+fi
+
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+
 
 # User specific environment and startup programs
 alias docker=podman
