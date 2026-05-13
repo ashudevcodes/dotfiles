@@ -25,7 +25,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 
 fzf_open() {
     local file
-    file=$(find ~/code ~/Documents ~/brain_wires \( -name .git -o -name node_modules \) -prune -o -type f -print | \
+    file=$(find ~/code ~/.config/ \( -name .git -o -name node_modules ~/.config/BraveSoftware \) -prune -o -type f -print | \
            fzf --query="${1:-}" \
                --select-1 \
                --exit-0 \
@@ -36,7 +36,7 @@ fzf_open() {
 
 find_dir() {
     local dir
-    dir=$(find ~/code ~/Documents ~/brain_wires -type d \( -name .git -o -name node_modules \) -prune -o -type d -print | \
+    dir=$(find ~/code ~/.config/ -type d \( -name .git -o -name node_modules \) -prune -o -type d -print | \
           fzf --query="${1:-}" \
               --select-1 \
               --exit-0 \
