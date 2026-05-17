@@ -43,3 +43,5 @@
 .local/bin/budsConnect
 .local/icon/freetube.svg
 .local/icon/localsend.png
+.local/share/
+.local/state/
