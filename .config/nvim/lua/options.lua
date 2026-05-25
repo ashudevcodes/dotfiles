@@ -4,7 +4,7 @@ require('vim._core.ui2').enable {}
 local VIM = vim
 
 -- Show whitespace.
-VIM.opt.list = true
+VIM.opt.list = false
 VIM.wo.signcolumn = 'yes'
 
 -- Use rounded borders for floating windows.
@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- c project code formationg
 VIM.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.c", "*.cpp", "*.h" },
+	pattern = { "*.*" },
 	callback = function()
 		VIM.lsp.buf.format({ async = false })
 	end,

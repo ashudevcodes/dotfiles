@@ -9,8 +9,8 @@ vim.keymap.set('n', '<leader>d', function()
   vim.diagnostic.open_float()
 end)
 
-vim.keymap.set("n", "<A-l>", ":bnext<CR>")
-vim.keymap.set("n", "<A-h>", ":bprev<CR>")
+vim.keymap.set("n", "<A-l>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<A-h>", ":bprev<CR>", { silent = true })
 
 vim.keymap.set("n", "<A-c>", ":bd<CR>")
 

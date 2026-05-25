@@ -5,6 +5,7 @@ vim.pack.add({
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/folke/tokyonight.nvim" },
   { src = "https://github.com/saghen/blink.cmp"},
+  { src = "https://github.com/saghen/blink.lib"},
   { src = "https://github.com/numToStr/Comment.nvim"},
   { src = "https://github.com/catgoose/nvim-colorizer.lua"},
   { src = "https://github.com/windwp/nvim-autopairs"},
@@ -57,7 +58,7 @@ require("mason-lspconfig").setup({
     "lua_ls",
 	"clangd",
   },
-  automatic_enable = true,
+  automatic_enable = false,
 })
 
 require("gitsigns").setup({
