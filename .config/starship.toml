@@ -39,7 +39,7 @@ format = 'last command: [$duration](bold yellow)'
 disabled = false
 
 [os.symbols]
-Arch = ' ' 
+Arch = ' '
 
 # Shows the hostname
 [hostname]
@@ -60,7 +60,7 @@ format = '[$path]($style)[$read_only]($read_only_style) '
 # Shows current git branch
 [git_branch]
 symbol = "  "
-format = '[$symbol$branch]($style)'
+format = '[$symbol$branch ]($style)'
 truncation_length = 4
 truncation_symbol = '…/'
 style = 'bold green'
