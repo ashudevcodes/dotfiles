@@ -6,7 +6,7 @@ input {
   }
 
   touchpad {
-	// off
+	//off
 	tap
 	dwt
 	dwtp
@@ -29,7 +29,7 @@ input {
   }
 
   trackpoint {
-	// off
+	off
 	// natural-scroll
 	// accel-speed 0.2
 	// accel-profile "flat"
@@ -40,8 +40,6 @@ input {
   }
 
   warp-mouse-to-focus
-  focus-follows-mouse
-
-  // focus-follows-mouse max-scroll-amount="0%"
+  focus-follows-mouse max-scroll-amount="0%"
 
 }

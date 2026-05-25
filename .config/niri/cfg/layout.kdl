@@ -11,17 +11,17 @@ layout {
   }
 
   focus-ring {
-	width 1
-	active-color "#505050"
-	//active-gradient from="#ffffff30" to="#00000090" angle=120 relative-to="workspace-view"
+	width 2
+	//active-color "rgba(80, 80, 80, 0.8)"
+	//active-color "#ffffff30"
+	active-gradient from="rgba(80, 80, 80, 0.7)" to="rgba(80, 80, 80, 0.3)" angle=180 relative-to="workspace-view"
   }
   shadow {
 	on
-	//softness 24
-	//spread 4
-	//offset x=0 y=8
+	//softness 1
+	//spread 3
 	//color "#00000090"
 
-	inactive-color "transparent"
+	//inactive-color "transparent"
   }
 }

@@ -1,19 +1,21 @@
 binds {
 
   Mod+Shift+ESCAPE                    { show-hotkey-overlay; }
-  Mod+v                               { switch-focus-between-floating-and-tiling; }
-  Mod+R                             hotkey-overlay-title="Open App Launcher: Rofi launcher" { spawn-sh "rofi -show drun -font 'jetbrainsmono 11'"; }
+  //Mod+v                               { switch-focus-between-floating-and-tiling; }
+  Mod+R                              hotkey-overlay-title="Open App Launcher: Rofi launcher" { spawn-sh "rofi -show drun -font 'jetbrainsmononerdfont 10'"; }
+
+  Mod+M                               hotkey-overlay-title="Laptop Touchpad: Disable or Enable" { spawn-sh "~/.config/niri/scripts/touchpad.sh"; }
 
   Mod+Shift+R { switch-preset-column-width; }
 
-  //Mod+R                               hotkey-overlay-title="Open App Launcher: App launcher" { spawn-sh "xfce4-appfinder"; }
   Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
-  Mod+E                               hotkey-overlay-title="File Manager: Thunar" { spawn "thunar"; }
+ // Mod+E                               hotkey-overlay-title="File Manager: Thunar" { spawn "thunar"; }
   Mod+Return                          hotkey-overlay-title="Open Terminal: Foot" { spawn "footclient"; }
+  Mod+Shift+Return                    hotkey-overlay-title="Open floating terminal" { spawn-sh "foot --app-id=foot-float"; }
   Mod+Shift+W                         repeat=false hotkey-overlay-title="Waybar restart" { spawn-sh "pkill -x waybar || waybar"; }
 
-  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
   XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
   XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
@@ -22,8 +24,8 @@ binds {
   XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
   XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+1%"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "1%-"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+1%"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "1%-"; }
 
   Mod+Q                               { close-window; }
 
@@ -85,7 +87,7 @@ binds {
   Mod+TAB                             { focus-window-previous; }
 
   Mod+Shift+F                         { expand-column-to-available-width; }
-  Mod+C                               { center-column; }
+  Mod+V                               { center-column; }
   Mod+CTRL+C                          { center-visible-columns; }
   Mod+Minus                           { set-column-width "-10%"; }
   Mod+Equal                           { set-column-width "+10%"; }
@@ -106,5 +108,6 @@ binds {
   Mod+Shift+P                         { power-off-monitors; }
   Mod+W                               repeat=false { toggle-overview; }
 
+  Mod+CTRL+L                          hotkey-overlay-title="Lock" { spawn "hyprlock" "-q"; }
   Mod+Ctrl+p { spawn-sh "systemctl poweroff"; }
 }

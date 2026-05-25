@@ -1,17 +1,22 @@
 window-rule {
-  geometry-corner-radius 17
+  geometry-corner-radius 20
   clip-to-geometry true
-  tiled-state true
   draw-border-with-background false
 }
 
 layer-rule {
   match namespace="rofi"
   geometry-corner-radius 20
+
+  shadow {
+        on
+        //color "#000000"
+    }
+
   background-effect {
 	blur true
 	xray false
-	saturation 2
+	saturation 3
   }
 }
 
@@ -20,24 +25,73 @@ window-rule {
   background-effect {
 	blur true
 	xray true
-	saturation 2
+	saturation 3
+  }
+}
+
+
+window-rule {
+  match app-id="foot-float"
+
+  open-floating true
+
+  //default-column-width { fixed 1740; }
+  //default-window-height { fixed 975; }
+
+  //default-column-width { fixed 870; }
+  //default-window-height { fixed 487; }
+
+  default-column-width { fixed 1305; }
+  default-window-height { fixed 790; }
+
+  // default-column-width { fixed 1365; }
+  // default-window-height { fixed 795; }
+
+  shadow {
+        on
+        color "#000000"
+    }
+
+  background-effect {
+    blur true
+    xray false
+    saturation 3
   }
 }
 
 layer-rule {
   match layer="background"
- // place-within-backdrop true
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="mako"
+
+  shadow {
+	on
+  }
+
+  geometry-corner-radius 20
+  opacity 0.7
+  background-effect {
+	blur true
+	xray false
+	//saturation 1
+  }
 }
 
 layer-rule {
   match namespace="waybar"
 
-  geometry-corner-radius 20
-  opacity 0.8
+  shadow {
+	on
+  }
+
+  geometry-corner-radius 16
+  //opacity 0.7
   background-effect {
 	blur true
 	xray false
-	saturation 2
+	saturation 3
   }
 }
-

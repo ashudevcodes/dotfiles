@@ -1,24 +1,23 @@
 prefer-no-csd
 
-environment {
-  ELECTRON_OZONE_PLATFORM_HINT "auto"
-  QT_QPA_PLATFORM "wayland"
-  QT_QPA_PLATFORMTHEME "gtk3"
-  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-  XDG_CURRENT_DESKTOP "niri"
-  XDG_SESSION_TYPE "wayland"
-}
-
 cursor {
-  xcursor-theme "elementary"
+  xcursor-theme "material_light_cursors"
   xcursor-size 24
 
   hide-when-typing
   hide-after-inactive-ms 1000
 }
 
+environment {
+    DISPLAY ":0"
+}
+
 hotkey-overlay {
   skip-at-startup
+}
+
+xwayland-satellite {
+    off
 }
 
 overview {
@@ -27,20 +26,20 @@ overview {
 
     workspace-shadow {
         off
-        softness 24
-        spread 12
+        //softness 24
+        //spread 12
         //offset x=0 y=0
         //color "#00000090"
     }
 }
 output "eDP-1" {
-  //mode "1920x1080@144.000"
-  scale 1.1
-    position x=0 y=0
+    //mode "1920x1080@60.000"
+    scale 1.1
+    //position x=0 y=0
     variable-refresh-rate on-demand=true
     focus-at-startup
 }
 
 switch-events {
-    lid-close { spawn "dm-tool" "lock"; }
+   lid-close { spawn "hyprlock" "-q" "-g" "10"; }
 }
