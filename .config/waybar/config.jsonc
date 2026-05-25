@@ -3,25 +3,31 @@
   "position": "left",
   "margin-left" : 10,
   "height" : 900,
-  "width" : 75,
+  "width" : 72,
   "exclusive": true,
   "spacing": 0,
+  "expand-center": true,
   "reload_style_on_change": true,
 
   "modules-left":[
-	"custom/launcher",
-	"cffi/liquid_battery",
+	"custom/power",
+	//"cffi/liquid_battery",
+	"custom/separator",
 	"niri/workspaces"
   ],
 
   "modules-center":[
-	"bluetooth"
+	"bluetooth",
+	"network"
   ],
 
   "modules-right": [
 	"backlight",
-    "custom/separator",
-	"wireplumber",
+	"custom/separator",
+	"pulseaudio#output",
+	"custom/separator",
+	"cffi/touchpad",
+	"custom/separator",
 	"clock"
   ],
 
@@ -38,10 +44,21 @@
 	"tooltip": false
   },
 
+  "custom/power": {
+	"format" : "",
+	"tooltip": false,
+	"on-click": "sh -c ~/.config/waybar/powermenu.sh"
+  },
+
   "custom/launcher": {
 	"format": "{icon}",
 	"format-icons": "",
 	"tooltip": false
+  },
+
+  "cffi/touchpad":{
+	"module_path": "/home/nemo/.local/lib/waybar/modules/touchpad.so",
+	"signal": 10
   },
 
   "niri/workspaces": {
@@ -60,11 +77,28 @@
 	"interval": 60
   },
 
-  "wireplumber": {
+  "pulseaudio#output": {
 	"format": "{icon}",
+	"format-icons": {
+	  "default": [ "󰕿", "󰖀", "󰕾" ],
+	  "default-muted": "󰝟"
+	},
+
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "cursor": true
+    },
+
+    "backlight/slider": {
+        "min": 5,
+        "max": 100,
+        "cursor": true
+    },
+
 	"format-muted": "",
 	"reverse-scrolling" : true,
-	"format-icons": { "default": ["󰕿","󰖀","󰕾"] },
 	"on-click": "pavucontrol",
 	"tooltip": false,
 	"rotate" : 90,
@@ -77,13 +111,26 @@
 	"rotate" : 90,
 	"format-disabled": "",
 	"on-click": "footclient -e bluetoothctl",
+	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
 	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
 	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   },
 
   "cffi/liquid_battery": {
-	"module_path": "/home/nemo/.local/lib/waybar/modules/libliquid-battery.so"
-  }
+	"module_path": "/home/nemo/.local/lib/waybar/modules/libliquid-battery.so",
+	"signal": 10
+  },
+
+  "network": {
+    "interface": "wlan0",
+    "format": "{icon}",
+	"format-icons": ["󰤯","󰤢","󰤥","󰤨"],
+    "format-disabled": "",
+	"on-click": "footclient -e iwctl",
+	"on-click-right": "sh -c 'rfkill toggle wlan'",
+	"tooltip": false,
+    "max-length": 50
+}
 }
 
 
