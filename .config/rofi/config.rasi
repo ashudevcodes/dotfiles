@@ -1,6 +1,6 @@
 entry {
 	placeholder: "  Search";
-	padding: 8px 0 8px 8px;
+	padding: 8px;
 	text-color: #c0caf5;
 }
 
@@ -23,29 +23,30 @@ configuration {
 }
 
 inputbar {
-	border-radius: 11px;
-	border: 2px solid;
+	border-radius: 13px;
 	border-color: #565f89;
+	background-color: rgba(255,255,255, 5%);
     children: [ entry ];
 }
 
 * {
 	separatorcolor: transparent;
-	selected-normal-background: rgba(255,255,255, 5%);
+	selected-normal-background: rgba(255,255,255, 3%);
 	normal-background: rgba(255,255,255, 0%);
 	alternate-normal-background: rgba(255,255,255, 0%);
 }
 
 mainbox {
-	border: 2px;
+	border: 0px;
 	border-color: #565f89;
-	border-radius: 10px;
 	padding: 10px;
 }
 
 window {
-	border-radius: 11px;
-	background-color: rgba(29, 32, 47, 85%);
+	border: 2px;
+	border-radius: 20px;
+	border-color: rgba(81, 81, 81, 0.7);
+	background-color: rgba(17, 18, 29, 0.7);
 	padding: 0px;
 	width: 35%;
 
@@ -55,7 +56,7 @@ window {
 
 
 listview {
-	lines: 8;
+	lines: 6;
 }
 element-icon {
     size: 1.2em;
