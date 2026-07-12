@@ -1,32 +1,52 @@
 entry {
-	placeholder: "  Search";
+	placeholder: " 󰥗\t Search applications…";
 	padding: 8px;
 	text-color: #c0caf5;
+    font: "SF Pro Rounded Semibold 11";
 }
 
 configuration {
-	filebrowser {
-	  directory: "~/";
-	  sorting-method: "name";
-	  directories-first: true;
-	  show-hidden: false;
-	  cancel-returns-1: true;
-	  command: "xdg-open";
-	}
-
-	modi: "drun,window,filebrowser";
+	modi: "drun,filebrowser,window";
+    font: "SF Pro Rounded Semibold 11";
 	case-sensitive: false;
 	cycle: true;
 	filter: "";
 	scroll-method: 0;
 	show-icons: true;
+	drun-display-format: "{name}";
+	sidebar-mode: true;
+	icon-theme: "oxygen";
+	window-thumbnail: true;
+}
+
+mode-switcher {
+    enabled: true;
+    spacing: 8px;
+    padding: 0px 12px;
+}
+
+button {
+    padding: 8px 20px;
+    border-radius: 12px;
+	background-color: rgba(255,255,255, 5%);
+    border-radius: 12px;
+    text-color: #f2f2f280;
+}
+
+button selected {
+	text-color: #c0caf0CC;
 }
 
 inputbar {
 	border-radius: 13px;
-	border-color: #565f89;
+
+	border: 1px;
+	border-color: rgba(81, 81, 81, 0.4);
+
 	background-color: rgba(255,255,255, 5%);
+
     children: [ entry ];
+
 }
 
 * {
@@ -43,9 +63,9 @@ mainbox {
 }
 
 window {
-	border: 2px;
+	border: 3px;
 	border-radius: 20px;
-	border-color: rgba(81, 81, 81, 0.7);
+	border-color: rgba(100, 100, 100, 0.6);
 	background-color: rgba(17, 18, 29, 0.7);
 	padding: 0px;
 	width: 35%;
@@ -57,23 +77,21 @@ window {
 
 listview {
 	lines: 6;
+    scrollbar: false;
+	dynamic: true;
 }
-element-icon {
-    size: 1.2em;
-}
+
 element {
-	padding: 10px 10px;
-	height: 50px;
-	border-radius: 5px;
+	padding: 11px;
+	border-radius: 9px;
+	spacing: 10px;
 	children: [ element-icon, element-text ];
 }
 
-element-text {
-	text-color: #c0caf5;
+element-icon {
+    size: 1.2em;
 }
 
-#scrollbar {
-	handle-color: #3a3f4a;
-	handle-width: 4px ;
-	padding: 0;
+element-text {
+	text-color: #c0caf0CC;
 }
