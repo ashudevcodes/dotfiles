@@ -2,7 +2,7 @@ prefer-no-csd
 
 cursor {
   xcursor-theme "material_light_cursors"
-  xcursor-size 24
+  //xcursor-size 24
 
   hide-when-typing
   hide-after-inactive-ms 1000
@@ -10,6 +10,9 @@ cursor {
 
 environment {
     DISPLAY ":0"
+	GTK_ICON_THEME_NAME "oxygen"
+	QT_QPA_PLATFORMTHEME "qt6ct"
+
 }
 
 hotkey-overlay {
@@ -34,12 +37,12 @@ overview {
 }
 output "eDP-1" {
     //mode "1920x1080@60.000"
-    scale 1.1
+    //scale 1.1
     //position x=0 y=0
     variable-refresh-rate on-demand=true
     focus-at-startup
 }
 
 switch-events {
-   lid-close { spawn "hyprlock" "-q" "-g" "10"; }
+   lid-close { spawn "hyprlock" "-q"; }
 }

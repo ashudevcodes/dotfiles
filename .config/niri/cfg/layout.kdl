@@ -1,6 +1,6 @@
 layout {
   gaps 10
-  //center-focused-column "never"
+  //center-focused-column "always"
 
   //default-column-display "tabbed"
   background-color "transparent"
@@ -12,16 +12,19 @@ layout {
 
   focus-ring {
 	width 2
-	//active-color "rgba(80, 80, 80, 0.8)"
-	//active-color "#ffffff30"
-	active-gradient from="rgba(80, 80, 80, 0.7)" to="rgba(80, 80, 80, 0.3)" angle=180 relative-to="workspace-view"
+
+	//active-gradient from="rgba(20, 20, 20, 0.4)" to="rgba(10, 10, 10, 0.4)" angle=360 relative-to="workspace-view"
+	active-gradient from="rgba(20, 20, 20, 0.4)" to="rgba(10, 10, 10, 0.4)" angle=180 relative-to="workspace-view"
+
   }
+
   shadow {
 	on
-	//softness 1
-	//spread 3
-	//color "#00000090"
+	inactive-color "transparent"
 
-	//inactive-color "transparent"
+	//softness 1
+	spread 0
+	color "#000000"
+
   }
 }

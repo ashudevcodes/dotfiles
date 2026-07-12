@@ -1,97 +1,196 @@
 window-rule {
-  geometry-corner-radius 20
+  geometry-corner-radius 15
   clip-to-geometry true
   draw-border-with-background false
 }
 
+recent-windows {
+    open-delay-ms 0
+
+    highlight {
+        corner-radius 20
+    }
+}
+
+layer-rule {
+  match namespace="binary-clock"
+  geometry-corner-radius 28
+
+  shadow {
+	on
+	color "#00000090"
+  }
+
+  background-effect {
+	blur true
+	xray true
+ }
+
+}
+
 layer-rule {
   match namespace="rofi"
-  geometry-corner-radius 20
+  geometry-corner-radius 21
 
   shadow {
         on
-        //color "#000000"
     }
 
   background-effect {
 	blur true
 	xray false
-	saturation 3
   }
+
 }
 
 window-rule {
   match app-id="footclient"
+
   background-effect {
 	blur true
 	xray true
-	saturation 3
+  }
+
+}
+
+window-rule {
+  match app-id="xdg-desktop-portal-gtk"
+  geometry-corner-radius 17
+
+  default-column-width { proportion 0.6; }
+  default-window-height { proportion 0.6; }
+
+  opacity 0.8
+
+  background-effect {
+	blur true
+	xray false
   }
 }
 
 
 window-rule {
   match app-id="foot-float"
-
   open-floating true
 
-  //default-column-width { fixed 1740; }
-  //default-window-height { fixed 975; }
-
-  //default-column-width { fixed 870; }
-  //default-window-height { fixed 487; }
-
-  default-column-width { fixed 1305; }
-  default-window-height { fixed 790; }
-
-  // default-column-width { fixed 1365; }
-  // default-window-height { fixed 795; }
+  default-column-width { proportion 0.7; }
+  default-window-height { proportion 0.7; }
 
   shadow {
         on
-        color "#000000"
+        color "#00000090"
     }
 
   background-effect {
     blur true
     xray false
-    saturation 3
   }
+
 }
 
 layer-rule {
-  match layer="background"
-  place-within-backdrop true
-}
-
-layer-rule {
-  match namespace="mako"
+  match namespace="notifications"
+  geometry-corner-radius 20
+  baba-is-float true
+  opacity 0.7
 
   shadow {
 	on
   }
 
-  geometry-corner-radius 20
-  opacity 0.7
   background-effect {
 	blur true
 	xray false
-	//saturation 1
   }
+
 }
+
+window-rule {
+  match app-id="org.pulseaudio.pavucontrol"
+  open-floating true
+  opacity 0.8
+
+  default-column-width { proportion 0.5; }
+  default-window-height { proportion 0.5; }
+
+  popups {
+	background-effect {
+	  blur true
+	  xray false
+	}
+  }
+
+  background-effect {
+    blur true
+    xray false
+  }
+
+}
+
+window-rule {
+  match app-id="nvidia-settings"
+  open-floating true
+  opacity 0.8
+
+  default-column-width { proportion 0.6; }
+  default-window-height { proportion 0.6; }
+
+  popups {
+	background-effect {
+	  blur true
+	  xray false
+	}
+  }
+
+  background-effect {
+    blur true
+    xray false
+  }
+
+}
+
+window-rule {
+  match app-id="org.kde.dolphin"
+  open-floating true
+  opacity 0.9
+
+  default-column-width { proportion 0.6; }
+  default-window-height { proportion 0.6; }
+
+  popups {
+	background-effect {
+	  blur true
+	  xray false
+	}
+  }
+
+  background-effect {
+    blur true
+    xray false
+  }
+
+}
+
 
 layer-rule {
   match namespace="waybar"
+  geometry-corner-radius 16
+
+  popups {
+	background-effect {
+	  blur true
+	  xray false
+	}
+  }
 
   shadow {
 	on
+    color "#00000070"
   }
 
-  geometry-corner-radius 16
-  //opacity 0.7
   background-effect {
 	blur true
 	xray false
-	saturation 3
   }
+
 }

@@ -2,8 +2,10 @@
 
 HOUR=$(date +%H)
 
-if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 20 ]; then
+if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 18 ]; then
   IMG="$HOME/assets/wallhaven-yqqwvd.jpg"
+elif [ "$HOUR" -ge 18 ] && [ "$HOUR" -lt 20 ]; then
+  IMG="$HOME/assets/future_place.jpg"
 else
   IMG="$HOME/assets/portal_robot.png"
 fi

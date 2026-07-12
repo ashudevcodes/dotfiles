@@ -1,43 +1,74 @@
 binds {
 
-  Mod+Shift+ESCAPE                    { show-hotkey-overlay; }
-  //Mod+v                               { switch-focus-between-floating-and-tiling; }
-  Mod+R                              hotkey-overlay-title="Open App Launcher: Rofi launcher" { spawn-sh "rofi -show drun -font 'jetbrainsmononerdfont 10'"; }
+  Mod+Shift+ESCAPE {
+	show-hotkey-overlay;
+  }
+  Mod+Shift+R {
+	switch-preset-column-width;
+  }
 
-  Mod+M                               hotkey-overlay-title="Laptop Touchpad: Disable or Enable" { spawn-sh "~/.config/niri/scripts/touchpad.sh"; }
+  Mod+Space  hotkey-overlay-title="Open App Launcher: Rofi launcher" {
+	spawn-sh "rofi -show drun";
+  }
 
-  Mod+Shift+R { switch-preset-column-width; }
+  Mod+M  hotkey-overlay-title="Laptop Touchpad: Disable or Enable" {
+	spawn-sh "~/.config/niri/scripts/touchpad.sh";
+  }
 
-  Mod+B                               hotkey-overlay-title="Open Browser: Brave" { spawn "brave"; }
- // Mod+E                               hotkey-overlay-title="File Manager: Thunar" { spawn "thunar"; }
-  Mod+Return                          hotkey-overlay-title="Open Terminal: Foot" { spawn "footclient"; }
-  Mod+Shift+Return                    hotkey-overlay-title="Open floating terminal" { spawn-sh "foot --app-id=foot-float"; }
-  Mod+Shift+W                         repeat=false hotkey-overlay-title="Waybar restart" { spawn-sh "pkill -x waybar || waybar"; }
 
-  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
-  XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-  XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+  Mod+B  hotkey-overlay-title="Open Browser: Brave" {
+	spawn "brave";
+  }
+
+  Mod+Return  hotkey-overlay-title="Open Terminal: Foot" {
+	spawn "footclient";
+  }
+
+  Mod+Shift+Return hotkey-overlay-title="Open floating terminal" {
+	spawn-sh "foot --app-id=foot-float";
+  }
+
+  Mod+Shift+W  repeat=false hotkey-overlay-title="Waybar restart" {
+	spawn-sh "pkill -x waybar || waybar";
+  }
+
+  XF86AudioRaiseVolume allow-when-locked=true {
+	spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0; volume-notify";
+  }
+
+  XF86AudioLowerVolume allow-when-locked=true {
+	spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-; volume-notify";
+  }
+
+  XF86AudioMute allow-when-locked=true {
+	spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; volume-notify";
+  }
+
+  XF86MonBrightnessUp allow-when-locked=true {
+	spawn-sh "brightnessctl set +1%; brightness-notify";
+  }
+
+  XF86MonBrightnessDown allow-when-locked=true {
+	spawn-sh "brightnessctl set 1%-; brightness-notify";
+  }
 
   XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
   XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
   XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
   XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+1%"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "1%-"; }
 
-  Mod+Q                               { close-window; }
+  Mod+Q                                { close-window; }
 
-  Mod+Up                              { focus-window-up; }
-  Mod+Left                            { focus-column-left; }
-  Mod+Down                            { focus-window-down; }
-  Mod+Right                           { focus-column-right; }
+  Mod+Up                               { focus-window-up; }
+  Mod+Left                             { focus-column-left; }
+  Mod+Down                             { focus-window-down; }
+  Mod+Right                            { focus-column-right; }
 
-  Mod+H                               { focus-column-left; }
-  Mod+L                               { focus-column-right; }
-  Mod+K                               { focus-window-or-workspace-up; }
-  Mod+J                               { focus-window-or-workspace-down; }
+  Mod+H                                { focus-column-left; }
+  Mod+L                                { focus-column-right; }
+  Mod+K								   { focus-window-or-workspace-up; }
+  Mod+J                                { focus-window-or-workspace-down; }
 
   Mod+Shift+UP                         { move-window-up; }
   Mod+Shift+Left                       { move-column-left; }
@@ -49,10 +80,21 @@ binds {
   Mod+Shift+K                          { move-column-to-workspace-up; }
   Mod+Shift+J                          { move-column-to-workspace-down; }
 
-  Mod+WheelScrollDown                 cooldown-ms=150 { focus-workspace-down; }
-  Mod+WheelScrollUp                   cooldown-ms=150 { focus-workspace-up; }
-  Mod+CTRL+WheelScrollDown            cooldown-ms=150 { move-column-to-workspace-down; }
-  Mod+CTRL+WheelScrollUp              cooldown-ms=150 { move-column-to-workspace-up; }
+  Mod+WheelScrollUp cooldown-ms=150 {
+	focus-workspace-up;
+  }
+
+  Mod+WheelScrollDown  cooldown-ms=150 {
+	focus-workspace-down;
+  }
+
+  Mod+CTRL+WheelScrollUp  cooldown-ms=150 {
+	move-column-to-workspace-up;
+  }
+
+  Mod+CTRL+WheelScrollDown  cooldown-ms=150 {
+	move-column-to-workspace-down;
+  }
 
   Mod+WheelScrollRight                { focus-column-right; }
   Mod+WheelScrollLeft                 { focus-column-left; }
@@ -74,15 +116,15 @@ binds {
   Mod+8                               { focus-workspace 8; }
   Mod+9                               { focus-workspace 9; }
 
-  Mod+Shift+1                          { move-column-to-workspace 1; }
-  Mod+Shift+2                          { move-column-to-workspace 2; }
-  Mod+Shift+3                          { move-column-to-workspace 3; }
-  Mod+Shift+4                          { move-column-to-workspace 4; }
-  Mod+Shift+5                          { move-column-to-workspace 5; }
-  Mod+Shift+6                          { move-column-to-workspace 6; }
-  Mod+Shift+7                          { move-column-to-workspace 7; }
-  Mod+Shift+8                          { move-column-to-workspace 8; }
-  Mod+Shift+9                          { move-column-to-workspace 9; }
+  Mod+Shift+1                         { move-column-to-workspace 1; }
+  Mod+Shift+2                         { move-column-to-workspace 2; }
+  Mod+Shift+3                         { move-column-to-workspace 3; }
+  Mod+Shift+4                         { move-column-to-workspace 4; }
+  Mod+Shift+5                         { move-column-to-workspace 5; }
+  Mod+Shift+6                         { move-column-to-workspace 6; }
+  Mod+Shift+7                         { move-column-to-workspace 7; }
+  Mod+Shift+8                         { move-column-to-workspace 8; }
+  Mod+Shift+9                         { move-column-to-workspace 9; }
 
   Mod+TAB                             { focus-window-previous; }
 
@@ -96,18 +138,28 @@ binds {
 
   Mod+T                               { toggle-window-floating; }
   Mod+F                               { fullscreen-window; }
-  Mod+O                              { toggle-column-tabbed-display; }
+  Mod+O                               { toggle-column-tabbed-display; }
 
-  Print { screenshot; }
-  Ctrl+Print { screenshot-screen; }
-  Alt+Print { screenshot-window; }
-
-  Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+  Print								  { screenshot; }
+  Ctrl+Print						  { screenshot-screen; }
+  Alt+Print							  { screenshot-window; }
 
   CTRL+ALT+Delete                     { quit; }
   Mod+Shift+P                         { power-off-monitors; }
-  Mod+W                               repeat=false { toggle-overview; }
 
-  Mod+CTRL+L                          hotkey-overlay-title="Lock" { spawn "hyprlock" "-q"; }
-  Mod+Ctrl+p { spawn-sh "systemctl poweroff"; }
+  Mod+ESCAPE  allow-inhibiting=false {
+	toggle-keyboard-shortcuts-inhibit;
+  }
+
+  Mod+W repeat=false {
+	toggle-overview;
+  }
+
+  Mod+CTRL+L  hotkey-overlay-title="Lock" {
+	spawn "hyprlock" "-q";
+  }
+
+  Mod+Ctrl+P {
+	spawn-sh "systemctl poweroff";
+  }
 }
