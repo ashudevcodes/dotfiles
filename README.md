@@ -1,21 +1,13 @@
-# The "Library Mode" Setup
-This is my personal Arch Linux configuration, featuring AwesomeWM, Neovim, and a bunch of scripts I wrote to keep my machine running efficiently.
+# Arch Library Mode Setup
+This is my personal Linux configuration, featuring NIRI as window manager and a bunch of scripts I wrote to keep my machine running efficiently and silently.
 
-<kbd>
-    <img src="assets/niri_ui_3.png">
-    <kbd>Niri In Day</kbd>
-</kbd>
+### Day & Evening
+| Day | Evening |
+|-----|---------|
+| ![Niri In Day](assets/niri_ui_3.png) | ![Niri In Evening](assets/niri_ui.png) |
 
-<kbd>
-    <img src="assets/niri_ui.png">
-    <kbd>Niri In Evenig</kbd>
-</kbd>
-
-
-<kbd>
-    <img src="assets/niri_ui_2.png">
-    <kbd>Niri In Night</kbd>
-</kbd>
+### Night
+![Niri In Night](assets/niri_ui_2.png)
 
 <hr>
 
