@@ -1,5 +1,5 @@
 -- Nvim 0.12 new ui
-require('vim._core.ui2').enable {}
+--require('vim._core.ui2').enable {}
 
 local VIM = vim
 
@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 VIM.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.*" },
 	callback = function()
-		VIM.lsp.buf.format({ async = false })
+		VIM.lsp.buf.format({ async = true })
 	end,
 })
 
