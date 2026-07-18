@@ -3,12 +3,12 @@ This is my personal Arch Linux configuration, featuring AwesomeWM, Neovim, and a
 
 <kbd>
     <img src="assets/niri_ui.png">
-    <kbd>awesomewm</kbd>
+    <kbd>Niri In Day</kbd>
 </kbd>
 
 <kbd>
     <img src="assets/niri_ui_2.png">
-    <kbd>awesomewm</kbd>
+    <kbd>Niri In Dark</kbd>
 </kbd>
 
 <hr>
