@@ -1,0 +1,20 @@
+#!/bin/sh
+
+out=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+vol=$(echo "$out" | awk '{print int($2*100)}')
+
+if echo "$out" | grep -q '\[MUTED\]'; then
+    text="Muted 󰝟"
+elif [ "$vol" -lt 35 ]; then
+    text="Volume ${vol}% "
+elif [ "$vol" -lt 70 ]; then
+    text="Volume ${vol}% "
+else
+    text="Volume ${vol}% "
+fi
+
+notify-send \
+    -a osd \
+    -h string:x-canonical-private-synchronous:volume \
+    -h int:value:$vol \
+    "$text"

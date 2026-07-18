@@ -1,0 +1,11 @@
+#!/bin/sh
+
+bright=$(brightnessctl get)
+max=$(brightnessctl max)
+pct=$(( bright * 100 / max ))
+
+notify-send \
+    -a osd \
+    -h string:x-canonical-private-synchronous:brightness \
+    -h int:value:$pct \
+    "Brightness ${pct}% "
