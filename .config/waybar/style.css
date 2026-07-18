@@ -190,6 +190,7 @@ tooltip > box {
 #custom-lock,
 #custom-quit
 {
+  margin: 3px 0px 3px 0px;
 }
 
 #custom-reboot:hover,
