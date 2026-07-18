@@ -63,10 +63,10 @@ mainbox {
 }
 
 window {
-	border: 3px;
+	border: 1px solid;
 	border-radius: 20px;
 	border-color: rgba(100, 100, 100, 0.6);
-	background-color: rgba(17, 18, 29, 0.7);
+	background-color: rgba(17, 18, 29, 85%);
 	padding: 0px;
 	width: 35%;
 
@@ -82,10 +82,10 @@ listview {
 }
 
 element {
-	padding: 11px;
-	border-radius: 9px;
-	spacing: 10px;
-	children: [ element-icon, element-text ];
+	padding: 10px 10px;
+	height: 50px;
+	border-radius: 5px;
+	children: [ element-text, element-icon ];
 }
 
 element-icon {
