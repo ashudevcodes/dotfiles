@@ -2,13 +2,19 @@
 This is my personal Arch Linux configuration, featuring AwesomeWM, Neovim, and a bunch of scripts I wrote to keep my machine running efficiently.
 
 <kbd>
-    <img src="assets/niri_ui.png">
+    <img src="assets/niri_ui_3.png">
     <kbd>Niri In Day</kbd>
 </kbd>
 
 <kbd>
+    <img src="assets/niri_ui.png">
+    <kbd>Niri In Evenig</kbd>
+</kbd>
+
+
+<kbd>
     <img src="assets/niri_ui_2.png">
-    <kbd>Niri In Dark</kbd>
+    <kbd>Niri In Night</kbd>
 </kbd>
 
 <hr>
