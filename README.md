@@ -2,14 +2,7 @@
 This is my personal Arch Linux configuration, featuring AwesomeWM, Neovim, and a bunch of scripts I wrote to keep my machine running efficiently.
 
 <kbd>
-    <img src="assets/awesomewm1.png">
-    <kbd>awesomewm</kbd>
-</kbd>
-
-<hr>
-
-<kbd>
-    <img src="assets/awesomewm.png">
+    <img src="assets/niri_ui.png">
     <kbd>awesomewm</kbd>
 </kbd>
 
