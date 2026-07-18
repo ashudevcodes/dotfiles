@@ -6,6 +6,11 @@ This is my personal Arch Linux configuration, featuring AwesomeWM, Neovim, and a
     <kbd>awesomewm</kbd>
 </kbd>
 
+<kbd>
+    <img src="assets/niri_ui_2.png">
+    <kbd>awesomewm</kbd>
+</kbd>
+
 <hr>
 
 ### The Backstory
