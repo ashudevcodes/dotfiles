@@ -13,14 +13,15 @@ layout {
   focus-ring {
 	width 2
 
-	//active-gradient from="rgba(20, 20, 20, 0.4)" to="rgba(10, 10, 10, 0.4)" angle=360 relative-to="workspace-view"
-	active-gradient from="rgba(20, 20, 20, 0.4)" to="rgba(10, 10, 10, 0.4)" angle=180 relative-to="workspace-view"
+	active-color "rgba(100, 100, 100, 0.6)"
+	//active-gradient from="rgba(100, 100, 100, 0.8)" to="rgba(100, 100, 100, 0.6)" angle=180 relative-to="workspace-view"
+	//active-gradient from="rgba(20, 20, 20, 0.4)" to="rgba(10, 10, 10, 0.4)" angle=180 relative-to="workspace-view"
 
   }
 
   shadow {
 	on
-	inactive-color "transparent"
+	//inactive-color "transparent"
 
 	//softness 1
 	spread 0

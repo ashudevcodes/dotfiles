@@ -78,7 +78,8 @@ window-rule {
 
   shadow {
         on
-        color "#00000090"
+	 color "#00000090"
+
     }
 
   background-effect {
@@ -170,7 +171,10 @@ window-rule {
   }
 
 }
-
+window-rule {
+  match app-id="Waydroid"
+  open-fullscreen true
+}
 
 layer-rule {
   match namespace="waybar"
@@ -185,7 +189,10 @@ layer-rule {
 
   shadow {
 	on
-    color "#00000070"
+	softness 20
+	spread 1
+	offset x=0 y=0
+    color "#00000090"
   }
 
   background-effect {
