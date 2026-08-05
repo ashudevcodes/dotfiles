@@ -31,6 +31,7 @@ require("tokyonight").setup({
 	end
 })
 vim.cmd [[colorscheme tokyonight-night]]
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 require("blink.cmp").setup({
 	keymap = { preset = 'enter' },

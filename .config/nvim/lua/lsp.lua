@@ -1,47 +1,12 @@
-vim.lsp.config('*',{
-  capabilities = vim.tbl_deep_extend(
-	'force',
-	vim.lsp.protocol.make_client_capabilities(),
-	(function()
-	  local ok, blink = pcall(require, 'blink.cmp')
-	  return ok and blink.get_lsp_capabilities() or {}
-	end)()
-  ),
-})
+vim.diagnostic.config({ virtual_text = true })
+vim.o.completeopt = 'menuone,noinsert,preview'
 
-vim.lsp.config('gopls', {
-  cmd = { 'gopls' },
-  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-  root_markers = { 'go.mod', 'go.work', '.git' },
-  settings = {
-	gopls = {
-	  analyses = { unusedparams = true },
-	  staticcheck = true,
-	},
-  },
-})
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-vim.filetype.add({
-  extension = { h = 'c' }
-})
-
-vim.lsp.config('clangd', {
-    cmd = {
-        'clangd',
-        '--background-index=false',
-        '--limit-results=20',
-        '--malloc-trim',
-        '--pch-storage=disk',
-        '-j=1',
-    },
-    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-    root_markers = { 'compile_commands.json', 'compile_flags.txt', 'Makefile', '.git' },
-})
-
-
-vim.lsp.config('lua_ls', {
-    cmd = {
-        'lua-language-server',
-        '--memory-limit=256',
-    },
+		if client ~= nil and client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		end
+	end
 })

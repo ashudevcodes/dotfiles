@@ -1,167 +1,164 @@
 -- Nvim 0.12 new ui
 --require('vim._core.ui2').enable {}
 
-local VIM = vim
-
 -- Show whitespace.
-VIM.opt.list = false
-VIM.wo.signcolumn = 'yes'
+vim.opt.list = false
+vim.wo.signcolumn = 'yes'
 
 -- Use rounded borders for floating windows.
-VIM.o.winborder = 'rounded'
+vim.o.winborder = 'rounded'
 
 -- Nvim 0.12 inbuilt undotree plugin
-VIM.cmd.packadd 'nvim.undotree'
+vim.cmd.packadd 'nvim.undotree'
 
 -- Set tab width
-VIM.o.tabstop = 4
-VIM.o.shiftwidth = 4
-VIM.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    local curpos = vim.api.nvim_win_get_cursor(0)
+	pattern = "*",
+	callback = function()
+		local curpos = vim.api.nvim_win_get_cursor(0)
 
-    vim.cmd([[keeppatterns %s/\s\+$//e]])
+		vim.cmd([[keeppatterns %s/\s\+$//e]])
 
-    vim.api.nvim_win_set_cursor(0, curpos)
-  end
+		vim.api.nvim_win_set_cursor(0, curpos)
+	end
 })
 
 -- c project code formationg
-VIM.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.*" },
 	callback = function()
-		VIM.lsp.buf.format({ async = true })
+		vim.lsp.buf.format({ async = true })
 	end,
 })
 
 -- changing the border color of split windows
-VIM.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "None" })
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "None" })
 
 -- Activate treesitter bases on installed parcers
-VIM.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType', {
 	pattern = '*',
 	callback = function()
-		pcall(VIM.treesitter.start)
+		pcall(vim.treesitter.start)
 	end,
 })
 
 -- Basic settings
-VIM.opt.number = true
-VIM.opt.relativenumber = true
-VIM.opt.cursorline = true
-VIM.opt.wrap = true
-VIM.opt.scrolloff = 10
-VIM.opt.sidescrolloff = 8
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+vim.opt.wrap = true
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 8
+vim.opt.laststatus = 3
 
-VIM.opt.wildignore:append { '.DS_Store' }
-VIM.o.completeopt = 'menuone,noselect,preinsert,preview'
-VIM.o.pumheight = 15
-VIM.o.pumborder = 'rounded'
+vim.opt.wildignore:append { '.DS_Store' }
+
+vim.o.pumheight = 15
+vim.o.pumborder = 'rounded'
 
 -- Indentation
-VIM.opt.shiftwidth = 2
-VIM.opt.softtabstop = 2
-VIM.opt.expandtab = false
-VIM.opt.smartindent = true
-VIM.opt.autoindent = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = false
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- Search settings
-VIM.opt.ignorecase = true
-VIM.opt.smartcase = true
-VIM.opt.hlsearch = false
-VIM.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
 -- Visual settings
-VIM.opt.termguicolors = true
-VIM.opt.showmatch = true
-VIM.opt.matchtime = 2
-VIM.opt.cmdheight = 1
-VIM.opt.completeopt = "menuone,noinsert,noselect"
-VIM.opt.showmode = false
-VIM.opt.pumheight = 10
-VIM.opt.pumblend = 10
-VIM.opt.winblend = 0
-VIM.opt.conceallevel = 0
-VIM.opt.concealcursor = ""
-VIM.opt.lazyredraw = true
-VIM.opt.synmaxcol = 300
+vim.opt.termguicolors = true
+vim.opt.showmatch = true
+vim.opt.matchtime = 2
+vim.opt.cmdheight = 1
+vim.opt.showmode = false
+vim.opt.pumheight = 10
+vim.opt.pumblend = 10
+vim.opt.winblend = 0
+vim.opt.conceallevel = 0
+vim.opt.concealcursor = ""
+vim.opt.lazyredraw = true
+vim.opt.synmaxcol = 300
 
 -- File handling
-VIM.opt.backup = false
-VIM.opt.writebackup = false
-VIM.opt.swapfile = false
-VIM.opt.undofile = true
-VIM.opt.undodir = VIM.fn.expand("~/.vim/undodir")
-VIM.opt.updatetime = 300
-VIM.opt.timeoutlen = 500
-VIM.opt.ttimeoutlen = 0
-VIM.opt.autoread = true
-VIM.opt.autowrite = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 0
+vim.opt.autoread = true
+vim.opt.autowrite = false
 
 -- Behavior settings
-VIM.opt.hidden = true
-VIM.opt.errorbells = false
-VIM.opt.iskeyword:append("-")
-VIM.opt.path:append("**")
-VIM.opt.selection = "exclusive"
-VIM.opt.mouse = "a"
-VIM.o.clipboard = 'unnamedplus'
-VIM.opt.modifiable = true
-VIM.opt.encoding = "UTF-8"
+vim.opt.hidden = true
+vim.opt.errorbells = false
+vim.opt.iskeyword:append("-")
+vim.opt.path:append("**")
+vim.opt.selection = "exclusive"
+vim.opt.mouse = "a"
+vim.o.clipboard = 'unnamedplus'
+vim.opt.modifiable = true
+vim.opt.encoding = "UTF-8"
 
 -- Command-line completion
-VIM.opt.wildmenu = true
-VIM.opt.wildmode = "longest:full,full"
-VIM.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
 
 -- Better diff options
-VIM.opt.diffopt:append("linematch:60")
+vim.opt.diffopt:append("linematch:60")
 
 -- Performance improvements
-VIM.opt.redrawtime = 10000
-VIM.opt.maxmempattern = 20000
+vim.opt.redrawtime = 10000
+vim.opt.maxmempattern = 20000
 
 -- Folding settings
-VIM.opt.foldmethod = "expr"
-VIM.opt.foldlevel = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldlevel = 99
 
 -- Highlight yanked text
-VIM.api.nvim_create_autocmd("TextYankPost", {
+vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup,
 	callback = function()
-		VIM.hl.on_yank()
+		vim.hl.on_yank()
 	end,
 })
 
 -- Return to last edit position when opening files
-VIM.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd("BufReadPost", {
 	group = augroup,
 	callback = function()
-		local mark = VIM.api.nvim_buf_get_mark(0, '"')
-		local lcount = VIM.api.nvim_buf_line_count(0)
+		local mark = vim.api.nvim_buf_get_mark(0, '"')
+		local lcount = vim.api.nvim_buf_line_count(0)
 		if mark[1] > 0 and mark[1] <= lcount then
-			pcall(VIM.api.nvim_win_set_cursor, 0, mark)
+			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
 	end,
 })
 
 -- Create directories when saving files
-VIM.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	group = augroup,
 	callback = function()
-		local dir = VIM.fn.expand("<afile>:p:h")
-		if VIM.fn.isdirectory(dir) == 0 then
-			VIM.fn.mkdir(dir, "p")
+		local dir = vim.fn.expand("<afile>:p:h")
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
 		end
 	end,
 })
 
-
 -- Create undo directory if it doesn't exist
-local undodir = VIM.fn.expand("~/.vim/undodir")
-if VIM.fn.isdirectory(undodir) == 0 then
-	VIM.fn.mkdir(undodir, "p")
+local undodir = vim.fn.expand("~/.vim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+	vim.fn.mkdir(undodir, "p")
 end
