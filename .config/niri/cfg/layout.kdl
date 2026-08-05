@@ -1,31 +1,42 @@
 layout {
-  gaps 10
-  //center-focused-column "always"
 
-  //default-column-display "tabbed"
-  background-color "transparent"
+    shadow {
+	  on
+	  softness 8
+	  spread 3
+	  offset x=0 y=2
+	  draw-behind-window true
+	  color "#00000094"
+	  inactive-color "#00000034"
+    }
 
-  insert-hint {
-	color "#ffc87f80"
-	gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
-  }
+    focus-ring {
+		on
+        width 2
+        inactive-color "#00000014"
+		active-color "rgb(39,39,39)"
+		//active-gradient from="rgb(60,60,60)" to="rgb(50, 50, 50)" angle=180 in="srgb-linear"
+    }
 
-  focus-ring {
-	width 2
+    struts {
+        right 8
+        top 8
+        bottom 8
+    }
 
-	active-color "rgba(100, 100, 100, 0.6)"
-	//active-gradient from="rgba(100, 100, 100, 0.8)" to="rgba(100, 100, 100, 0.6)" angle=180 relative-to="workspace-view"
-	//active-gradient from="rgba(20, 20, 20, 0.4)" to="rgba(10, 10, 10, 0.4)" angle=180 relative-to="workspace-view"
+    gaps 12
+}
 
-  }
+window-rule {
+    geometry-corner-radius 17
+    clip-to-geometry true
+}
 
-  shadow {
-	on
-	//inactive-color "transparent"
 
-	//softness 1
-	spread 0
-	color "#000000"
+recent-windows {
+    open-delay-ms 0
 
-  }
+    highlight {
+        corner-radius 10
+    }
 }

@@ -7,6 +7,30 @@ binds {
 	switch-preset-column-width;
   }
 
+  Mod+WheelScrollUp cooldown-ms=150 {
+	focus-workspace-up;
+  }
+
+  Mod+WheelScrollDown  cooldown-ms=150 {
+	focus-workspace-down;
+  }
+
+  Mod+CTRL+WheelScrollUp  cooldown-ms=150 {
+	move-column-to-workspace-up;
+  }
+
+  Mod+CTRL+WheelScrollDown  cooldown-ms=150 {
+	move-column-to-workspace-down;
+  }
+
+  Mod+ESCAPE  allow-inhibiting=false {
+	toggle-keyboard-shortcuts-inhibit;
+  }
+
+  Mod+W repeat=false {
+	toggle-overview;
+  }
+
   Mod+Space  hotkey-overlay-title="Open App Launcher: Rofi launcher" {
 	spawn-sh "rofi -show drun";
   }
@@ -15,6 +39,13 @@ binds {
 	spawn-sh "~/.config/niri/scripts/touchpad.sh";
   }
 
+  Mod+CTRL+L  hotkey-overlay-title="Lock" {
+	spawn "hyprlock" "-q";
+  }
+
+  Mod+Ctrl+P {
+	spawn-sh "systemctl poweroff";
+  }
 
   Mod+B  hotkey-overlay-title="Open Browser: Brave" {
 	spawn "brave";
@@ -75,26 +106,13 @@ binds {
   Mod+Shift+Down                       { move-window-down; }
   Mod+Shift+Right                      { move-column-right; }
 
-  Mod+Shift+H                          { move-column-left; }
-  Mod+Shift+L                          { move-column-right; }
+  Mod+Shift+H                          { swap-window-left; }
+  Mod+Shift+L                          { swap-window-right; }
   Mod+Shift+K                          { move-column-to-workspace-up; }
   Mod+Shift+J                          { move-column-to-workspace-down; }
 
-  Mod+WheelScrollUp cooldown-ms=150 {
-	focus-workspace-up;
-  }
-
-  Mod+WheelScrollDown  cooldown-ms=150 {
-	focus-workspace-down;
-  }
-
-  Mod+CTRL+WheelScrollUp  cooldown-ms=150 {
-	move-column-to-workspace-up;
-  }
-
-  Mod+CTRL+WheelScrollDown  cooldown-ms=150 {
-	move-column-to-workspace-down;
-  }
+  Mod+Comma                            { consume-window-into-column; }
+  Mod+Period                           { expel-window-from-column; }
 
   Mod+WheelScrollRight                { focus-column-right; }
   Mod+WheelScrollLeft                 { focus-column-left; }
@@ -128,7 +146,7 @@ binds {
 
   Mod+TAB                             { focus-window-previous; }
 
-  Mod+Shift+F                         { expand-column-to-available-width; }
+  Mod+Shift+F                         { maximize-column;}
   Mod+V                               { center-column; }
   Mod+CTRL+C                          { center-visible-columns; }
   Mod+Minus                           { set-column-width "-10%"; }
@@ -147,19 +165,4 @@ binds {
   CTRL+ALT+Delete                     { quit; }
   Mod+Shift+P                         { power-off-monitors; }
 
-  Mod+ESCAPE  allow-inhibiting=false {
-	toggle-keyboard-shortcuts-inhibit;
-  }
-
-  Mod+W repeat=false {
-	toggle-overview;
-  }
-
-  Mod+CTRL+L  hotkey-overlay-title="Lock" {
-	spawn "hyprlock" "-q";
-  }
-
-  Mod+Ctrl+P {
-	spawn-sh "systemctl poweroff";
-  }
 }

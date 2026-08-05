@@ -1,49 +1,4 @@
 window-rule {
-  geometry-corner-radius 15
-  clip-to-geometry true
-  draw-border-with-background false
-}
-
-recent-windows {
-    open-delay-ms 0
-
-    highlight {
-        corner-radius 20
-    }
-}
-
-layer-rule {
-  match namespace="binary-clock"
-  geometry-corner-radius 28
-
-  shadow {
-	on
-	color "#00000090"
-  }
-
-  background-effect {
-	blur true
-	xray true
- }
-
-}
-
-layer-rule {
-  match namespace="rofi"
-  geometry-corner-radius 21
-
-  shadow {
-        on
-    }
-
-  background-effect {
-	blur true
-	xray false
-  }
-
-}
-
-window-rule {
   match app-id="footclient"
 
   background-effect {
@@ -54,8 +9,16 @@ window-rule {
 }
 
 window-rule {
+  match app-id="foot"
+
+  background-effect {
+	blur true
+  }
+
+}
+
+window-rule {
   match app-id="xdg-desktop-portal-gtk"
-  geometry-corner-radius 17
 
   default-column-width { proportion 0.6; }
   default-window-height { proportion 0.6; }
@@ -89,22 +52,6 @@ window-rule {
 
 }
 
-layer-rule {
-  match namespace="notifications"
-  geometry-corner-radius 20
-  baba-is-float true
-  opacity 0.7
-
-  shadow {
-	on
-  }
-
-  background-effect {
-	blur true
-	xray false
-  }
-
-}
 
 window-rule {
   match app-id="org.pulseaudio.pavucontrol"
@@ -176,28 +123,3 @@ window-rule {
   open-fullscreen true
 }
 
-layer-rule {
-  match namespace="waybar"
-  geometry-corner-radius 16
-
-  popups {
-	background-effect {
-	  blur true
-	  xray false
-	}
-  }
-
-  shadow {
-	on
-	softness 20
-	spread 1
-	offset x=0 y=0
-    color "#00000090"
-  }
-
-  background-effect {
-	blur true
-	xray false
-  }
-
-}
