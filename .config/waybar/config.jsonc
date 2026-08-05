@@ -1,34 +1,31 @@
 {
   "layer": "top",
   "position": "left",
-  "margin-left" : 10,
-  "height" : 900,
+  "margin-left" : 8,
+  "height" : 800,
   "width" : 72,
   "exclusive": true,
-  "spacing": 0,
+  "spacing": 4,
   "expand-center": true,
   "reload_style_on_change": true,
 
   "modules-left":[
 	"group/power",
-	"custom/separator",
-	"niri/workspaces",
-	"cffi/liquid_battery"
+	"cffi/liquid_battery",
+	"niri/workspaces"
   ],
 
   "modules-center":[
-	"bluetooth",
-	"network"
+	"network",
+	"backlight",
+	"pulseaudio#output",
+	"clock"
   ],
 
   "modules-right": [
-	"backlight",
-	"custom/separator",
-	"pulseaudio#output",
-	"custom/separator",
+	"bluetooth",
 	"cffi/touchpad",
-	"custom/separator",
-	"clock"
+	"custom/rofi"
   ],
 
   "group/power": {
@@ -44,17 +41,6 @@
 	  "custom/lock",
 	  "custom/reboot"
 	]
-  },
-
-  "mpris": {
-	"format": "{player_icon}",
-	"format-paused": "{status_icon}",
-	"player-icons": {
-	  "default": "▶"
-	},
-	"status-icons": {
-	  "paused": "⏸"
-	}
   },
 
   "backlight":{
@@ -73,8 +59,15 @@
 
   "custom/power": {
 	"format" : "󰻀",
+	"tooltip": false,
+	"cursor": true
+  },
+
+  "custom/rofi": {
+	"format" : "󱙇",
 	"cursor": true,
-	"tooltip": false
+	"tooltip-format": "<span>Search :)</span>",
+	"on-click": "rofi -show drun"
   },
 
   "custom/quit": {
@@ -109,7 +102,7 @@
 	"format": "{icon}",
 	"expend": true,
 	"format-icons": {
-	  "active" : "󰮯",
+	  "active" : "ඞ",
 	  "default" : "󱙝"
 	},
 	"on-scroll-up": "niri msg action focus-workspace-up",
