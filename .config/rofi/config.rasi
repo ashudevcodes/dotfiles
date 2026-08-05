@@ -7,9 +7,12 @@ entry {
 
 configuration {
 	modi: "drun,filebrowser,window";
+	display-drun: "Applications";
+    display-filebrowser: "Browse Files";
+    display-window: "Switch Window";
     font: "SF Pro Rounded Semibold 11";
 	case-sensitive: false;
-	cycle: true;
+	cycle: false;
 	filter: "";
 	scroll-method: 0;
 	show-icons: true;
@@ -22,14 +25,13 @@ configuration {
 mode-switcher {
     enabled: true;
     spacing: 8px;
-    padding: 0px 12px;
+    padding: 0px 0px;
 }
 
 button {
     padding: 8px 20px;
     border-radius: 12px;
 	background-color: rgba(255,255,255, 5%);
-    border-radius: 12px;
     text-color: #f2f2f280;
 }
 
@@ -64,7 +66,7 @@ mainbox {
 
 window {
 	border: 1px solid;
-	border-radius: 20px;
+	border-radius: 17px;
 	border-color: rgba(100, 100, 100, 0.6);
 	background-color: rgba(17, 18, 29, 85%);
 	padding: 0px;
