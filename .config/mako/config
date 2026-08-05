@@ -1,11 +1,11 @@
 background-color=#11121db3
 text-color=#f5f5f7
-border-color=#515151b3
+border-color=#ffffff39
 
 border-size=1
 border-radius=18
 
-width=360
+width=280
 height=90
 
 padding=16,18
@@ -40,13 +40,13 @@ text-alignment=center
 history=0
 actions=0
 
-width=230
+width=200
 height=60
 
 margin=0
 padding=10
 
-border-size=2
+border-size=1
 border-radius=18
 
 font=jetbrainsmononerdfont 12
