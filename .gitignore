@@ -55,6 +55,9 @@
 .config/dolphinrc
 .config/okularpartrc
 .config/kdenliverc
+.config/godot
+.config/kew
+.config/opencode
 
 .face.icon
 
@@ -71,6 +74,7 @@
 .local/bin/gf2
 .local/bin/localSend
 .local/bin/budsConnect
+.local/bin/mdcat
 .local/icon/freetube.svg
 .local/icon/localsend.png
 .local/share/
