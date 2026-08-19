@@ -1,0 +1,172 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "margin-bottom" : 10,
+  "height" : 65,
+  "width" : 2,
+  "exclusive": true,
+  "spacing": 4,
+  "expand-center": true,
+  "reload_style_on_change": true,
+
+  "modules-left":[
+  ],
+
+  "modules-center":[
+	"custom/rofi",
+	"bluetooth",
+	"network",
+	"pulseaudio#output",
+	"backlight",
+	"custom/separator",
+	"niri/workspaces",
+	"custom/separator",
+	"clock",
+	"cffi/liquid_battery",
+	"group/power"
+  ],
+
+  "modules-right": [
+  ],
+
+  "group/power": {
+	"orientation": "inherit",
+	"drawer": {
+	  "transition-duration": 500,
+	  "children-class": "not-power",
+	  "transition-left-to-right": false
+	},
+	"modules": [
+	  "custom/power",
+	  "custom/quit",
+	  "custom/lock",
+	  "custom/reboot"
+	]
+  },
+
+  "backlight":{
+	"format": "{icon}",
+	"format-icons":[""],
+	"tooltip": false,
+	"cursor": 42,
+	"reverse-scrolling" : true
+  },
+
+  "custom/power": {
+	"format" : "󰻀",
+	"tooltip": false,
+	"cursor": true
+  },
+
+  "custom/rofi": {
+	"format" : "󱙇",
+	"cursor": true,
+	"tooltip-format": "<span>Search :)</span>",
+	"on-click": "rofi -show drun"
+  },
+
+  "custom/quit": {
+	"format" : "󰩈",
+	"cursor": true,
+	"tooltip": true,
+	"on-click": "poweroff",
+	"tooltip-format": "<span>Shutdown :)</span>"
+  },
+
+  "custom/lock": {
+	"format" : "󰷛",
+	"tooltip": true,
+	"on-click": "hyprlock -q",
+	"tooltip-format": "<span>Lock</span>"
+  },
+
+  "custom/reboot": {
+	"format" : "",
+	"cursor": true,
+	"tooltip": true,
+	"on-click": "reboot",
+	"tooltip-format": "<span>Reboot</span>"
+  },
+
+  "cffi/touchpad":{
+	"module_path": "/home/nemo/.local/lib/waybar/modules/touchpad.so",
+	"signal": 10
+  },
+
+  "niri/workspaces": {
+	"format": "{icon}",
+	"expend": true,
+	"format-icons": {
+	  "active" : "ඞ",
+	  "default" : "󱙝"
+	},
+	"on-scroll-up": "niri msg action focus-workspace-up",
+	"on-scroll-down": "niri msg action focus-workspace-down"
+  },
+
+
+  "clock": {
+	"format":"󰸗",
+	"tooltip-format": "<span font='JetBrainsMono' >{calendar}</span>",
+	"calendar": {
+	  "mode"          : "month",
+	  "mode-mon-col"  : 3,
+	  "format": {
+		"months":     "<span color='#ffead3'><b>{}</b></span>",
+		"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+		"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+		"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+		"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+	  }
+	},
+	"actions":  {
+	  "on-click-right": "mode"
+	},
+	"interval": 60
+  },
+
+
+  "pulseaudio#output": {
+	"format": "{icon}",
+	"cursor": 42,
+	"format-icons": {
+	  "default": [ "", "", "" ],
+	  "default-muted": ""
+	},
+
+	"format-muted": "",
+	"reverse-scrolling" : true,
+	"on-click": "pavucontrol",
+	//"rotate" : 90,
+	"justify": "center",
+	"tooltip": false,
+	"scroll-step": 1
+  },
+
+  "bluetooth": {
+	"format": "",
+	"format-connected": "{device_alias}",
+	"format-disabled": "",
+	"on-click": "footclient -e bluetoothctl",
+	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
+	"tooltip-format-connected": "	Battery {device_battery_percentage}% "
+  },
+
+  "cffi/liquid_battery": {
+	"module_path": "/home/nemo/.local/lib/waybar/modules/libliquid-battery.so",
+	"signal": 10
+  },
+
+  "network": {
+    "interface": "wlan0",
+    "format": "{icon}",
+	"format-icons": ["󰤯","󰤢","󰤥","󰤨"],
+    "format-disabled": "",
+	"on-click": "footclient -e iwctl",
+	"on-click-right": "sh -c 'rfkill toggle wlan'",
+    "tooltip-format-wifi": "{essid} Signal    {signalStrength}% ",
+    "max-length": 50
+}
+}
+
+
