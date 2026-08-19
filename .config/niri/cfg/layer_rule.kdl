@@ -30,6 +30,7 @@ layer-rule {
   background-effect {
 	blur true
 	xray false
+	saturation 0
   }
 
 }
@@ -72,8 +73,8 @@ layer-rule {
         on
 		softness 10
         spread 0
-        draw-behind-window false
-        color "#00000096"
+        draw-behind-window true
+        color "#00000076"
         offset x=0 y=2
   }
 

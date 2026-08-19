@@ -4,15 +4,25 @@ window-rule {
   background-effect {
 	blur true
 	xray true
+	saturation 0
   }
 
 }
 
 window-rule {
+  match app-id="kitty"
+
+  background-effect {
+	saturation 0
+  }
+
+}
+window-rule {
   match app-id="foot"
 
   background-effect {
 	blur true
+	saturation 0
   }
 
 }
@@ -48,6 +58,7 @@ window-rule {
   background-effect {
     blur true
     xray false
+	saturation 0
   }
 
 }
