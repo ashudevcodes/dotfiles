@@ -1,5 +1,7 @@
 layout {
 
+    always-center-single-column
+    background-color "transparent"
     shadow {
 	  on
 	  softness 8
