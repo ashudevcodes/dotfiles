@@ -53,7 +53,7 @@ inputbar {
 
 * {
 	separatorcolor: transparent;
-	selected-normal-background: rgba(255,255,255, 3%);
+	selected-normal-background: rgba(255,255,255, 6%);
 	normal-background: rgba(255,255,255, 0%);
 	alternate-normal-background: rgba(255,255,255, 0%);
 }
@@ -75,7 +75,6 @@ window {
 	location: center;
 
 }
-
 
 listview {
 	lines: 6;
