@@ -1,11 +1,10 @@
 * {
   border: none;
   font-family: "HeavyDataNerdFontPropo";
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #c0caf5;
   opacity: 0.95;
 
-  margin: 4px 4px;
   transition:
   padding 150ms cubic-bezier(0.4, 0, 0.2, 1),
   margin 140ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -40,13 +39,17 @@ tooltip > box {
 
 #waybar {
   border-radius: 17px;
+  background: rgba(0,0,0,0);
+  /*
   background:
   linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)) padding-box;
-  border: 0.9px solid transparent;
+  */
+  border: 1px solid transparent;
   box-shadow:
-  inset 0 1px 0.1 0.2 rgba(255,255,255,0.2),
-  inset 0 -1px 0.1 0.2 rgba(255,255,255,0.2);
+  inset 0px 1px 0.1px 0.2px rgba(255,255,255,0.2),
+  inset 0px -1px 0.1px 0.2px rgba(255,255,255,0.2);
 }
+
 
 #clock,
 #bluetooth,
@@ -55,15 +58,21 @@ tooltip > box {
 #backlight,
 #custom-rofi,
 #bluetooth.disabled {
-  margin: 4px;
-  padding: 8px;
+
+  margin: 0px 13px;
+  padding: 9px 0px;
+
   background: rgba(255,255,255,0.07);
   border-radius: 13px;
 
   box-shadow:
   0px 3px 6px 0px rgba(0, 0, 0, 0.4),
-  inset 1 1px 1 0 rgba(255,255,255,0.1),
-  inset -1 -1px 1 0 rgba(255,255,255,0.1);
+  inset 1px 1px 1px 0px rgba(255,255,255,0.1),
+  inset -1px -1px 1px 0px rgba(255,255,255,0.1);
+}
+
+#custom-rofi{
+  margin: 0px 10px 10px 10px;
 }
 
 #clock:hover,
@@ -76,32 +85,42 @@ tooltip > box {
   color: rgba(255,255,255,0.78);
   background:rgba(255,255,255,0.1);
   border-radius: 13px;
-  margin: 3px 0px;
+
+  margin: 1px 11px;
+
+  transition: padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+  margin 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#custom-rofi:hover{
+  margin: 0px 6px 10px 6px;
 }
 
 #workspaces {
   background: rgba(255,255,255,0.07);
   border-radius: 13px;
-  margin: 4px 1px;
+
+  margin: 4px 10px;
   padding: 5px 0px;
 
   box-shadow:
-  0px 5px 6px 0px rgba(0, 0, 0, 0.4),
-  inset 1 1px 0 0 rgba(255,255,255,0.1),
-  inset -1 -1px 0 0 rgba(255,255,255,0.1);
+  0px 2px 9px 0px rgba(0, 0, 0, 0.3),
+  inset 1px 1px 0px 0px rgba(255,255,255,0.1),
+  inset -1px -1px 0px 0px rgba(255,255,255,0.1);
 
 }
 #workspaces button.active {
   background:
     linear-gradient(rgba(0,100,100,0.2), rgba(0,100,100,0.2)) padding-box;
   border-radius: 12px;
+
   margin: 1px 7px;
-  padding: 4px 0px;
+  padding: 9px 0px;
 
   box-shadow:
   0px 5px 6px 0px rgba(0, 0, 0, 0.4),
-  inset 1 1px 0 0 rgba(255,255,255,0.1),
-  inset -1 -1px 0 0 rgba(255,255,255,0.1);
+  inset 1px 1px 0px 0px rgba(255,255,255,0.1),
+  inset -1px -1px 0px 0px rgba(255,255,255,0.1);
 
   transition: padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
   margin 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -110,12 +129,14 @@ tooltip > box {
 #workspaces button {
   background: none;
   border-radius: 12px;
+
   margin: 4px 5px;
-  padding: 1px 0px;
+  padding: 3px 0px;
+
   box-shadow:
   0px 5px 6px 0px rgba(0, 0, 0, 0.4),
-  inset 1 1px 0.8 0 rgba(255,255,255,0.2),
-  inset -1 -1px 0 0 rgba(255,255,255,0.1);
+  inset 1px 1px 0.8px 0px rgba(255,255,255,0.2),
+  inset -1px -1px 0px 0px rgba(255,255,255,0.1);
 
   transition: padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
   margin 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -131,7 +152,7 @@ tooltip > box {
   font-weight: 900;
   font-size: 0.9rem;
   padding: 8px 0px;
-  margin: 0px 10px;
+  margin: 0px 19px;
   font-family: "SF Pro Rounded";
 }
 
@@ -159,16 +180,21 @@ tooltip > box {
 #custom-quit,
 #custom-power
 {
-  margin: 3px 0px;
-  padding: 7px;
+  margin: 4px 14px;
+  padding: 8px 0px;
+
   background: rgba(255,255,255,0.07);
   border-radius: 13px;
 
   box-shadow:
   0px 5px 6px 0px rgba(0, 0, 0, 0.4),
-  inset 1 1px 1 0 rgba(255,255,255,0.1),
-  inset -1 -1px 1 0 rgba(255,255,255,0.1);
+  inset 1px 1px 1px 0px rgba(255,255,255,0.1),
+  inset -1px -1px 1px 0px rgba(255,255,255,0.1);
 
+}
+
+#custom-power{
+  margin: 10px 10px 0px 10px;
 }
 
 #custom-reboot:hover,
@@ -177,11 +203,9 @@ tooltip > box {
 {
   border-radius: 13px;
   opacity: 1;
-  margin: 3px 0px;
-  padding: 7px;
-}
 
-/* Only Saperater --------------------------------*/
-#custom-separator {
-  color: rgba(255,255,255,0.42);
+  margin: 5px 13px;
+
+  transition: padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+  margin 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

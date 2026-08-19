@@ -2,30 +2,30 @@
   "layer": "top",
   "position": "left",
   "margin-left" : 8,
-  "height" : 800,
+  "height" : 2,
   "width" : 72,
   "exclusive": true,
-  "spacing": 4,
+  "spacing": 8,
   "expand-center": true,
   "reload_style_on_change": true,
 
   "modules-left":[
-	"group/power",
-	"cffi/liquid_battery",
-	"niri/workspaces"
   ],
 
   "modules-center":[
+	"group/power",
+	"cffi/liquid_battery",
+	"niri/workspaces",
 	"network",
 	"backlight",
 	"pulseaudio#output",
-	"clock"
-  ],
-
-  "modules-right": [
+	"clock",
 	"bluetooth",
 	"cffi/touchpad",
 	"custom/rofi"
+  ],
+
+  "modules-right": [
   ],
 
   "group/power": {
@@ -160,7 +160,6 @@
 
   "cffi/liquid_battery": {
 	"module_path": "/home/nemo/.local/lib/waybar/modules/libliquid-battery.so",
-	"cursor": false,
 	"signal": 10
   },
 
