@@ -36,6 +36,7 @@
 .config/pcmanfm-qt/
 .config/session/
 .config/qt6ct/
+.config/darktable/
 
 .config/user-dirs.dirs
 .config/Oxygen Demorc
