@@ -10,9 +10,9 @@ cursor {
 
 environment {
     DISPLAY ":0"
-	GTK_ICON_THEME_NAME "oxygen"
 	QT_QPA_PLATFORMTHEME "qt6ct"
-
+	GTK_THEME "Adwaita:dark"
+	ADW_DISABLE_PORTAL "1"
 }
 
 hotkey-overlay {

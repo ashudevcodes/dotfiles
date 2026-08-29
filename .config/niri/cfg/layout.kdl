@@ -1,23 +1,14 @@
 layout {
 
     always-center-single-column
-    background-color "transparent"
-    shadow {
-	  on
-	  softness 8
-	  spread 3
-	  offset x=0 y=2
-	  draw-behind-window true
-	  color "#00000094"
-	  inactive-color "#00000034"
-    }
+    background-color "rgb(0,0,0)"
+
 
     focus-ring {
 		on
         width 2
         inactive-color "#00000014"
 		active-color "rgb(39,39,39)"
-		//active-gradient from="rgb(60,60,60)" to="rgb(50, 50, 50)" angle=180 in="srgb-linear"
     }
 
     struts {
@@ -27,18 +18,37 @@ layout {
     }
 
     gaps 12
+    border {
+        off
+    }
 }
 
 window-rule {
-    geometry-corner-radius 17
+    geometry-corner-radius 17 17 8 8
+
     clip-to-geometry true
+
+    shadow {
+	  on
+	  softness 20
+	  spread 1
+	  offset x=0 y=2
+	  draw-behind-window true
+	  color "rgba(0,0,0,0.590)"
+	  inactive-color "rgba(0,0,0,0.590)"
+    }
+
+    background-effect {
+        xray true
+    }
 }
 
 
 recent-windows {
     open-delay-ms 0
 
-    highlight {
-        corner-radius 10
-    }
+	highlight {
+	  padding 10
+	  corner-radius 10
+	}
 }

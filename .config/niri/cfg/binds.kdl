@@ -1,92 +1,92 @@
 binds {
 
   Mod+Shift+ESCAPE {
-	show-hotkey-overlay;
-  }
+	show-hotkey-overlay ;
+    }
   Mod+Shift+R {
-	switch-preset-column-width;
-  }
+	switch-preset-column-width ;
+    }
 
   Mod+WheelScrollUp cooldown-ms=150 {
-	focus-workspace-up;
-  }
+	focus-workspace-up ;
+    }
 
-  Mod+WheelScrollDown  cooldown-ms=150 {
-	focus-workspace-down;
-  }
+  Mod+WheelScrollDown cooldown-ms=150 {
+	focus-workspace-down ;
+    }
 
-  Mod+CTRL+WheelScrollUp  cooldown-ms=150 {
-	move-column-to-workspace-up;
-  }
+  Mod+CTRL+WheelScrollUp cooldown-ms=150 {
+	move-column-to-workspace-up ;
+    }
 
-  Mod+CTRL+WheelScrollDown  cooldown-ms=150 {
-	move-column-to-workspace-down;
-  }
+  Mod+CTRL+WheelScrollDown cooldown-ms=150 {
+	move-column-to-workspace-down ;
+    }
 
-  Mod+ESCAPE  allow-inhibiting=false {
-	toggle-keyboard-shortcuts-inhibit;
-  }
+  Mod+ESCAPE allow-inhibiting=false {
+	toggle-keyboard-shortcuts-inhibit ;
+    }
 
   Mod+W repeat=false {
-	toggle-overview;
-  }
+	toggle-overview ;
+    }
 
-  Mod+Space  hotkey-overlay-title="Open App Launcher: Rofi launcher" {
-	spawn-sh "rofi -show drun";
-  }
+  Mod+Space hotkey-overlay-title="Open App Launcher: Rofi launcher" {
+	spawn-sh "rofi -show drun" ;
+    }
 
-  Mod+M  hotkey-overlay-title="Laptop Touchpad: Disable or Enable" {
-	spawn-sh "~/.config/niri/scripts/touchpad.sh";
-  }
+  Mod+M hotkey-overlay-title="Laptop Touchpad: Disable or Enable" {
+	spawn-sh "~/.config/niri/scripts/touchpad.sh" ;
+    }
 
-  Mod+CTRL+L  hotkey-overlay-title="Lock" {
-	spawn "hyprlock" "-q";
-  }
+  Mod+CTRL+L hotkey-overlay-title="Lock" {
+	spawn "hyprlock" "-q" ;
+    }
 
   Mod+Ctrl+P {
-	spawn-sh "systemctl poweroff";
-  }
+	spawn-sh "systemctl poweroff" ;
+    }
 
-  Mod+B  hotkey-overlay-title="Open Browser: Brave" {
-	spawn "brave";
-  }
+  Mod+B hotkey-overlay-title="Open Browser: Brave" {
+	spawn "brave" ;
+    }
 
-  Mod+Return  hotkey-overlay-title="Open Terminal: Foot" {
-	spawn "footclient";
-  }
+  Mod+Return hotkey-overlay-title="Open Terminal: Foot" {
+	spawn "footclient" ;
+    }
 
   Mod+Shift+Return hotkey-overlay-title="Open floating terminal" {
-	spawn-sh "foot --app-id=foot-float";
-  }
+	spawn-sh "foot --app-id=foot-float" ;
+    }
 
-  Mod+Shift+W  repeat=false hotkey-overlay-title="Waybar restart" {
-	spawn-sh "pkill -x waybar || waybar";
-  }
+  Mod+Shift+W repeat=false hotkey-overlay-title="Waybar restart" {
+	spawn-sh "pkill -x waybar || waybar" ;
+    }
 
   XF86AudioRaiseVolume allow-when-locked=true {
-	spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0; volume-notify";
-  }
+	spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0; volume-notify" ;
+    }
 
   XF86AudioLowerVolume allow-when-locked=true {
-	spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-; volume-notify";
-  }
+	spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-; volume-notify" ;
+    }
 
   XF86AudioMute allow-when-locked=true {
-	spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; volume-notify";
-  }
+	spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; volume-notify" ;
+    }
 
   XF86MonBrightnessUp allow-when-locked=true {
-	spawn-sh "brightnessctl set +1%; brightness-notify";
-  }
+	spawn-sh "brightnessctl set +1%; brightness-notify" ;
+    }
 
   XF86MonBrightnessDown allow-when-locked=true {
-	spawn-sh "brightnessctl set 1%-; brightness-notify";
-  }
+	spawn-sh "brightnessctl set 1%-; brightness-notify" ;
+    }
 
-  XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-  XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-  XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-  XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+  XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+  XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
+  XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+  XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
 
 
   Mod+Q                                { close-window; }
@@ -146,7 +146,7 @@ binds {
 
   Mod+TAB                             { focus-window-previous; }
 
-  Mod+Shift+F                         { maximize-column;}
+  Mod+Shift+F                         { maximize-column; }
   Mod+V                               { center-column; }
   Mod+CTRL+C                          { center-visible-columns; }
   Mod+Minus                           { set-column-width "-10%"; }
@@ -164,5 +164,4 @@ binds {
 
   CTRL+ALT+Delete                     { quit; }
   Mod+Shift+P                         { power-off-monitors; }
-
 }

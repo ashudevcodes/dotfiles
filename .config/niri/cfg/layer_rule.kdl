@@ -1,21 +1,28 @@
 layer-rule {
-  match namespace="binary-clock"
-  geometry-corner-radius 26
+  match namespace="awww"
+  opacity 0.9
+  background-effect {
+	blur false
+    }
+}
+
+layer-rule {
+  match namespace="nybbletime"
+  geometry-corner-radius 34
 
   shadow {
         on
 		softness 10
         spread 0
         draw-behind-window false
-        color "#00000096"
+        color "rgba(0,0,0,0.596)"
         offset x=0 y=2
-  }
+    }
 
   background-effect {
 	blur true
 	saturation 0
- }
-
+    }
 }
 
 layer-rule {
@@ -31,8 +38,7 @@ layer-rule {
 	blur true
 	xray false
 	saturation 0
-  }
-
+    }
 }
 
 layer-rule {
@@ -49,13 +55,13 @@ layer-rule {
 	color "#00000059"
 	offset x=0 y=8
 
-  }
+    }
 
   background-effect {
 	blur true
 	xray false
-  }
-
+	saturation 0
+    }
 }
 
 layer-rule {
@@ -66,21 +72,22 @@ layer-rule {
 	background-effect {
 	  blur true
 	  xray false
-	}
-  }
+	  saturation 0
+        }
+    }
 
   shadow {
         on
 		softness 10
         spread 0
-        draw-behind-window true
-        color "#00000076"
-        offset x=0 y=2
-  }
+        draw-behind-window false
+        color "rgba(0,0,0,0.596)"
+        offset x=0 y=0
+    }
 
   background-effect {
 	blur true
 	xray false
 	saturation 0
-  }
+    }
 }

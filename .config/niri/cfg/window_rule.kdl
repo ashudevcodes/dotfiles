@@ -1,44 +1,15 @@
 window-rule {
-  match app-id="footclient"
-
-  background-effect {
-	blur true
-	xray true
-	saturation 0
-  }
-
-}
-
-window-rule {
-  match app-id="kitty"
-
-  background-effect {
-	saturation 0
-  }
-
-}
-window-rule {
-  match app-id="foot"
-
-  background-effect {
-	blur true
-	saturation 0
-  }
-
-}
-
-window-rule {
   match app-id="xdg-desktop-portal-gtk"
 
   default-column-width { proportion 0.6; }
   default-window-height { proportion 0.6; }
 
-  opacity 0.8
+  opacity 0.9
 
   background-effect {
 	blur true
 	xray false
-  }
+    }
 }
 
 
@@ -56,18 +27,16 @@ window-rule {
     }
 
   background-effect {
-    blur true
-    xray false
-	saturation 0
-  }
-
+	blur false
+	xray true
+	//saturation 0
+    }
 }
-
 
 window-rule {
   match app-id="org.pulseaudio.pavucontrol"
   open-floating true
-  opacity 0.8
+  opacity 0.9
 
   default-column-width { proportion 0.5; }
   default-window-height { proportion 0.5; }
@@ -76,20 +45,19 @@ window-rule {
 	background-effect {
 	  blur true
 	  xray false
-	}
-  }
+        }
+    }
 
   background-effect {
     blur true
     xray false
-  }
-
+    }
 }
 
 window-rule {
   match app-id="nvidia-settings"
   open-floating true
-  opacity 0.8
+  opacity 0.9
 
   default-column-width { proportion 0.6; }
   default-window-height { proportion 0.6; }
@@ -98,14 +66,13 @@ window-rule {
 	background-effect {
 	  blur true
 	  xray false
-	}
-  }
+        }
+    }
 
   background-effect {
     blur true
     xray false
-  }
-
+    }
 }
 
 window-rule {
@@ -120,15 +87,15 @@ window-rule {
 	background-effect {
 	  blur true
 	  xray false
-	}
-  }
+        }
+    }
 
   background-effect {
     blur true
     xray false
-  }
-
+    }
 }
+
 window-rule {
   match app-id="Waydroid"
   open-fullscreen true
