@@ -39,21 +39,33 @@ tooltip > box {
 
 #waybar {
   border-radius: 17px;
-  background: rgba(0,0,0,0);
+  background: rgba(0,0,0,0.2);
   /*
   background:
   linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)) padding-box;
-  */
-  border: 1px solid transparent;
   box-shadow:
   inset 0px 1px 0.1px 0.2px rgba(255,255,255,0.2),
   inset 0px -1px 0.1px 0.2px rgba(255,255,255,0.2);
+  */
+  border: 2px solid rgba(255,255,255,0.09);
 }
 
+
+#wireplumber,
+#network,
+#clock,
+#backlight,
+#pulseaudio,
+#bluetooth
+{
+  font-family: "Material Symbols Rounded";
+  font-size: 1.7rem;
+}
 
 #clock,
 #bluetooth,
 #network,
+#wireplumber,
 #pulseaudio,
 #backlight,
 #custom-rofi,
@@ -66,11 +78,18 @@ tooltip > box {
   border-radius: 13px;
 
   box-shadow:
-  0px 3px 6px 0px rgba(0, 0, 0, 0.4),
+  3px 3px 2px 0px rgba(0, 0, 0, 0.096),
   inset 1px 1px 1px 0px rgba(255,255,255,0.1),
   inset -1px -1px 1px 0px rgba(255,255,255,0.1);
 }
 
+#clock,
+#network,
+#pulseaudio,
+#backlight {
+  padding: 8px 0px;
+  margin: 0px 13px;
+}
 #custom-rofi{
   margin: 0px 10px 10px 10px;
 }
@@ -78,6 +97,7 @@ tooltip > box {
 #clock:hover,
 #bluetooth:hover,
 #network:hover,
+#wireplumber:hover,
 #pulseaudio:hover,
 #backlight:hover,
 #custom-rofi:hover,
@@ -86,7 +106,7 @@ tooltip > box {
   background:rgba(255,255,255,0.1);
   border-radius: 13px;
 
-  margin: 1px 11px;
+  margin: 2px 11px;
 
   transition: padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
   margin 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -104,7 +124,7 @@ tooltip > box {
   padding: 5px 0px;
 
   box-shadow:
-  0px 2px 9px 0px rgba(0, 0, 0, 0.3),
+  0px 2px 2px 0px rgba(0, 0, 0, 0.096),
   inset 1px 1px 0px 0px rgba(255,255,255,0.1),
   inset -1px -1px 0px 0px rgba(255,255,255,0.1);
 
@@ -118,7 +138,7 @@ tooltip > box {
   padding: 9px 0px;
 
   box-shadow:
-  0px 5px 6px 0px rgba(0, 0, 0, 0.4),
+  0px 5px 2px 0px rgba(0, 0, 0, 0.096),
   inset 1px 1px 0px 0px rgba(255,255,255,0.1),
   inset -1px -1px 0px 0px rgba(255,255,255,0.1);
 
@@ -134,7 +154,7 @@ tooltip > box {
   padding: 3px 0px;
 
   box-shadow:
-  0px 5px 6px 0px rgba(0, 0, 0, 0.4),
+  0px 5px 2px 0px rgba(0, 0, 0, 0.096),
   inset 1px 1px 0.8px 0px rgba(255,255,255,0.2),
   inset -1px -1px 0px 0px rgba(255,255,255,0.1);
 
@@ -187,7 +207,7 @@ tooltip > box {
   border-radius: 13px;
 
   box-shadow:
-  0px 5px 6px 0px rgba(0, 0, 0, 0.4),
+  3px 3px 2px 0px rgba(0, 0, 0, 0.096),
   inset 1px 1px 1px 0px rgba(255,255,255,0.1),
   inset -1px -1px 1px 0px rgba(255,255,255,0.1);
 
@@ -195,6 +215,7 @@ tooltip > box {
 
 #custom-power{
   margin: 10px 10px 0px 10px;
+  font-size: 1.7rem;
 }
 
 #custom-reboot:hover,

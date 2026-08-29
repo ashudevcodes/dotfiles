@@ -18,8 +18,9 @@
 	"niri/workspaces",
 	"network",
 	"backlight",
-	"pulseaudio#output",
 	"clock",
+	"pulseaudio#output",
+	//"wireplumber#sink",
 	"bluetooth",
 	"cffi/touchpad",
 	"custom/rofi"
@@ -45,8 +46,8 @@
 
   "backlight":{
 	"format": "{icon}",
-	"format-icons":[""],
-	"tooltip": false,
+	"format-icons":["candle","table_lamp", "light_group_2"],
+	"tooltip-format": "{percent}% Brightness",
 	"cursor": 42,
 	"reverse-scrolling" : true
   },
@@ -111,7 +112,7 @@
 
 
   "clock": {
-	"format":"󰸗",
+	"format":"today",
 	"tooltip-format": "<span font='JetBrainsMono' >{calendar}</span>",
 	"calendar": {
 	  "mode"          : "month",
@@ -132,27 +133,29 @@
 
 
   "pulseaudio#output": {
+	"on-update": "~/.local/bin/mute-led-toggle.sh",
 	"format": "{icon}",
+	//"scroll-scale": "db",
+	//"scroll-step": 2.5,
 	"cursor": 42,
-	"format-icons": {
-	  "default": [ "", "", "" ],
-	  "default-muted": ""
-	},
+	//"format-bluetooth":"earbuds_2",
+	//"format-icons": [ "volume_down", "brand_awareness", "volume_up" ],
 
-	"format-muted": "",
+	"format-icons": {
+	  "headset": "earbuds_2",
+	  "default": [ "volume_down", "brand_awareness", "volume_up" ]
+	},
+	"format-muted": "volume_off",
 	"reverse-scrolling" : true,
 	"on-click": "pavucontrol",
-	"rotate" : 90,
-	"justify": "center",
-	"tooltip": false,
-	"scroll-step": 1
+	"tooltip-format": "{volume}%   "
   },
 
   "bluetooth": {
-	"format": "",
+	"format": "bluetooth_searching",
 	"format-connected": "{device_alias}",
-	"rotate" : 90,
 	"format-disabled": "",
+	"rotate":90,
 	"on-click": "footclient -e bluetoothctl",
 	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
 	"tooltip-format-connected": "	Battery {device_battery_percentage}% "
@@ -166,7 +169,8 @@
   "network": {
     "interface": "wlan0",
     "format": "{icon}",
-	"format-icons": ["󰤯","󰤢","󰤥","󰤨"],
+	"format-icons": ["network_wifi_1_bar","network_wifi_3_bar","network_wifi","signal_wifi_4_bar"],
+	"format-disconnected": "perm_scan_wifi",
     "format-disabled": "",
 	"on-click": "footclient -e iwctl",
 	"on-click-right": "sh -c 'rfkill toggle wlan'",
