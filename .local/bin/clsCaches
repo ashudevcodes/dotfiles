@@ -20,3 +20,5 @@ freed=$((before - after))
 
 echo ""
 echo -e "${GREEN}Freed ~${freed} MB  (${before} MB → ${after} MB)${RESET}"
+
+rm -rf ~/.cache/BraveSoftware
