@@ -1,11 +1,12 @@
 return {
   cmd = {
 	'clangd',
-	'--background-index=false',
+	'--background-index-priority=low',
 	'--limit-results=20',
 	'--malloc-trim',
 	'--pch-storage=disk',
-	'-j=1',
+	'--limit-references=10',
+	'--completion-style=detailed'
 },
   filetypes = { 'c', 'c.doxygen', 'cpp', 'cpp.doxygen', 'objc', 'objcpp', 'cuda' },
   root_markers = {
