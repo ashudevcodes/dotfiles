@@ -12,6 +12,10 @@ window-rule {
     }
 }
 
+window-rule {
+  match app-id="localsend"
+  open-floating true
+}
 
 window-rule {
   match app-id="foot-float"
@@ -101,3 +105,9 @@ window-rule {
   open-fullscreen true
 }
 
+window-rule {
+  match app-id="mpv"
+  open-floating true
+  default-column-width { proportion 0.7; }
+  default-window-height { proportion 0.7; }
+}
