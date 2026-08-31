@@ -37,7 +37,8 @@ tooltip > box {
   margin: 0px;
 }
 
-#waybar {
+
+window#waybar {
   border-radius: 17px;
   background: rgba(0,0,0,0.2);
   /*

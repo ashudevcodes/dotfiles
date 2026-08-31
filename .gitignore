@@ -37,6 +37,9 @@
 .config/session/
 .config/qt6ct/
 .config/darktable/
+.config/autostart
+
+trashrc
 
 .config/user-dirs.dirs
 .config/Oxygen Demorc
@@ -59,6 +62,7 @@
 .config/godot
 .config/kew
 .config/opencode
+.config/tlpui
 
 .face.icon
 
@@ -73,10 +77,15 @@
 .local/bin/heroic
 .local/bin/dlv
 .local/bin/gf2
-.local/bin/localSend
 .local/bin/budsConnect
+.local/bin/godot
+.local/bin/libresprite
+.local/bin/nybbletime
+.local/bin/localsend
+
 .local/bin/mdcat
 .local/icon/freetube.svg
 .local/icon/localsend.png
 .local/share/
 .local/state/
+.local/lib

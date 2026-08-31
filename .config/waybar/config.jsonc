@@ -7,7 +7,7 @@
   "exclusive": true,
   "spacing": 8,
   "expand-center": true,
-  "reload_style_on_change": true,
+  "reload_style_on_change": false,
 
   "modules-left":[
   ],
