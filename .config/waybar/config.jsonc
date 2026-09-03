@@ -158,7 +158,7 @@
 	"rotate":90,
 	"on-click": "footclient -e bluetoothctl",
 	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
-	"tooltip-format-connected": "	Battery {device_battery_percentage}% "
+	"tooltip-format-connected": "  Battery  {device_battery_percentage}% "
   },
 
   "cffi/liquid_battery": {
