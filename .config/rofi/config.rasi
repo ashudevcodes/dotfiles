@@ -16,7 +16,9 @@ configuration {
 	filter: "";
 	scroll-method: 0;
 	show-icons: true;
-	drun-display-format: "{name}";
+
+    drun-display-format: " <b> {name} </b> <span color='#c0caf580' weight='Semibold' size='small'> <i>( {comment} )</i> </span> ";
+
 	sidebar-mode: true;
 	icon-theme: "oxygen";
 	window-thumbnail: true;
@@ -31,7 +33,7 @@ mode-switcher {
 button {
     padding: 8px 20px;
     border-radius: 12px;
-	background-color: rgba(255,255,255, 5%);
+	background-color: rgba(255,255,255, 8%);
     text-color: #f2f2f280;
 }
 
@@ -45,7 +47,7 @@ inputbar {
 	border: 1px;
 	border-color: rgba(81, 81, 81, 0.4);
 
-	background-color: rgba(255,255,255, 5%);
+	background-color: rgba(255,255,255, 8%);
 
     children: [ entry ];
 
@@ -53,7 +55,7 @@ inputbar {
 
 * {
 	separatorcolor: transparent;
-	selected-normal-background: rgba(255,255,255, 6%);
+	selected-normal-background: rgba(255,255,255, 8%);
 	normal-background: rgba(255,255,255, 0%);
 	alternate-normal-background: rgba(255,255,255, 0%);
 }
@@ -65,7 +67,7 @@ mainbox {
 }
 
 window {
-	border: 1px solid;
+	border: 2px solid;
 	border-radius: 17px;
 	border-color: rgba(100, 100, 100, 0.6);
 	background-color: rgba(17, 18, 29, 85%);
@@ -85,8 +87,8 @@ listview {
 element {
 	padding: 10px 10px;
 	height: 50px;
-	border-radius: 5px;
-	children: [ element-text, element-icon ];
+	border-radius: 10px;
+	children: [element-icon, element-text];
 }
 
 element-icon {
