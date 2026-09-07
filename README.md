@@ -1,10 +1,10 @@
 # Arch Library Mode Setup
 This is my personal Linux configuration, Hyprland was the core window manager and a bunch of scripts I wrote to keep my machine running efficiently and silently.
 
-### Day & Evening
-| Day | Evening |
+### Hyprland
+| Clean Desktop | Applications all over|
 |-----|---------|
-| ![Clean Desktop](assets/clean_desktop.png) | ![Window all over](./assets/floating_hypr.png) |
+| ![Clean Desktop](assets/clean_desktop.png) | ![Applications](./assets/floating_hypr.png) |
 
 ### Lock Screen
 ![hyprlock](assets/hyprlock.webp)
