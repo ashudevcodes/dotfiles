@@ -6,8 +6,8 @@ This is my personal Linux configuration, featuring NIRI as window manager and a 
 |-----|---------|
 | ![Niri In Day](assets/niri_ui_3.png) | ![Niri In Evening](assets/niri_ui.png) |
 
-### Night
-![Niri In Night](assets/niri_ui_2.png)
+### Lock Screen
+![hyprlock](assets/hyprlock.webp)
 
 <hr>
 
