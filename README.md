@@ -1,10 +1,10 @@
 # Arch Library Mode Setup
-This is my personal Linux configuration, featuring NIRI as window manager and a bunch of scripts I wrote to keep my machine running efficiently and silently.
+This is my personal Linux configuration, Hyprland was the core window manager and a bunch of scripts I wrote to keep my machine running efficiently and silently.
 
 ### Day & Evening
 | Day | Evening |
 |-----|---------|
-| ![Niri In Day](assets/niri_ui_3.png) | ![Niri In Evening](assets/niri_ui.png) |
+| ![Clean Desktop](assets/clean_desktop.png) | ![Window all over](./assets/floating_hypr.png) |
 
 ### Lock Screen
 ![hyprlock](assets/hyprlock.webp)
@@ -20,7 +20,7 @@ I use an HP Pavilion Gaming Laptop Shadow Black Chrome Purple Edition (that's wh
 > My goal is simple: **Minimum RAM consumption, Zero Decibels.**
 
 ### What's Inside
-* **AwesomeWM:** Tiling window manager because dragging windows around is a waste of time.
+* **Light weight WM:** Tiling window manager because dragging windows around is a waste of time.
 * **Neovim:** Configured to load instantly.
 * **Scripts:** Custom power-management scripts to keep the battery drain remarkably low.
 
