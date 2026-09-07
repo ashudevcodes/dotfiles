@@ -1,10 +1,10 @@
 {
-  "layer": "top",
+  "layer": "bottom",
   "position": "bottom",
   "margin-bottom" : 10,
   "height" : 65,
   "width" : 2,
-  "exclusive": true,
+  "exclusive": false,
   "spacing": 4,
   "expand-center": true,
   "reload_style_on_change": true,
@@ -18,9 +18,7 @@
 	"network",
 	"pulseaudio#output",
 	"backlight",
-	"custom/separator",
-	"niri/workspaces",
-	"custom/separator",
+	"hyprland/workspaces",
 	"clock",
 	"cffi/liquid_battery",
 	"group/power"
@@ -34,7 +32,7 @@
 	"drawer": {
 	  "transition-duration": 500,
 	  "children-class": "not-power",
-	  "transition-left-to-right": false
+	  "transition-left-to-rigt": false
 	},
 	"modules": [
 	  "custom/power",
@@ -46,10 +44,16 @@
 
   "backlight":{
 	"format": "{icon}",
-	"format-icons":[""],
-	"tooltip": false,
+	"format-icons":["candle","table_lamp", "light_group_2"],
+	"tooltip-format": "{percent}% Brightness",
 	"cursor": 42,
 	"reverse-scrolling" : true
+  },
+
+  "custom/separator": {
+	"format": "󰇙",
+	"rotate" : 270,
+	"tooltip": false
   },
 
   "custom/power": {
@@ -93,6 +97,17 @@
 	"signal": 10
   },
 
+  "hyprland/workspaces": {
+	"format": "{icon}",
+	"expend": true,
+	"format-icons": {
+	  "active" : "ඞ",
+	  "default" : "󱙝"
+	},
+	"on-scroll-up": "niri msg action focus-workspace-up",
+	"on-scroll-down": "niri msg action focus-workspace-down"
+  },
+
   "niri/workspaces": {
 	"format": "{icon}",
 	"expend": true,
@@ -106,7 +121,7 @@
 
 
   "clock": {
-	"format":"󰸗",
+	"format":"today",
 	"tooltip-format": "<span font='JetBrainsMono' >{calendar}</span>",
 	"calendar": {
 	  "mode"          : "month",
@@ -127,29 +142,32 @@
 
 
   "pulseaudio#output": {
+	"on-update": "~/.local/bin/mute-led-toggle.sh",
 	"format": "{icon}",
+	//"scroll-scale": "db",
+	//"scroll-step": 2.5,
 	"cursor": 42,
-	"format-icons": {
-	  "default": [ "", "", "" ],
-	  "default-muted": ""
-	},
+	//"format-bluetooth":"earbuds_2",
+	//"format-icons": [ "volume_down", "brand_awareness", "volume_up" ],
 
-	"format-muted": "",
+	"format-icons": {
+	  "headset": "earbuds_2",
+	  "default": [ "volume_down", "brand_awareness", "volume_up" ]
+	},
+	"format-muted": "volume_off",
 	"reverse-scrolling" : true,
 	"on-click": "pavucontrol",
-	//"rotate" : 90,
-	"justify": "center",
-	"tooltip": false,
-	"scroll-step": 1
+	"tooltip-format": "{volume}%   "
   },
 
   "bluetooth": {
-	"format": "",
+	"format": "bluetooth_searching",
 	"format-connected": "{device_alias}",
 	"format-disabled": "",
+	//"rotate":90,
 	"on-click": "footclient -e bluetoothctl",
 	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
-	"tooltip-format-connected": "	Battery {device_battery_percentage}% "
+	"tooltip-format-connected": "   Battery  {device_battery_percentage}% "
   },
 
   "cffi/liquid_battery": {
@@ -160,7 +178,8 @@
   "network": {
     "interface": "wlan0",
     "format": "{icon}",
-	"format-icons": ["󰤯","󰤢","󰤥","󰤨"],
+	"format-icons": ["network_wifi_1_bar","network_wifi_3_bar","network_wifi","signal_wifi_4_bar"],
+	"format-disconnected": "perm_scan_wifi",
     "format-disabled": "",
 	"on-click": "footclient -e iwctl",
 	"on-click-right": "sh -c 'rfkill toggle wlan'",

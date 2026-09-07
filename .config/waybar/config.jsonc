@@ -15,7 +15,7 @@
   "modules-center":[
 	"group/power",
 	"cffi/liquid_battery",
-	"niri/workspaces",
+	"hyprland/workspaces",
 	"network",
 	"backlight",
 	"clock",
@@ -34,13 +34,13 @@
 	"drawer": {
 	  "transition-duration": 500,
 	  "children-class": "not-power",
-	  "transition-right-to-left": false
+	  "transition-left-to-right": true
 	},
 	"modules": [
-	  "custom/power",
 	  "custom/quit",
 	  "custom/lock",
-	  "custom/reboot"
+	  "custom/reboot",
+	  "custom/power"
 	]
   },
 
@@ -97,6 +97,17 @@
   "cffi/touchpad":{
 	"module_path": "/home/nemo/.local/lib/waybar/modules/touchpad.so",
 	"signal": 10
+  },
+
+  "hyprland/workspaces": {
+	"format": "{icon}",
+	"expend": true,
+	"format-icons": {
+	  "active" : "ඞ",
+	  "default" : "󱙝"
+	},
+	"on-scroll-up": "niri msg action focus-workspace-up",
+	"on-scroll-down": "niri msg action focus-workspace-down"
   },
 
   "niri/workspaces": {
