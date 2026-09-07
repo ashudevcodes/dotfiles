@@ -12,7 +12,7 @@ return {
 			hint = { enable = true, semicolon = 'Disable' },
 			workspace = {
 				checkThirdParty = false,
-				library = { vim.env.VIMRUNTIME },
+				library = { vim.env.VIMRUNTIME, "/usr/share/hypr/stubs/" },
 			},
 		},
 	},
