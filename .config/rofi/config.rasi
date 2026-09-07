@@ -42,7 +42,7 @@ button selected {
 }
 
 inputbar {
-	border-radius: 13px;
+	border-radius: 10px;
 
 	border: 1px;
 	border-color: rgba(81, 81, 81, 0.4);
@@ -68,9 +68,9 @@ mainbox {
 
 window {
 	border: 2px solid;
-	border-radius: 17px;
-	border-color: rgba(100, 100, 100, 0.6);
-	background-color: rgba(17, 18, 29, 85%);
+	border-radius: 20px;
+	border-color: rgb(78, 78, 78);
+	background-color: rgba(17, 18, 29, 70%);
 	padding: 0px;
 	width: 35%;
 
@@ -87,7 +87,7 @@ listview {
 element {
 	padding: 10px 10px;
 	height: 50px;
-	border-radius: 10px;
+	border-radius: 13px;
 	children: [element-icon, element-text];
 }
 
