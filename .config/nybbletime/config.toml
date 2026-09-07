@@ -1,6 +1,6 @@
 [position]
-anchor = "bottom-right"
-margin_top = 0
+anchor = "top-right"
+margin_top = 24
 margin_right = 24
 margin_bottom = 24
 margin_left = 0
