@@ -13,7 +13,7 @@ require("user_Interface")
 require("shortcut_Keys")
 require("input_Device_settings")
 
-require("login_Startup_Programmes")
+require("startup_Programmes")
 
 hl.config({
 	xwayland = {

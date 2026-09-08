@@ -23,10 +23,10 @@ hl.workspace_rule({
 })
 
 hl.window_rule({
-    name = "scratchpad-float",
-    match = { workspace = "special:magic" },
-    float = true,
-	size = {"monitor_w * 0.6", "monitor_h * 0.6"}
+	name = "scratchpad-float",
+	match = { workspace = "special:magic" },
+	float = true,
+	size = { "monitor_w * 0.6", "monitor_h * 0.6" }
 })
 
 hl.window_rule({
@@ -60,22 +60,22 @@ hl.window_rule({
 
 
 hl.layer_rule({
-	match     = {
+	match        = {
 		namespace = "rofi"
 	},
-	blur      = true,
-	animation = "slide",
+	blur         = true,
+	animation    = "slide",
 	ignore_alpha = 0.01,
 })
 
 hl.layer_rule({
-	match     = {
+	match        = {
 		namespace = "notifications"
 	},
-	blur      = true,
+	blur         = true,
 	ignore_alpha = 0.01,
-	animation = "popin",
-	above_lock = true
+	animation    = "popin",
+	above_lock   = true
 })
 
 hl.layer_rule({
@@ -86,7 +86,7 @@ hl.layer_rule({
 	blur_popups  = true,
 	ignore_alpha = 0.01,
 	xray         = true,
-	above_lock = true
+	above_lock   = true
 })
 
 hl.layer_rule({
