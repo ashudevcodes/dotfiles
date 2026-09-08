@@ -74,16 +74,14 @@ main(){
 	sudo apt install -y eza neovim tmux
 
   else
-	case "$1" in
-	  --offline)
+	if "$1" == "--offline" ; then
 		echo "
 		Clone Repo like:
 		git clone -b [branch name] https://github.com/ashudevcodes/dotfiles
 		cd dotfiles
 		./install.sh --offline
 		"
-		;;
-	  *)
+	  else
 		read -p "Option (1, 2, or 3): " choice
 
 		case $choice in
@@ -102,10 +100,7 @@ main(){
 		esac
 
 		git clone -b "$branch" https://github.com/ashudevcodes/dotfiles
-		;;
-	esac
-  fi
-
+	fi
 
   current_dir_path="$(pwd)/dotfiles"
 
