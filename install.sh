@@ -38,7 +38,7 @@ loadFiles(){
   for folder in "${ashudevcodes_config_dir_names[@]}"; do
 	printf "\rCopying: %-30s" "$folder"
 	sleep 0.1
-	cp "$git_file_dir_path/$folder" "$HOME/$git_file_dir_path/$folder"
+	cp -r "$git_file_dir_path/$folder" "$HOME/$git_file_dir_path/$folder"
   done
 
   printf "\r%-45s\n" " "
@@ -61,8 +61,8 @@ backupBashrc(){
 
   mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
   mv "$HOME/.bash_profile" "$HOME/.bash_profile.bak"
-  cp "$current_dir_path/.bashrc" "$HOME/"
-  cp "$current_dir_path/.bash_profile" "$HOME/"
+  cp -r "$current_dir_path/.bashrc" "$HOME/"
+  cp -r "$current_dir_path/.bash_profile" "$HOME/"
 
   echo "bashrc Configration load :)"
 }
@@ -109,8 +109,8 @@ main(){
   fi
 
   backupConfig "${ashudevcodes_config_folders[@]}"
-  loadFiles ashudevcodes_config_folders "$current_dir_path/.config"
-  loadFiles ashudevcodes_local_bin "$current_dir_path/.local/bin"
+  loadFiles ashudevcodes_config_folders "/.config"
+  loadFiles ashudevcodes_local_bin "/.local/bin"
   backupBashrc
 
   sudo pacman -S eza neovim tmux
