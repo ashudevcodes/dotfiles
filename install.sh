@@ -69,14 +69,14 @@ backupBashrc(){
 
 main(){
   if is_codespace; then
-	branch="hypr"
+	branch="hyprland"
 	sudo apt update
 	sudo apt install eza nvim tmux
   else
 	read -p "Option (1, 2, or 3): " choice
 	case $choice in
 	  1)
-		branch="hypr"
+		branch="hyprland"
 		;;
 	  2)
 		branch="niri"
