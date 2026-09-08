@@ -7,7 +7,6 @@ echo "
 
 echo "Input a number.."
 
-read -p "Option (1, 2, or 3): " choice
 
 backupConfig(){
   echo "Backup existing Configration :)"
@@ -74,6 +73,7 @@ main(){
 	sudo apt update
 	sudo apt install eza nvim tmux
   else
+	read -p "Option (1, 2, or 3): " choice
 	case $choice in
 	  1)
 		branch="hypr"
