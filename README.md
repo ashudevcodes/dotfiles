@@ -11,6 +11,14 @@ This is my personal Linux configuration, Hyprland was the core window manager an
 
 <hr>
 
+#### INSTALL
+```sh
+curl https://raw.githubusercontent.com/ashudevcodes/dotfiles/hyprland/install.sh | bash
+
+#or
+cd dotfiles
+./install.sh --offline
+```
 ### The Backstory
 I use an HP Pavilion Gaming Laptop Shadow Black Chrome Purple Edition (that's why I call it Dragon), but I hate two things:
 

@@ -70,27 +70,41 @@ backupBashrc(){
 main(){
   if is_codespace; then
 	branch="hyprland"
-	sudo apt update
-	sudo apt install eza nvim tmux
+	sudo apt update && sudo apt install eza neovim tmux
+
   else
-	read -p "Option (1, 2, or 3): " choice
-	case $choice in
-	  1)
-		branch="hyprland"
-		;;
-	  2)
-		branch="niri"
-		;;
-	  3)
-		branch="awesome"
+	case "$1" in
+	  --offline)
+		echo "
+		Clone Repo like:
+		git clone -b [branch name] https://github.com/ashudevcodes/dotfile
+		cd dotfile
+		./install.sh --offline
+		"
 		;;
 	  *)
-		echo "Invalid option."
+		read -p "Option (1, 2, or 3): " choice
+
+		case $choice in
+		  1)
+			branch="hyprland"
+			;;
+		  2)
+			branch="niri"
+			;;
+		  3)
+			branch="awesome"
+			;;
+		  *)
+			echo "Invalid option."
+			;;
+		esac
+
+		git clone -b "$branch" https://github.com/ashudevcodes/dotfile
 		;;
 	esac
   fi
 
-  #git clone -b $branch https://github.com/ashudevcodes/dotfile
 
   current_dir_path="$(pwd)/dotfiles"
 
@@ -109,7 +123,7 @@ main(){
   loadFiles ashudevcodes_local_bin "$current_dir_path/.local/bin"
   backupBashrc
 
-  sudo pacman -S eza nvim tmux
+  sudo pacman -S eza neovim tmux
   echo "Restart or Logout to apply"
 
 }
