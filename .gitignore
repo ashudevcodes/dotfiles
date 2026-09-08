@@ -63,6 +63,9 @@ trashrc
 .config/kew
 .config/opencode
 .config/tlpui
+.config/kconf_updaterc
+.config/ktimezonedrc
+.config/libaccounts-glib
 
 .face.icon
 
