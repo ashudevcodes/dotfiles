@@ -70,7 +70,7 @@ backupBashrc(){
 main(){
   if is_codespace; then
 	branch="hyprland"
-	sudo apt update && sudo apt install eza neovim tmux
+	sudo apt update && sudo apt install -y eza neovim tmux
 
   else
 	case "$1" in
