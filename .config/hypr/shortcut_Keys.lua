@@ -22,6 +22,14 @@ hl.bind(main_mod .. " + l", hl.dsp.focus({ direction = "right" }))
 hl.bind(main_mod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(main_mod .. " + j", hl.dsp.focus({ direction = "down" }))
 
+hl.bind(main_mod .. "+ SHIFT + h", hl.dsp.window.move({ direction = "left" }))
+hl.bind(main_mod .. "+ SHIFT + l", hl.dsp.window.move({ direction = "right" }))
+hl.bind(main_mod .. "+ SHIFT + k", hl.dsp.window.move({ direction = "up" }))
+hl.bind(main_mod .. "+ SHIFT + j", hl.dsp.window.move({ direction = "down" }))
+
+hl.bind(main_mod .. "+ SHIFT + R", hl.dsp.layout("colresize +conf"))
+hl.bind(main_mod .. "+ SHIFT + F", hl.dsp.layout("fit active"))
+
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
 	hl.bind(main_mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
