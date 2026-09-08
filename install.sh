@@ -72,18 +72,11 @@ main(){
 	branch="hyprland"
 	sudo apt update
 	sudo apt install -y eza neovim tmux
-
   else
-	if "$1" == "--offline" ; then
-		echo "
-		Clone Repo like:
-		git clone -b [branch name] https://github.com/ashudevcodes/dotfiles
-		cd dotfiles
-		./install.sh --offline
-		"
+	if [[ $1 == "--offline" ]]; then
+		printf "Clone Repo like:\ngit clone -b [branch name] https://github.com/ashudevcodes/dotfiles\ncd dotfiles\n./install.sh --offline"
 	  else
 		read -p "Option (1, 2, or 3): " choice
-
 		case $choice in
 		  1)
 			branch="hyprland"
@@ -101,6 +94,7 @@ main(){
 
 		git clone -b "$branch" https://github.com/ashudevcodes/dotfiles
 	fi
+  fi
 
   current_dir_path="$(pwd)/dotfiles"
 
