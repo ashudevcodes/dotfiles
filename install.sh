@@ -70,15 +70,16 @@ backupBashrc(){
 main(){
   if is_codespace; then
 	branch="hyprland"
-	sudo apt update && sudo apt install -y eza neovim tmux
+	sudo apt update
+	sudo apt install -y eza neovim tmux
 
   else
 	case "$1" in
 	  --offline)
 		echo "
 		Clone Repo like:
-		git clone -b [branch name] https://github.com/ashudevcodes/dotfile
-		cd dotfile
+		git clone -b [branch name] https://github.com/ashudevcodes/dotfiles
+		cd dotfiles
 		./install.sh --offline
 		"
 		;;
