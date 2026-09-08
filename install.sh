@@ -101,7 +101,7 @@ main(){
 			;;
 		esac
 
-		git clone -b "$branch" https://github.com/ashudevcodes/dotfile
+		git clone -b "$branch" https://github.com/ashudevcodes/dotfiles
 		;;
 	esac
   fi
