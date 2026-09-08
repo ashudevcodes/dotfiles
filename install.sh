@@ -38,7 +38,7 @@ loadFiles(){
   for folder in "${ashudevcodes_config_dir_names[@]}"; do
 	printf "\rCopying: %-30s" "$folder"
 	sleep 0.1
-	cp -r "$git_file_dir_path/$folder" "$git_file_dir_path/$folder"
+	cp -r "$git_file_dir_path/$folder" "$HOME/$folder"
   done
 
   printf "\r%-45s\n" " "
@@ -52,17 +52,15 @@ is_codespace() {
 }
 
 backupBashrc(){
-  if [ -e "$HOME/.bashrc.d" ]; then
-	mkdir -p "$HOME/.bashrc.d"
-  fi
+  mkdir -p "$HOME/.bashrc.d"
 
   loadFiles ashudevcodes_bash_script "$current_dir_path/.bashrc.d"
   echo "Backup: bashrc Configration.."
 
   mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
   mv "$HOME/.bash_profile" "$HOME/.bash_profile.bak"
-  cp -r "$current_dir_path/.bashrc" "$HOME/"
-  cp -r "$current_dir_path/.bash_profile" "$HOME/"
+  cp "$current_dir_path/.bashrc" "$HOME"
+  cp "$current_dir_path/.bash_profile" "$HOME"
 
   echo "bashrc Configration load :)"
 }
