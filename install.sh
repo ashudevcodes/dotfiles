@@ -32,13 +32,13 @@ backupConfig(){
 
 loadFiles(){
 
-  local -n ashudevcodes_config_dir_names="$1"
-  local git_file_dir_path="$2"
+  local -n name_of_all_ashudevcodes_config_dir="$1"
+  local path_of_ashudevcodes_config_dir="$2"
 
-  for folder in "${ashudevcodes_config_dir_names[@]}"; do
-	printf "\rCopying: %-30s" "$folder"
+  for name in "${name_of_all_ashudevcodes_config_dir[@]}"; do
+	printf "\rCopying: %-30s" "$name"
 	sleep 0.1
-	cp -r "$git_file_dir_path/$folder" "$HOME/$folder"
+	cp -r "$path_of_ashudevcodes_config_dir/$name" "$HOME/$3/$name"
   done
 
   printf "\r%-45s\n" " "
@@ -54,7 +54,6 @@ is_codespace() {
 backupBashrc(){
   mkdir -p "$HOME/.bashrc.d"
 
-  loadFiles ashudevcodes_bash_script "$current_dir_path/.bashrc.d"
   echo "Backup: bashrc Configration.."
 
   mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
@@ -107,11 +106,17 @@ main(){
   fi
 
   backupConfig "${ashudevcodes_config_folders[@]}"
-  loadFiles ashudevcodes_config_folders "$current_dir_path/.config"
-  loadFiles ashudevcodes_local_bin "$current_dir_path/.local/bin"
+
+  loadFiles ashudevcodes_config_folders "$current_dir_path/.config"    ".config"
+  loadFiles ashudevcodes_local_bin      "$current_dir_path/.local/bin" ".local/bin"
+  loadFiles ashudevcodes_bash_script    "$current_dir_path/.bashrc.d"  ".bashrc.d"
+
   backupBashrc
 
-  sudo pacman -S eza neovim tmux
+  if [ $(cat /etc/hostname) == "archlinux" ]; then
+	sudo pacman -S eza neovim tmux
+  fi
+
   echo "Restart or Logout to apply"
 
 }
