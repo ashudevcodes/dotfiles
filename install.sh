@@ -95,10 +95,10 @@ main(){
 	fi
   fi
 
-  current_dir_path="$(pwd)/dotfiles"
+  current_dir_path="$(pwd)"
 
   if [ -e "dotfiles" ]; then
-	pushd "$current_dir_path"
+	pushd "$current_dir_path/dotfiles"
   fi
   mapfile -t ashudevcodes_config_folders < <(git -C . ls-tree -d --name-only HEAD:.config)
   mapfile -t ashudevcodes_local_bin < <(git -C . ls-tree --name-only HEAD:.local/bin/)
