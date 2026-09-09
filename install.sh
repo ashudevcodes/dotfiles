@@ -70,7 +70,7 @@ main(){
   if is_codespace; then
 	branch="hyprland"
 	sudo apt update
-	sudo apt install -y eza neovim tmux fzf cowsay starship
+	sudo apt install -y eza neovim tmux fzf cowsay
   else
 	if [[ $1 == "--offline" ]]; then
 		printf "Clone Repo like:\ngit clone -b [branch name] https://github.com/ashudevcodes/dotfiles\ncd dotfiles\n./install.sh --offline"
@@ -119,6 +119,7 @@ main(){
 	sudo pacman -S eza neovim tmux fzf cowsay starship
   fi
 
+  source $HOME/.bashrc
   echo "Restart or Logout to apply"
 
 }
