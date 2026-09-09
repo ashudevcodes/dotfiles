@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Which setup did you want ?"
 echo "
 1. Hyprland
@@ -68,7 +70,7 @@ main(){
   if is_codespace; then
 	branch="hyprland"
 	sudo apt update
-	sudo apt install -y eza neovim tmux
+	sudo apt install -y eza neovim tmux fzf cowsay starship
   else
 	if [[ $1 == "--offline" ]]; then
 		printf "Clone Repo like:\ngit clone -b [branch name] https://github.com/ashudevcodes/dotfiles\ncd dotfiles\n./install.sh --offline"
@@ -114,7 +116,7 @@ main(){
   backupBashrc
 
   if [ $(cat /etc/hostname) == "archlinux" ]; then
-	sudo pacman -S eza neovim tmux
+	sudo pacman -S eza neovim tmux fzf cowsay starship
   fi
 
   echo "Restart or Logout to apply"
