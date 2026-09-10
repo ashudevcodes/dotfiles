@@ -70,7 +70,16 @@ main(){
   if is_codespace; then
 	branch="hyprland"
 	sudo apt update
-	sudo apt install -y eza neovim tmux fzf cowsay
+	sudo apt install -y eza tmux fzf cowsay foot-terminfo
+
+	sudo apt-get install software-properties-common
+	sudo add-apt-repository ppa:neovim-ppa/stable
+	sudo apt-get update
+	sudo apt-get install neovim
+
+	curl -sS https://starship.rs/install.sh | sh
+
+	echo 'export PATH=$PATH:/usr/games' >> ~/.bashrc
   else
 	if [[ $1 == "--offline" ]]; then
 		printf "Clone Repo like:\ngit clone -b [branch name] https://github.com/ashudevcodes/dotfiles\ncd dotfiles\n./install.sh --offline"
@@ -119,7 +128,7 @@ main(){
 	sudo pacman -S eza neovim tmux fzf cowsay starship
   fi
 
-  source $HOME/.bashrc
+  source ~/.bashrc
   echo "Restart or Logout to apply"
 
 }
