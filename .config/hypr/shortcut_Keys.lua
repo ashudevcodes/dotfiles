@@ -5,6 +5,7 @@ local filemanager   = "dolphin"
 
 local waybar_config = "-c ~/.config/waybar/config-vertical.jsonc -s ~/.config/waybar/style-vertical.css"
 
+hl.bind("PRINT",hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
 hl.bind(main_mod .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. waybar_config))
 hl.bind(main_mod .. " + v", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(main_mod .. " + Space", hl.dsp.exec_cmd(menu))
