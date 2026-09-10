@@ -1,4 +1,5 @@
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+--hl.gestures({ workspace_swipe_min_speed_to_force = true, })
 hl.config({
 	general = {
 		gaps_out = 12,
@@ -17,6 +18,11 @@ hl.config({
 			},
 		},
 
+	},
+
+	gestures= {
+	  workspace_swipe_min_speed_to_force = 200,
+	  workspace_swipe_cancel_ratio = 0.1,
 	},
 
 	decoration = {
