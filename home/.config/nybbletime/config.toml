@@ -1,0 +1,35 @@
+[position]
+anchor = "top-left"
+margin_top = 24
+margin_right = 24
+margin_bottom = 24
+margin_left = 24
+
+[size]
+dot_radius = 8
+dot_gap = 4
+col_gap = 4
+group_gap = 8
+padding = 32
+corner_radius = 27
+
+[colors]
+bg = "#1A1916"
+bg_opacity = 0.5
+border_opacity = 0
+dot_on = "#C0CAF0"
+dot_on_opacity = 0.8
+dot_off = "#FFFFFF"
+dot_off_opacity = 0.2
+
+[aesthetics]
+gradient_dots = 1
+pill_dots = 1
+glow_enabled = 1
+glow_radius = 1.4
+glow_alpha = 0.35
+shadow_enabled = 1
+shadow_layers = 2
+shadow_alpha = 0.9
+border_gradient = 0
+border_width = 0

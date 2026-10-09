@@ -72,7 +72,6 @@ mainbox {
 
 window {
   border: 1px;
-  border-color: rgba(255,255,255,0.1);
   border-radius: 1.2em;
   border-color: rgba(255,255,255,0.1);
   width: 44%;

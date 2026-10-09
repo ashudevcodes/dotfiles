@@ -1,0 +1,27 @@
+[{
+	"id": "left_bar",
+	"name": "left_bar",
+	"include": ["~/.config/waybar/left_bar_modules.jsonc"],
+	"layer": "top",
+	"position": "left",
+	"margin-left": 6,
+	"height": 2,
+	"width": 67,
+	"exclusive": true,
+	"spacing": 8,
+	"expand-center": true,
+	"reload_style_on_change": true,
+
+	"modules-center": [
+	  "group/power",
+	  "cffi/liquid_battery",
+	  "hyprland/workspaces",
+	  "network",
+	  "backlight",
+	  "clock",
+	  "pulseaudio#output",
+	  "bluetooth",
+	  "cffi/touchpad",
+	  "custom/rofi"
+	]
+}]

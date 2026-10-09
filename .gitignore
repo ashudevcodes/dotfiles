@@ -42,3 +42,4 @@
 .local/bin/budsConnect
 .local/icon/freetube.svg
 .local/icon/localsend.png
+/home/.local/lib/waybar/modules

@@ -1,0 +1,134 @@
+{
+  "group/power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": true,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/power",
+      "custom/quit",
+      "custom/lock",
+      "custom/reboot"
+    ]
+  },
+
+  "backlight": {
+    "format": "{icon}",
+    "format-icons": ["candle", "table_lamp", "light_group_2"],
+    "tooltip-format": " Brightness {percent}% ",
+    "reverse-scrolling": true
+  },
+
+  "custom/separator": {
+    "format": "󰇙",
+    "rotate": 270,
+    "tooltip": false
+  },
+
+  "custom/power": {
+    "format": "󰻀",
+    "tooltip-format": "Power Menu"
+  },
+
+  "custom/rofi": {
+    "format": "󱙇",
+    "tooltip-format": "<span>Search :)</span>",
+    "on-click": "rofi -show drun"
+  },
+
+  "custom/quit": {
+    "format": "󰩈",
+    "on-click": "poweroff",
+    "tooltip-format": "<span>Shutdown :)</span>"
+  },
+
+  "custom/lock": {
+    "format": "󰷛",
+    "on-click": "hyprlock -q",
+    "tooltip-format": "<span>Lock</span>"
+  },
+
+  "custom/reboot": {
+    "format": "󰜉",
+    "on-click": "reboot",
+    "tooltip-format": "<span>Reboot</span>"
+  },
+
+  "cffi/touchpad": {
+    "module_path": "/home/nemo/.local/lib/waybar/modules/touchpad.so",
+    "signal": 10
+  },
+
+  "cffi/liquid_battery": {
+    "module_path": "/home/nemo/.local/lib/waybar/modules/libliquid-battery.so",
+    "signal": 10
+  },
+
+  "hyprland/workspaces": {
+    "show-special": true,
+    "enable-bar-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "active": "ඞ",
+      "default": "󱙝",
+      "special": "󰇥"
+    }
+  },
+
+  "clock": {
+    "format": "today",
+    "tooltip-format": "<span font='SF Mono'>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    },
+    "interval": 60
+  },
+
+  "pulseaudio#output": {
+    "on-update": "~/.local/bin/mute-led-toggle.sh",
+    "format": "{icon}",
+    "format-icons": {
+      "headset": "earbuds_2",
+      "default": ["volume_down", "brand_awareness", "volume_up"]
+    },
+    "format-muted": "volume_off",
+    "reverse-scrolling": true,
+    "on-click": "pavucontrol",
+    "tooltip-format": " Volume {volume}% "
+  },
+
+  "bluetooth": {
+    "format": "bluetooth_searching",
+    "format-connected": "{device_alias}",
+    "format-disabled": "",
+    "rotate": 90,
+    "on-click": "kitty --override='font_size=9' --title=bluetooth_status bluetoothctl",
+    "on-click-right": "sh -c 'rfkill toggle bluetooth'",
+    "tooltip-format-connected": " \t {device_battery_percentage}%  Battery "
+  },
+
+  "network": {
+    "interface": "wlan0",
+    "format": "{icon}",
+    "format-icons": ["network_wifi_1_bar", "network_wifi_3_bar", "network_wifi", "signal_wifi_4_bar"],
+    "format-disconnected": "perm_scan_wifi",
+    "format-disabled": "",
+    "on-click": "kitty --override='font_size=8' --title=wifi_status impala",
+    "on-click-right": "sh -c 'rfkill toggle wlan'",
+    "tooltip-format-wifi": " {essid} 󰥛  {signalStrength}% ",
+    "max-length": 50
+  }
+}
