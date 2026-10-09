@@ -1,0 +1,85 @@
+@import "colors.rasi"
+
+configuration {
+  drun-display-format: "<b>{name}</b>";
+  scroll-method: 0;
+}
+
+
+mode-switcher {
+  enabled: true;
+}
+
+
+inputbar {
+  border-radius: 10px;
+  border: 1px;
+  border-color: rgba(81, 81, 81, 0.4);
+  background-color: @background;
+}
+
+
+
+
+window {
+  transparency: "real";
+  border: 2px;
+  border-radius: 20px;
+  border-color: @border;
+  x-offset: -20;
+  fullscreen: false;
+  location: east;
+  anchor: east;
+}
+
+
+listview {
+  lines: 4;
+  scrollbar: false;
+  dynamic: true;
+  columns: 4;
+  layout: vertical;
+}
+
+element {
+  orientation: vertical;
+  padding: 8px;
+  border-radius: 13px;
+  background-color: transparent;
+  children: [ element-icon, element-text ];
+}
+
+entry {
+  placeholder: " 󰥗\t Search applications…";
+  padding: 8px;
+  text-color: #f2f2f280;
+  font: "SF Pro Rounded Semibold 11";
+}
+
+element-text {
+  font: "SF Pro Rounded Semibold 10";
+  text-color: #c0caf0CC;
+  horizontal-align: 0.5;
+}
+
+element-icon {
+  size: 2em;
+}
+
+element normal.normal {
+  text-color: #c0caf5cc;
+}
+
+element selected.normal {
+  background-color: @selected;
+  text-color: #c0caf5;
+}
+
+button {
+  padding: 4px;
+  border-radius: 17px;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-color: #f2f2f280;
+}
+
+/* vim:ft=css

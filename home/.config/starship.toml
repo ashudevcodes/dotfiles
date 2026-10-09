@@ -1,0 +1,122 @@
+command_timeout = 100
+add_newline = false
+
+format = """
+$hostname\
+$os\
+$directory\
+$git_branch\
+$python\
+$aws\
+$java\
+$c\
+$nodejs\
+$rust\
+$ruby\
+$scala\
+$dart\
+$conda\
+$pijul_channel\
+$lua\
+$rlang\
+$buf\
+$docker_context\
+(#1C3A5E)$cmd_duration
+[|](bold green)
+[└─$shell](bold green)
+"""
+
+continuation_prompt = '▶▶ '
+
+[shell]
+disabled = false
+bash_indicator = ' '
+
+[cmd_duration]
+format = 'last command: [$duration](bold yellow)'
+
+[os]
+disabled = false
+
+[os.symbols]
+Arch = ' '
+
+[hostname]
+ssh_only = true
+format = " "
+disabled = false
+
+[directory]
+truncation_length = 1
+fish_style_pwd_dir_length=2
+truncation_symbol = '…/'
+home_symbol = '[󰋜:~'
+read_only_style = '197'
+read_only = '  '
+format = '[$path]($style)[$read_only]($read_only_style) '
+
+[git_branch]
+symbol = "  "
+format = '[$symbol$branch ]($style)'
+truncation_length = 4
+truncation_symbol = '…/'
+style = 'bold green'
+
+[aws]
+symbol = ""
+
+[buf]
+symbol = ""
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[java]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+disabled = true
+style='bold dimmed white'
+threshold = 1
+format = "$symbol [${ram}(|${swap})]($style) "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+pyenv_version_name = true
+
+[ruby]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "

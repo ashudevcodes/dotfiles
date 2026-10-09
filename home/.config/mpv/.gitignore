@@ -1,0 +1,6 @@
+# Shaders cache directory
+shaders/cache
+.DS_Store
+fonts
+scripts
+script-opts

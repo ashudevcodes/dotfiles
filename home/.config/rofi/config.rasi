@@ -1,0 +1,33 @@
+/*
+@import "grid.rasi"
+ * */
+
+@import "list.rasi"
+
+configuration {
+  modi: "drun,filebrowser,window";
+  display-drun: "apps";
+  display-filebrowser: "files";
+  display-window: "window";
+  case-sensitive: false;
+  cycle: false;
+  filter: "";
+  show-icons: true;
+
+  sidebar-mode: true;
+  window-thumbnail: false;
+  icon-theme: "Yaru-purple";
+  hover-select: true;
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
+
+}
+
+* {
+  separatorcolor: transparent;
+  selected-normal-background: @selected;
+  normal-background: transparent;
+  alternate-normal-background: transparent;
+}
+
+/* vim:ft=css

@@ -1,0 +1,71 @@
+#!/bin/sh
+# marea-plm: start her and talk to her from outside. It is what the
+# compositor's keyboard shortcuts use, and what in Marea was `./marea foto region`.
+#
+#   marea start [pleamar options]      starts her up (autostart)
+#   marea stop                         closes her
+#   marea status                       whether she is running, and what she says of herself
+#   marea report [--seconds N]         measures her (and the desktop's scenes) while you use
+#                                      it, and writes a report to send when something stutters
+#   marea <event>                      tells her something: search, lock,
+#                                      shot_region, shot_screen,
+#                                      shot_window, record_toggle, celebrate,
+#                                      rage, adventure, volume_up, volume_down,
+#                                      mute_output, mute_mic, bright_up,
+#                                      bright_down, play_pause, next, previous…
+# (Through the link the installer leaves in ~/.local/bin too: where she really is.)
+HERE="$(dirname "$(readlink -f "$0")")"
+# The pleamar installed, or the one built next to her.
+PLEAMAR="${PLEAMAR:-$(command -v pleamar 2> /dev/null || echo "$HOME/Proyectos/pleamar/target/release/pleamar")}"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/marea-plm"
+# Deriva's library (what is dropped on her, kept and found again) lives in her
+# folder: `deriva/`, built there. Hers goes first on the PATH.
+DERIVA="$HERE/deriva/target/release"
+PATH="$DERIVA:$PATH"
+export PATH
+
+# Built the first time she starts, and again when its source changes (after an
+# update), if there is Rust to build it with. Meanwhile she starts as ever;
+# only Deriva's page waits for it. Not where her folder cannot be written
+# (Nix brings it already built).
+build_deriva() {
+    [ -f "$HERE/deriva/Cargo.toml" ] && [ -w "$HERE/deriva" ] || return 0
+    command -v cargo > /dev/null 2>&1 || return 0
+    if [ -x "$DERIVA/deriva-worker" ] && [ -z "$(find "$HERE/deriva/src" "$HERE/deriva/Cargo.toml" "$HERE/deriva/Cargo.lock" -newer "$DERIVA/deriva-worker" 2> /dev/null)" ]; then
+        return 0
+    fi
+    (cd "$HERE/deriva" && nice -n 10 cargo build --release --locked > "$STATE_DIR/deriva-build.log" 2>&1) &
+}
+
+case "${1:-}" in
+    start)
+        shift
+        mkdir -p "$STATE_DIR"
+        cd "$HERE" || exit 1
+        # The previous run's log is kept once and no more: so that it does not
+        # grow forever, but yesterday's can still be looked at.
+        [ -f "$STATE_DIR/marea.log" ] && mv -f "$STATE_DIR/marea.log" "$STATE_DIR/marea.log.1"
+       # build_deriva
+        exec "$PLEAMAR" --scene marea.plm --no-hud "$@" > "$STATE_DIR/marea.log" 2>&1
+        ;;
+    stop)
+        exec "$PLEAMAR" --say marea quit
+        ;;
+    report)
+        shift
+        exec "$PLEAMAR" --report "$@"
+        ;;
+    status)
+        if "$PLEAMAR" --say marea "get open" > /dev/null 2>&1; then
+            echo "running · log in $STATE_DIR/marea.log"
+        else
+            echo "stopped"; exit 1
+        fi
+        ;;
+    ""|-h|--help|help)
+        sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'
+        ;;
+    *)
+        exec "$PLEAMAR" --say marea "emit $1"
+        ;;
+esac

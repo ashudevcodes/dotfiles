@@ -1,0 +1,14 @@
+border-color=#{{color4 | strip}}40
+text-color=#{{foreground | strip}}FF
+background-color=#{{background | strip}}80
+
+progress-color=over #{{color4 | strip}}40
+
+[urgency=low]
+border-color=#{{color8 | strip}}30
+text-color=#{{foreground | strip}}FF
+
+[urgency=critical]
+border-color=#{{color1 | strip}}40
+text-color=#{{foreground | strip}}FF
+background-color=#{{color1 | strip}}30

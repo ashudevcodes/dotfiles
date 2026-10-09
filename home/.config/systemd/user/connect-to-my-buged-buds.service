@@ -1,0 +1,14 @@
+[Unit]
+Description=Disable Bluetooth before going to sleep
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=nemo
+ExecStart=/home/nemo/.local/bin/btConnect
+ExecStop=/home/nemo/.local/bin/btConnect
+
+[Install]
+WantedBy=sleep.target

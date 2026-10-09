@@ -1,0 +1,11 @@
+[Unit]
+Description=Run service morning, evening, and night
+
+[Timer]
+OnCalendar=*-*-* 07:10:00
+OnCalendar=*-*-* 18:10:00
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,170 @@
+@import "colors.rasi"
+
+configuration {
+  scroll-method: 0;
+  drun-display-format: "<b>{name}</b>\n<span color='#c0caf580' weight='Semibold' size='small'><i>{comment}</i></span>";
+}
+
+entry {
+  placeholder: " 󰥗  Search applications…";
+  padding: 12px 0px 0px 10px;
+  color: #f2f2f290;
+  font: "Adwaita Sans 9";
+
+  border: 1px;
+  border-radius: 10px;
+  background-color: @background;
+  border-color: none;
+}
+
+mode-switcher {
+  enabled: true;
+  spacing: 10px;
+  padding: 0px 8px;
+}
+
+button {
+  padding: 0px 12px;
+  border-radius: 13px;
+  text-color: #f2f2f280;
+  background-color: @background;
+  border-color: rgba(255,255,255,0.1);
+  font: "Material Symbols Rounded 15";
+}
+
+button selected {
+  text-color: #f2f2f270;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+}
+
+inputbar {
+  border-radius: 1em;
+
+  padding: 0.5em 0.3em;
+  border: 0px;
+  border-color: rgba(255, 255, 255, 0.25);
+
+  children:  [mode-switcher, entry, icon-current-entry];
+  //children:  [mode-switcher, entry, textbox-current-entry];
+}
+
+textbox-current-entry {
+  padding: 0px 10px;
+}
+
+icon-current-entry {
+  margin: 0px 10px;
+  padding: 5px 8px;
+  size: 1.4em;
+  border: 1px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255,255,255,0.1);
+}
+mainbox {
+  border: 0px;
+  padding: 3px;
+  spacing: 1px;
+  children: [ inputbar, listview];
+  border-radius: 1.2em;
+}
+
+window {
+  border: 1px;
+  border-color: rgba(255,255,255,0.1);
+  border-radius: 1.2em;
+  border-color: rgba(255,255,255,0.1);
+  width: 44%;
+}
+
+listview {
+  border: 1px;
+  border-color: @border;
+  background-color: @background;
+  border-radius: 1em;
+
+  padding: 10px;
+  lines: 6;
+  scrollbar: false;
+  spacing: 4px;
+  columns:          1;
+  fixed-height:     false;
+}
+
+element {
+  padding: 10px 12px;
+  background-color: transparent;
+  children: [element-icon, element-text];
+  vertical-align:   0.5;
+}
+
+element-icon {
+  size: 1.4em;
+}
+
+element-text {
+  font: "Adwaita Sans 9";
+  text-color: #c0caf0CC;
+  vertical-align: 0.5;
+  margin: 0px 0px 0px 10px;
+}
+
+element selected.normal,
+element selected.active,
+element selected.urgent {
+  text-color: #c0caf5;
+  border: 2px;
+  border-radius: 0.6em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(81, 81, 81, 0.4);
+}
+
+element active.normal,
+element active.alternate {
+  background-color: @text-dim;
+  border-color:     transparent;
+  text-color: #c0caf5;
+}
+
+element urgent.normal,
+element urgent.alternate {
+  background-color: #e0685f1a;
+  border-color:     transparent;
+  text-color: #c0caf5;
+}
+
+element alternate.normal {
+  background-color: transparent;
+}
+
+element normal.normal {
+  text-color: #c0caf5cc;
+}
+
+
+
+error-message {
+  background-color: #e0685f1a;
+  border:           1px;
+  border-color:     #e0685f80;
+  border-radius:    10px;
+  padding:          10px;
+  text-color:       @text-dim;
+}
+
+message {
+  border: 1px;
+  border-color: rgba(81, 81, 81, 0.4);
+  background-color: @background;
+  border-radius:    10px;
+  padding:          10px;
+  margin:           0px 10px;
+}
+
+textbox {
+  text-color:       @text-dim;
+  background-color: transparent;
+}
+
+/* vim:ft=css

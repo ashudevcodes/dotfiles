@@ -1,0 +1,6 @@
+[Unit]
+Description=Changing wallpaper based on Hours
+
+[Service]
+Type=oneshot
+ExecStart=/home/nemo/.local/bin/set_wallpaper.sh

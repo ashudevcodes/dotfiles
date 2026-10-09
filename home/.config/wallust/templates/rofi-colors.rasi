@@ -1,0 +1,21 @@
+* {
+
+  background:       {{background}}BF;
+  tag-background:   {{background}};
+  foreground:		{{color0}};
+  text-color:		{{color0}};
+  border-color:		{{color1}}40;
+  arg-bar:			{{color2}};
+  tag-color:		{{color3}};
+  selected:			{{color4}}20;
+  warning:			{{color5}};
+  success:			{{color6}};
+
+  border:			{{color8}}40;
+  text-dim:			{{color8}}B3;
+  text-faint:		{{color9}};
+  text-muted:		{{color10}};
+  text-border:		{{color11}};
+  arg-bg:			{{color12}};
+  arg-border:		{{color13}};
+}
