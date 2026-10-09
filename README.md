@@ -4,16 +4,26 @@ This is my personal Linux configuration, Hyprland was the core window manager an
 ### Hyprland
 | Clean Desktop | Applications all over|
 |-----|---------|
-| ![Clean Desktop](assets/clean_desktop.png) | ![Applications](./assets/floating_hypr.png) |
+| ![Clean Desktop](https://github.com/ashudevcodes/dotfiles-assets/blob/main/clean_desktop.png) | ![Applications](https://github.com/ashudevcodes/dotfiles-assets/blob/main/floating_hypr.png) |
+
+### Awesomwm
+| Clean Desktop | Applications all over|
+|-----|---------|
+| ![Clean Desktop](https://github.com/ashudevcodes/dotfiles-assets/blob/main/awesomewm1.png) | ![Applications](https://github.com/ashudevcodes/dotfiles-assets/blob/main/awesomewm.png) |
+
+### Niri
+| Day | Night |
+|-----|---------|
+| ![Clean Desktop](https://github.com/ashudevcodes/dotfiles-assets/blob/main/niri_ui_3.png) | ![Applications](https://github.com/ashudevcodes/dotfiles-assets/blob/main/niri_ui.png) |
 
 ### Lock Screen
-![hyprlock](assets/hyprlock.webp)
+![hyprlock](https://github.com/ashudevcodes/dotfiles-assets/blob/main/hyprlock.webp)
 
 <hr>
 
 #### INSTALL
 ```sh
-curl https://raw.githubusercontent.com/ashudevcodes/dotfiles/hyprland/install.sh | bash
+curl https://raw.githubusercontent.com/ashudevcodes/dotfiles/refs/heads/main/install.sh | bash
 
 #or
 cd dotfiles
