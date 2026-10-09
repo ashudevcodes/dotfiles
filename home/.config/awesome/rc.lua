@@ -11,6 +11,8 @@ require("awful.hotkeys_popup.keys")
 ------------------------------------------------------------
 -- Layout fix (important warning fix)
 ------------------------------------------------------------
+require("./programms/autoStartProgramms")
+
 awful.layout.append_default_layouts({
     awful.layout.suit.tile,
     awful.layout.suit.floating,
@@ -20,7 +22,6 @@ awful.layout.append_default_layouts({
 ------------------------------------------------------------
 -- Your modules
 ------------------------------------------------------------
-require("./programms/autoStartProgramms")
 require("./theme/custom_theme")
 require("./veriable/globalVeriable")
 
