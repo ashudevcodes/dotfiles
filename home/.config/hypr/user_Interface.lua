@@ -76,7 +76,7 @@ hl.config({
 	},
 })
 
-local animation_speed = 0.1
+local animation_speed = 3
 local workspaces_switch_animation_speed = 6
 local fade_animation_speed = 6
 
