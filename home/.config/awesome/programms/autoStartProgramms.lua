@@ -15,8 +15,9 @@ end
 
 local HOME = os.getenv("HOME")
 local autorunApps = {
-	HOME .. "/.config/picom/picom/src/picom -b --config " .. HOME .. "/.config/picom/picom-battery.conf",
+	"picom-toggle.sh",
 	"kitty --single-instance --start-as=hidden",
+	"xset r rate 200 70"
 }
 
 for _, app in ipairs(autorunApps) do
