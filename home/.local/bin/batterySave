@@ -56,10 +56,8 @@ on_battery() {
   run "󰃞 Brightness → 0%"                    brightnessctl set 0% -q
   run "󰤪 WiFi → State"                       rfkill list
 
-  if [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 24 ]; then
     log "$BLUE" "󰖔 Night study mode..."
     run "Gammastep → 3200k" gammastep -O 5500k
-  fi
 
   log "$GREEN" " Done!"; show_status
 }

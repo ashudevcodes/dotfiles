@@ -3,11 +3,11 @@
 HOUR=$(date +%H)
 
 if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 18 ]; then
-  IMG="$HOME/assets/wallhaven-yqqwvd.jpg"
+  IMG="$HOME/dotfiles/assets/wallhaven-yqqwvd.jpg"
 elif [ "$HOUR" -ge 18 ] && [ "$HOUR" -lt 22 ]; then
-  IMG="$HOME/assets/the_wild_robot.jpg"
+  IMG="$HOME/dotfiles/assets/the_wild_robot.jpg"
 else
-  IMG="$HOME/assets/Johan_Christian_Dahl_Dresden_by_Moonlight.jpg"
+  IMG="$HOME/dotfiles/assets/Johan_Christian_Dahl_Dresden_by_Moonlight.jpg"
 fi
 
 wallust run -q "$IMG"

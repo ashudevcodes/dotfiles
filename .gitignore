@@ -43,3 +43,9 @@
 .local/icon/freetube.svg
 .local/icon/localsend.png
 /home/.local/lib/waybar/modules
+/home/.config/gtk-3.0/colors.css
+/home/.config/gtk-3.0/colors.css
+/home/.config/gtk-4.0/colors.css
+/home/.config/kitty/kitty-colors.conf
+/home/.config/qt6ct/colors/wallust.conf
+/home/.config/rofi/colors.rasi
