@@ -59,15 +59,15 @@ hl.config({
             input_methods_ignorealpha = 0.8,
 			contrast=1.000000,
 ]]
-			contrast=1.000000,
-			enabled=1,
-            input_methods = true,
-            input_methods_ignorealpha = 0.8,
-			ignore_opacity=1,
-			new_optimizations=1,
-			noise=0.030000,
-			passes=4,
-			size=4,
+			contrast = 1.000000,
+			enabled = true,
+			input_methods = true,
+			input_methods_ignorealpha = 0.8,
+			ignore_opacity = true,
+			new_optimizations = true,
+			noise = 0.030000,
+			passes = 4,
+			size = 4,
 		},
 	},
 
@@ -76,35 +76,31 @@ hl.config({
 	},
 })
 
-local animation_speed = 3
-local workspaces_switch_animation_speed = 6
-local fade_animation_speed = 6
-
 -- The more “stiffness”, the more speed, and the more “dampening”, the less bounce.
 
-hl.curve("rubber", { type = "spring", mass = 10, stiffness = 3899, dampening = 275 })
+hl.curve("rubber", { type = "spring", mass = 10, stiffness = 3899, dampening = 265 })
 
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.22, 1 }, { 0.36, 1 } } });
 
 
-hl.animation({ leaf = "windows", enabled = 1, speed = animation_speed, spring = "rubber", })
-hl.animation({ leaf = "windowsIn", enabled = 1, speed = animation_speed, spring = "rubber", style = "slide" })
-hl.animation({ leaf = "windowsOut", enabled = 1, speed = animation_speed, spring = "rubber", })
+hl.animation({ leaf = "windows", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
+hl.animation({ leaf = "windowsIn", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", style = "slide" })
+hl.animation({ leaf = "windowsOut", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
 
-hl.animation({ leaf = "layers", enabled = 1, speed = animation_speed, spring = "rubber", })
-hl.animation({ leaf = "layersIn", enabled = 1, speed = animation_speed, spring = "rubber", })
-hl.animation({ leaf = "layersOut", enabled = 1, speed = animation_speed, spring = "rubber", })
+hl.animation({ leaf = "layers", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
+hl.animation({ leaf = "layersIn", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
+hl.animation({ leaf = "layersOut", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
 
 --[[ hl.animation({ leaf = "workspaces", enabled = 1, speed = animation_speed, spring = "default", })
 hl.animation({ leaf = "workspacesIn", enabled = 1, speed = animation_speed, spring = "default", style = "slide" })
 hl.animation({ leaf = "workspacesOut", enabled = 1, speed = animation_speed, spring = "default", }) ]]
 
 
-hl.animation({ leaf = "workspaces", enabled = 1, speed = workspaces_switch_animation_speed, bezier = "easeOutQuint", })
+hl.animation({ leaf = "workspaces", enabled = 1, speed = WORKSPACES_SWITCH_ANIMATION_SPEED, bezier = "easeOutQuint", })
 hl.animation({
 	leaf = "workspacesIn",
 	enabled = 1,
-	speed = workspaces_switch_animation_speed,
+	speed = WORKSPACES_SWITCH_ANIMATION_SPEED,
 	bezier = "easeOutQuint",
 	style =
 	"slide"
@@ -112,24 +108,24 @@ hl.animation({
 hl.animation({
 	leaf = "workspacesOut",
 	enabled = 1,
-	speed = workspaces_switch_animation_speed,
+	speed = WORKSPACES_SWITCH_ANIMATION_SPEED,
 	bezier = "easeOutQuint",
 	style =
 	"slide"
 })
 
-hl.animation({ leaf = "fade", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeIn", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeOut", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeSwitch", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeShadow", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeGlow", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeDim", enabled = 0, speed = fade_animation_speed, bezier = "default", })
+hl.animation({ leaf = "fade", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeIn", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeOut", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeSwitch", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeShadow", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeGlow", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeDim", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
 
-hl.animation({ leaf = "fadePopups", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadePopupsIn", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadePopupsOut", enabled = 0, speed = fade_animation_speed, bezier = "default", })
+hl.animation({ leaf = "fadePopups", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadePopupsIn", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadePopupsOut", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
 
-hl.animation({ leaf = "fadeLayers", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeLayersIn", enabled = 0, speed = fade_animation_speed, bezier = "default", })
-hl.animation({ leaf = "fadeLayersOut", enabled = 0, speed = fade_animation_speed, bezier = "default", })
+hl.animation({ leaf = "fadeLayers", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeLayersIn", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })
+hl.animation({ leaf = "fadeLayersOut", enabled = 0, speed = FADE_ANIMATION_SPEED, bezier = "default", })

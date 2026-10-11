@@ -1,10 +1,3 @@
-local main_mod      = "SUPER"
--- local terminal      = "foot"
-local terminal      = "kitty --single-instance"
-local filemanager   = "pcmanfm"
-
-local waybar_config = "-c ~/.config/waybar/bottomBar.jsonc -s ~/.config/waybar/bottom_bar.css"
-
 local function notify_Send(summary, body, icon, urgency)
 	return string.format(
 		[[notify-send -e -u "%s" -t 5500 -a "Hyprland" -i "%s" "%s" "%s"]],
@@ -22,54 +15,54 @@ hl.gesture({ fingers = 4, direction = "down", action = take_Screen_Short })
 
 hl.bind("SHIFT" .. "+ PRINT",
 	hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
-hl.bind(main_mod .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. waybar_config))
-hl.bind(main_mod .. " + v", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(MAIN_MOD .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. WAYBAR_CONFIG))
+hl.bind(MAIN_MOD .. " + v", hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind(main_mod .. " + Q", hl.dsp.window.close())
+hl.bind(MAIN_MOD .. " + Q", hl.dsp.window.close())
 
-hl.bind(main_mod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-hl.bind(main_mod .. " + SHIFT + RETURN", hl.dsp.exec_cmd("foot"))
-hl.bind(main_mod .. " + E", hl.dsp.exec_cmd(filemanager))
+hl.bind(MAIN_MOD .. " + RETURN", hl.dsp.exec_cmd(TERMINAL))
+hl.bind(MAIN_MOD .. " + SHIFT + RETURN", hl.dsp.exec_cmd("foot"))
+hl.bind(MAIN_MOD .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
 
 hl.bind("ALT" .. "+ SHIFT + P", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind("ALT" .. "+ SHIFT + L", hl.dsp.exec_cmd("hyprlock -q"))
 
-hl.bind(main_mod .. " + h", hl.dsp.focus({ direction = "left" }))
-hl.bind(main_mod .. " + l", hl.dsp.focus({ direction = "right" }))
-hl.bind(main_mod .. " + k", hl.dsp.focus({ direction = "up" }))
-hl.bind(main_mod .. " + j", hl.dsp.focus({ direction = "down" }))
+hl.bind(MAIN_MOD .. " + h", hl.dsp.focus({ direction = "left" }))
+hl.bind(MAIN_MOD .. " + l", hl.dsp.focus({ direction = "right" }))
+hl.bind(MAIN_MOD .. " + k", hl.dsp.focus({ direction = "up" }))
+hl.bind(MAIN_MOD .. " + j", hl.dsp.focus({ direction = "down" }))
 
-hl.bind(main_mod .. "+ SHIFT + h", hl.dsp.window.move({ direction = "left" }))
-hl.bind(main_mod .. "+ SHIFT + l", hl.dsp.window.move({ direction = "right" }))
-hl.bind(main_mod .. "+ SHIFT + k", hl.dsp.window.move({ direction = "up" }))
-hl.bind(main_mod .. "+ SHIFT + j", hl.dsp.window.move({ direction = "down" }))
+hl.bind(MAIN_MOD .. "+ SHIFT + h", hl.dsp.window.move({ direction = "left" }))
+hl.bind(MAIN_MOD .. "+ SHIFT + l", hl.dsp.window.move({ direction = "right" }))
+hl.bind(MAIN_MOD .. "+ SHIFT + k", hl.dsp.window.move({ direction = "up" }))
+hl.bind(MAIN_MOD .. "+ SHIFT + j", hl.dsp.window.move({ direction = "down" }))
 
-hl.bind(main_mod .. "+ SHIFT + R", hl.dsp.layout("colresize +conf"))
-hl.bind(main_mod .. "+ SHIFT + F", hl.dsp.layout("fit active"))
+hl.bind(MAIN_MOD .. "+ SHIFT + R", hl.dsp.layout("colresize +conf"))
+hl.bind(MAIN_MOD .. "+ SHIFT + F", hl.dsp.layout("fit active"))
 
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
-	hl.bind(main_mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(main_mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(MAIN_MOD .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(MAIN_MOD .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(main_mod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(main_mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(MAIN_MOD .. " + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(MAIN_MOD .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with main_mod + scroll
-hl.bind(main_mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(MAIN_MOD .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with main_mod + LMB/RMB and dragging
-hl.bind(main_mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(MAIN_MOD .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- resize windows using keyboard
-hl.bind(main_mod .. "+ LEFT", hl.dsp.window.resize({ x = -40, y = 0, relative = true }), { repeating = true })
-hl.bind(main_mod .. "+ RIGHT", hl.dsp.window.resize({ x = 40, y = 0, relative = true }), { repeating = true })
-hl.bind(main_mod .. "+ UP", hl.dsp.window.resize({ x = 0, y = -40, relative = true }), { repeating = true })
-hl.bind(main_mod .. "+ DOWN", hl.dsp.window.resize({ x = 0, y = 40, relative = true }), { repeating = true })
+hl.bind(MAIN_MOD .. "+ LEFT", hl.dsp.window.resize({ x = -40, y = 0, relative = true }), { repeating = true })
+hl.bind(MAIN_MOD .. "+ RIGHT", hl.dsp.window.resize({ x = 40, y = 0, relative = true }), { repeating = true })
+hl.bind(MAIN_MOD .. "+ UP", hl.dsp.window.resize({ x = 0, y = -40, relative = true }), { repeating = true })
+hl.bind(MAIN_MOD .. "+ DOWN", hl.dsp.window.resize({ x = 0, y = 40, relative = true }), { repeating = true })
 
 local lock_and_repeat = { locked = true, repeating = true }
 -- Laptop multimedia keys for volume and LCD brightness
@@ -95,7 +88,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "down", scale = 1.5, action = "float" })
 
-hl.bind(main_mod .. " + w", function()
+hl.bind(MAIN_MOD .. " + w", function()
 	local ws = hl.get_active_workspace()
 	if ws == nil then
 		hl.notification.create({
@@ -119,9 +112,9 @@ hl.bind(main_mod .. " + w", function()
 	hl.dispatch(hl.dsp.exec_cmd(notify_Send("Layout swithch to ", next_layout, "mate-session-properties", "low")))
 end)
 
-hl.bind("SUPER + G", function()
+hl.bind(MAIN_MOD .. "+ SHIFT + G", function()
 	local game_mode = (hl.get_config("decoration.blur.enabled") == false)
-	use_rofi = true
+	USE_ROFI = true
 
 	if game_mode then
 		hl.exec_cmd("hyprctl reload")
@@ -142,18 +135,14 @@ hl.bind("SUPER + G", function()
 	})
 end)
 
-local rofi_search = "rofi -show drun"
-local use_rofi = true
-local maria_search = "pleamar --say marea"
-local maria_toggle = 'pkill -x pleamar || pleamar --scene  ~/.local/opt/marea/marea.plm --no-hud'
 
 local function app_Search()
-	hl.dispatch(hl.dsp.exec_cmd(maria_toggle))
+	hl.dispatch(hl.dsp.exec_cmd(MARIA_TOGGLE))
 
-	if use_rofi then
-		use_rofi = false
+	if USE_ROFI then
+		USE_ROFI = false
 	else
-		use_rofi = true
+		USE_ROFI = true
 	end
 end
 
@@ -163,27 +152,27 @@ local tp_on = true
 local function disable_touch_pad()
 	tp_on = not tp_on
 	if tp_on then
-		hl.exec_cmd(notify_Send("Touchpad Status", "touchpad is enabled", "computer", "low"))
+		hl.exec_cmd(notify_Send("Touchpad status", "Enabled", "computer", "low"))
 	else
-		hl.exec_cmd(notify_Send("Touchpad Status", "touchpad is disable", "computer", "low"))
+		hl.exec_cmd(notify_Send("Touchpad status", "Disable", "computer", "low"))
 	end
 
 	hl.device({ name = "elan0718:00-04f3:30fd-touchpad", enabled = tp_on })
 	hl.dispatch(hl.dsp.exec_cmd("pkexec toggle-touchpad"))
 end
 
-hl.bind(main_mod .. "+ SHIFT+M", app_Search)
-hl.bind(main_mod .. "+ F1", disable_touch_pad)
+hl.bind(MAIN_MOD .. "+ SHIFT+M", app_Search)
+hl.bind(MAIN_MOD .. "+ F1", disable_touch_pad)
 
-hl.bind(main_mod .. "+ Space", function()
-	if use_rofi then
-		hl.dispatch(hl.dsp.exec_cmd(rofi_search))
+hl.bind(MAIN_MOD .. "+ Space", function()
+	if USE_ROFI then
+		hl.dispatch(hl.dsp.exec_cmd(ROFI_SEARCH))
 	else
-		hl.dispatch(hl.dsp.exec_cmd(maria_search .. ' "emit search"'))
+		hl.dispatch(hl.dsp.exec_cmd(MARIA_SEARCH .. ' "emit search"'))
 	end
 end)
 
-hl.bind(main_mod .. "+ P", function()
+hl.bind(MAIN_MOD .. "+ P", function()
 	local m = hl.get_active_monitor()
 	local width, height
 
@@ -196,4 +185,11 @@ hl.bind(main_mod .. "+ P", function()
 	hl.dispatch(hl.dsp.window.resize({ x = width, y = height }))
 	hl.dispatch(hl.dsp.window.center())
 	hl.dispatch(hl.dsp.window.pin())
+end)
+
+hl.on("window.urgent", function(w)
+	local current_workspace = hl.get_workspaces()
+	if current_workspace == w.id then return end
+
+	hl.dsp.exec_cmd(notify_Send("Urgent: workspace", w.id, "computer", "low"))
 end)
