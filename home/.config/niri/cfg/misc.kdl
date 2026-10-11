@@ -2,7 +2,6 @@ prefer-no-csd
 
 cursor {
   xcursor-theme "material_light_cursors"
-  //xcursor-size 24
 
   hide-when-typing
   hide-after-inactive-ms 1000
@@ -29,16 +28,10 @@ overview {
 
     workspace-shadow {
         off
-        //softness 24
-        //spread 12
-        //offset x=0 y=0
-        //color "#00000090"
     }
 }
 output "eDP-1" {
-    //mode "1920x1080@60.000"
-    //scale 1.1
-    //position x=0 y=0
+  scale 1.1
     variable-refresh-rate on-demand=true
     focus-at-startup
 }
