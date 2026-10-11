@@ -65,7 +65,7 @@ layer-rule {
 }
 
 layer-rule {
-  match namespace="waybar"
+  match namespace="left_bar"
   geometry-corner-radius 17
 
   popups {

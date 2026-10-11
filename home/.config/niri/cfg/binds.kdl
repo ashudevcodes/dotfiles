@@ -51,8 +51,8 @@ binds {
 	spawn "brave" ;
     }
 
-  Mod+Return hotkey-overlay-title="Open Terminal: Foot" {
-	spawn "footclient" ;
+  Mod+Return hotkey-overlay-title="Open Terminal: Kitty" {
+	spawn-sh "kitty -1" ;
     }
 
   Mod+Shift+Return hotkey-overlay-title="Open floating terminal" {
@@ -60,7 +60,7 @@ binds {
     }
 
   Mod+Shift+W repeat=false hotkey-overlay-title="Waybar restart" {
-	spawn-sh "pkill -x waybar || waybar" ;
+	spawn-sh "pkill -x waybar || waybar -c ~/.config/waybar/leftBar.jsonc -s ~/.config/waybar/left_bar.css" ;
     }
 
   XF86AudioRaiseVolume allow-when-locked=true {
