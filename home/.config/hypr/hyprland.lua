@@ -2,15 +2,17 @@
 -- For a full list, see the wiki
 
 -- https://wiki.hypr.land/Configuring/Start/
+require("config_global_veriable")
 
 require("env")
 require("permissions")
+
+require("shortcut_Keys")
 
 require("accesablity")
 require("display_Settings")
 require("user_Interface")
 
-require("shortcut_Keys")
 require("input_Device_settings")
 
 require("startup_Programmes")
