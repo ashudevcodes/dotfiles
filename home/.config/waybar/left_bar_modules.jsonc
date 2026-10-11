@@ -67,7 +67,7 @@
     "signal": 10
   },
 
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     "show-special": true,
     "enable-bar-scroll": true,
     "format": "{icon}",

@@ -15,7 +15,7 @@
 	"modules-center": [
 	  "group/power",
 	  "cffi/liquid_battery",
-	  "hyprland/workspaces",
+	  "niri/workspaces",
 	  "network",
 	  "backlight",
 	  "clock",
