@@ -187,9 +187,14 @@ hl.bind(MAIN_MOD .. "+ P", function()
 	hl.dispatch(hl.dsp.window.pin())
 end)
 
-hl.on("window.urgent", function(w)
-	local current_workspace = hl.get_workspaces()
-	if current_workspace == w.id then return end
+hl.on("window.urgent", function(win)
+	if not win then
+		return
+	end
 
-	hl.dsp.exec_cmd(notify_Send("Urgent: workspace", w.id, "computer", "low"))
+	local workspace = win.workspace
+	local active_workspace = hl.get_active_workspace()
+	if workspace and active_workspace and workspace.id ~= active_workspace.id then
+		hl.dispatch(hl.dsp.exec_cmd(notify_Send("Urgent: workspace " .. workspace.id .. "", win.title, "computer", "low")))
+	end
 end)
