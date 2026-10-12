@@ -34,7 +34,7 @@ bash_indicator = ' '
 
 [hostname]
 ssh_only = true
-ssh_symbol = '[SSH_'
+ssh_symbol = 'SSH_'
 format = '[ $ssh_symbol](bold yellow)'
 disabled = false
 trim_at = '.'
