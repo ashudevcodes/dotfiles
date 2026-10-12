@@ -31,9 +31,15 @@ continuation_prompt = '▶▶ '
 [shell]
 disabled = false
 bash_indicator = ' '
+format = '[$indicator]($style)'
+style = 'bold green'
 
-[cmd_duration]
-format = 'last command: [$duration](bold yellow)'
+[hostname]
+ssh_only = true
+ssh_symbol = 'SSH: '
+format = '[ $ssh_symbol$hostname ](bold yellow)'
+disabled = false
+trim_at = '.'
 
 [os]
 disabled = false
@@ -41,82 +47,81 @@ disabled = false
 [os.symbols]
 Arch = ' '
 
-[hostname]
-ssh_only = true
-format = " "
-disabled = false
-
 [directory]
 truncation_length = 1
-fish_style_pwd_dir_length=2
+fish_style_pwd_dir_length = 2
 truncation_symbol = '…/'
-home_symbol = '[󰋜:~'
+home_symbol = '󰋜:~'
 read_only_style = '197'
 read_only = '  '
 format = '[$path]($style)[$read_only]($read_only_style) '
 
 [git_branch]
-symbol = "  "
+symbol = '  '
 format = '[$symbol$branch ]($style)'
 truncation_length = 4
 truncation_symbol = '…/'
 style = 'bold green'
 
+[cmd_duration]
+min_time = 2_000
+format = 'last command: [$duration](bold yellow) '
+
 [aws]
-symbol = ""
+symbol = ' '
 
 [buf]
-symbol = ""
+symbol = ' '
 
 [c]
-symbol = " "
+symbol = ' '
 
 [conda]
-symbol = " "
+symbol = ' '
 
 [dart]
-symbol = " "
+symbol = ' '
 
 [docker_context]
-symbol = " "
+symbol = ' '
 
 [golang]
-symbol = " "
+symbol = ' '
 
 [java]
-symbol = " "
+symbol = ' '
 
 [lua]
-symbol = " "
+symbol = ' '
 
 [memory_usage]
-symbol = "󰍛 "
+symbol = '󰍛 '
 disabled = true
-style='bold dimmed white'
+style = 'bold dimmed white'
 threshold = 1
-format = "$symbol [${ram}(|${swap})]($style) "
+format = '$symbol [${ram}(|${swap})]($style) '
 
 [nodejs]
-symbol = " "
+symbol = ' '
 
 [package]
-symbol = "󰏗 "
+symbol = '󰏗 '
 
 [pijul_channel]
-symbol = " "
+symbol = ' '
 
 [python]
-symbol = " "
+symbol = ' '
 pyenv_version_name = true
 
 [ruby]
-symbol = " "
+symbol = ' '
 
 [rlang]
-symbol = "󰟔 "
+symbol = '󰟔 '
 
 [rust]
-symbol = " "
+symbol = ' '
 
 [scala]
-symbol = " "
+symbol = ' '
