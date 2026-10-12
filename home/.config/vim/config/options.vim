@@ -37,18 +37,12 @@ set incsearch
 set nobackup
 set nowritebackup
 set noswapfile
-" set undofile
-" set undodir=~/.vim/undodir
 set updatetime=300
 set timeoutlen=500
 set ttimeoutlen=0
 set autoread
 set noautowrite
 set encoding=utf-8
-
-" if !isdirectory(expand('~/.vim/undodir'))
-  " call mkdir(expand('~/.vim/undodir'), 'p')
-" endif
 
 set hidden
 set noerrorbells
