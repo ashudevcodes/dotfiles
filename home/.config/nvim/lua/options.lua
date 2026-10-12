@@ -9,7 +9,9 @@ vim.opt.list = false
 vim.o.winborder = 'rounded'
 
 -- Nvim 0.12 inbuilt undotree plugin
+if vim.fn.has('nvim-0.12') == 1 then
 vim.cmd.packadd 'nvim.undotree'
+end
 
 -- Set tab width
 vim.o.tabstop = 4
