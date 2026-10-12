@@ -31,13 +31,11 @@ continuation_prompt = '▶▶ '
 [shell]
 disabled = false
 bash_indicator = ' '
-format = '[$indicator]($style)'
-style = 'bold green'
 
 [hostname]
 ssh_only = true
 ssh_symbol = 'SSH: '
-format = '[ $ssh_symbol$hostname ](bold yellow)'
+format = '[ $ssh_symbol ](bold yellow)'
 disabled = false
 trim_at = '.'
 
@@ -51,7 +49,7 @@ Arch = ' '
 truncation_length = 1
 fish_style_pwd_dir_length = 2
 truncation_symbol = '…/'
-home_symbol = '󰋜:~'
+home_symbol = '[󰋜:~'
 read_only_style = '197'
 read_only = '  '
 format = '[$path]($style)[$read_only]($read_only_style) '
