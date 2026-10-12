@@ -133,13 +133,14 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldlevel = 99
 
 -- Highlight yanked text
+if vim.fn.has('nvim-0.12') == 1 then
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup,
 	callback = function()
 		vim.hl.on_yank()
 	end,
 })
-
+end
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = augroup,

@@ -2,7 +2,6 @@ command_timeout = 100
 add_newline = false
 
 format = """
-$hostname\
 $os\
 $directory\
 $git_branch\
@@ -21,6 +20,7 @@ $lua\
 $rlang\
 $buf\
 $docker_context\
+$hostname\
 (#1C3A5E)$cmd_duration
 [|](bold green)
 [└─$shell](bold green)
@@ -34,8 +34,8 @@ bash_indicator = ' '
 
 [hostname]
 ssh_only = true
-ssh_symbol = 'SSH: '
-format = '[ $ssh_symbol ](bold yellow)'
+ssh_symbol = '[SSH_'
+format = '[ $ssh_symbol](bold yellow)'
 disabled = false
 trim_at = '.'
 
@@ -44,6 +44,7 @@ disabled = false
 
 [os.symbols]
 Arch = ' '
+Ubuntu = ' '
 
 [directory]
 truncation_length = 1
