@@ -14,9 +14,11 @@ tnoremap <C-k> <C-w>k
 tnoremap <C-l> <C-w>l
 
 
-packadd! comment
-nmap <leader>/ gcc
-xmap <leader>/ gc
+if v:version >= 902
+    packadd! comment
+    nmap <leader>/ gcc
+    xmap <leader>/ gc
+endif
 
 nnoremap <leader>ff :FZF<CR>
 nnoremap <leader>fg Rg<CR>
