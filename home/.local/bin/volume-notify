@@ -15,7 +15,7 @@ fi
 
 if [ "$vol" -gt 60 ]; then
 notify-send \
-	-a "$vol% Volume"\
+	-a "Hyprland"\
 	-i audio-headphones \
 	-u "critical" \
 	-t 10000 \
