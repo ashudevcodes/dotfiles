@@ -11,7 +11,7 @@ border-size=1
 border-radius=18
 
 padding=12,0,12
-margin=0
+margin=10,20,5
 
 #progress-color=over #ffffff40
 
@@ -49,6 +49,7 @@ default-timeout=3000
 
 [app-name=Hyprland]
 anchor=top-center
+margin=10,20,5
 
 [app-name=osd]
 anchor=top-center
