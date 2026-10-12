@@ -55,8 +55,6 @@ main(){
 	sudo apt install -y eza tmux fzf cowsay foot-terminfo kitty-terminfo python3-neovim stow
 
 	curl -sS https://starship.rs/install.sh | sh -s -- --yes
-	# for Cowsay
-	echo 'export PATH=$PATH:/usr/games' >> ~/.bashrc
 
   fi
 
@@ -87,6 +85,9 @@ main(){
   if is_codespace; then
 	# Because Vim 9.1 not support vim `XDG_CONFIG_HOME` configration (github codespace use ubuntu v24.04 LTS) which not support latest vim package yet
 	cp -r ~/.config/vim ~/.vim
+
+	# for Cowsay
+	echo 'export PATH=$PATH:/usr/games' >> ~/.bashrc
   fi
 
 }
