@@ -6,16 +6,16 @@
 
 configuration {
   modi: "drun,filebrowser,window";
-  display-drun: "apps";
+  display-drun: "browse";
   display-filebrowser: "files";
-  display-window: "window";
+  display-window: "select_window";
   case-sensitive: false;
   cycle: false;
   filter: "";
   show-icons: true;
 
   sidebar-mode: true;
-  window-thumbnail: false;
+  window-thumbnail: true;
   icon-theme: "Yaru-purple";
   hover-select: true;
   me-select-entry: "";

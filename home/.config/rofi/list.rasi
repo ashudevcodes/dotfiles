@@ -71,9 +71,10 @@ mainbox {
 }
 
 window {
-  border: 1px;
+  border: 2px;
   border-radius: 1.2em;
-  border-color: rgba(255,255,255,0.1);
+  border-color: @border-color;
+  background-color: @tag-background;
   width: 44%;
 }
 
