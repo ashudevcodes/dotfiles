@@ -30,11 +30,21 @@ hl.window_rule({
 	name = "scratchpad-float",
 	match = { workspace = "special:magic" },
 	float = true,
-	size = { "monitor_w * 0.6", "monitor_h * 0.6" }
+	size = { "monitor_w * 0.6", "monitor_h * 0.6" },
 })
 
 hl.window_rule({
 	match = { class = "org.kde.dolphin", },
+	float = true,
+})
+
+hl.window_rule({
+	match = { title = "QEMU", },
+	float = true,
+})
+
+hl.window_rule({
+	match = { class = "org.localsend.localsend_app", },
 	float = true,
 })
 
@@ -107,16 +117,17 @@ hl.layer_rule({
 })
 
 hl.layer_rule({
-	match = { namespace = "pleamar" },
-	blur = false,
-	blur_popups = false,
+	match     = {
+		namespace = "rofi"
+	},
+	animation = "slide",
 })
 
 hl.layer_rule({
 	match     = {
-		namespace = "rofi"
+		namespace = "awww-daemon"
 	},
-	animation = "slidein",
+	animation = "disable",
 })
 
 hl.layer_rule({
@@ -129,7 +140,7 @@ hl.layer_rule({
 
 hl.layer_rule({
 	match      = {
-		namespace = "waybar"
+		namespace = "bottom_bar"
 	},
 	animation  = "slidein",
 	above_lock = true,
