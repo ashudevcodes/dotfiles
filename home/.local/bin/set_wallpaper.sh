@@ -10,6 +10,10 @@ else
   IMG="$HOME/dotfiles/assets/Johan_Christian_Dahl_Dresden_by_Moonlight.jpg"
 fi
 
+if [ "$#" -gt 0 ]; then
+    IMG="$*"
+fi
+
 wallust run -q "$IMG"
 
 FILE='/run/user/1000/wayland-1-awww-daemon.sock'
