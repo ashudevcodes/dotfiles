@@ -68,19 +68,8 @@
   },
 
   "cffi/touchpad":{
-	"module_path": "/home/nemo/.local/lib/waybar/modules/touchpad.so",
+	"module_path": "$HOME/.local/lib/waybar/modules/touchpad.so",
 	"signal": 10
-  },
-
-  "hyprland/workspaces": {
-	"format": "{icon}",
-	"expend": true,
-	"format-icons": {
-	  "active" : "ඞ",
-	  "default" : "󱙝"
-	},
-	"on-scroll-up": "niri msg action focus-workspace-up",
-	"on-scroll-down": "niri msg action focus-workspace-down"
   },
 
   "niri/workspaces": {
@@ -118,7 +107,7 @@
 
 
   "pulseaudio#output": {
-	"on-update": "~/.local/bin/mute-led-toggle.sh",
+	"on-update": "$HOME/.local/bin/mute-led-toggle.sh",
 	"format": "{icon}",
 	"cursor": 42,
 	"format-icons": {
@@ -137,7 +126,6 @@
 	"format-disabled": "",
 	"on-click": "kitty --override='font_size=9' --title=bluetooth_status bluetoothctl",
 
-	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
 	"tooltip-format-connected": " \t {device_battery_percentage}%  Battery "
   },
 
@@ -153,7 +141,6 @@
 	"format-disconnected": "perm_scan_wifi",
 	"format-disabled": "",
 	"on-click": "kitty --override='font_size=8' --title=wifi_status impala",
-	"on-click-right": "sh -c 'rfkill toggle wlan'",
 	"tooltip-format-wifi": " {essid} 󰥛  {signalStrength}% ",
 	"max-length": 50
   },
@@ -180,9 +167,19 @@
 	"on-click": "activate"
   },
 
-  "cffi/touchpad":{
-	"module_path": "/home/nemo/.local/lib/waybar/modules/touchpad.so",
-	"signal": 10
-  }
+  "custom/control_center":{
+    "format" : "dashboard_2_gear",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/controle_center.xml",
+    "menu-actions": {
+        "wifi_toggle": "sh -c 'rfkill toggle wlan'",
+        "wifi_manager": "kitty --override='font_size=8' --title=wifi_status impala",
 
+        "bluetooth_toggle": "sh -c 'rfkill toggle bluetooth'",
+        "bluetooth_manager": "kitty --override='font_size=9' --title=bluetooth_status bluetoothctl",
+
+        "airplane_toggle": "rfkill toggle all"
+    }
+  }
 }
