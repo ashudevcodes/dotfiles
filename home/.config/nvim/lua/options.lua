@@ -1,43 +1,12 @@
 -- Nvim 0.12 new ui
---require('vim._core.ui2').enable {}
+require('vim._core.ui2').enable {}
 
--- Show whitespace.
-vim.opt.list = false
---vim.wo.signcolumn = 'yes'
-
--- Use rounded borders for floating windows.
 vim.o.winborder = 'rounded'
 
--- Nvim 0.12 inbuilt undotree plugin
 if vim.fn.has('nvim-0.12') == 1 then
-vim.cmd.packadd 'nvim.undotree'
+	vim.cmd.packadd 'nvim.undotree'
 end
 
--- Set tab width
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function()
-		local curpos = vim.api.nvim_win_get_cursor(0)
-
-		vim.cmd([[keeppatterns %s/\s\+$//e]])
-
-		vim.api.nvim_win_set_cursor(0, curpos)
-	end
-})
-
--- c project code formationg
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.*" },
-	callback = function()
-		vim.lsp.buf.format({ async = true })
-	end,
-})
-
--- changing the border color of split windows
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "None" })
 
 vim.opt.fillchars = {
@@ -47,7 +16,7 @@ vim.opt.fillchars = {
 
 -- Activate treesitter bases on installed parcers
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = '*',
+	pattern = '*.*',
 	callback = function()
 		pcall(vim.treesitter.start)
 	end,
@@ -55,13 +24,11 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Basic settings
 vim.opt.relativenumber = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.wrap = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.laststatus = 1
-
-vim.opt.wildignore:append { '.DS_Store' }
 
 vim.o.pumheight = 15
 vim.o.pumborder = 'rounded'
@@ -110,7 +77,6 @@ vim.opt.hidden = true
 vim.opt.errorbells = false
 vim.opt.iskeyword:append("-")
 vim.opt.path:append("**")
-vim.opt.selection = "exclusive"
 vim.opt.mouse = "a"
 vim.o.clipboard = 'unnamedplus'
 vim.opt.modifiable = true
@@ -134,13 +100,14 @@ vim.opt.foldlevel = 99
 
 -- Highlight yanked text
 if vim.fn.has('nvim-0.12') == 1 then
-vim.api.nvim_create_autocmd("TextYankPost", {
-	group = augroup,
-	callback = function()
-		vim.hl.on_yank()
-	end,
-})
+	vim.api.nvim_create_autocmd("TextYankPost", {
+		group = augroup,
+		callback = function()
+			vim.hl.on_yank()
+		end,
+	})
 end
+
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = augroup,
@@ -169,3 +136,10 @@ local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
 	vim.fn.mkdir(undodir, "p")
 end
+
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+	pattern = "make",
+	callback = function()
+		vim.cmd("cwindow")
+	end
+})
