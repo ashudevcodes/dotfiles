@@ -1,7 +1,7 @@
 * {
 
   background:       {{background}}BF;
-  tag-background:   {{background}};
+  tag-background:   {{background}}80;
   foreground:		{{color0}};
   text-color:		{{color0}};
   border-color:		{{color1}}40;

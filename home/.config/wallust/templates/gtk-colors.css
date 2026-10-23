@@ -17,7 +17,7 @@
 @define-color theme_unfocused_selected_fg_color {{foreground}};
 @define-color unfocused_insensitive_color {{color8}};
 
-@define-color borders {{color8}};
+@define-color borders {{color4}};
 @define-color unfocused_borders {{color0}};
 
 @define-color warning_color {{color5}};
