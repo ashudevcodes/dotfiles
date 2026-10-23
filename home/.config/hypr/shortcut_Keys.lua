@@ -88,28 +88,43 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "down", scale = 1.5, action = "float" })
 
+require("floating_layout")
+
 hl.bind(MAIN_MOD .. " + w", function()
-	local ws = hl.get_active_workspace()
-	if ws == nil then
-		hl.notification.create({
-			text = "no active workspace",
-			timeout = 1000,
-			duration = 1000
-		})
+  local layouts   = { "scrolling", "dwindle", "lua:floating" }
 
-		return
-	end
+  local workspace = hl.get_active_workspace()
 
-	local current = ws.tiled_layout
+  if hl.get_active_special_workspace() then
+    workspace = hl.get_active_special_workspace()
+  end
 
-	local next_layout = (current == "scrolling") and "dwindle" or "scrolling"
+  if not workspace then
+    return
+  end
 
-	hl.workspace_rule({
-		workspace = tostring(ws.id),
-		layout = next_layout,
-	})
+  local current_layout = workspace.tiled_layout
+  local next_layout = "dwindle"
 
-	hl.dispatch(hl.dsp.exec_cmd(notify_Send("Layout swithch to ", next_layout, "mate-session-properties", "low")))
+  for i = 1, #layouts do
+    if layouts[i] == current_layout then
+      next_layout = layouts[(i % #layouts) + 1]
+      break
+    end
+  end
+
+  hl.workspace_rule({ workspace = "name:" .. tostring(workspace.name), layout = next_layout })
+
+
+  if next_layout == "lua:floating" then
+    Float_cascade(workspace)
+  elseif current_layout == "lua:floating" then
+    for _, win in ipairs(hl.get_workspace_windows(workspace)) do
+      hl.dispatch(hl.dsp.window.float({ action = "unset", window = win }))
+    end
+  end
+
+  hl.dispatch(hl.dsp.exec_cmd(notify_Send("Layout switch to ", next_layout, "mate-session-properties", "low")))
 end)
 
 hl.bind(MAIN_MOD .. "+ SHIFT + G", function()
