@@ -1,15 +1,21 @@
+local ANIMATION_SPEED = 4
+local EXIT_ANIMATION_SPEED = 2.5
+local LAYER_OUT_SPEED = 2
+local WORKSPACES_SWITCH_ANIMATION_SPEED = 3.5
+local FADE_ANIMATION_SPEED = 3
+
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
 		gaps_out = 12,
 		allow_tearing = false,
 
-		border_size = 2,
+		border_size = 0,
 		resize_on_border = true,
 
 		col = {
-			inactive_border = "rgb(29,29,29)",
-			active_border = "rgb(69, 69, 69)",
+			inactive_border = "rgb(19,19,19)",
+			active_border = "rgb(29, 29, 29)",
 		},
 
 	},
@@ -18,10 +24,6 @@ hl.config({
 		workspace_swipe_forever = true,
 		workspace_swipe_direction_lock = true,
 		workspace_swipe_direction_lock_threshold = 10,
-		--[[ workspace_swipe_distance = 700,
-        workspace_swipe_cancel_ratio = 0.2,
-        workspace_swipe_min_speed_to_force = 5,
-        workspace_swipe_create_new = true ]]
 	},
 
 	decoration = {
@@ -33,10 +35,12 @@ hl.config({
 
 		shadow = {
 			enabled = true,
-			color = "0xbf000009",
-			offset = { 0, 24 },
-			scale = 0.9,
-			range = 124,
+			--color = "0xbf000009",
+			color = "0xbf000000",
+			offset = { 0, 2 },
+			--scale = 0.9,
+			range = 11,
+			render_power = 3,
 			--sharp = true,
 		},
 
@@ -62,8 +66,8 @@ hl.config({
 			contrast = 1.000000,
 			enabled = true,
 			input_methods = true,
-			input_methods_ignorealpha = 0.8,
-			ignore_opacity = true,
+			--input_methods_ignorealpha = 0.8,
+			--ignore_opacity = true,
 			new_optimizations = true,
 			noise = 0.030000,
 			passes = 4,
@@ -76,32 +80,34 @@ hl.config({
 	},
 })
 
--- The more “stiffness”, the more speed, and the more “dampening”, the less bounce.
+hl.curve("windowSpring", { type = "spring", mass = 10, stiffness = 6000, dampening = 270 })
+hl.curve("layerSpring", { type = "spring", mass = 10, stiffness = 6000, dampening = 320 })
 
-hl.curve("rubber", { type = "spring", mass = 10, stiffness = 3899, dampening = 265 })
+hl.curve("easeOutQuint", { type = "bezier", points = { { 0.22, 1 }, { 0.36, 1 } } })
 
-hl.curve("easeOutQuint", { type = "bezier", points = { { 0.22, 1 }, { 0.36, 1 } } });
+hl.curve("joy", { type = "bezier", points = { { 0.34, 1.3 }, { 0.64, 1 } } })
 
 
-hl.animation({ leaf = "windows", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
-hl.animation({ leaf = "windowsIn", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", style = "slide" })
-hl.animation({ leaf = "windowsOut", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
+hl.animation({ leaf = "windows", enabled = 1, speed = ANIMATION_SPEED, spring = "windowSpring", })
+hl.animation({ leaf = "windowsIn", enabled = 1, speed = ANIMATION_SPEED, spring = "windowSpring", style = "slide" })
+hl.animation({ leaf = "windowsOut", enabled = 1, speed = EXIT_ANIMATION_SPEED, bezier = "easeOutQuint", style = "slide" })
+hl.animation({ leaf = "windowsMove", enabled = 1, speed = ANIMATION_SPEED, spring = "windowSpring", })
 
-hl.animation({ leaf = "layers", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
-hl.animation({ leaf = "layersIn", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
-hl.animation({ leaf = "layersOut", enabled = 1, speed = ANIMATION_SPEED, spring = "rubber", })
+hl.animation({ leaf = "layers", enabled = 1, speed = ANIMATION_SPEED, spring = "layerSpring", })
+hl.animation({ leaf = "layersIn", enabled = 1, speed = ANIMATION_SPEED, spring = "layerSpring", style = "slide 90%" })
+hl.animation({ leaf = "layersOut", enabled = 1, speed = LAYER_OUT_SPEED, bezier = "easeOutQuint", })
 
 --[[ hl.animation({ leaf = "workspaces", enabled = 1, speed = animation_speed, spring = "default", })
 hl.animation({ leaf = "workspacesIn", enabled = 1, speed = animation_speed, spring = "default", style = "slide" })
 hl.animation({ leaf = "workspacesOut", enabled = 1, speed = animation_speed, spring = "default", }) ]]
 
 
-hl.animation({ leaf = "workspaces", enabled = 1, speed = WORKSPACES_SWITCH_ANIMATION_SPEED, bezier = "easeOutQuint", })
+hl.animation({ leaf = "workspaces", enabled = 1, speed = WORKSPACES_SWITCH_ANIMATION_SPEED, bezier = "joy", })
 hl.animation({
 	leaf = "workspacesIn",
 	enabled = 1,
 	speed = WORKSPACES_SWITCH_ANIMATION_SPEED,
-	bezier = "easeOutQuint",
+	bezier = "joy",
 	style =
 	"slide"
 })
@@ -109,7 +115,7 @@ hl.animation({
 	leaf = "workspacesOut",
 	enabled = 1,
 	speed = WORKSPACES_SWITCH_ANIMATION_SPEED,
-	bezier = "easeOutQuint",
+	bezier = "joy",
 	style =
 	"slide"
 })
