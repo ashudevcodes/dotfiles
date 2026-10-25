@@ -37,6 +37,11 @@ hl.bind(MAIN_MOD .. "+ SHIFT + l", hl.dsp.window.move({ direction = "right" }))
 hl.bind(MAIN_MOD .. "+ SHIFT + k", hl.dsp.window.move({ direction = "up" }))
 hl.bind(MAIN_MOD .. "+ SHIFT + j", hl.dsp.window.move({ direction = "down" }))
 
+hl.bind(MAIN_MOD .. "+ Tab", function()
+    hl.dispatch(hl.dsp.window.cycle_next({ floating = true, next = false }))
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+end)
+
 hl.bind(MAIN_MOD .. "+ SHIFT + R", hl.dsp.layout("colresize +conf"))
 hl.bind(MAIN_MOD .. "+ SHIFT + F", hl.dsp.layout("fit active"))
 
