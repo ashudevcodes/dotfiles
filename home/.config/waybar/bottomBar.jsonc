@@ -4,24 +4,40 @@
 	"include": ["~/.config/waybar/bottom_bar_modules.jsonc"],
 	"layer": "bottom",
 	"position": "bottom",
-	"margin-bottom": 8,
 	"height": 60,
-	"width": 2,
 	"exclusive": false,
 	"spacing": 8,
-	"expand-center": true,
-	"reload_style_on_change": true,
+	"reload_style_on_change": false,
+
 
 	"modules-center": [
-	  "custom/rofi",
+	"hyprland/workspaces"
+	]
+
+},
+{	"id": "bottom_bar",
+	"name": "bottom_bar",
+	"include": ["~/.config/waybar/bottom_bar_modules.jsonc"],
+	"layer": "bottom",
+	"position": "top",
+	"height": 60,
+	"exclusive": false,
+	"spacing": 8,
+	"reload_style_on_change": false,
+
+	"modules-right": [
 	  "custom/control_center",
 	  "pulseaudio#output",
-	  "bluetooth",
 	  "network",
 	  "backlight",
 	  "clock",
-	  "hyprland/workspaces",
-	  "cffi/liquid_battery",
-	  "group/power"
+	  "bluetooth",
+	  "custom/rofi"
+	],
+
+	"modules-left": [
+	  "group/power",
+	  "cffi/liquid_battery"
 	]
-}]
+}
+]

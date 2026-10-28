@@ -5,7 +5,7 @@
 	"drawer": {
 	  "transition-duration": 500,
 	  "children-class": "not-power",
-	  "transition-left-to-right": false,
+	  "transition-left-to-right": true,
 	  "click-to-reveal": true
 	},
 	"modules": [
@@ -125,8 +125,9 @@
 	"format-connected": "{device_alias}",
 	"format-disabled": "",
 	"on-click": "kitty --override='font_size=9' --title=bluetooth_status bluetoothctl",
+	"on-click-right": "sh -c 'rfkill toggle bluetooth'",
 
-	"tooltip-format-connected": " \t {device_battery_percentage}%  Battery "
+	"tooltip-format-connected": " \t{device_battery_percentage}%  Battery "
   },
 
   "cffi/liquid_battery": {
@@ -141,6 +142,7 @@
 	"format-disconnected": "perm_scan_wifi",
 	"format-disabled": "",
 	"on-click": "kitty --override='font_size=8' --title=wifi_status impala",
+	"on-click-right": "sh -c 'rfkill toggle wlan'",
 	"tooltip-format-wifi": " {essid} 󰥛  {signalStrength}% ",
 	"max-length": 50
   },
@@ -149,22 +151,12 @@
 	"expend": true,
 	"show-special": true,
 
-	"format": "{icon}",
+	"format": "{icon} {name}",
 	"format-icons": {
 	  "active" : "ඞ",
 	  "default" : "󱙝",
 	  "special" : "󰇥"
 	}
-  },
-
-  "wlr/taskbar": {
-	"format": "{icon}",
-	"icon-size": 36,
-	"spacing": 3,
-	"on-click-middle": "close",
-	"tooltip-format": "{title}",
-	"ignore-list": [],
-	"on-click": "activate"
   },
 
   "custom/control_center":{
