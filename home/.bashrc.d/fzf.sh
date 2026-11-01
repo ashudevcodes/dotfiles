@@ -2,7 +2,7 @@ eval "$(fzf --bash)"
 
 fzf_open() {
     local file
-    file=$(find ~/Codes ~/.config/ \( -name .git -o -name node_modules ~/.config/BraveSoftware \) -prune -o -type f -print | \
+    file=$(find ~/Codes ~/dotfiles/home/.config/ \( -name .git -o -name node_modules ~/.config/BraveSoftware \) -prune -o -type f -print | \
            fzf --query="${1:-}" \
                --select-1 \
                --exit-0 \
@@ -13,7 +13,7 @@ fzf_open() {
 
 find_dir() {
     local dir
-    dir=$(find ~/Codes ~/.config/ -type d \( -name .git -o -name node_modules \) -prune -o -type d -print | \
+    dir=$(find ~/Codes ~/dotfiles/home/.config/ -type d \( -name .git -o -name node_modules \) -prune -o -type d -print | \
           fzf --query="${1:-}" \
               --select-1 \
               --exit-0 \
