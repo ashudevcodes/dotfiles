@@ -6,6 +6,6 @@
 
 hl.on("hyprland.start", function()
   hl.exec_cmd("kitty --single-instance --start-as=hidden")
-  hl.exec_cmd("wlsunset -S 07:00 -s 22:00 -t 3500 -T 6500 -d 1800")
+  hl.exec_cmd("hyprctl plugin load $HOME/.local/lib/hyprland/hyprGenie.so")
   hl.exec_cmd("awww-daemon & set_wallpaper.sh")
 end)

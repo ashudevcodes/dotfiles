@@ -1,24 +1,21 @@
-local function notify_Send(summary, body, icon, urgency)
-	return string.format(
-		[[notify-send -e -u "%s" -t 5500 -a "Hyprland" -i "%s" "%s" "%s"]],
-		urgency, icon, summary, body)
-end
-
-local take_Screen_Short = function()
-	hl.dispatch(hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png'))
-	hl.dispatch(hl.dsp.exec_cmd('grim - | wl-copy'))
-	hl.dispatch(hl.dsp.exec_cmd(notify_Send("Screenshot taken", "Stored in ~/Pictures/ScreenShorts/", "webcamoid", "low")))
-end
-
 hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -b "#00000000" -c "#70707099")" - | wl-copy'))
 hl.gesture({ fingers = 4, direction = "down", action = take_Screen_Short })
 
 hl.bind("SHIFT" .. "+ PRINT",
-	hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
+hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
 hl.bind(MAIN_MOD .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. WAYBAR_CONFIG))
-hl.bind(MAIN_MOD .. " + v", hl.dsp.window.float({ action = "toggle" }))
+
+hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -b "#00000000" -c "#70707099")" - | wl-copy'))
+
+hl.bind("SHIFT" .. "+ PRINT",
+	hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
+
+hl.bind(MAIN_MOD .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. WAYBAR_CONFIG))
+
+hl.bind(MAIN_MOD .. " + v", toggle_window_floating)
 
 hl.bind(MAIN_MOD .. " + Q", hl.dsp.window.close())
+hl.bind(MAIN_MOD .. " + F", hl.dsp.window.fullscreen({action = "toggle"}))
 
 hl.bind(MAIN_MOD .. " + RETURN", hl.dsp.exec_cmd(TERMINAL))
 hl.bind(MAIN_MOD .. " + SHIFT + RETURN", hl.dsp.exec_cmd("foot"))
@@ -50,10 +47,6 @@ for i = 1, 10 do
 	hl.bind(MAIN_MOD .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(MAIN_MOD .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
-
--- Example special workspace (scratchpad)
-hl.bind(MAIN_MOD .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(MAIN_MOD .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with main_mod + scroll
 hl.bind(MAIN_MOD .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
@@ -91,106 +84,120 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 -- https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "down", scale = 1.5, action = "float" })
+hl.gesture({ fingers = 3, direction = "down", action = "close" })
 
-require("floating_layout")
+hl.bind("F1", disable_touch_pad)
+
+hl.bind(MAIN_MOD .. "+ Space", hl.dsp.exec_cmd(ROFI_SEARCH))
+
+hl.bind(MAIN_MOD .."+ M", function() hl.plugin.hyprgenie.minimize() end)
+hl.bind(MAIN_MOD .."+ SHIFT + M",  function() hl.plugin.hyprgenie.restore()  end)
+hl.bind(MAIN_MOD .."+ s", hl.dsp.workspace.toggle_special("minimized"))
+
+hl.bind(MAIN_MOD .."+ Escape", hl.dsp.exit())
+
+require("layouts.floating_layout")
+
+local cascade = _G.Cascade
+
+local layouts = { "cascade", "dwindle", "scrolling" }
+
+local function enable_cascade(workspace)
+    cascade.enabled[workspace.id] = true
+    cascade.fit(workspace.id)
+end
+
+-- first workspace i wnat be floating
+--[[ if hl.get_active_workspace().id == 1 then
+  enable_cascade(hl.get_active_workspace())
+end ]]
+
+local function disable_cascade(workspace)
+    local id = workspace.id
+
+    cascade.enabled[id] = nil
+    cascade.queue[id] = nil
+
+    for _, window in ipairs(hl.get_workspace_windows(id)) do
+	pcall(function()
+	    hl.dispatch(hl.dsp.window.float({
+		window = window,
+		action = "disable",
+	    }))
+	end)
+    end
+end
+
+local function get_current_layout(workspace)
+    if cascade.enabled[workspace.id] then
+	return "cascade"
+    end
+
+    return workspace.tiled_layout
+end
+
+local function get_next_layout(current)
+    for i, layout in ipairs(layouts) do
+	if layout == current then
+	    return layouts[(i % #layouts) + 1]
+	end
+    end
+
+    return layouts[1]
+end
+
+local function switch_layout(workspace, layout)
+    if layout == "cascade" then
+	enable_cascade(workspace)
+	return
+    end
+
+    disable_cascade(workspace)
+
+    hl.workspace_rule({
+	workspace = tostring(workspace.name),
+	layout = layout,
+    })
+end
+
 
 hl.bind(MAIN_MOD .. " + w", function()
-  local layouts   = { "scrolling", "dwindle", "lua:floating" }
+    local workspace = hl.get_active_special_workspace()
+	or hl.get_active_workspace()
 
-  local workspace = hl.get_active_workspace()
+    if not workspace then return end
 
-  if hl.get_active_special_workspace() then
-    workspace = hl.get_active_special_workspace()
-  end
+    local current = get_current_layout(workspace)
+    local next = get_next_layout(current)
 
-  if not workspace then
-    return
-  end
+    switch_layout(workspace, next)
 
-  local current_layout = workspace.tiled_layout
-  local next_layout = "dwindle"
-
-  for i = 1, #layouts do
-    if layouts[i] == current_layout then
-      next_layout = layouts[(i % #layouts) + 1]
-      break
-    end
-  end
-
-  hl.workspace_rule({ workspace = "name:" .. tostring(workspace.name), layout = next_layout })
-
-
-  if next_layout == "lua:floating" then
-    Float_cascade(workspace)
-  elseif current_layout == "lua:floating" then
-    for _, win in ipairs(hl.get_workspace_windows(workspace)) do
-      hl.dispatch(hl.dsp.window.float({ action = "unset", window = win }))
-    end
-  end
-
-  hl.dispatch(hl.dsp.exec_cmd(notify_Send("Layout switch to ", next_layout, "mate-session-properties", "low")))
+    hl.dispatch(hl.dsp.exec_cmd(
+	notify_Send("Layout switch to ", next, "mate-session-properties", "low")
+    ))
 end)
 
 hl.bind(MAIN_MOD .. "+ SHIFT + G", function()
-	local game_mode = (hl.get_config("decoration.blur.enabled") == false)
-	USE_ROFI = true
+  local game_mode = (hl.get_config("decoration.blur.enabled") == false)
 
-	if game_mode then
-		hl.exec_cmd("hyprctl reload")
-		return
-	end
-	hl.monitor({
-		output = "eDP-1",
-		mode = "1536x864",
-		scale = 1,
-	})
-	hl.config({
+  if game_mode then
+    hl.exec_cmd("hyprctl reload")
+    return
+  end
 
+  hl.monitor({
+    output = "eDP-1",
+    mode = "1536x864@60",
+    scale = 1,
+  })
 
-		decoration = {
-			shadow = { enabled = false },
-			blur = { enabled = false },
-		}
-	})
+  hl.config({
+    decoration = {
+      blur = { enabled = false },
+    }
+  })
 end)
 
-
-local function app_Search()
-	hl.dispatch(hl.dsp.exec_cmd(MARIA_TOGGLE))
-
-	if USE_ROFI then
-		USE_ROFI = false
-	else
-		USE_ROFI = true
-	end
-end
-
-local tp_on = true
-
-
-local function disable_touch_pad()
-	tp_on = not tp_on
-	if tp_on then
-		hl.exec_cmd(notify_Send("Touchpad status", "Enabled", "computer", "low"))
-	else
-		hl.exec_cmd(notify_Send("Touchpad status", "Disable", "computer", "low"))
-	end
-
-	hl.device({ name = "elan0718:00-04f3:30fd-touchpad", enabled = tp_on })
-	hl.dispatch(hl.dsp.exec_cmd("pkexec toggle-touchpad"))
-end
-
-hl.bind(MAIN_MOD .. "+ SHIFT+M", app_Search)
-hl.bind(MAIN_MOD .. "+ F1", disable_touch_pad)
-
-hl.bind(MAIN_MOD .. "+ Space", function()
-	if USE_ROFI then
-		hl.dispatch(hl.dsp.exec_cmd(ROFI_SEARCH))
-	else
-		hl.dispatch(hl.dsp.exec_cmd(MARIA_SEARCH .. ' "emit search"'))
-	end
-end)
 
 hl.bind(MAIN_MOD .. "+ P", function()
 	local m = hl.get_active_monitor()
@@ -205,16 +212,4 @@ hl.bind(MAIN_MOD .. "+ P", function()
 	hl.dispatch(hl.dsp.window.resize({ x = width, y = height }))
 	hl.dispatch(hl.dsp.window.center())
 	hl.dispatch(hl.dsp.window.pin())
-end)
-
-hl.on("window.urgent", function(win)
-	if not win then
-		return
-	end
-
-	local workspace = win.workspace
-	local active_workspace = hl.get_active_workspace()
-	if workspace and active_workspace and workspace.id ~= active_workspace.id then
-		hl.dispatch(hl.dsp.exec_cmd(notify_Send("Urgent: workspace " .. workspace.id .. "", win.title, "computer", "low")))
-	end
 end)
