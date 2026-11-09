@@ -1,8 +1,9 @@
 * {
   border: none;
-  color: #c0caf5;
-  opacity: 0.96;
+  color: @theme_fg_color;
+  opacity: 0.97;
 
+  font-family: "AdwaitaSans";
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 1.1rem;
 
@@ -22,7 +23,7 @@ tooltip label {
   font-weight: bold;
 
   background: shade(alpha(@theme_bg_color, 0.2), 0.25);
-  padding: 13px 10px;
+  padding: 8px 10px;
 
   box-shadow:
   inset 1px 1px 0.8px 0px rgba(255, 255, 255, 0.2),
@@ -51,6 +52,9 @@ window#waybar {
 
   background: none;
 }
+/* =========================================
+   LIQUID GLASS — DIRECTIONAL LIGHTING
+   ========================================= */
 
 label.module {
   font-family: "Material Symbols Rounded";
@@ -134,8 +138,7 @@ label.module:active {
 
 #workspaces button.active {
   border-radius: 0.8rem;
-  background:
-    linear-gradient(rgba(0, 100, 100, 0.2), rgba(0, 100, 100, 0.2)) padding-box;
+  background: alpha(@theme_selected_bg_color , 0.20);
   padding: 0em 1em;
 
   box-shadow:
@@ -178,7 +181,7 @@ label.module:active {
   padding: 0em 1em;
   font-weight: bold;
   font-size: 0.9em;
-  font-family: "Adwaita Sans";
+  font-family: "AdwaitaSans";
 }
 
 #bluetooth.connected:hover {
@@ -205,27 +208,30 @@ label.module:active {
 #custom-lock,
 #custom-quit
 {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   background: rgba(255,255,255,0.07);
 
-  margin: 0.9em 0.2em;
-  padding: 0em 0.6em;
+  font-family: "Material Symbols Rounded";
+  margin: 0.9em 0.1em 0.9em 0.6em;
+  padding: 0em 1em;
 
   box-shadow:
-  inset 1px 1px 1px 0px rgba(255,255,255,0.1),
-  inset -1px -1px 1px 0px rgba(255,255,255,0.1);
+  0px 2px 1px 0px rgba(1, 1, 1, 0.3),
+  inset 1px 1px 0.8px 0px rgba(255, 255, 255, 0.2),
+  inset -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
 
 }
 
 #custom-rofi{
   margin-right: 1em;
+  padding: 0.1em 1em 0em 0.8em;
 }
 
 #custom-reboot:hover,
 #custom-lock:hover,
 #custom-quit:hover
 {
-  opacity: 1;
+  text-shadow: none;
 }
 
 #custom-power {
@@ -233,11 +239,11 @@ label.module:active {
   background: rgba(255,255,255,0.07);
 
   margin-left: 0.6em;
-  margin-top: 0.6em;
-  margin-bottom: 0.6em;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
 
-  padding: 0em 0.5em;
-  font-size: 1.8em;
+  padding: 0em 0.8em 0em 0.7em;
+  font-size: 1.6em;
   box-shadow:
   0px 2px 1px 0px rgba(1, 1, 1, 0.4),
   inset 1px 1px 0.8px 0px rgba(255, 255, 255, 0.2),
@@ -255,11 +261,11 @@ menu {
 menuitem {
     padding: 6px 0px;
     border-radius: 8px;
-    font-family: "Adwaita Sans";
+    font-family: "AdwaitaSans";
 }
 
 menuitem:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: alpha(@theme_selected_bg_color , 0.16);
 }
 
 menuitem:disabled {
@@ -271,4 +277,13 @@ menuitem:disabled {
     font-family: "Material Symbols Rounded";
     font-size: 18px;
     font-weight: normal;
+}
+
+#clock {
+    font-family: "SF Pro Rounded";
+    font-weight: bold;
+    font-size: 17px;
+    padding-bottom: 0em;
+    padding-top: 0.1em;
+    margin: 1em 0em;
 }

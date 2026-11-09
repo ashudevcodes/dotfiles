@@ -7,11 +7,12 @@
 	"height": 60,
 	"exclusive": false,
 	"spacing": 8,
-	"reload_style_on_change": false,
+	"reload_style_on_change": true,
+	"blur": true,
 
 
 	"modules-center": [
-	"hyprland/workspaces"
+	  "hyprland/workspaces"
 	]
 
 },
@@ -23,18 +24,22 @@
 	"height": 60,
 	"exclusive": false,
 	"spacing": 8,
-	"reload_style_on_change": false,
+	"reload_style_on_change": true,
+	"blur": true,
 
 	"modules-right": [
-	  "custom/control_center",
 	  "pulseaudio#output",
 	  "network",
 	  "backlight",
-	  "clock",
+	  //"clock",
 	  "bluetooth",
+	  "custom/control_center",
 	  "custom/rofi"
 	],
 
+	"modules-center": [
+	  "clock"
+	],
 	"modules-left": [
 	  "group/power",
 	  "cffi/liquid_battery"

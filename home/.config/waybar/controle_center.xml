@@ -131,6 +131,10 @@
     </child>
 
     <child>
+      <object class="GtkSeparatorMenuItem" id="delimiter1" />
+    </child>
+
+    <child>
       <object class="GtkMenuItem" id="airplane_toggle">
         <property name="visible">True</property>
         <child>
