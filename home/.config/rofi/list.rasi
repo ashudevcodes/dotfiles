@@ -6,10 +6,10 @@ configuration {
 }
 
 entry {
-  placeholder: " 󰥗  Search applications…";
+  placeholder: " 󰥗\tSearch applications…";
   padding: 12px 0px 0px 10px;
   color: #f2f2f290;
-  font: "Adwaita Sans 9";
+  font: "AdwaitaSans 9";
 
   border: 1px;
   border-radius: 10px;
@@ -104,7 +104,7 @@ element-icon {
 }
 
 element-text {
-  font: "Adwaita Sans 9";
+  font: "AdwaitaSans 9";
   text-color: #c0caf0CC;
   vertical-align: 0.5;
   margin: 0px 0px 0px 10px;
