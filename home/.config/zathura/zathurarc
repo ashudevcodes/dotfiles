@@ -1,0 +1,43 @@
+set recolor "true"
+
+set recolor-keephue "true"
+set recolor-reverse-video       "false"
+
+set font "MapleMono NF 10"
+
+
+set selection-clipboard         "clipboard"
+set adjust-open                 "width"
+set pages-per-row               1
+set scroll-step                 50
+
+set window-title-home-tilde    "true"
+set statusbar-home-tilde        "true"
+
+#set default-bg                  "#1d2021"
+#set default-fg                  "#ebdbb2"
+#set recolor-bgcolor             "#1d2021"
+#set recolor-fgcolor             "#ebdbb2"
+#
+#set statusbar-bg                "#282828"
+#set statusbar-fg                "#ebdbb2"
+#
+#set inputbar-bg                 "#282828"
+#set inputbar-fg                "#ebdbb2"
+#set notification-bg             "#282828"
+#set notification-fg             "#ebdbb2"
+#set notification-error-bg       "#fb4934"
+#set notification-error-fg       "#1d2021"
+#set notification-warning-bg     "#fabd2f"
+#set notification-warning-fg     "#1d2021"
+#
+#set highlight-color             "#b8bb26"
+#set highlight-active-color      "#fe8019"
+#
+#set completion-highlight-bg     "#504945"
+#set completion-highlight-fg     "#ebdbb2"
+#set completion-group-bg         "#1d2021"
+#set completion-group-fg         "#928374"
+
+set completion-bg               "#1d2021"
+set completion-fg               "#ebdbb2"
