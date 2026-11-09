@@ -1,3 +1,5 @@
 @import "colors.css";
 
-@import url("noctalia.css");
+window {
+  backdrop-filter: blur(20px);
+}
