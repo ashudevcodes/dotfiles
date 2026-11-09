@@ -11,10 +11,12 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/chrisgrieser/nvim-origami" },
 })
 
 require("tokyonight").setup({
 	transparent = true,
+	style = "storm",
 	styles = {
 		sidebars = "transparent",
 		floats = "transparent",
@@ -24,8 +26,18 @@ require("tokyonight").setup({
 	end,
 })
 
-vim.cmd.colorscheme("tokyonight-night")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.cmd.colorscheme("tokyonight")
+
+require("origami").setup({
+
+  foldtext = {
+    lineCount = {
+      templat = "%d"
+    }
+  }
+
+})
+
 
 require("telescope").setup({})
 
@@ -81,11 +93,7 @@ require("mason").setup({
 })
 
 require("mason-lspconfig").setup({
-	ensure_installed = {
-		"lua_ls",
-		"clangd",
-	},
-	automatic_enable = false,
+  automatic_enable = true,
 })
 
 vim.lsp.config("lua_ls", {

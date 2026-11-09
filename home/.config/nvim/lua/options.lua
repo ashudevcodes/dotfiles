@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Basic settings
 vim.opt.relativenumber = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.wrap = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
@@ -59,6 +59,8 @@ vim.opt.conceallevel = 0
 vim.opt.concealcursor = ""
 vim.opt.lazyredraw = true
 vim.opt.synmaxcol = 300
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 -- File handling
 vim.opt.backup = false
