@@ -8,7 +8,6 @@ require("input_devices.keyboard_shortcuts")
 require("input_devices.touchpad_settings")
 require("input_devices.keyboard_settings")
 
-require("output_device.moniter_settings")
 
 require("display.ui_controle")
 require("display.ux_controle")
@@ -19,6 +18,8 @@ require("layouts.dwindle")
 require("layouts.scrolling")
 
 require("startup.on_login_programms_run")
+
+require("output_device.moniter_settings")
 
 hl.config({
   xwayland = {
