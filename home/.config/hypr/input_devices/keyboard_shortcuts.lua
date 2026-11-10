@@ -1,16 +1,9 @@
-hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -b "#00000000" -c "#70707099")" - | wl-copy'))
 hl.gesture({ fingers = 4, direction = "down", action = take_Screen_Short })
 
-hl.bind("SHIFT" .. "+ PRINT",
-hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
 hl.bind(MAIN_MOD .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. WAYBAR_CONFIG))
 
+hl.bind("SHIFT" .. "+ PRINT", hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
 hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -b "#00000000" -c "#70707099")" - | wl-copy'))
-
-hl.bind("SHIFT" .. "+ PRINT",
-	hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
-
-hl.bind(MAIN_MOD .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. WAYBAR_CONFIG))
 
 hl.bind(MAIN_MOD .. " + v", toggle_window_floating)
 
