@@ -63,4 +63,4 @@ hypr = { template = "hypr-color.lua", target = "~/.config/hypr/display/theme_col
 # Run commands when wallust is invoked. Useful to avoid scripting.
 #wallpaper = """swww img "$(find ~/Media/Pictures/Wallpapers -iregex '.*.\\(jpg\\|jpeg\\|png\\|gif\\)' -type f | shuf -n 1)" """
 mako = "makoctl reload"
-gtk3 = "waybarToggle.sh"
+gtk3 = """killall waybar; hyprctl dispatch "hl.dsp.exec_cmd('waybar -c $HOME/.config/waybar/bottomBar.jsonc -s $HOME/.config/waybar/bottom_bar.css')""""
