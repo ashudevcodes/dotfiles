@@ -43,7 +43,7 @@ Colors = {
         accent     = palette.color4,
         accent_alt = palette.color5,
 
-        selection = palette.color4 .. "33",
+	selection     = palette.color4 .. "55",
 
         success = palette.color2,
         warning = palette.color3,
@@ -53,7 +53,7 @@ Colors = {
 
     -- Window appearance
     window = {
-        active_border   = palette.color4 .. "66",
+        active_border = palette.color4 .. "AA",
         inactive_border = palette.foreground .. "22",
 
         -- Neutral shadows
@@ -68,6 +68,20 @@ Colors = {
         edge_highlight = palette.foreground .. "22",
         edge_lowlight  = palette.color0 .. "66",
     },
+}
+
+-- Hyprland wants rgba(RRGGBBAA) strings
+local function rgba(hex, alpha)
+  return "rgba(" .. (hex:gsub("#", "")) .. alpha .. ")"
+end
+
+Colors.hypr = {
+  active_border   = rgba(palette.color4, "CC"),
+  inactive_border = rgba(palette.foreground, "44"),
+  active_glow     = rgba(palette.color4, "33"),
+  inactive_glow   = rgba(palette.color4, "10"),
+  active_shadow   = "rgba(00000066)",
+  inactive_shadow = "rgba(00000040)",
 }
 
 -- Make colours globally accessible

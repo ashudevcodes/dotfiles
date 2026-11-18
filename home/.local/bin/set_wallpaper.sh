@@ -14,7 +14,7 @@ if [ "$#" -gt 0 ]; then
     IMG="$*"
 fi
 
-wallust run -q "$IMG"
+wallust run "$IMG"
 
 FILE_1='/run/user/1000/wayland-1-awww-daemon.sock'
 FILE_0='/run/user/1000/wayland-0-awww-daemon.sock'

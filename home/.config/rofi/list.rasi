@@ -1,20 +1,21 @@
-@import "colors.rasi"
+@import "~/.cache/wallust/generated/rofi.rasi"
 
 configuration {
   scroll-method: 0;
-  drun-display-format: "<b>{name}</b>\n<span color='#c0caf580' weight='Semibold' size='small'><i>{comment}</i></span>";
+  drun-display-format: "<b>{name}</b>\n<span alpha='55%' weight='Semibold' size='small'><i>{comment}</i></span>";
 }
 
 entry {
   placeholder: " 󰥗\tSearch applications…";
+  placeholder-color: @text-muted;
   padding: 12px 0px 0px 10px;
-  color: #f2f2f290;
+  text-color: @text-color;
   font: "AdwaitaSans 9";
 
   border: 1px;
   border-radius: 10px;
   background-color: @background;
-  border-color: none;
+  border-color: transparent;
 }
 
 mode-switcher {
@@ -26,16 +27,16 @@ mode-switcher {
 button {
   padding: 0px 12px;
   border-radius: 13px;
-  text-color: #f2f2f280;
+  text-color: @text-muted;
   background-color: @background;
-  border-color: rgba(255,255,255,0.1);
+  border-color: @surface;
   font: "Material Symbols Rounded 15";
 }
 
 button selected {
-  text-color: #f2f2f270;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
+  text-color: @text-color;
+  background-color: @surface;
+  border: 0px;
 }
 
 inputbar {
@@ -43,7 +44,7 @@ inputbar {
 
   padding: 0.5em 0.3em;
   border: 0px;
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: @outline;
 
   children:  [mode-switcher, entry, icon-current-entry];
   //children:  [mode-switcher, entry, textbox-current-entry];
@@ -59,9 +60,10 @@ icon-current-entry {
   size: 1.4em;
   border: 1px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255,255,255,0.1);
+  background-color: @surface;
+  border-color: @surface;
 }
+
 mainbox {
   border: 0px;
   padding: 3px;
@@ -105,49 +107,48 @@ element-icon {
 
 element-text {
   font: "AdwaitaSans 9";
-  text-color: #c0caf0CC;
+  text-color: inherit;
   vertical-align: 0.5;
   margin: 0px 0px 0px 10px;
+}
+
+element normal.normal {
+  text-color: @text-dim;
+}
+
+element alternate.normal {
+  background-color: transparent;
+  text-color: @text-dim;
 }
 
 element selected.normal,
 element selected.active,
 element selected.urgent {
-  text-color: #c0caf5;
+  text-color: @text-color;
   border: 2px;
   border-radius: 0.6em;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(81, 81, 81, 0.4);
+  background-color: @selected;
+  border-color: @outline;
 }
 
-element active.normal,
-element active.alternate {
-  background-color: @text-dim;
+element normal.active,
+element alternate.active {
+  background-color: @active-bg;
   border-color:     transparent;
-  text-color: #c0caf5;
+  text-color: @text-color;
 }
 
-element urgent.normal,
-element urgent.alternate {
-  background-color: #e0685f1a;
+element normal.urgent,
+element alternate.urgent {
+  background-color: @error-bg;
   border-color:     transparent;
-  text-color: #c0caf5;
+  text-color: @text-color;
 }
-
-element alternate.normal {
-  background-color: transparent;
-}
-
-element normal.normal {
-  text-color: #c0caf5cc;
-}
-
-
 
 error-message {
-  background-color: #e0685f1a;
+  background-color: @error-bg;
   border:           1px;
-  border-color:     #e0685f80;
+  border-color:     @error-border;
   border-radius:    10px;
   padding:          10px;
   text-color:       @text-dim;
@@ -155,7 +156,7 @@ error-message {
 
 message {
   border: 1px;
-  border-color: rgba(81, 81, 81, 0.4);
+  border-color: @outline;
   background-color: @background;
   border-radius:    10px;
   padding:          10px;
@@ -167,4 +168,4 @@ textbox {
   background-color: transparent;
 }
 
-/* vim:ft=css
+/* vim:ft=css */

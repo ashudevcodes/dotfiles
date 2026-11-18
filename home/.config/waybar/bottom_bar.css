@@ -15,15 +15,27 @@
     color 160ms ease-out,
     box-shadow 160ms ease-out;
 }
+
+tooltip {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+
+tooltip box.horizontal {
+    border: none;
+}
+
 tooltip label {
-  color: #c0caf5;
+  color: @theme_fg_color;
 
   font-family: "SF Pro Rounded";
   font-size: 0.8em;
   font-weight: bold;
 
   background: shade(alpha(@theme_bg_color, 0.2), 0.25);
-  padding: 8px 10px;
+  padding: 10px 13px;
 
   box-shadow:
   inset 1px 1px 0.8px 0px rgba(255, 255, 255, 0.2),
@@ -35,9 +47,6 @@ tooltip label {
 
 }
 
-tooltip {
-  background-color: transparent;
-}
 
 
 window#waybar {
@@ -66,6 +75,8 @@ label.module {
   padding-bottom: 0.5em;
   padding-top: 0.5em;
 
+  border-radius: 0.8rem;
+
   box-shadow:
   0px 2px 1px 0px rgba(1, 1, 1, 0.3),
   inset 1px 1px 0.8px 0px rgba(255, 255, 255, 0.2),
@@ -73,9 +84,10 @@ label.module {
 }
 
 label.module:hover {
-  color: rgba(255,255,255,0.78);
+  color: alpha(@theme_fg_color, 0.78);
   background: rgba(255,255,255,0.1);
 
+  border-radius: 0.9rem;
   margin: 0.8em 0em;
   padding: 0.1em 0.7em 0.3em 0.7em;
 
@@ -101,6 +113,7 @@ label.module:active {
   margin-left: 1em;
   margin-right: 1em;
   padding: 0.4em;
+  border-radius: 1.1rem;
 
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   box-shadow:
@@ -138,11 +151,11 @@ label.module:active {
 
 #workspaces button.active {
   border-radius: 0.8rem;
-  background: alpha(@theme_selected_bg_color , 0.20);
+  background: alpha(@theme_selected_bg_color, 0.30);
   padding: 0em 1em;
 
   box-shadow:
-  0px 3px 3px 0px rgba(0, 100, 100, 0.2),
+  0px 3px 3px 0px alpha(@theme_selected_bg_color, 0.25),
   inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1),
   inset -1px -1px 0px 0px rgba(255, 255, 255, 0.1);
 
@@ -156,19 +169,19 @@ label.module:active {
 #workspaces button.empty {
   background:
   linear-gradient(
-  rgba(0, 100, 100, 0.1),
-  rgba(0, 100, 100, 0.1)
+  alpha(@theme_selected_bg_color, 0.1),
+  alpha(@theme_selected_bg_color, 0.1)
   ) padding-box;
 
   box-shadow: none;
 }
 
 #workspaces button.urgent {
-  background: rgba(255, 0, 0, 0.18);
+  background: alpha(@error_color, 0.35);
 }
 
 #workspaces button.special {
-  background: rgba(255, 0,0, 0.09);
+  background: alpha(@error_color, 0.15);
 }
 
 /* Bluetooth Buttons --------------------------------*/
@@ -191,17 +204,17 @@ label.module:active {
 /* Poewer Buttons --------------------------------*/
 
 #custom-reboot:hover{
-  background:rgba(52,199,89,0.22);
-  color:#30d158;
+  background: alpha(@success_color, 0.22);
+  color: @success_color;
 }
 #custom-lock:hover{
-  background:rgba(255,214,10,0.22);
-  color:#ffd60a;
+  background: alpha(@warning_color, 0.22);
+  color: @warning_color;
 }
 #custom-quit:hover
 {
-  background:rgba(255,69,58,0.22);
-  color:#ff453a;
+  background: alpha(@error_color, 0.22);
+  color: @error_color;
 }
 
 #custom-reboot,
@@ -252,7 +265,7 @@ label.module:active {
 
 menu {
   background-color: shade(alpha(@theme_bg_color, 0.2), 0.25);
-  color: #c0caf5;
+  color: @theme_fg_color;
   border: 1.3px solid alpha(@borders, 0.25);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
   padding: 6px;
@@ -265,7 +278,7 @@ menuitem {
 }
 
 menuitem:hover {
-  background: alpha(@theme_selected_bg_color , 0.16);
+  background: alpha(@theme_selected_bg_color, 0.25);
 }
 
 menuitem:disabled {
@@ -286,4 +299,36 @@ menuitem:disabled {
     padding-bottom: 0em;
     padding-top: 0.1em;
     margin: 1em 0em;
+    border-radius : 1rem;
+}
+
+#liquid-battery-studio {
+  min-width: 24px;
+  padding: 0 3px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: @theme_selected_bg_color;
+}
+
+#liquid-battery-studio:hover {
+  color: @theme_fg_color;
+  background: alpha(@theme_selected_bg_color, 0.16);
+}
+
+tooltip.liquid-battery-tooltip {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+
+    border: 1px solid alpha(@borders, 0.4);
+    border-radius: 12px;
+
+    padding: 0;
+}
+
+tooltip.liquid-battery-tooltip label {
+    color: @theme_fg_color;
+    font-family: "Inter";
+    font-size: 10pt;
+    padding: 10px 13px;
 }

@@ -1,14 +1,15 @@
-border-color=#{{color4 | strip}}40
+border-color=#{{color4 | strip}}99
 text-color=#{{foreground | strip}}FF
-background-color=#{{background | strip}}80
+background-color=#{{background | strip}}BF
 
-progress-color=over #{{color4 | strip}}40
+progress-color=over #{{color4 | strip}}80
 
 [urgency=low]
-border-color=#{{color8 | strip}}30
+border-color=#{{color8 | strip}}66
 text-color=#{{foreground | strip}}FF
 
 [urgency=critical]
-border-color=#{{color1 | strip}}40
+border-color=#{{color1 | lighten(0.4) | strip}}
+border-size=3
 text-color=#{{foreground | strip}}FF
-background-color=#{{color1 | strip}}30
+background-color=#{{color1 | strip}}B3
