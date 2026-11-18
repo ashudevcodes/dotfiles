@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "~/.cache/wallust/generated/gtk3.css";
 
 window {
   backdrop-filter: blur(20px);
