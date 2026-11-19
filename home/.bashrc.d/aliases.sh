@@ -14,6 +14,7 @@ alias day="redshift -x"
 alias q='exit'
 alias lq='leetcodeSession'
 alias t='tmux'
+alias colab='colab --auth=adc'
 
 # Android Studio
 alias androidStudio="$HOME/.share/android-studio/bin/studio"

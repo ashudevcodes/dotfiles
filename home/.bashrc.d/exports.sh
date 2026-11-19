@@ -5,3 +5,4 @@ export MANPAGER='nvim +Man!'
 # History settings
 export HISTCONTROL=ignoredups:erasedups
 export FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
+export PATH="$HOME/.local/opt/google-cloud-sdk/bin:$PATH"
