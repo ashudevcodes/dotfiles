@@ -1,7 +1,7 @@
 -- Cascade appearance: window size and diagonal spacing.
 local opts = {
     solo = 0.8,
-    size = 0.7,
+    size = 0.8,
     step = 40,
 }
 
@@ -24,6 +24,8 @@ local skip = {
     ["org.gnome.Nautilus"] = true,
     pcmanfm = true,
     ["org.pulseaudio.pavucontrol"] = true,
+    ["battery-studio"] = true,
+    ["ytm-rs"] = true
 }
 
 -- Shared state: shortcuts use these to control cascade mode.

@@ -29,11 +29,13 @@ hl.config({
 
 hl.config({
   misc = {
+    session_lock_xray = true,
+    session_lock_blur = true,
     disable_hyprland_logo = true,
     disable_splash_rendering = true,
     render_unfocused_fps = 1,
     lockdead_screen_delay = 0,
-    enable_swallow = true,
+    enable_swallow = false,
     swallow_regex = "^(foot|kitty)$",
     swallow_exception_regex = "^(QEMU)$",
     vrr = 1,
@@ -48,6 +50,7 @@ hl.config({
     hide_special_on_workspace_change = true,
   },
   render = {
+    direct_scanout = 1,
     new_render_scheduling = true,
     -- use_shader_blur_blend  = true,
   },

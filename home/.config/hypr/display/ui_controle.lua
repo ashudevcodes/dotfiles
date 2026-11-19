@@ -1,15 +1,24 @@
-local Colors = require("display.theme_color_change")
+package.loaded["~/.cache/wallust/generated/hypr"] = nil
+local Colors = require("~/.cache/wallust/generated/hypr")
+local C = Colors.hypr
 
 hl.config({
 
-  general ={
+ general = {
     gaps_out = 12,
-    border_size = 0,
+    border_size = 2,
     resize_on_border = true,
+    layout = "master",
 
     col = {
-      active_border = Colors.window.active_border,
-      inactive_border = Colors.window.inactive_border,
+      active_border = {
+        colors = { C.active_border, "rgba(00000011)", C.active_border },
+        angle = 30,
+      },
+      inactive_border = {
+        colors = { C.inactive_border, "rgba(00000011)", C.inactive_border },
+        angle = 30,
+      },
     },
   },
 
@@ -32,8 +41,8 @@ hl.config({
       enabled = true,
       color = Colors.window.active_shadow,
       color_inactive = Colors.window.inactive_shadow,
-      offset = { 0, 2 },
-      range = 20,
+      offset = { 0, 4 },
+      range = 30,
     },
 
     blur = {

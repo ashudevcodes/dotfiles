@@ -44,6 +44,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
+  match = { class = "battery-studio", },
+  float = true,
+  size = { "monitor_w * 0.6", "monitor_h * 0.6" },
+  no_blur = false,
+})
+
+hl.window_rule({
   match = { title = "wifi_status", },
   float = true,
   size = { "monitor_w * 0.4", "monitor_h * 0.5" }
@@ -139,6 +146,7 @@ hl.layer_rule({
   match     = {
     namespace = "rofi"
   },
+  --no_anim = true,
   animation = "popin",
   blur = true,
   blur_popups = true,
@@ -169,7 +177,7 @@ hl.layer_rule({
   },
   animation  = "slidein",
   xray       = true,
-
+  above_lock = 2,
 })
 
 hl.layer_rule({

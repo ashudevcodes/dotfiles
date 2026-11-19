@@ -2,13 +2,20 @@ hl.gesture({ fingers = 4, direction = "down", action = take_Screen_Short })
 
 hl.bind(MAIN_MOD .. "+ SHIFT + W", hl.dsp.exec_cmd("pkill -x waybar || waybar " .. WAYBAR_CONFIG))
 
-hl.bind("SHIFT" .. "+ PRINT", hl.dsp.exec_cmd('grim ~/Pictures/ScreenShorts/$(date +%Y-%m-%d_%H-%M-%S).png; notify-send "Screen Short Taken"'))
+hl.bind("SHIFT" .. "+ PRINT", function () take_Screen_Short() end)
+
 hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -b "#00000000" -c "#70707099")" - | wl-copy'))
 
 hl.bind(MAIN_MOD .. " + v", toggle_window_floating)
 
 hl.bind(MAIN_MOD .. " + Q", hl.dsp.window.close())
 hl.bind(MAIN_MOD .. " + F", hl.dsp.window.fullscreen({action = "toggle"}))
+
+hl.bind(MAIN_MOD .. "+ SHIFT + F", hl.dsp.window.fullscreen_state({
+  internal = 0,
+  client = 2,
+  action = "toggle",
+}))
 
 hl.bind(MAIN_MOD .. " + RETURN", hl.dsp.exec_cmd(TERMINAL))
 hl.bind(MAIN_MOD .. " + SHIFT + RETURN", hl.dsp.exec_cmd("foot"))
@@ -33,7 +40,7 @@ hl.bind(MAIN_MOD .. "+ Tab", function()
 end)
 
 hl.bind(MAIN_MOD .. "+ SHIFT + R", hl.dsp.layout("colresize +conf"))
-hl.bind(MAIN_MOD .. "+ SHIFT + F", hl.dsp.layout("fit active"))
+-- hl.bind(MAIN_MOD .. "+ SHIFT + F", hl.dsp.layout("fit active"))
 
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
@@ -93,7 +100,7 @@ require("layouts.floating_layout")
 
 local cascade = _G.Cascade
 
-local layouts = { "cascade", "dwindle", "scrolling" }
+local layouts = { "cascade", "dwindle", "scrolling", "master" }
 
 local function enable_cascade(workspace)
     cascade.enabled[workspace.id] = true
@@ -180,7 +187,7 @@ hl.bind(MAIN_MOD .. "+ SHIFT + G", function()
 
   hl.monitor({
     output = "eDP-1",
-    mode = "1536x864@60",
+    mode = "1600x900@60",
     scale = 1,
   })
 
