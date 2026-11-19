@@ -3,7 +3,6 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/folke/tokyonight.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/numToStr/Comment.nvim" },
@@ -13,20 +12,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/chrisgrieser/nvim-origami" },
 })
-
-require("tokyonight").setup({
-	transparent = true,
-	style = "storm",
-	styles = {
-		sidebars = "transparent",
-		floats = "transparent",
-	},
-	on_colors = function(colors)
-		colors.comment = "#848cb5"
-	end,
-})
-
-vim.cmd.colorscheme("tokyonight")
 
 require("origami").setup({
 
@@ -62,9 +47,13 @@ require("blink.cmp").setup({
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 300,
+			window = {
+			  winblend = 10,
+			},
 		},
 		menu = {
 			border = "rounded",
+			winblend = 10,
 		},
 	},
 

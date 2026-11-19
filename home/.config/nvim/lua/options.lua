@@ -12,6 +12,11 @@ vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "None" })
 vim.opt.fillchars = {
 	vert = '󰇙',
 	horiz = '-',
+	eob = " ",
+	fold = " ",
+	foldopen = " ",
+	foldclose = "›",
+	foldsep = " ",
 }
 
 -- Activate treesitter bases on installed parcers
@@ -25,6 +30,10 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Basic settings
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
+
+vim.opt.number = true
+vim.opt.signcolumn = "yes"
+
 vim.opt.wrap = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
